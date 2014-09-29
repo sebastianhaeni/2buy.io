@@ -14,13 +14,15 @@ To get the app to work you need to install the dependencies of Bower and Compose
     bower install
     composer install
 
-
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.
 
 When an article gets bought, the buyer can mark it as bought and gets credit for it. The statistics should tell who orders the most and who buys the most.
 
 The app is intended to work very well on mobile devices. Desktop resolutions should be supported as well, but aren’t the primary use case.
+
+[View the Project plan](https://docs.google.com/spreadsheets/d/13WSqNUOvKZwPOybQbJwPmpcRZdPULlK52T3Jfx6dhZ4/pubhtml)
+
 
 ## Features
 <ul>
