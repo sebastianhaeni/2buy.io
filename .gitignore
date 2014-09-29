@@ -3,3 +3,4 @@
 .buildpath
 bower_components/
 vendor/
+*.bak
