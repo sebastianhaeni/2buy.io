@@ -1,6 +1,20 @@
 Shopping List
 ===================================
 
+## Dependencies
+1.  [Bower](http://bower.io/)
+2.  [Composer](https://getcomposer.org/)
+3.  Apache with PHP >= 5.5
+4.  MySQL >= 5.6
+
+## Install instructions
+
+To get the app to work you need to install the dependencies of Bower and Composer separately.
+
+    bower install
+    composer install
+
+
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.
 
