@@ -5,16 +5,16 @@
             "name": "Sebastian Häni",
             "email": "haeni.sebastian@gmail.com"
         },
-		{
-			"name": "David Wiedmer",
-			"email": "david.wiedmer@gmail.com"
-		}
+        {
+            "name": "David Wiedmer",
+            "email": "david.wiedmer@gmail.com"
+        }
     ],
     "minimum-stability": "dev",
     "require": {
-		"php": ">=5.5",
-    	"silex/silex": "~1.2",
-    	"doctrine/dbal": "2.2.*",
-    	"swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev"
-	}
+        "php": ">=5.5",
+        "silex/silex": "~1.2",
+        "doctrine/dbal": "2.2.*",
+        "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev"
+    }
 }
