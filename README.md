@@ -19,6 +19,7 @@ Shopping List
 5. Create <code>config.php</code> with <code>config.sample.php</code> to match your local environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
+The sample user created has the username "Administrator" and the password "1234".
 
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.
