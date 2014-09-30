@@ -10,10 +10,14 @@ Shopping List
 
 ## Install instructions
 
-To get the app to work you need to install the dependencies of Bower and Composer separately.
+1. Install dependencies listed above:
+2. Install bower packages
+       bower install
+3. Install comoposer packages:
+       composer install
+4. Create MySQL Database with <code>create-tables.sql</code>.
+5. Create <code>config.php</code> with <code>config.sample.php</code> to match your local environment
 
-    bower install
-    composer install
 
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.
