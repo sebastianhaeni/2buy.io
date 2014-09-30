@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b938ec6959c02888d91b8db699dbda08",
+    "hash": "beed5ab36748d23f13ff490cafc2c95d",
     "packages": [
         {
             "name": "doctrine/common",
@@ -362,12 +362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Debug.git",
-                "reference": "c44089df79e02eba3b3f742e17f7d695bc12bb85"
+                "reference": "20fd1a87b9a9dc172470c346c0d48c83a2b3adbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Debug/zipball/c44089df79e02eba3b3f742e17f7d695bc12bb85",
-                "reference": "c44089df79e02eba3b3f742e17f7d695bc12bb85",
+                "url": "https://api.github.com/repos/symfony/Debug/zipball/20fd1a87b9a9dc172470c346c0d48c83a2b3adbf",
+                "reference": "20fd1a87b9a9dc172470c346c0d48c83a2b3adbf",
                 "shasum": ""
             },
             "require": {
@@ -409,7 +409,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "http://symfony.com",
-            "time": "2014-09-28 16:08:29"
+            "time": "2014-09-29 14:48:41"
         },
         {
             "name": "symfony/event-dispatcher",

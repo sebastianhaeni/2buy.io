@@ -15,6 +15,7 @@ require_once $config;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use ShoppingList\Router;
 
 date_default_timezone_set('Europe/Zurich');
 
@@ -28,15 +29,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => $config['database']
 ));
 
-// home
-$app->get('/v1/', function (Request $request) use($app)
-{
-    
-    return $app->json(array(
-        'date' => date('c'),
-        'author' => 'Sebastian Haeni',
-        'version' => '1.0'
-    ));
-});
+$router = new Router();
+$router->constructRoutes($app);
 
 $app->run();

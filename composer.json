@@ -16,5 +16,8 @@
         "silex/silex": "~1.2",
         "doctrine/dbal": "2.2.*",
         "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev"
+    },
+    "autoload": {
+   		"psr-4": {"ShoppingList\\": "api/ShoppingList"}
     }
 }
