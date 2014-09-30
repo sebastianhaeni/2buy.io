@@ -2,12 +2,14 @@
 $config = __DIR__ . '/../config.php';
 $autoload = __DIR__ . '/../vendor/autoload.php';
 
+// Check if config file is present. If not throw an error.
 if (! stream_resolve_include_path($config)) {
-    throw new Exception('Config file ' . $config . ' not found!');
+    throw new Exception('Config file ' . $config . ' not found! Create it from config.sample.php.');
 }
 
+// Check if depenedencies are installed. If not throw an error.
 if (! stream_resolve_include_path($autoload)) {
-    throw new Exception('Composer generated file ' . $autoload . ' not found!');
+    throw new Exception('Composer generated file ' . $autoload . ' not found! Execute <code>composer install</code>.');
 }
 
 require_once $autoload;
