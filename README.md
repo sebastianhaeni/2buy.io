@@ -4,8 +4,9 @@ Shopping List
 ## Dependencies
 1.  [Bower](http://bower.io/)
 2.  [Composer](https://getcomposer.org/)
-3.  Apache with PHP >= 5.5
-4.  MySQL >= 5.6
+3.  less compiler
+4.  Apache with PHP >= 5.5
+5.  MySQL >= 5.6
 
 ## Install instructions
 
