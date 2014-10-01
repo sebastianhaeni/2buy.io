@@ -2,11 +2,12 @@ Shopping List
 ===================================
 
 ## Dependencies
-1.  [Bower](http://bower.io/)
-2.  [Composer](https://getcomposer.org/)
-3.  less compiler
-4.  Apache with PHP >= 5.5
-5.  MySQL >= 5.6
+1.  [nodejs](http://nodejs.org/)
+2.  [Bower](http://bower.io/) (<code>npm install -g bower</code>)
+3.  [Composer](https://getcomposer.org/) (<code>npm install -g composer</code>)
+4.  [less.js](https://github.com/less/less.js) (<code>npm install -g less</code>)
+5.  Apache with PHP >= 5.5
+6.  MySQL >= 5.6
 
 ## Install instructions
 
