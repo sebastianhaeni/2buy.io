@@ -1,27 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Shopping List</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="TODO" />
-  <meta name="description" content="TODO" />
-  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="bower_components/jquery-ui/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet">
-  <link href="media/css/app.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Shopping List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="media/css/app.css" rel="stylesheet">
 </head>
-
 <body>
-  <h1>Shopping List coming soon</h1>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#einkauf-navbar">
+                <span class="sr-only">Navigation ein-/ausblenden</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">Shopping List</a>
+        </div>
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-  <script src="bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-  <script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
-  <script src="bower_components/chart.js/chart.js"></script>
-  <script src="media/js/app.js"></script>
+        <div class="collapse navbar-collapse" id="einkauf-navbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#shoppinglist" id="shopping"><span
+                        class="glyphicon glyphicon-shopping-cart"></span> Einkaufsliste</a></li>
+                <li><a href="#history" id="history"><span class="glyphicon glyphicon-list"></span> Verlauf</a></li>
+                <li><a href="#stats" id="stats"><span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
+                <li class="administrator"><a href="#products" id="products"><span
+                        class="glyphicon glyphicon-th-list"></span> Artikel</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                            class="glyphicon glyphicon-user"></span> <span id="username">Anonymous</span> <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#settings"><span
+                                class="glyphicon glyphicon-wrench"></span> Einstellungen</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-toggle="modal" data-target="#change-user"><span
+                                class="glyphicon glyphicon-refresh"></span> Benutzer wechseln</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+
+        <div id="shoppinglist">
+            shoppinglist
+        </div>
+
+        <div id="transactionlist" style="display: none;">
+            transactionlist
+        </div>
+
+        <div id="statslist" style="display: none;">
+            statslist
+        </div>
+
+        <div id="productlist" style="display: none;">
+            productlist
+        </div>
+    </div>
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script src="media/js/app.js"></script>
+<script src="media/js/shoppinglist.js"></script>
+<script src="media/js/history.js"></script>
+<script src="media/js/stats.js"></script>
+<script src="media/js/products.js"></script>
+<script type="text/javascript">init();</script>
 </body>
-
 </html>
