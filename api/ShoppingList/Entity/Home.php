@@ -6,7 +6,7 @@ use Silex\Application;
 
 /**
  *
- * @author Sebastian Häni <haeni.sebastian@gmail.com>
+ * @author Sebastian HÃ¤ni <haeni.sebastian@gmail.com>
  */
 class Home
 {
