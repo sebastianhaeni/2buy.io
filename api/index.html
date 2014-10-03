@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Shopping List - API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../media/css/app.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#einkauf-navbar">
+                <span class="sr-only">Navigation ein-/ausblenden</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">Shopping List</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="einkauf-navbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#home" id="home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="#api" id="api"><span class="glyphicon glyphicon-cog"></span> API</a></li>
+                <li><a href="#getstarted" id="getstarted"><span class="glyphicon glyphicon-play"></span> Get Started</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                            class="glyphicon glyphicon-user"></span> <span id="username">Anonymous</span> <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-toggle="modal" data-target="#settings"><span
+                                class="glyphicon glyphicon-wrench"></span> Einstellungen</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-toggle="modal" data-target="#change-user"><span
+                                class="glyphicon glyphicon-refresh"></span> Benutzer wechseln</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+	<div class="jumbotron">
+		<h1>Hi there!</h1>
+		<p>You're living in a community household? We've got the perfect shopping app for you!</p>
+		<p><a class="btn btn-primary btn-lg" role="button">Sign up now</a></p>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-4">
+			<h3>How does it work?</h3>
+			<p>
+				ShoppingList is a web app that enables you and your friends living in the same household to keep track of your shopping needs. 
+				Simply add an article to the list and everybody will see it.
+			</p>
+		</div>
+		<div class="col-md-4">
+			<h3>Benefits</h3>
+			<ul>
+				<li>Easily add articles to your shopping list</li>
+				<li>Swipe them off the list when bought</li>
+				<li>Get notified of other's actions</li>
+				<li>See what's happened in the past</li>
+				<li>View statistics of orders and purchases</li>
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<h3>Support</h3>
+			<p>
+				ShoppingList supports all devices that exist and have a browser. 
+			</p>
+			<ul class="list-group">
+				<li class="list-group-item"><i class="fa fa-android fa-2x"></i>&nbsp; Android</li>
+				<li class="list-group-item"><i class="fa fa-apple fa-2x"></i>&nbsp; iOS</li>
+				<li class="list-group-item"><i class="fa fa-windows fa-2x"></i>&nbsp; Windows Phone</li>
+			</ul>
+		</div>
+	</div>
+	
+</div>
+
+</body>
+</html>
