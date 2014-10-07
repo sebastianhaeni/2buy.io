@@ -14,7 +14,7 @@ Shopping List
 1. Install dependencies listed above
 2. Install bower packages: <code>bower install</code>
 3. Install composer packages: <code>composer install</code>
-4. Create MySQL Database with <code>create-tables.sql</code>.
+4. Create MySQL Database with <code>install.sql</code>.
 5. Create <code>config.php</code> with <code>config.sample.php</code> to match your local environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
