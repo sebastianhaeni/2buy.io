@@ -29,6 +29,11 @@ class User extends BaseModel
     private $_isAdmin;
 
     /**
+     */
+    public function __construct()
+    {}
+
+    /**
      *
      * @param int $id            
      * @param int $communityId            
@@ -84,20 +89,54 @@ class User extends BaseModel
         if ($user == null) {
             return null;
         }
-        return new User($user['id'], $user['idCommunity'], $user['email'], $user['password'], $user['phone'], $user['receiveUpdates'], $user['receiveSms'], $user['idAdmin']);
+        return new User($user['id'], $user['idCommunity'], $user['name'], $user['email'], $user['password'], $user['phone'], $user['receiveUpdates'], $user['receiveSms'], $user['idAdmin']);
     }
 
     public function save(Application $app)
     {
-        if (isset($this->_id)) {}
+        if (isset($this->_id)) {
+            return $this->update($app);
+        }
+        return $this->insert($app);
+    }
+
+    private function update(Application $app)
+    {
+        return 1 == $app['db']->executeUpdate('UPDATE user SET 
+            idCommunity = ?, 
+            name = ?,
+            email = ?,
+            password = ?,
+            phone = ?,
+            receiveUpdates = ?,
+            receiveSms = ?
+            isAdmin = ?
+            WHERE idUser = ?
+            ', array(
+            $this->_communityId,
+            $this->_name,
+            $this->_email,
+            $this->_password,
+            $this->_phone,
+            $this->_receiveUpdates,
+            $this->_receiveSms,
+            $this->_isAdmin,
+            $this->_id
+        ));
     }
 
     private function insert(Application $app)
     {
-        $app['db']->executeQuery('INSERT INTO user (name, email, password) VALUES (?,?,?)', array(
+        return 1 == $app['db']->executeQuery('INSERT INTO user (idCommunity, name, email, password, phone, receiveUpdates, receiveSms, isAdmin) VALUES (?,?,?,?,?,?,?,?)', array(
+            $this->_communityId,
             $this->_name,
             $this->_email,
-            $this->_password
+            $this->_password,
+            $this->_phone,
+            $this->_receiveUpdates,
+            $this->_receiveSms,
+            $this->_isAdmin,
+            $this->_id
         ));
     }
 

@@ -20,7 +20,21 @@ class Router
     public function constructRoutes(\Silex\Application $app)
     {
         $app->get('/', 'ShoppingList\\Router::redirectToDev');
+        
+        // Home
         $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
+        
+        // Product
+        // TODO
+        
+        // Statistics
+        // TODO
+        
+        // Transaction
+        // TODO
+        
+        // User
+        $app->post('/v1/register', 'ShoppingList\\Controller\\UserController::register');
     }
 
     /**

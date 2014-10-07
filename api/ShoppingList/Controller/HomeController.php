@@ -15,7 +15,7 @@ class HomeController extends BaseController
     {
         return $app->json(array(
             'date' => date('c'),
-            'author' => 'Sebastian Haeni',
+            'author' => 'ShoppingList',
             'version' => '1.0'
         ));
     }
