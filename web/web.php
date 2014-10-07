@@ -11,23 +11,10 @@ $app->get('/', function () use($app)
     return $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
 });
 
+$app['validPages'] = ['home','developers','getstarted','app','register'];
 $app->get('/{page}', function (Application $app, $page) use($app)
 {
-    $templateName = 'notfound';
-    switch ($page) {
-        case 'home':
-            $templateName = 'home';
-            break;
-        case 'developers':
-            $templateName = 'developers';
-            break;
-        case 'getstarted':
-            $templateName = 'getstarted';
-            break;
-        case 'app':
-            $templateName = 'app';
-            break;
-    }
+    $templateName = in_array($page, $app['validPages']) ? $page : 'notfound';
     $template = $app['twig']->loadTemplate($templateName . '.html');
     return $template->render(array(
         'config' => $app['config'],

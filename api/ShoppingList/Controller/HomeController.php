@@ -1,5 +1,5 @@
 <?php
-namespace ShoppingList\Entity;
+namespace ShoppingList\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
@@ -8,7 +8,7 @@ use Silex\Application;
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
-class Home
+class HomeController extends BaseController
 {
 
     public function info(Request $request, Application $app)

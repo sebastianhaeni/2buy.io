@@ -14,13 +14,13 @@ class Router
 
     /**
      * Set up routes of the API.
-     * 
+     *
      * @param \Silex\Application $app            
      */
     public function constructRoutes(\Silex\Application $app)
     {
         $app->get('/', 'ShoppingList\\Router::redirectToDev');
-        $app->get('/v1/', 'ShoppingList\\Entity\\Home::info');
+        $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
     }
 
     /**

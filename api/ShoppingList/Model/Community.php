@@ -1,10 +1,10 @@
 <?php
-namespace ShoppingList\Entity;
+namespace ShoppingList\Model;
 
 /**
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
-class Transaction
+class Community extends BaseModel
 {
 }

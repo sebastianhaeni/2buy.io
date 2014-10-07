@@ -1,10 +1,10 @@
 <?php
-namespace ShoppingList\Entity;
+namespace ShoppingList\Controller;
 
 /**
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
-class User
+class BaseController
 {
 }
