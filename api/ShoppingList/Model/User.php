@@ -98,22 +98,6 @@ class User extends BaseModel
     }
 
     /**
-     * (non-PHPdoc)
-     *
-     * @see \ShoppingList\Model\BaseModel::save()
-     */
-    public function save(Application $app)
-    {
-        if (! $this->validate()) {
-            return false;
-        }
-        if (isset($this->_id) && ! is_null($this->_id)) {
-            return $this->update($app);
-        }
-        return $this->insert($app);
-    }
-
-    /**
      *
      * @param Application $app            
      * @return boolean
