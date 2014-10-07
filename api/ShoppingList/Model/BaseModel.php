@@ -2,6 +2,7 @@
 namespace ShoppingList\Model;
 
 use Silex\Application;
+
 /**
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
@@ -9,6 +10,18 @@ use Silex\Application;
 abstract class BaseModel
 {
 
-    public function save(Application $app);
-    public static function getById($id);
+    public function save(Application $app)
+    {
+        throw new \Exception('Not implemented');
+    }
+
+    public function validate()
+    {
+        throw new \Exception('Not implemented');
+    }
+
+    public static function getById($id)
+    {
+        throw new \Exception('Not implemented');
+    }
 }

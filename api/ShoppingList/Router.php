@@ -34,7 +34,8 @@ class Router
         // TODO
         
         // User
-        $app->post('/v1/register', 'ShoppingList\\Controller\\UserController::register');
+        $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
+        $app->post('/v1/user/login', 'ShoppingList\\Controller\\UserController::login');
     }
 
     /**

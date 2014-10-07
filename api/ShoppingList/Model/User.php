@@ -29,11 +29,6 @@ class User extends BaseModel
     private $_isAdmin;
 
     /**
-     */
-    public function __construct()
-    {}
-
-    /**
      *
      * @param int $id            
      * @param int $communityId            
@@ -60,27 +55,10 @@ class User extends BaseModel
 
     /**
      *
-     * @param int $communityId            
-     * @param string $name            
-     * @param string $email            
-     * @param string $password            
-     * @param string $phone            
-     * @param boolean $receiveUpdates            
-     * @param boolean $receiveSms            
-     * @param boolean $isAdmin            
+     * @param int $id            
+     * @param Application $app            
+     * @return NULL|\ShoppingList\Model\User
      */
-    public function __construct($communityId, $name, $email, $password, $phone, $receiveUpdates, $receiveSms, $isAdmin)
-    {
-        $this->setCommunityId($communityId);
-        $this->setName($name);
-        $this->setEmail($email);
-        $this->setPassword($password, false);
-        $this->setPhone($phone);
-        $this->setReceiveUpdates($receiveUpdates);
-        $this->setReceiveSms($receiveSms);
-        $this->setIsAdmin($isAdmin);
-    }
-
     public static function getById($id, Application $app)
     {
         $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE idUser = ?', array(
@@ -89,17 +67,57 @@ class User extends BaseModel
         if ($user == null) {
             return null;
         }
-        return new User($user['id'], $user['idCommunity'], $user['name'], $user['email'], $user['password'], $user['phone'], $user['receiveUpdates'], $user['receiveSms'], $user['idAdmin']);
+        return self::getUser($user);
     }
 
+    /**
+     *
+     * @param string $email            
+     * @param Application $app            
+     * @return NULL|\ShoppingList\Model\User
+     */
+    public static function getByEmail($email, Application $app)
+    {
+        $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE email = ?', array(
+            $email
+        ));
+        if ($user == null) {
+            return null;
+        }
+        return self::getUser($user);
+    }
+
+    /**
+     *
+     * @param array $data            
+     * @return \ShoppingList\Model\User
+     */
+    private static function getUser(array $data)
+    {
+        return new User($data['idUser'], $data['idCommunity'], $data['name'], $data['email'], $data['password'], $data['phone'], $data['receiveUpdates'], $data['receiveSms'], $data['isAdmin']);
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::save()
+     */
     public function save(Application $app)
     {
-        if (isset($this->_id)) {
+        if (! $this->validate()) {
+            return false;
+        }
+        if (isset($this->_id) && ! is_null($this->_id)) {
             return $this->update($app);
         }
         return $this->insert($app);
     }
 
+    /**
+     *
+     * @param Application $app            
+     * @return boolean
+     */
     private function update(Application $app)
     {
         return 1 == $app['db']->executeUpdate('UPDATE user SET 
@@ -125,19 +143,54 @@ class User extends BaseModel
         ));
     }
 
+    /**
+     *
+     * @param Application $app            
+     * @return boolean
+     */
     private function insert(Application $app)
     {
-        return 1 == $app['db']->executeQuery('INSERT INTO user (idCommunity, name, email, password, phone, receiveUpdates, receiveSms, isAdmin) VALUES (?,?,?,?,?,?,?,?)', array(
-            $this->_communityId,
-            $this->_name,
-            $this->_email,
-            $this->_password,
-            $this->_phone,
-            $this->_receiveUpdates,
-            $this->_receiveSms,
-            $this->_isAdmin,
-            $this->_id
-        ));
+        try {
+            return 1 == $app['db']->executeUpdate('INSERT INTO user (idCommunity, name, email, password, phone, receiveUpdates, receiveSms, isAdmin) VALUES (?,?,?,?,?,?,?,?)', array(
+                $this->_communityId,
+                $this->_name,
+                $this->_email,
+                $this->_password,
+                $this->_phone,
+                $this->_receiveUpdates,
+                $this->_receiveSms,
+                $this->_isAdmin
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::validate()
+     */
+    public function validate()
+    {
+        if (strlen($this->_name) < 2) {
+            return false;
+        }
+        if (! filter_var($this->_email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    /**
+     *
+     * @param string $password            
+     * @return boolean
+     */
+    public function verifyPassword($password)
+    {
+        return password_verify($password, $this->_password);
     }
 
     public function setCommunityId($id)
