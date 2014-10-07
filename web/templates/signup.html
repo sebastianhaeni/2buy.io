@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-5">
             <h1 class="col-sm-offset-4">Sign Up</h1>
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" id="signup-form">
               <div class="form-group">
                 <label for="register-name" class="col-sm-4 control-label">Name</label>
                 <div class="col-sm-8">
@@ -40,7 +40,18 @@
                   </div>
               </div>
             </form>
+            
+            <div class="alert alert-success hide col-sm-offset-4" id="signup-success-message">
+                Successfully signed up.<br>
+                You can <a href="signin">Sign In</a> now.
+            </div>
+            
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="media/js/signup.js"></script>
 {% endblock %}
