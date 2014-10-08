@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use ShoppingList\Model\User;
-use ShoppingList\StatusCodes;
+use ShoppingList\Util\StatusCodes;
 
 /**
  *
@@ -15,9 +15,9 @@ class UserController extends BaseController
 {
 
     /**
-     * 
-     * @param Request $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function register(Request $request, Application $app)
@@ -61,9 +61,9 @@ class UserController extends BaseController
     }
 
     /**
-     * 
-     * @param Request $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function logout(Request $request, Application $app)
@@ -71,5 +71,20 @@ class UserController extends BaseController
         $app['auth']->logout();
         
         return new Response('Success', StatusCodes::HTTP_OK);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function isLoggedIn(Request $request, Application $app)
+    {
+        if ($app['auth']->isLoggedIn()) {
+            return new Response('Logged in', StatusCodes::HTTP_ACCEPTED);
+        }
+        
+        return new Response('Not authenticated', StatusCodes::HTTP_UNAUTHORIZED);
     }
 }

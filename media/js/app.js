@@ -16,14 +16,12 @@
 		showProducts($(this));
 	});
 
-	function init() {
-		if (window.location.hash == "#history") {
-			showHistory($('#history'));
-		} else if (window.location.hash == "#stats") {
-			showStats($('#stats'));
-		} else if (window.location.hash == "#products") {
-			showProducts($('#products'));
-		}
+	if (window.location.hash == "#history") {
+		showHistory($('#history'));
+	} else if (window.location.hash == "#stats") {
+		showStats($('#stats'));
+	} else if (window.location.hash == "#products") {
+		showProducts($('#products'));
 	}
 
 })(jQuery);
