@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`idUser`, `idCommunity`, `name`, `email`, `password`, `phone`, `receiveUpdates`, `receiveSms`, `isAdmin`) VALUES
-(0, NULL, 'Administrator', 'admin@shoppinglist', '$2y$10$Kph8hEg215iNlolNbOJXDeUakBKSPNMw8CLO9EYyXjzUGE3qk7gKm', NULL, 0, 0, 1);
+(0, NULL, 'Administrator', 'admin@shoppinglist.ch', '$2y$10$Kph8hEg215iNlolNbOJXDeUakBKSPNMw8CLO9EYyXjzUGE3qk7gKm', NULL, 0, 0, 1);
 
 --
 -- Indexes for dumped tables
