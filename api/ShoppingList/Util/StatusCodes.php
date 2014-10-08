@@ -1,5 +1,5 @@
 <?php
-namespace ShoppingList;
+namespace ShoppingList\Util;
 
 /**
  *

@@ -1,5 +1,5 @@
 <?php
-namespace ShoppingList;
+namespace ShoppingList\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +38,7 @@ class Router
         $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
         $app->post('/v1/user/login', 'ShoppingList\\Controller\\UserController::login');
         $app->post('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');
+        $app->get('/v1/user/isLoggedIn', 'ShoppingList\\Controller\\UserController::isLoggedIn');
     }
 
     /**
