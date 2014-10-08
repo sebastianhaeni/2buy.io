@@ -46,10 +46,10 @@ class Community extends BaseModel
 
     /**
      *
-     * @param array $data            
+     * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Community
      */
-    private static function getCommunity(array $data)
+    private static function getCommunity($data)
     {
         if ($data == null) {
             return null;
@@ -59,9 +59,9 @@ class Community extends BaseModel
     }
 
     /**
+     * (non-PHPdoc)
      *
-     * @param Application $app            
-     * @return boolean
+     * @see \ShoppingList\Model\BaseModel::insert()
      */
     protected function insert(Application $app)
     {
@@ -76,18 +76,14 @@ class Community extends BaseModel
     }
 
     /**
+     * (non-PHPdoc)
      *
-     * @param Application $app            
-     * @return boolean
+     * @see \ShoppingList\Model\BaseModel::update()
      */
     protected function update(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('UPDATE community SET 
-            name = ?,
-            admin = ?
-            WHERE idCommunity = ?
-            ', array(
+            return 1 == $app['db']->executeUpdate('UPDATE community SET name = ?, admin = ? WHERE idCommunity = ?', array(
                 $this->getName(),
                 $this->getAdmin(),
                 $this->getId()
@@ -99,7 +95,7 @@ class Community extends BaseModel
 
     /**
      * (non-PHPdoc)
-     * 
+     *
      * @see \ShoppingList\Model\BaseModel::validate()
      */
     public function validate()

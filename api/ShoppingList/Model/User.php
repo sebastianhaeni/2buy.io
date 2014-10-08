@@ -98,9 +98,8 @@ class User extends BaseModel
     }
 
     /**
-     *
-     * @param Application $app            
-     * @return boolean
+     * (non-PHPdoc)
+     * @see \ShoppingList\Model\BaseModel::update()
      */
     protected function update(Application $app)
     {
@@ -132,9 +131,8 @@ class User extends BaseModel
     }
 
     /**
-     *
-     * @param Application $app            
-     * @return boolean
+     * (non-PHPdoc)
+     * @see \ShoppingList\Model\BaseModel::insert()
      */
     protected function insert(Application $app)
     {
