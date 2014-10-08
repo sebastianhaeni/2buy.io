@@ -19,6 +19,7 @@ class Router
      */
     public function constructRoutes(\Silex\Application $app)
     {
+        // API documentation
         $app->get('/', 'ShoppingList\\Router::redirectToDev');
         
         // Home
@@ -36,6 +37,7 @@ class Router
         // User
         $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
         $app->post('/v1/user/login', 'ShoppingList\\Controller\\UserController::login');
+        $app->post('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');
     }
 
     /**

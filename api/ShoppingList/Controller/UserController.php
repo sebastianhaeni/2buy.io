@@ -15,9 +15,10 @@ class UserController extends BaseController
 {
 
     /**
-     *
-     * @param Request $request            
-     * @param Application $app            
+     * 
+     * @param Request $request
+     * @param Application $app
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function register(Request $request, Application $app)
     {
@@ -30,13 +31,14 @@ class UserController extends BaseController
         if ($user->save($app)) {
             return new Response('Success', StatusCodes::HTTP_CREATED);
         }
+        
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
     }
 
     /**
-     * 
-     * @param Request $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function login(Request $request, Application $app)
@@ -51,10 +53,23 @@ class UserController extends BaseController
         }
         
         if ($user->verifyPassword($password)) {
-            // TODO Create session
+            $app['auth']->login($user);
             return new Response('Success', StatusCodes::HTTP_OK);
         }
         
         return new Response('Invalid credentials', StatusCodes::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     * 
+     * @param Request $request
+     * @param Application $app
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function logout(Request $request, Application $app)
+    {
+        $app['auth']->logout();
+        
+        return new Response('Success', StatusCodes::HTTP_OK);
     }
 }
