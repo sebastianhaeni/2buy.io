@@ -86,4 +86,27 @@ class UserController extends BaseController
         
         return new Response('Not authenticated', StatusCodes::HTTP_UNAUTHORIZED);
     }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function changePassword(Request $request, Application $app)
+    {
+        $oldPassword = $request->get('oldPassword');
+        $newPassword = $request->get('newPassword');
+
+        $user = $app['auth']->getUser($request);
+
+        if ($user != null && $user->verifyPassword($oldPassword)) {
+            $user->setPassword($newPassword);
+            if ($user->save($app)) {
+                return new Response('Success', StatusCodes::HTTP_OK);
+            }
+        }
+        
+        return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+    }
 }

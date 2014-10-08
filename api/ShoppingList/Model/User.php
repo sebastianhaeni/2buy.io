@@ -113,7 +113,7 @@ class User extends BaseModel
             password = ?,
             phone = ?,
             receiveUpdates = ?,
-            receiveSms = ?
+            receiveSms = ?,
             isAdmin = ?
             WHERE idUser = ?
             ', array(
@@ -157,7 +157,7 @@ class User extends BaseModel
 
     /**
      * (non-PHPdoc)
-     * 
+     *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
     public function delete(Application $app)

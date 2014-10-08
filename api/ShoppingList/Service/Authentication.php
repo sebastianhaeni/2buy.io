@@ -27,6 +27,8 @@ class Authentication implements ServiceProviderInterface
 
     private $_app;
 
+    private $_user;
+
     /**
      * (non-PHPdoc)
      *
@@ -82,6 +84,10 @@ class Authentication implements ServiceProviderInterface
      */
     public function isLoggedIn(Request $request)
     {
+        if($this->_user != null){
+            return true;
+        }
+        
         if (! $this->_app['session']->has('user')) {
             
             // check remember me token
@@ -103,9 +109,12 @@ class Authentication implements ServiceProviderInterface
         
         $email = $user['email'];
         
-        if (User::getByEmail($email, $this->_app) == null) {
+        $user = User::getByEmail($email, $this->_app);
+        if ($user == null) {
             return false;
         }
+        
+        $this->_user = $user;
         
         return true;
     }
@@ -126,6 +135,20 @@ class Authentication implements ServiceProviderInterface
         $this->_app['session']->clear();
         
         return $response;
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @return NULL|\ShoppingList\Model\User
+     */
+    public function getUser(Request $request)
+    {
+        if (! $this->isLoggedIn($request)) {
+            return null;
+        }
+        
+        return $this->_user;
     }
 
     /**
