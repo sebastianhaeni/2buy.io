@@ -45,6 +45,7 @@ class UserController extends BaseController
     {
         $email = $request->get('email');
         $password = $request->get('password');
+        $rememberMe = $request->get('remember-me') == 'on';
         
         $user = User::getByEmail($email, $app);
         
@@ -53,8 +54,7 @@ class UserController extends BaseController
         }
         
         if ($user->verifyPassword($password)) {
-            $app['auth']->login($user);
-            return new Response('Success', StatusCodes::HTTP_OK);
+            return $app['auth']->login($user, $rememberMe, $request);
         }
         
         return new Response('Invalid credentials', StatusCodes::HTTP_BAD_REQUEST);
@@ -68,9 +68,7 @@ class UserController extends BaseController
      */
     public function logout(Request $request, Application $app)
     {
-        $app['auth']->logout();
-        
-        return new Response('Success', StatusCodes::HTTP_OK);
+        return $app['auth']->logout($request);
     }
 
     /**
@@ -81,7 +79,7 @@ class UserController extends BaseController
      */
     public function isLoggedIn(Request $request, Application $app)
     {
-        if ($app['auth']->isLoggedIn()) {
+        if ($app['auth']->isLoggedIn($request)) {
             return new Response('Logged in', StatusCodes::HTTP_ACCEPTED);
         }
         

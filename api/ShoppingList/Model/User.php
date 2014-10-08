@@ -84,8 +84,9 @@ class User extends BaseModel
     }
 
     /**
-     * 
-     * @param $data
+     *
+     * @param
+     *            $data
      * @return NULL|\ShoppingList\Model\User
      */
     private static function getUser($data)
@@ -99,6 +100,7 @@ class User extends BaseModel
 
     /**
      * (non-PHPdoc)
+     *
      * @see \ShoppingList\Model\BaseModel::update()
      */
     protected function update(Application $app)
@@ -132,6 +134,7 @@ class User extends BaseModel
 
     /**
      * (non-PHPdoc)
+     *
      * @see \ShoppingList\Model\BaseModel::insert()
      */
     protected function insert(Application $app)
@@ -146,6 +149,22 @@ class User extends BaseModel
                 $this->getReceiveUpdates(),
                 $this->getReceiveSms(),
                 $this->isAdmin()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     * (non-PHPdoc)
+     * 
+     * @see \ShoppingList\Model\BaseModel::delete()
+     */
+    public function delete(Application $app)
+    {
+        try {
+            return 1 == $app['db']->executeUpdate('DELETE FROM user WHERE idUser = ?', array(
+                $this->getId()
             ));
         } catch (\PDOException $ex) {
             return false;

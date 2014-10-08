@@ -54,7 +54,7 @@ class Product extends BaseModel
 
     /**
      *
-     * @param NULL|array $data
+     * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Product
      */
     private static function getProduct($data)
@@ -104,6 +104,22 @@ class Product extends BaseModel
                 $this->getName(),
                 $this->getAddedBy(),
                 $this->getInSuggestions(),
+                $this->getId()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::delete()
+     */
+    protected function delete(Application $app)
+    {
+        try {
+            return 1 == $app['db']->executeUpdate('DELETE FROM product WHERE idProduct = ?', array(
                 $this->getId()
             ));
         } catch (\PDOException $ex) {

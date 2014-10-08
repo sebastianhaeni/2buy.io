@@ -39,7 +39,7 @@ class RememberMeToken extends BaseModel
         $this->setToken($token);
         $this->setIp($ip);
         $this->setUserAgent($userAgent);
-        $this->setTimestampCreate($timestampCreated);
+        $this->setTimestampCreated($timestampCreated);
     }
 
     /**
@@ -53,7 +53,22 @@ class RememberMeToken extends BaseModel
             $id
         ));
         
-        return self::getProduct($data);
+        return self::getRememberMeToken($data);
+    }
+
+    /**
+     *
+     * @param string $token            
+     * @param Application $app            
+     * @return NULL|\ShoppingList\Model\RememberMeToken
+     */
+    public static function getByToken($token, Application $app)
+    {
+        $data = $app['db']->fetchAssoc('SELECT * FROM remember_me_token WHERE token = ?', array(
+            $token
+        ));
+        
+        return self::getRememberMeToken($data);
     }
 
     /**
@@ -117,6 +132,22 @@ class RememberMeToken extends BaseModel
 
     /**
      * (non-PHPdoc)
+     * 
+     * @see \ShoppingList\Model\BaseModel::delete()
+     */
+    public function delete(Application $app)
+    {
+        try {
+            return 1 == $app['db']->executeUpdate('DELETE FROM remember_me_token WHERE idToken = ?', array(
+                $this->getId()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     * (non-PHPdoc)
      *
      * @see \ShoppingList\Model\BaseModel::validate()
      */
@@ -140,7 +171,7 @@ class RememberMeToken extends BaseModel
 
     public function getId()
     {
-        return $_id;
+        return $this->_id;
     }
 
     public function getUserId()

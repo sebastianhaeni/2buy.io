@@ -27,28 +27,15 @@ abstract class BaseModel
         return $this->insert($app);
     }
 
-    public function getId()
-    {
-        throw new NotImplementedException();
-    }
+    public abstract function delete(Application $app);
 
-    protected function insert(Application $app)
-    {
-        throw new NotImplementedException();
-    }
+    public abstract function getId();
 
-    protected function update(Application $app)
-    {
-        throw new NotImplementedException();
-    }
+    protected abstract function insert(Application $app);
 
-    public function validate()
-    {
-        throw new NotImplementedException();
-    }
+    protected abstract function update(Application $app);
 
-    public static function getById($id)
-    {
-        throw new NotImplementedException();
-    }
+    public abstract function validate();
+
+    public abstract static function getById($id, Application $app);
 }

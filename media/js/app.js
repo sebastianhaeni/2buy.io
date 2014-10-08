@@ -1,4 +1,11 @@
 (function($) {
+	
+	$.ajax({
+		url: '/api/v1/user/isLoggedIn',
+		error: function(){
+			window.location.href = 'signin';
+		}
+	});
 
 	$('#history').click(function() {
 		showHistory($(this));

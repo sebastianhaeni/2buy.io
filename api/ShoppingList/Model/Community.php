@@ -96,6 +96,22 @@ class Community extends BaseModel
     /**
      * (non-PHPdoc)
      *
+     * @see \ShoppingList\Model\BaseModel::delete()
+     */
+    protected function delete(Application $app)
+    {
+        try {
+            return 1 == $app['db']->executeUpdate('DELETE FROM community WHERE idCommunity = ?', array(
+                $this->getId()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
      * @see \ShoppingList\Model\BaseModel::validate()
      */
     public function validate()
