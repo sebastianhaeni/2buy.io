@@ -29,7 +29,7 @@ abstract class BaseModel
 
     public function getId()
     {
-        throw new \Exception('Not implemented');
+        throw new NotImplementedException();
     }
 
     private function insert(Application $app)

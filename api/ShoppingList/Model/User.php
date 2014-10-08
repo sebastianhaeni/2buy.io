@@ -61,13 +61,11 @@ class User extends BaseModel
      */
     public static function getById($id, Application $app)
     {
-        $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE idUser = ?', array(
+        $data = $app['db']->fetchAssoc('SELECT * FROM user WHERE idUser = ?', array(
             $id
         ));
-        if ($user == null) {
-            return null;
-        }
-        return self::getUser($user);
+        
+        return self::getUser($data);
     }
 
     /**
@@ -81,19 +79,21 @@ class User extends BaseModel
         $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE email = ?', array(
             $email
         ));
-        if ($user == null) {
-            return null;
-        }
+        
         return self::getUser($user);
     }
 
     /**
-     *
-     * @param array $data            
-     * @return \ShoppingList\Model\User
+     * 
+     * @param array $data
+     * @return NULL|\ShoppingList\Model\User
      */
     private static function getUser(array $data)
     {
+        if ($data == null) {
+            return null;
+        }
+        
         return new User($data['idUser'], $data['idCommunity'], $data['name'], $data['email'], $data['password'], $data['phone'], $data['receiveUpdates'], $data['receiveSms'], $data['isAdmin']);
     }
 
@@ -104,7 +104,8 @@ class User extends BaseModel
      */
     private function update(Application $app)
     {
-        return 1 == $app['db']->executeUpdate('UPDATE user SET 
+        try {
+            return 1 == $app['db']->executeUpdate('UPDATE user SET 
             idCommunity = ?, 
             name = ?,
             email = ?,
@@ -115,16 +116,19 @@ class User extends BaseModel
             isAdmin = ?
             WHERE idUser = ?
             ', array(
-            $this->_communityId,
-            $this->_name,
-            $this->_email,
-            $this->_password,
-            $this->_phone,
-            $this->_receiveUpdates,
-            $this->_receiveSms,
-            $this->_isAdmin,
-            $this->_id
-        ));
+                $this->getCommunityId(),
+                $this->getName(),
+                $this->getEmail(),
+                $this->_password,
+                $this->getPhone(),
+                $this->getReceiveUpdates(),
+                $this->getReceiveSms(),
+                $this->isAdmin(),
+                $this->getId()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
     }
 
     /**
@@ -136,14 +140,14 @@ class User extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('INSERT INTO user (idCommunity, name, email, password, phone, receiveUpdates, receiveSms, isAdmin) VALUES (?,?,?,?,?,?,?,?)', array(
-                $this->_communityId,
-                $this->_name,
-                $this->_email,
+                $this->getCommunityId(),
+                $this->getName(),
+                $this->getEmail(),
                 $this->_password,
-                $this->_phone,
-                $this->_receiveUpdates,
-                $this->_receiveSms,
-                $this->_isAdmin
+                $this->getPhone(),
+                $this->getReceiveUpdates(),
+                $this->getReceiveSms(),
+                $this->isAdmin()
             ));
         } catch (\PDOException $ex) {
             return false;
@@ -157,10 +161,10 @@ class User extends BaseModel
      */
     public function validate()
     {
-        if (strlen($this->_name) < 2) {
+        if (strlen($this->getName()) < 2) {
             return false;
         }
-        if (! filter_var($this->_email, FILTER_VALIDATE_EMAIL)) {
+        if (! filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL)) {
             return false;
         }
         
