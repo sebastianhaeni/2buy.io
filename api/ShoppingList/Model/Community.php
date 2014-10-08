@@ -63,7 +63,7 @@ class Community extends BaseModel
      * @param Application $app            
      * @return boolean
      */
-    private function insert(Application $app)
+    protected function insert(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('INSERT INTO community (name, admin) VALUES (?,?)', array(
@@ -80,7 +80,7 @@ class Community extends BaseModel
      * @param Application $app            
      * @return boolean
      */
-    private function update(Application $app)
+    protected function update(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE community SET 

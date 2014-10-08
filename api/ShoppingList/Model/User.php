@@ -85,10 +85,10 @@ class User extends BaseModel
 
     /**
      * 
-     * @param array $data
+     * @param $data
      * @return NULL|\ShoppingList\Model\User
      */
-    private static function getUser(array $data)
+    private static function getUser($data)
     {
         if ($data == null) {
             return null;
@@ -102,7 +102,7 @@ class User extends BaseModel
      * @param Application $app            
      * @return boolean
      */
-    private function update(Application $app)
+    protected function update(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE user SET 
@@ -136,7 +136,7 @@ class User extends BaseModel
      * @param Application $app            
      * @return boolean
      */
-    private function insert(Application $app)
+    protected function insert(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('INSERT INTO user (idCommunity, name, email, password, phone, receiveUpdates, receiveSms, isAdmin) VALUES (?,?,?,?,?,?,?,?)', array(

@@ -9,14 +9,20 @@
 			method: 'post',
 			success: function(response){
 				$('#signup-form').hide();
+				$('#signup-error-message').addClass('hide');
 				$('#signup-success-message').removeClass('hide');
 			},
 			error: function(response){
-				// TODO show error message
+				console.log(response);
 				$('#signup-form :input').prop('disabled', false);
+				$('#signup-error-message').removeClass('hide');
 			}
 		});
 		
 		return false;
+	});
+
+	$('#signup-form :input').on('input', function(){
+		$('#signup-error-message').addClass('hide');
 	});
 })(jQuery);

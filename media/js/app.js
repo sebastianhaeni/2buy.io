@@ -15,6 +15,10 @@
 	$('#products').click(function() {
 		showProducts($(this));
 	});
+	
+	$('#logout').click(function(){
+		logout();
+	});
 
 	if (window.location.hash == "#history") {
 		showHistory($('#history'));
@@ -22,6 +26,15 @@
 		showStats($('#stats'));
 	} else if (window.location.hash == "#products") {
 		showProducts($('#products'));
+	}
+	
+	function logout(){
+		$.ajax({
+			url: '/api/v1/user/logout',
+			success: function(){
+				window.location.href = '/';
+			}
+		});
 	}
 
 })(jQuery);

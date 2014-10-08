@@ -5,24 +5,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <h1 class="col-sm-offset-4">Sign Up</h1>
+            <h1>Sign Up</h1>
+            
+            <div class="alert alert-danger hide" id="signup-error-message">
+                The entered email address already exists in our database.
+            </div>
+            
+            <div class="alert alert-success hide" id="signup-success-message">
+                Successfully signed up.<br>
+                You can <a href="signin">Sign In</a> now.
+            </div>
+            
             <form class="form-horizontal" role="form" id="signup-form">
               <div class="form-group">
                 <label for="register-name" class="col-sm-4 control-label">Name</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="register-name" name="name" placeholder="Enter name" required autofocus>
+                    <input type="text" class="form-control" id="register-name" name="name" placeholder="Enter name" required autofocus pattern=".{3,}" title="3 characters minimum">
                 </div>
               </div>
               <div class="form-group">
                 <label for="register-email" class="col-sm-4 control-label">Email address</label>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" id="register-email" name="email" placeholder="Enter email" required>
+                    <input type="email" class="form-control" id="register-email" name="email" placeholder="Enter email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
                 </div>
               </div>
               <div class="form-group">
                 <label for="register-password" class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-8">
-                    <input type="password" class="form-control" id="register-password" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="register-password" name="password" placeholder="Password" required pattern=".{3,}" title="3 characters mininum">
                 </div>
               </div>
               <div class="form-group">
@@ -40,12 +50,6 @@
                   </div>
               </div>
             </form>
-            
-            <div class="alert alert-success hide col-sm-offset-4" id="signup-success-message">
-                Successfully signed up.<br>
-                You can <a href="signin">Sign In</a> now.
-            </div>
-            
         </div>
     </div>
 </div>

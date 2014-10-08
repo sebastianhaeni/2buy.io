@@ -11,11 +11,16 @@
 				window.location.href = 'app';
 			},
 			error: function(response){
-				// TODO show error message
 				$('#signin-form :input').prop('disabled', false);
+				$('#signin-error-message').removeClass('hide');
+				$('#login-password').val('').focus();
 			}
 		});
 		
 		return false;
+	});
+	
+	$('#signin-form :input').on('input', function(){
+		$('#signin-error-message').addClass('hide');
 	});
 })(jQuery);

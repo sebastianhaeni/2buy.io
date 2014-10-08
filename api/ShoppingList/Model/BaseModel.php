@@ -32,12 +32,12 @@ abstract class BaseModel
         throw new NotImplementedException();
     }
 
-    private function insert(Application $app)
+    protected function insert(Application $app)
     {
         throw new NotImplementedException();
     }
 
-    private function update(Application $app)
+    protected function update(Application $app)
     {
         throw new NotImplementedException();
     }
