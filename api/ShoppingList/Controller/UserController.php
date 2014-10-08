@@ -27,6 +27,7 @@ class UserController extends BaseController
         $password = $request->get('password');
         
         $user = new User(null, null, $name, $email, $password, null, false, false, false);
+        $user->setPassword($password);
         
         if ($user->save($app)) {
             return new Response('Success', StatusCodes::HTTP_CREATED);
@@ -50,14 +51,14 @@ class UserController extends BaseController
         $user = User::getByEmail($email, $app);
         
         if ($user == null) {
-            return new Response('Invalid credentials', StatusCodes::HTTP_BAD_REQUEST);
+            return new Response('Invalid credentials', StatusCodes::HTTP_UNAUTHORIZED);
         }
         
         if ($user->verifyPassword($password)) {
             return $app['auth']->login($user, $rememberMe, $request);
         }
         
-        return new Response('Invalid credentials', StatusCodes::HTTP_BAD_REQUEST);
+        return new Response('Invalid credentials', StatusCodes::HTTP_UNAUTHORIZED);
     }
 
     /**
