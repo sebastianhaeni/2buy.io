@@ -12,7 +12,8 @@ $app ['validPages'] = [
     'getstarted',
     'app',
     'signup',
-    'signin' 
+    'signin',
+    'communities'
 ];
 
 $app->get('/', function () use($app)
