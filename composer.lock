@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "489c63ec3e732f340c86e66a36b57598",
+    "hash": "5ef6682f5545ff3f5d2e9809d1c17dec",
     "packages": [
         {
             "name": "doctrine/common",
@@ -227,12 +227,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex.git",
-                "reference": "be10a76303a1323a2e5709151ede97f60820b307"
+                "reference": "2603afb3d2d902a3dbc19075d91f0b39a9d46c40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex/zipball/be10a76303a1323a2e5709151ede97f60820b307",
-                "reference": "be10a76303a1323a2e5709151ede97f60820b307",
+                "url": "https://api.github.com/repos/silexphp/Silex/zipball/2603afb3d2d902a3dbc19075d91f0b39a9d46c40",
+                "reference": "2603afb3d2d902a3dbc19075d91f0b39a9d46c40",
                 "shasum": ""
             },
             "require": {
@@ -246,7 +246,6 @@
             "require-dev": {
                 "doctrine/dbal": "~2.2",
                 "monolog/monolog": "~1.4,>=1.4.1",
-                "phpunit/phpunit": "~3.7",
                 "swiftmailer/swiftmailer": "5.*",
                 "symfony/browser-kit": ">=2.3,<2.6-dev",
                 "symfony/config": ">=2.3,<2.6-dev",
@@ -302,7 +301,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2014-09-26 09:33:25"
+            "time": "2014-10-12 12:14:54"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -600,12 +599,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Routing.git",
-                "reference": "e7913afef5d809b25b78c2bc23ecff132784a90b"
+                "reference": "dbc92bceefe69b9de84d2ef1148436dcf82e1c03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Routing/zipball/e7913afef5d809b25b78c2bc23ecff132784a90b",
-                "reference": "e7913afef5d809b25b78c2bc23ecff132784a90b",
+                "url": "https://api.github.com/repos/symfony/Routing/zipball/dbc92bceefe69b9de84d2ef1148436dcf82e1c03",
+                "reference": "dbc92bceefe69b9de84d2ef1148436dcf82e1c03",
                 "shasum": ""
             },
             "require": {
@@ -658,7 +657,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2014-10-01 05:50:18"
+            "time": "2014-10-09 16:00:03"
         },
         {
             "name": "twig/twig",
@@ -666,12 +665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "9fb15e343e881c9a89b97ee2262d7b8fbf512c6e"
+                "reference": "c476a6b1fc4d5f79b2bd53c16420465592f4bf38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/9fb15e343e881c9a89b97ee2262d7b8fbf512c6e",
-                "reference": "9fb15e343e881c9a89b97ee2262d7b8fbf512c6e",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/c476a6b1fc4d5f79b2bd53c16420465592f4bf38",
+                "reference": "c476a6b1fc4d5f79b2bd53c16420465592f4bf38",
                 "shasum": ""
             },
             "require": {
@@ -715,24 +714,16 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-01 17:51:59"
+            "time": "2014-10-11 22:29:52"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
     "prefer-stable": false,
     "platform": {
         "php": ">=5.5"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }

@@ -4,7 +4,7 @@ $config = array();
 
 $config['debug']      = true;
 $config['http_cache'] = false;
-$config['site_url']   = 'http://localhost';
+$config['site_url']   = 'http://localhost/';
 
 $config['database']   = array(
     'driver'   => 'pdo_mysql',
