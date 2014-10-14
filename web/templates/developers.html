@@ -6,3 +6,8 @@
 	<h1>Developers</h1>
 </div>
 {% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="media/js/home.js"></script>
+{% endblock %}
