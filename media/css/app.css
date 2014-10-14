@@ -1,99 +1,30 @@
-.navbar {
-  border-radius: 0;
-}
-.list {
-  overflow: hidden;
-}
-#shoppinglist .list {
-  text-align: center;
-}
-#shoppinglist .list:empty:before {
-  opacity: 1;
-}
-#shoppinglist .list:before {
-  text-align: center;
-  content: 'Nichts einzukaufen. Yay!';
-  transition: all 3s;
-  opacity: 0;
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-}
-.swipe-instructions {
-  opacity: 0.8;
-  font-size: 1.2em;
-  padding-bottom: 20px;
-}
-.swipe-instructions div:first-child {
-  float: left;
-}
-.swipe-instructions div:last-child {
-  float: right;
-}
-.transaction {
-  touch-action: cross-slide-x;
-  text-align: left;
-  margin: 1.5em;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #cdcdcd;
-  background-color: #fff;
-  overflow: hidden;
-  transition: background-color 0.5s ease;
-}
-.transaction.buyed {
-  background-color: #5cb85c;
-}
-.transaction.cancelled {
-  background-color: #d9534f;
-}
-.transaction .product {
-  display: block;
-  float: left;
-  font-weight: bold;
-  margin-right: 10px;
-  line-height: 35px;
-}
-.transaction .amount {
-  margin: 0 10px;
-  display: block;
-  float: left;
-  line-height: 35px;
-}
-.transaction .amount:after {
-  content: 'x';
-}
-.transaction .reportedDate {
-  font-size: 0.8em;
-  white-space: nowrap;
-  line-height: 35px;
-  margin-right: 10px;
-}
-.transaction .reportedBy {
-  white-space: nowrap;
-  margin-right: 10px;
-  line-height: 35px;
-}
-.transaction .buttons {
-  float: right;
-  display: block;
-}
-.transaction .buttons > button:first-child {
-  margin-right: 10px;
-}
-#transactionlist .transaction span {
-  white-space: normal;
-  line-height: inherit;
-  margin: 0 6px 0 0;
-}
-#transactionlist .reportedBy {
-  font-weight: bold;
-}
-#productlist table td {
-  vertical-align: middle;
-}
-.product-in-suggestions {
-  width: 20px;
-  height: 20px;
-}
+.navbar { border-radius: 0; }
+
+.list { overflow: hidden; }
+
+#shoppinglist .list { text-align: center; }
+#shoppinglist .list:empty:before { opacity: 1; }
+#shoppinglist .list:before { text-align: center; content: 'Nichts einzukaufen. Yay!'; -webkit-transition: all 3s; transition: all 3s; opacity: 0; display: block; position: absolute; left: 0; width: 100%; }
+
+.swipe-instructions { opacity: 0.8; font-size: 1.2em; padding-bottom: 20px; }
+.swipe-instructions div:first-child { float: left; }
+.swipe-instructions div:last-child { float: right; }
+
+.transaction { -ms-touch-action: cross-slide-x; touch-action: cross-slide-x; text-align: left; margin: 1.5em; padding: 10px; border-radius: 5px; border: 1px solid #cdcdcd; background-color: #fff; overflow: hidden; -webkit-transition: background-color 0.5s ease; transition: background-color 0.5s ease; }
+.transaction.buyed { background-color: #5cb85c; }
+.transaction.cancelled { background-color: #d9534f; }
+.transaction .product { display: block; float: left; font-weight: bold; margin-right: 10px; line-height: 35px; }
+.transaction .amount { margin: 0 10px; display: block; float: left; line-height: 35px; }
+.transaction .amount:after { content: 'x'; }
+.transaction .reportedDate { font-size: 0.8em; white-space: nowrap; line-height: 35px; margin-right: 10px; }
+.transaction .reportedBy { white-space: nowrap; margin-right: 10px; line-height: 35px; }
+.transaction .buttons { float: right; display: block; }
+.transaction .buttons > button:first-child { margin-right: 10px; }
+
+#transactionlist .transaction span { white-space: normal; line-height: inherit; margin: 0 6px 0 0; }
+
+#transactionlist .reportedBy { font-weight: bold; }
+
+#productlist table td { vertical-align: middle; }
+
+.product-in-suggestions { width: 20px; height: 20px; }

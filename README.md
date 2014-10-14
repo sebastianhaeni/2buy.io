@@ -5,9 +5,8 @@ Shopping List
 1.  [nodejs](http://nodejs.org/)
 2.  [Bower](http://bower.io/) (<code>npm install -g bower</code>)
 3.  [Composer](https://getcomposer.org/) (<code>npm install -g composer</code>)
-4.  [less.js](https://github.com/less/less.js) (<code>npm install -g less</code>) Note: You only need this if you want to change the CSS.
-5.  Apache with PHP >= 5.5
-6.  MySQL >= 5.6
+4.  Apache with PHP >= 5.5
+5.  MySQL >= 5.6
 
 ## Install instructions
 
@@ -20,6 +19,8 @@ Shopping List
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
 
 The admin user created has the email "admin@shoppinglist.ch" and the password "1234".
+
+To build the SCSS file I can recommend [Prepros](http://alphapixels.com/prepros/).
 
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.
