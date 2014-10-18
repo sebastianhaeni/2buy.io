@@ -7,22 +7,24 @@ use Silex\Application;
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
-class Community extends BaseModel
+class Invite extends BaseModel
 {
 
     private $_id;
 
-    private $_name;
+    private $_communityId;
+
+    private $_email;
 
     /**
-     *
-     * @param int $id            
-     * @param string $name            
+     * 
+     * @param int $id
+     * @param int $communityId
+     * @param string $email
      */
-    public function __construct($id, $name)
+    public function __construct($id, $communityId, $email)
     {
         $this->_id = $id;
-        $this->setName($name);
     }
 
     /**
@@ -33,25 +35,25 @@ class Community extends BaseModel
      */
     public static function getById($id, Application $app)
     {
-        $data = $app['db']->fetchAssoc('SELECT * FROM community WHERE idCommunity = ?', array(
+        $data = $app['db']->fetchAssoc('SELECT * FROM invite WHERE idInvite = ?', array(
             $id
         ));
         
-        return self::getCommunity($data);
+        return self::getInvite($data);
     }
 
     /**
      *
-     * @param NULL|array $data            
-     * @return NULL|\ShoppingList\Model\Community
+     * @param array $data            
+     * @return NULL|\ShoppingList\Model\Invite
      */
-    private static function getCommunity($data)
+    private static function getInvite($data)
     {
         if ($data == null) {
             return null;
         }
         
-        return new Community($data['idCommunity'], $data['name']);
+        return new Invite($data['idInvite'], $data['idCommunity'], $data['email']);
     }
 
     /**
@@ -62,8 +64,9 @@ class Community extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO community (name) VALUES (?)', array(
-                $this->getName()
+            return 1 == $app['db']->executeUpdate('INSERT INTO invite (idCommunity, email) VALUES (?,?)', array(
+                $this->getCommunityId(),
+                $this->getEmail()
             ));
         } catch (\PDOException $ex) {
             return false;
@@ -78,8 +81,9 @@ class Community extends BaseModel
     protected function update(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('UPDATE community SET name = ? WHERE idCommunity = ?', array(
-                $this->getName(),
+            return 1 == $app['db']->executeUpdate('UPDATE community SET idCommunity = ?, email = ? WHERE idInvite = ?', array(
+                $this->getCommunityId(),
+                $this->getEmail(),
                 $this->getId()
             ));
         } catch (\PDOException $ex) {
@@ -95,7 +99,7 @@ class Community extends BaseModel
     protected function delete(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('DELETE FROM community WHERE idCommunity = ?', array(
+            return 1 == $app['db']->executeUpdate('DELETE FROM invite WHERE idInvite = ?', array(
                 $this->getId()
             ));
         } catch (\PDOException $ex) {
@@ -110,7 +114,7 @@ class Community extends BaseModel
      */
     public function validate()
     {
-        if (strlen($this->getName()) < 2) {
+        if (! filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL)) {
             return false;
         }
         
@@ -122,13 +126,23 @@ class Community extends BaseModel
         return $this->_id;
     }
 
-    public function getName()
+    public function getCommunityId()
     {
-        return $this->_name;
+        return $this->_communityId;
     }
 
-    public function setName($name)
+    public function getEmail()
     {
-        $this->_name = $name;
+        return $this->_email;
+    }
+
+    public function setCommunityId($id)
+    {
+        $this->_communityId = $id;
+    }
+
+    public function setEmail($email)
+    {
+        $this->_email = $email;
     }
 }

@@ -12,8 +12,6 @@ class User extends BaseModel
 
     private $_id;
 
-    private $_communityId;
-
     private $_name;
 
     private $_email;
@@ -22,35 +20,21 @@ class User extends BaseModel
 
     private $_phone;
 
-    private $_receiveUpdates;
-
-    private $_receiveSms;
-
-    private $_isAdmin;
-
     /**
      *
      * @param int $id            
-     * @param int $communityId            
      * @param string $name            
      * @param string $email            
      * @param string $password            
      * @param string $phone            
-     * @param boolean $receiveUpdates            
-     * @param boolean $receiveSms            
-     * @param boolean $isAdmin            
      */
-    public function __construct($id, $communityId, $name, $email, $password, $phone, $receiveUpdates, $receiveSms, $isAdmin)
+    public function __construct($id, $name, $email, $password, $phone)
     {
         $this->_id = $id;
-        $this->setCommunityId($communityId);
         $this->setName($name);
         $this->setEmail($email);
         $this->setPassword($password, false);
         $this->setPhone($phone);
-        $this->setReceiveUpdates($receiveUpdates);
-        $this->setReceiveSms($receiveSms);
-        $this->setIsAdmin($isAdmin);
     }
 
     /**
@@ -95,7 +79,7 @@ class User extends BaseModel
             return null;
         }
         
-        return new User($data['idUser'], $data['idCommunity'], $data['name'], $data['email'], $data['password'], $data['phone'], $data['receiveUpdates'], $data['receiveSms'], $data['isAdmin']);
+        return new User($data['idUser'], $data['name'], $data['email'], $data['password'], $data['phone']);
     }
 
     /**
@@ -107,24 +91,16 @@ class User extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE user SET 
-            idCommunity = ?, 
             name = ?,
             email = ?,
             password = ?,
-            phone = ?,
-            receiveUpdates = ?,
-            receiveSms = ?,
-            isAdmin = ?
+            phone = ?
             WHERE idUser = ?
             ', array(
-                $this->getCommunityId(),
                 $this->getName(),
                 $this->getEmail(),
                 $this->_password,
                 $this->getPhone(),
-                $this->getReceiveUpdates(),
-                $this->getReceiveSms(),
-                $this->isAdmin(),
                 $this->getId()
             ));
         } catch (\PDOException $ex) {
@@ -140,15 +116,11 @@ class User extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO user (idCommunity, name, email, password, phone, receiveUpdates, receiveSms, isAdmin) VALUES (?,?,?,?,?,?,?,?)', array(
-                $this->getCommunityId(),
+            return 1 == $app['db']->executeUpdate('INSERT INTO user (name, email, password, phone) VALUES (?,?,?,?)', array(
                 $this->getName(),
                 $this->getEmail(),
                 $this->_password,
-                $this->getPhone(),
-                $this->getReceiveUpdates(),
-                $this->getReceiveSms(),
-                $this->isAdmin()
+                $this->getPhone()
             ));
         } catch (\PDOException $ex) {
             return false;
@@ -198,11 +170,6 @@ class User extends BaseModel
         return password_verify($password, $this->_password);
     }
 
-    public function setCommunityId($id)
-    {
-        $this->_communityId = $id;
-    }
-
     public function setName($name)
     {
         $this->_name = $name;
@@ -221,21 +188,6 @@ class User extends BaseModel
     public function setPhone($phone)
     {
         $this->_phone = $phone;
-    }
-
-    public function setReceiveUpdates($receiveUpdates)
-    {
-        $this->_receiveUpdates = $receiveUpdates;
-    }
-
-    public function setReceiveSms($receiveSms)
-    {
-        $this->_receiveSms = $receiveSms;
-    }
-
-    public function setIsAdmin($isAdmin)
-    {
-        $this->_isAdmin = $isAdmin;
     }
 
     public function getId()
@@ -261,20 +213,5 @@ class User extends BaseModel
     public function getPhone()
     {
         return $this->_phone;
-    }
-
-    public function getReceiveUpdates()
-    {
-        return $this->_receiveUpdates;
-    }
-
-    public function getReceiveSms()
-    {
-        return $this->_receiveSms;
-    }
-
-    public function isAdmin()
-    {
-        return $this->_isAdmin;
     }
 }
