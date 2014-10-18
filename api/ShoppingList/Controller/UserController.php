@@ -80,11 +80,9 @@ class UserController extends BaseController
      */
     public function isLoggedIn(Request $request, Application $app)
     {
-        if ($app['auth']->isLoggedIn($request)) {
-            return new Response('Logged in', StatusCodes::HTTP_ACCEPTED);
-        }
-        
-        return new Response('Not authenticated', StatusCodes::HTTP_UNAUTHORIZED);
+        return $app->json(array(
+            'loggedIn' => $app['auth']->isLoggedIn($request)
+        ));
     }
 
     /**
@@ -97,9 +95,9 @@ class UserController extends BaseController
     {
         $oldPassword = $request->get('oldPassword');
         $newPassword = $request->get('newPassword');
-
+        
         $user = $app['auth']->getUser($request);
-
+        
         if ($user != null && $user->verifyPassword($oldPassword)) {
             $user->setPassword($newPassword);
             if ($user->save($app)) {
