@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#einkauf-navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ config['site_url'] }}">Shopping List</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="einkauf-navbar">
+            <ul class="nav navbar-nav">
+                <li class="{% if page == 'public/home' %}active{% endif %}"><a href="{{ config['site_url'] }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="{% if page == 'public/getstarted' %}active{% endif %}"><a href="{{ config['site_url'] }}getstarted"><span class="glyphicon glyphicon-play"></span> Get Started</a></li>
+                <li class="{% if page == 'public/developers' %}active{% endif %}"><a href="{{ config['site_url'] }}developers"><span class="glyphicon glyphicon-cog"></span> Developers</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="{% if page == 'public/signup' %}active{% endif %}"><a href="{{ config['site_url'] }}signup"><span class="glyphicon glyphicon-ok-sign"></span> Sign Up</a></li>
+                <li class="{% if page == 'public/signin' %}active{% endif %}"><a href="{{ config['site_url'] }}signin"><span class="glyphicon glyphicon-log-in"></span> Sign In</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

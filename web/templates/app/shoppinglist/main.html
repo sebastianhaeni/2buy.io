@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+
+{% block app_navigation %}
+{% include "app/shoppinglist/_navigation.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div id="shoppinglist">
+            {% include "app/shoppinglist/_shoppinglist.html" %}
+        </div>
+
+        <div id="transactionlist" style="display: none;">
+            {% include "app/shoppinglist/_transactionlist.html" %}
+        </div>
+
+        <div id="statslist" style="display: none;">
+            {% include "app/shoppinglist/_statslist.html" %}
+        </div>
+
+        <div id="productlist" style="display: none;">
+            {% include "app/shoppinglist/_productlist.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+<script src="media/js/app/shoppinglist/shoppinglist.js"></script>
+<script src="media/js/app/shoppinglist/history.js"></script>
+<script src="media/js/app/shoppinglist/stats.js"></script>
+<script src="media/js/app/shoppinglist/products.js"></script>
+{% endblock %}

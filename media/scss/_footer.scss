@@ -1,0 +1,30 @@
+footer {
+	position: relative;
+	border-top: 1px solid #eee;
+	padding: 40px 0;
+	margin-top: 100px;
+	color: #777;
+	font-size: .9em;
+}
+
+.site-footer-links {
+	list-style-type: none;
+	margin: 20px 0;
+	padding: 0;
+	
+	li {
+		display: inline-block;
+		line-height: 16px;
+		&+li {
+			margin-left: 10px;
+			&::before {
+				content: '·';
+				margin-right: 10px;
+			}
+		}
+		
+		@media (max-width: $screen-xs-min) and (orientation: landscape) {
+	    	display: block;
+	    }
+	}
+}

@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "app/layout.html" %}
 
 {% block title%}Communities - {{ parent() }}{% endblock %}
 {% block content %}
@@ -6,8 +6,8 @@
 	
 	<div class="row">
 		<div class="col-md-12 text-center">
-			<button class="btn btn-lg btn-primary">Create community</button>
-            <button class="btn btn-toggle">Edit</button>
+			<button class="btn btn-default">Create community</button>
+            <button class="btn btn-default">Edit</button>
 		</div>
 	</div>
 	
@@ -40,6 +40,5 @@
 
 {% block javascript %}
 {{ parent() }}
-<script src="media/js/app.js"></script>
-<script src="media/js/community.js"></script>
+<script src="/media/js/app/community/community.js"></script>
 {% endblock %}

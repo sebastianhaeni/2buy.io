@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "public/layout.html" %}
 
 {% block title%}Sign In - {{ parent() }}{% endblock %}
 {% block content %}
@@ -49,6 +49,6 @@
 
 {% block javascript %}
 {{ parent() }}
-<script src="media/js/home.js"></script>
-<script src="media/js/signin.js"></script>
+<script src="media/js/public/home.js"></script>
+<script src="media/js/public/signin.js"></script>
 {% endblock %}

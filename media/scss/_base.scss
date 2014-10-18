@@ -1,0 +1,18 @@
+@import "variables";
+
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../../bower_components/font-awesome/scss/font-awesome";
+@import "compass/css3";
+
+
+@import "footer";
+
+@media (min-width: $screen-sm-min) {
+	.right {
+		float: right;
+	}
+}
+
+.navbar {
+	border-radius: 0;
+}

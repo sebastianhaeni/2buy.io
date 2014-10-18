@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+<meta charset="utf-8">
+<title>{% block title %}Shopping List{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/media/css/app.css" rel="stylesheet">
+{% endblock %}
+</head>
+<body>
+
+{% include "app/_navigation.html" with {app_navigation: block('app_navigation')} %}
+{% include "app/_change-password.html" %}
+
+{% block content %}{% endblock %}
+
+{% include 'app/_footer.html' %}
+
+{% block javascript %}
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<script src="/bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<script src="/bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script src="/media/js/app/app.js"></script>
+<script src="/media/js/app/user.js"></script>
+{% endblock %}
+</body>
+</html>

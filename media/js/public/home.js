@@ -1,8 +1,8 @@
 (function($){
 	$.ajax({
 		url: 'api/v1/user/isLoggedIn',
-		success: function(responseText, responseContent, response){
-			if(response.status == 202){
+		success: function(response){
+			if(response.loggedIn){
 				window.location.href = 'app';
 			}
 		}
