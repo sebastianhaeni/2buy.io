@@ -29,6 +29,8 @@ class Router
         
         // Community
         $app->post('/v1/community', 'ShoppingList\\Controller\\CommunityController::create');
+        $app->put('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::update');
+        $app->delete('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::delete');
         $app->get('/v1/community', 'ShoppingList\\Controller\\CommunityController::getAll');
         $app->get('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::getById');
         
