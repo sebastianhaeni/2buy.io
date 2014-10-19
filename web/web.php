@@ -20,6 +20,11 @@ $app['validPages'] = [
     'app' => [
         'shoppinglist',
         'communities'
+    ],
+    'shoppinglist' => [
+        'history',
+        'products',
+        'statistics'
     ]
 ];
 
@@ -52,6 +57,21 @@ $app->get('/app/{page}', function (Application $app, $page) use($app)
     
     if (in_array($page, $app['validPages']['app'])) {
         $templateName = 'app/' . $page . '/main.html';
+    }
+    
+    $template = $app['twig']->loadTemplate($templateName);
+    return $template->render(array(
+        'config' => $app['config'],
+        'page' => $templateName
+    ));
+});
+
+$app->get('/app/shoppinglist/{page}', function (Application $app, $page) use($app)
+{
+    $templateName = 'notfound.html';
+    
+    if (in_array($page, $app['validPages']['shoppinglist'])) {
+        $templateName = 'app/shoppinglist/' . $page . '.html';
     }
     
     $template = $app['twig']->loadTemplate($templateName);

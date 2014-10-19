@@ -17,10 +17,10 @@ class Invite extends BaseModel
     private $_email;
 
     /**
-     * 
-     * @param int $id
-     * @param int $communityId
-     * @param string $email
+     *
+     * @param int $id            
+     * @param int $communityId            
+     * @param string $email            
      */
     public function __construct($id, $communityId, $email)
     {
@@ -53,7 +53,9 @@ class Invite extends BaseModel
             return null;
         }
         
-        return new Invite($data['idInvite'], $data['idCommunity'], $data['email']);
+        $invite = new Invite($data['idInvite'], $data['idCommunity'], $data['email']);
+        $invite->setPersisted(true);
+        return $invite;
     }
 
     /**

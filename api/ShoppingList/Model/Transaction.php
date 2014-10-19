@@ -83,7 +83,9 @@ class Transaction extends BaseModel
             return null;
         }
         
-        return new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate']);
+        $transaction = new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate']);
+        $transaction->setPersisted(true);
+        return $transaction;
     }
 
     /**

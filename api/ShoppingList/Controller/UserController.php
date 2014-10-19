@@ -107,4 +107,15 @@ class UserController extends BaseController
         
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
     }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getInfo(Request $request, Application $app)
+    {
+        return $app->json($app['auth']->getUser($request));
+    }
 }

@@ -8,8 +8,10 @@ use ShoppingList\Exception\NotImplementedException;
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
-abstract class BaseModel
+abstract class BaseModel implements \JsonSerializable
 {
+
+    private $_isPersisted = false;
 
     /**
      *
@@ -21,15 +23,30 @@ abstract class BaseModel
         if (! $this->validate()) {
             return false;
         }
-        if (! is_null($this->getId())) {
+        if ($this->isPersisted()) {
             return $this->update($app);
         }
-        return $this->insert($app);
+        $result = $this->insert($app);
+        $this->setId($app['db']->lastInsertId());
+        
+        return $result;
+    }
+
+    public function isPersisted()
+    {
+        return $this->_isPersisted;
+    }
+
+    protected function setPersisted($value)
+    {
+        $this->_isPersisted = $value;
     }
 
     public abstract function delete(Application $app);
 
     public abstract function getId();
+
+    protected abstract function setId($id);
 
     protected abstract function insert(Application $app);
 

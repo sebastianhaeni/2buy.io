@@ -1,0 +1,23 @@
+<div class="row hide" id="new-community">
+    <div class="col-md-6">
+        <h2>Create new community</h2>
+        
+        <div class="alert alert-danger hide" id="new-community-error-message">
+            The community could not be created due to an unknown error.
+        </div>
+        
+        <div class="alert alert-success hide" id="new-community-success-message">
+            Successfully created the community.<br>
+            You can <a href="/app">select</a> it now.
+        </div>
+        
+        <form role="form">
+            <div class="form-group">
+                <label for="new-community-name">Name</label>
+                <input type="text" class="form-control" id="new-community-name" placeholder="Enter name" required pattern=".{3,}" title="3 characters mininum">
+            </div>
+            
+            <button type="submit" class="btn btn-default">Create</button>
+        </form>
+    </div>
+</div>

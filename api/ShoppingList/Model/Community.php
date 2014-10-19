@@ -51,7 +51,9 @@ class Community extends BaseModel
             return null;
         }
         
-        return new Community($data['idCommunity'], $data['name']);
+        $community = new Community($data['idCommunity'], $data['name']);
+        $community->setPersisted(true);
+        return $community;
     }
 
     /**
@@ -92,7 +94,7 @@ class Community extends BaseModel
      *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
-    protected function delete(Application $app)
+    public function delete(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('DELETE FROM community WHERE idCommunity = ?', array(
@@ -117,6 +119,19 @@ class Community extends BaseModel
         return true;
     }
 
+    /**
+     * (non-PHPdoc)
+     * 
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName()
+        ];
+    }
+
     public function getId()
     {
         return $this->_id;
@@ -125,6 +140,11 @@ class Community extends BaseModel
     public function getName()
     {
         return $this->_name;
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
     }
 
     public function setName($name)

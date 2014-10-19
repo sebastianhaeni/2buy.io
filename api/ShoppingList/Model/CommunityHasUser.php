@@ -26,26 +26,50 @@ class CommunityHasUser extends BaseModel
      * @param boolean $receiveNotifications            
      */
     public function __construct($communityId, $userId, $admin, $receiveNotifications)
-    {}
+    {
+        $this->_communityId = $communityId;
+        $this->_userId = $userId;
+        $this->setAdmin($admin);
+        $this->setReceiveNotifications($receiveNotifications);
+    }
 
     /**
      *
-     * @param int $id            
+     * @param unknown $id            
      * @param Application $app            
-     * @return NULL|\ShoppingList\Model\Community
+     * @return NULL|\ShoppingList\Model\CommunityHasUser
      */
-    public static function getById($idCommunity, Application $app)
+    public static function getById($id, Application $app)
     {
         $data = $app['db']->fetchAssoc('SELECT * FROM community_has_user WHERE CONCAT(idCommunity, \':\', idUser) = ?', array(
             $id
         ));
         
-        return self::getCommunity($data);
+        return self::getCommunityHasUser($data);
     }
 
     /**
-     * 
-     * @param array $data
+     *
+     * @param unknown $idUser            
+     * @param Application $app            
+     */
+    public static function getByUserId($idUser, Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM community_has_user WHERE idUser = ?', array(
+            $idUser
+        ));
+        $a = array();
+        
+        foreach ($data as $item) {
+            $a[] = self::getCommunityHasUser($item);
+        }
+        
+        return $a;
+    }
+
+    /**
+     *
+     * @param array $data            
      * @return NULL|\ShoppingList\Model\CommunityHasUser
      */
     private static function getCommunityHasUser($data)
@@ -54,7 +78,9 @@ class CommunityHasUser extends BaseModel
             return null;
         }
         
-        return new CommunityHasUser($data['idCommunity'], $data['idUser'], $data['admin'], $data['receiveNotifications']);
+        $communityHasUser = new CommunityHasUser($data['idCommunity'], $data['idUser'], $data['admin'], $data['receiveNotifications']);
+        $communityHasUser->setPersisted(true);
+        return $communityHasUser;
     }
 
     /**
@@ -99,7 +125,7 @@ class CommunityHasUser extends BaseModel
      *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
-    protected function delete(Application $app)
+    public function delete(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('DELETE FROM community WHERE CONCAT(idCommunity, \':\', idUser) = ?', array(
@@ -117,15 +143,22 @@ class CommunityHasUser extends BaseModel
      */
     public function validate()
     {
-        if ($this->isAdmin() == null) {
-            return false;
-        }
-        
-        if ($this->getReceiveNotifications() == null) {
-            return false;
-        }
-        
         return true;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * 
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'communityId' => $this->getCommunityId(),
+            'userId' => $this->getUserId(),
+            'admin' => $this->isAdmin(),
+            'receiveNotifications' => $this->getReceiveNotifications()
+        ];
     }
 
     public function getId()
@@ -151,6 +184,11 @@ class CommunityHasUser extends BaseModel
     public function getReceiveNotifications()
     {
         return $this->_receiveNotifications;
+    }
+
+    protected function setId($id)
+    {
+        // Intentionally left empty
     }
 
     public function setAdmin($value)

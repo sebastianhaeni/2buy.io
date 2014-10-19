@@ -63,7 +63,9 @@ class Product extends BaseModel
             return null;
         }
         
-        return new Product($data['idProduct'], $data['idCommunity'], $data['name'], $data['addedBy'], $data['inSuggestions']);
+        $product = new Product($data['idProduct'], $data['idCommunity'], $data['name'], $data['addedBy'], $data['inSuggestions']);
+        $product->setPersisted(true);
+        return $product;
     }
 
     /**

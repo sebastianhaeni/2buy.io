@@ -19,11 +19,18 @@ class Router
      */
     public function constructRoutes(\Silex\Application $app)
     {
+        // TODD make sure users are authenticated where needed
+        
         // API documentation
         $app->get('/', 'ShoppingList\\Router::redirectToDev');
         
         // Home
         $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
+        
+        // Community
+        $app->post('/v1/community', 'ShoppingList\\Controller\\CommunityController::create');
+        $app->get('/v1/community', 'ShoppingList\\Controller\\CommunityController::getAll');
+        $app->get('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::getById');
         
         // Product
         // TODO
@@ -40,6 +47,7 @@ class Router
         $app->get('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');
         $app->get('/v1/user/isLoggedIn', 'ShoppingList\\Controller\\UserController::isLoggedIn');
         $app->put('/v1/user/password', 'ShoppingList\\Controller\\UserController::changePassword');
+        $app->get('/v1/user', 'ShoppingList\\Controller\\UserController::getInfo');
     }
 
     /**

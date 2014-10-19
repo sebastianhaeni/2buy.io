@@ -18,4 +18,17 @@
 		
 		return false;
 	});
+	
+	loadUser();
+	
+	function loadUser(){
+		$.ajax({
+			url: '/api/v1/user',
+			success: function(response){
+				$('#username').html(response.name);
+				$('#settings-email').val(response.email);
+				$('#settings-phone').val(response.phone);
+			}
+		});
+	}
 })(jQuery);

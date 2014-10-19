@@ -82,7 +82,9 @@ class RememberMeToken extends BaseModel
             return null;
         }
         
-        return new RememberMeToken($data['idToken'], $data['idUser'], $data['token'], $data['ip'], $data['userAgent'], $data['timestampCreated']);
+        $token = new RememberMeToken($data['idToken'], $data['idUser'], $data['token'], $data['ip'], $data['userAgent'], $data['timestampCreated']);
+        $token->setPersisted(true);
+        return $token;
     }
 
     /**
@@ -132,7 +134,7 @@ class RememberMeToken extends BaseModel
 
     /**
      * (non-PHPdoc)
-     * 
+     *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
     public function delete(Application $app)
@@ -167,6 +169,27 @@ class RememberMeToken extends BaseModel
         }
         
         return true;
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'userId' => $this->getUserId(),
+            'ip' => $this->getIp(),
+            'userAgent' => $this->getUserAgent(),
+            'timestampCreated' => $this->getTimestampCreated()
+        ];
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
     }
 
     public function getId()

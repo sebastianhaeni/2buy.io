@@ -1,4 +1,12 @@
-<li class="active"><a href="#shoppinglist" id="shopping"><span class="glyphicon glyphicon-shopping-cart"></span> Einkaufsliste</a></li>
-<li><a href="#history" id="history"><span class="glyphicon glyphicon-list"></span> Verlauf</a></li>
-<li><a href="#stats" id="stats"><span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
-<li class="administrator"><a href="#products" id="products"><span class="glyphicon glyphicon-th-list"></span> Artikel</a></li>
+<li class="{% if page == 'app/shoppinglist/main.html' %}active{% endif %}">
+    <a href="/app/shoppinglist"><span class="glyphicon glyphicon-shopping-cart"></span> List</a>
+</li>
+<li class="{% if page == 'app/shoppinglist/history.html' %}active{% endif %}">
+    <a href="/app/shoppinglist/history"><span class="glyphicon glyphicon-list"></span> History</a>
+</li>
+<li class="{% if page == 'app/shoppinglist/statistics.html' %}active{% endif %}">
+    <a href="/app/shoppinglist/statistics"><span class="glyphicon glyphicon-stats"></span> Statistics</a>
+</li>
+<li class="{% if page == 'app/shoppinglist/products.html' %}active{% endif %} administrator">
+    <a href="/app/shoppinglist/products"><span class="glyphicon glyphicon-th-list"></span> Products</a>
+</li>

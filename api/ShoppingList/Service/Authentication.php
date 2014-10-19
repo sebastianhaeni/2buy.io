@@ -127,10 +127,10 @@ class Authentication implements ServiceProviderInterface
     public function logout(Request $request)
     {
         $tokenString = $request->cookies->getAlnum(self::REMEMBER_ME);
-        $token = RememberMeToken::getByToken($id, $this->_app);
+        $token = RememberMeToken::getByToken($tokenString, $this->_app);
         
         $response = new Response('Success', StatusCodes::HTTP_OK);
-        $response->headers->clearCookie(REMEMBER_ME);
+        $response->headers->clearCookie(self::REMEMBER_ME);
         
         $this->_app['session']->clear();
         

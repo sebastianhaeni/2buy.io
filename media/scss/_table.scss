@@ -1,0 +1,15 @@
+.table > tbody > tr > td {
+	vertical-align: middle;
+	
+	& input[type=checkbox] {
+		width: 20px;
+		height: 20px;
+	}
+	
+	&.buttons {
+		white-space: nowrap;
+		button {
+			margin-left: 5px;
+		}
+	}
+}

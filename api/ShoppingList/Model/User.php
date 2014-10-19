@@ -69,8 +69,7 @@ class User extends BaseModel
 
     /**
      *
-     * @param
-     *            $data
+     * @param array $data            
      * @return NULL|\ShoppingList\Model\User
      */
     private static function getUser($data)
@@ -79,7 +78,10 @@ class User extends BaseModel
             return null;
         }
         
-        return new User($data['idUser'], $data['name'], $data['email'], $data['password'], $data['phone']);
+        $user = new User($data['idUser'], $data['name'], $data['email'], $data['password'], $data['phone']);
+        $user->setPersisted(true);
+        
+        return $user;
     }
 
     /**
@@ -168,6 +170,43 @@ class User extends BaseModel
     public function verifyPassword($password)
     {
         return password_verify($password, $this->_password);
+    }
+
+    /**
+     *
+     * @param Application $app            
+     */
+    public function getCommunities(Application $app)
+    {
+        $communityHasUser = CommunityHasUser::getByUserId($this->getId(), $app);
+        
+        $communities = array();
+        
+        foreach ($communityHasUser as $a) {
+            $communities[] = Community::getById($a->getCommunityId(), $app);
+        }
+        
+        return $communities;
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'email' => $this->getEmail(),
+            'phone' => $this->getPhone()
+        ];
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
     }
 
     public function setName($name)
