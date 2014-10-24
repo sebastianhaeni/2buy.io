@@ -183,7 +183,9 @@ class User extends BaseModel
         $communities = array();
         
         foreach ($communityHasUser as $a) {
-            $communities[] = Community::getById($a->getCommunityId(), $app);
+            $community = Community::getById($a->getCommunityId(), $app)->jsonSerialize();
+            $community['administrator'] = $a->isAdmin();
+            $communities[] = $community;
         }
         
         return $communities;

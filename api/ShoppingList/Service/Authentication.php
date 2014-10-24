@@ -21,7 +21,7 @@ class Authentication implements ServiceProviderInterface
 
     const USER = 'user';
 
-    const EMAIL = 'email';
+    const USER_ID = 'user_id';
 
     const REMEMBER_ME = 'remember-me';
 
@@ -59,7 +59,7 @@ class Authentication implements ServiceProviderInterface
     {
         $this->_app['session']->set(self::LOGGED_IN, true);
         $this->_app['session']->set(self::USER, array(
-            self::EMAIL => $user->getEmail()
+            self::USER_ID => $user->getId()
         ));
         
         if ($rememberMe) {
@@ -84,7 +84,7 @@ class Authentication implements ServiceProviderInterface
      */
     public function isLoggedIn(Request $request)
     {
-        if($this->_user != null){
+        if ($this->_user != null) {
             return true;
         }
         
@@ -103,13 +103,13 @@ class Authentication implements ServiceProviderInterface
             return true;
         }
         $user = $this->_app['session']->get(self::USER);
-        if (! array_key_exists(self::EMAIL, $user)) {
+        if (! array_key_exists(self::USER_ID, $user)) {
             return false;
         }
         
-        $email = $user['email'];
+        $userId = $user[self::USER_ID];
         
-        $user = User::getByEmail($email, $this->_app);
+        $user = User::getById($userId, $this->_app);
         if ($user == null) {
             return false;
         }

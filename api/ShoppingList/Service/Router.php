@@ -49,6 +49,7 @@ class Router
         $app->get('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');
         $app->get('/v1/user/isLoggedIn', 'ShoppingList\\Controller\\UserController::isLoggedIn');
         $app->put('/v1/user/password', 'ShoppingList\\Controller\\UserController::changePassword');
+        $app->put('/v1/user', 'ShoppingList\\Controller\\UserController::updateCurrentUser');
         $app->get('/v1/user', 'ShoppingList\\Controller\\UserController::getInfo');
     }
 

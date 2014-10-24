@@ -48,8 +48,13 @@ class CommunityController extends BaseController
      */
     public function getAll(Request $request, Application $app)
     {
-        return $app->json($app['auth']->getUser($request)
-            ->getCommunities($app));
+        $user = $app['auth']->getUser($request);
+        
+        if ($user == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return $app->json($user->getCommunities($app));
     }
 
     /**

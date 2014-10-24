@@ -114,6 +114,30 @@ class UserController extends BaseController
      * @param Application $app            
      * @return \Symfony\Component\HttpFoundation\Response
      */
+    public function updateCurrentUser(Request $request, Application $app)
+    {
+        $email = $request->get('email');
+        $phone = $request->get('phone');
+        
+        $user = $app['auth']->getUser($request);
+        
+        if ($user != null) {
+            $user->setEmail($email);
+            $user->setPhone($phone);
+            if ($user->save($app)) {
+                return new Response('Success', StatusCodes::HTTP_OK);
+            }
+        }
+        
+        return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getInfo(Request $request, Application $app)
     {
         return $app->json($app['auth']->getUser($request));

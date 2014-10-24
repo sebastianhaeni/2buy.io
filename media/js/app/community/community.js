@@ -121,7 +121,10 @@
 	    '</tr>');
 		
 		row.find('td:first-child').append(notificationCheckbox);
-		row.find('td:last-child').append(editButton).append(deleteButton);
+		
+		if(item.administrator == '1'){
+			row.find('td:last-child').append(editButton).append(deleteButton);
+		}
 		
 		$('#edit-communities tbody').append(row);
 		
