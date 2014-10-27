@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Util\StatusCodes;
 
 /**
+ * Handles the authentication in this app.
+ * This class can log users in or out. Handle the remember me tokens and can determine if a user is logged in.
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
@@ -49,6 +51,8 @@ class Authentication implements ServiceProviderInterface
     {}
 
     /**
+     * Logs the user in.
+     * If a remember me token is desired, it will be created and set as a cookie.
      *
      * @param User $user            
      * @param boolean $rememberMe            
@@ -78,17 +82,22 @@ class Authentication implements ServiceProviderInterface
     }
 
     /**
+     * Checks if the user is logged in.
+     * If the user has no running server session but a valid remember me cookie, the session will be created as well.
      *
      * @param Request $request            
      * @return boolean
      */
-    public function isLoggedIn(Request $request)
+    public function isLoggedIn(Request $request = null)
     {
         if ($this->_user != null) {
             return true;
         }
         
         if (! $this->_app['session']->has('user')) {
+            if ($request == null) {
+                return false;
+            }
             
             // check remember me token
             $tokenString = $request->cookies->getAlnum(self::REMEMBER_ME);
@@ -102,6 +111,7 @@ class Authentication implements ServiceProviderInterface
             
             return true;
         }
+        
         $user = $this->_app['session']->get(self::USER);
         if (! array_key_exists(self::USER_ID, $user)) {
             return false;
@@ -120,6 +130,8 @@ class Authentication implements ServiceProviderInterface
     }
 
     /**
+     * Logs the user out.
+     * Destroys the session and removes the remembe me cookie.
      *
      * @param Request $request            
      * @return \Symfony\Component\HttpFoundation\Response
@@ -138,6 +150,8 @@ class Authentication implements ServiceProviderInterface
     }
 
     /**
+     * Returns the current logged in user object.
+     * If the user is not logged in, <code>null</code> will be returned.
      *
      * @param Request $request            
      * @return NULL|\ShoppingList\Model\User
