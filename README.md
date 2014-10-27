@@ -18,7 +18,7 @@ Shopping List
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
 
-The admin user created has the email "admin@shoppinglist.ch" and the password "1234".
+The default admin user has the email <code>admin@shoppinglist.ch</code> and the password <code>1234</code>.
 
 To build the SCSS file I can recommend [Prepros](http://alphapixels.com/prepros/).
 
@@ -35,6 +35,7 @@ The app is intended to work very well on mobile devices. Desktop resolutions sho
 ## Features
 <ul>
   <li>User authentication</li>
+  <li>Multiple communities</li>
   <li>Add new articles
     <ul>
       <li>Autocomplete text box</li>
@@ -76,4 +77,6 @@ The app is intended to work very well on mobile devices. Desktop resolutions sho
       <li>E-Mail</li>
     </ul>
   </li>
+  <li>Offline capability (no conflict merging)</li>
+  <li>Multi Language</li>
 </ul>
