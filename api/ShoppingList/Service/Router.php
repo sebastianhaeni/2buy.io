@@ -58,9 +58,12 @@ class Router
         // Community
         $app->post('/v1/community', 'ShoppingList\\Controller\\CommunityController::create');
         $app->put('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::update');
+        $app->post('/v1/community/{id}/invite', 'ShoppingList\\Controller\\CommunityController::inviteUser');
         $app->delete('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::delete');
         $app->get('/v1/community', 'ShoppingList\\Controller\\CommunityController::getAll');
         $app->get('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::getById');
+        $app->get('/v1/community/{id}/member', 'ShoppingList\\Controller\\CommunityController::getMembers');
+        $app->get('/v1/community/{id}/invite', 'ShoppingList\\Controller\\CommunityController::getInvites');
         
         // Product
         // TODO

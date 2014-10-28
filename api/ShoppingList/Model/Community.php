@@ -120,8 +120,27 @@ class Community extends BaseModel
     }
 
     /**
-     * (non-PHPdoc)
      * 
+     * @param Application $app
+     * @return multitype:unknown
+     */
+    public function getMembers(Application $app)
+    {
+        $communityHasUser = CommunityHasUser::getByCommunityId($this->getId(), $app);
+        
+        $users = array();
+        
+        foreach ($communityHasUser as $a) {
+            $user = User::getById($a->getUserId(), $app)->jsonSerialize();
+            $users[] = $user;
+        }
+        
+        return $users;
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
      * @see JsonSerializable::jsonSerialize()
      */
     public function jsonSerialize()

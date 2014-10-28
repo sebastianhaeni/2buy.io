@@ -173,8 +173,9 @@ class User extends BaseModel
     }
 
     /**
-     *
-     * @param Application $app            
+     * 
+     * @param Application $app
+     * @return number|multitype:unknown
      */
     public function getCommunities(Application $app)
     {

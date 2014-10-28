@@ -44,6 +44,25 @@ class Invite extends BaseModel
 
     /**
      *
+     * @param int $idCommunity            
+     * @param Application $app            
+     */
+    public static function getByCommunityId($idCommunity, Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM invite WHERE idCommunity = ?', array(
+            $idCommunity
+        ));
+        $a = array();
+        
+        foreach ($data as $item) {
+            $a[] = self::getInvite($item);
+        }
+        
+        return $a;
+    }
+
+    /**
+     *
      * @param array $data            
      * @return NULL|\ShoppingList\Model\Invite
      */
@@ -98,7 +117,7 @@ class Invite extends BaseModel
      *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
-    protected function delete(Application $app)
+    public function delete(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('DELETE FROM invite WHERE idInvite = ?', array(
@@ -123,6 +142,20 @@ class Invite extends BaseModel
         return true;
     }
 
+    /**
+     * (non-PHPdoc)
+     *
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'communityId' => $this->getCommunityId(),
+            'email' => $this->getEmail()
+        ];
+    }
+
     public function getId()
     {
         return $this->_id;
@@ -136,6 +169,11 @@ class Invite extends BaseModel
     public function getEmail()
     {
         return $this->_email;
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
     }
 
     public function setCommunityId($id)

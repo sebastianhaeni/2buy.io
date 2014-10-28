@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Util\StatusCodes;
+use ShoppingList\Model\Invite;
 
 /**
  *
@@ -133,5 +134,73 @@ class CommunityController extends BaseController
         }
         
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function inviteUser(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        $email = $request->get('email');
+        
+        if ($community == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
+        
+        if ($communityHasUser == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if (! $communityHasUser->isAdmin()) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $invite = new Invite(null, $community->getId(), $email);
+        
+        if ($invite->save($app)) {
+            return new Response('Success', StatusCodes::HTTP_OK);
+        }
+        
+        return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function getMembers(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return $app->json($community->getMembers($app));
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function getInvites(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return $app->json(Invite::getByCommunityId($community->getId(), $app));
     }
 }

@@ -35,7 +35,7 @@ class CommunityHasUser extends BaseModel
 
     /**
      *
-     * @param unknown $id            
+     * @param int $id            
      * @param Application $app            
      * @return NULL|\ShoppingList\Model\CommunityHasUser
      */
@@ -50,13 +50,32 @@ class CommunityHasUser extends BaseModel
 
     /**
      *
-     * @param unknown $idUser            
+     * @param int $idUser            
      * @param Application $app            
      */
     public static function getByUserId($idUser, Application $app)
     {
         $data = $app['db']->fetchAll('SELECT * FROM community_has_user WHERE idUser = ?', array(
             $idUser
+        ));
+        $a = array();
+        
+        foreach ($data as $item) {
+            $a[] = self::getCommunityHasUser($item);
+        }
+        
+        return $a;
+    }
+
+    /**
+     *
+     * @param int $idCommunity            
+     * @param Application $app            
+     */
+    public static function getByCommunityId($idCommunity, Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM community_has_user WHERE idCommunity = ?', array(
+            $idCommunity
         ));
         $a = array();
         
@@ -148,7 +167,7 @@ class CommunityHasUser extends BaseModel
 
     /**
      * (non-PHPdoc)
-     * 
+     *
      * @see JsonSerializable::jsonSerialize()
      */
     public function jsonSerialize()
