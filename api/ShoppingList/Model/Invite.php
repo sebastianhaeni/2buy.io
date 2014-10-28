@@ -24,7 +24,9 @@ class Invite extends BaseModel
      */
     public function __construct($id, $communityId, $email)
     {
-        $this->_id = $id;
+        $this->setId($id);
+        $this->setCommunityId($communityId);
+        $this->setEmail($email);
     }
 
     /**
