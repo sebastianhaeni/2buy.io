@@ -185,8 +185,14 @@ class User extends BaseModel
         foreach ($communityHasUser as $a) {
             $community = Community::getById($a->getCommunityId(), $app)->jsonSerialize();
             $community['administrator'] = $a->isAdmin();
+            $community['receiveNotifications'] = $a->getReceiveNotifications();
             $communities[] = $community;
         }
+        
+        usort($communities, function ($a, $b)
+        {
+            return strnatcmp($a['name'], $b['name']);
+        });
         
         return $communities;
     }
