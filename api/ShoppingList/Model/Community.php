@@ -120,8 +120,8 @@ class Community extends BaseModel
     }
 
     /**
-     * 
-     * @param Application $app
+     *
+     * @param Application $app            
      * @return multitype:unknown
      */
     public function getMembers(Application $app)
@@ -132,6 +132,7 @@ class Community extends BaseModel
         
         foreach ($communityHasUser as $a) {
             $user = User::getById($a->getUserId(), $app)->jsonSerialize();
+            $user['admin'] = $a->isAdmin();
             $users[] = $user;
         }
         
