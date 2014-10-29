@@ -35,15 +35,10 @@
         return false;
     });
 
-    $('#edit-community-name')
-            .on(
-                    'keyup',
-                    function() {
-                        $('#edit-community-name-form button[type=submit]')
-                                .prop(
-                                        'disabled',
-                                        $('#edit-community-name').val() == editingCommunityName);
-                    });
+    $('#edit-community-name').on('keyup', function() {
+        $('#edit-community-name-form button[type=submit]')
+                .prop('disabled', $('#edit-community-name').val() == editingCommunityName);
+    });
 
     $('#edit-community-name-form').submit(
             function() {
@@ -202,7 +197,6 @@
     }
 
     function loadMembers(communityId) {
-        $('#member-list').html('');
         $.ajax({
             url : '/api/v1/community/' + communityId + '/member',
             success : function(response) {
@@ -214,7 +208,6 @@
     }
 
     function loadInvites(communityId) {
-        $('#invite-list').html('');
         $.ajax({
             url : '/api/v1/community/' + communityId + '/invite',
             success : function(response) {
@@ -226,6 +219,11 @@
     }
 
     function addMember(member) {
+        // Do not add item when its already present
+        if($('#member-list div[data-id=' + member.id + ']').length > 0){
+            return;
+        }
+        
         var div = $('<div class="item input-group" data-id="'
                 + member.id
                 + '">'
@@ -274,6 +272,11 @@
     }
 
     function addInvite(invite) {
+        // Do not add item when its already present
+        if($('#invite-list div[data-id=' + invite.id + ']').length > 0){
+            return;
+        }
+        
         var div = $('<div class="item input-group" data-id="' + invite.id
                 + '">' + '<span class="form-control title">' + invite.email
                 + '</span></div>');
