@@ -30,9 +30,9 @@ class Invite extends BaseModel
     }
 
     /**
-     * 
-     * @param unknown $id
-     * @param Application $app
+     *
+     * @param unknown $id            
+     * @param Application $app            
      * @return NULL|\ShoppingList\Model\Invite
      */
     public static function getById($id, Application $app)
@@ -61,6 +61,27 @@ class Invite extends BaseModel
         }
         
         return $a;
+    }
+
+    /**
+     *
+     * @param string $email            
+     * @param Application $app            
+     * @return NULL|\ShoppingList\Model\Invite
+     */
+    public static function getByEmail($email, Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM invite WHERE email = ?', array(
+            $email
+        ));
+        
+        $invites = array();
+        
+        foreach ($data as $invite) {
+            $invites[] = self::getInvite($invite);
+        }
+        
+        return $invites;
     }
 
     /**

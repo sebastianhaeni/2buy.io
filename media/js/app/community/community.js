@@ -79,45 +79,37 @@
                 return false;
             });
 
-    $('#edit-community-invite-email').on(
-            'keyup',
-            function() {
-                $('#edit-community-invite-form button[type=submit]').prop(
-                        'disabled',
-                        !$('#edit-community-invite-email')[0].checkValidity());
-            });
+    $('#edit-community-invite-email').on('keyup', function() {
+        $('#edit-community-invite-form button[type=submit]').prop('disabled', !$('#edit-community-invite-email')[0].checkValidity());
+    });
 
-    $('#edit-community-invite-form').submit(
-            function() {
-                var id = $('#edit-community-dialog').attr('data-id');
-                var email = $('#edit-community-invite-email').val();
-                $(this).find(':input').prop('disabled', true);
+    $('#edit-community-invite-form').submit(function() {
+        var id = $('#edit-community-dialog').attr('data-id');
+        var email = $('#edit-community-invite-email').val();
+        $(this).find(':input').prop('disabled', true);
 
-                $.ajax({
-                    url : '/api/v1/community/' + id + '/invite',
-                    method : 'post',
-                    data : {
-                        email : email
-                    },
-                    success : function() {
-                        $('#edit-community-invite-error-message').addClass(
-                                'hide');
-                        $('#edit-community-invite-form :input').prop(
-                                'disabled', false);
-                        $('#edit-community-invite-form button[type=submit]')
-                                .prop('disabled', true);
-                        $('#edit-community-invite-email').val('').focus();
-                    },
-                    error : function() {
-                        $('#edit-community-invite-form :input').prop(
-                                'disabled', false);
-                        $('#edit-community-invite-error-message').removeClass(
-                                'hide');
-                    }
-                });
+        $.ajax({
+            url : '/api/v1/community/' + id + '/invite',
+            method : 'post',
+            data : {
+                email : email
+            },
+            success : function() {
+                $('#edit-community-invite-error-message').addClass('hide');
+                $('#edit-community-invite-form :input').prop('disabled', false);
+                $('#edit-community-invite-form button[type=submit]').prop('disabled', true);
+                $('#edit-community-invite-email').val('').focus();
+                loadMembers(id);
+                loadInvites(id);
+            },
+            error : function() {
+                $('#edit-community-invite-form :input').prop('disabled', false);
+                $('#edit-community-invite-error-message').removeClass('hide');
+            }
+        });
 
-                return false;
-            });
+        return false;
+    });
 
     $('#delete-community-form').submit(function() {
         var id = $(this).parent().parent().attr('data-id');

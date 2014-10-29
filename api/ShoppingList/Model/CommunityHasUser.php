@@ -147,7 +147,7 @@ class CommunityHasUser extends BaseModel
     public function delete(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('DELETE FROM community WHERE CONCAT(idCommunity, \':\', idUser) = ?', array(
+            return 1 == $app['db']->executeUpdate('DELETE FROM community_has_user WHERE CONCAT(idCommunity, \':\', idUser) = ?', array(
                 $this->getId()
             ));
         } catch (\PDOException $ex) {

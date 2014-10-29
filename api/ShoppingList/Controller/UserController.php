@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use ShoppingList\Model\User;
 use ShoppingList\Util\StatusCodes;
+use ShoppingList\Model\Invite;
+use ShoppingList\Model\CommunityHasUser;
 
 /**
  *
@@ -30,6 +32,17 @@ class UserController extends BaseController
         $user->setPassword($password);
         
         if ($user->save($app)) {
+            
+            $invites = Invite::getByEmail($email, $app);
+            
+            foreach ($invites as $invite) {
+                $communityHasUser = new CommunityHasUser($invite->getCommunityId(), $user->getId(), false, true);
+                
+                if (! $communityHasUser->save($app) || ! $invite->delete($app)) {
+                    return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+                }
+            }
+            
             return new Response('Success', StatusCodes::HTTP_CREATED);
         }
         
