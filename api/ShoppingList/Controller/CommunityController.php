@@ -258,6 +258,7 @@ class CommunityController extends BaseController
         foreach ($communityHasUser as $a) {
             if ($a->getCommunityId() == $community->getId()) {
                 $validCommunity = true;
+                $communityHasUser = $a;
                 break;
             }
         }
@@ -272,11 +273,60 @@ class CommunityController extends BaseController
             return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        if (! $communityHasUser->isAdmin()) {
+        if (! $currentCommunityHasUser->isAdmin()) {
             return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
         }
         
         if ($communityHasUser->delete($app)) {
+            return new Response('Success', StatusCodes::HTTP_OK);
+        }
+        
+        return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function updateMember(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('idCommunity'), $app);
+        $member = User::getById($request->get('id'), $app);
+        $communityHasUser = CommunityHasUser::getByUserId($request->get('id'), $app);
+        
+        if ($community == null || $member == null || $communityHasUser == null || count($communityHasUser) <= 0) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        // Check if the user is in the community
+        $validCommunity = false;
+        foreach ($communityHasUser as $a) {
+            if ($a->getCommunityId() == $community->getId()) {
+                $validCommunity = true;
+                $communityHasUser = $a;
+                break;
+            }
+        }
+        
+        if (! $validCommunity) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $currentCommunityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
+        
+        if ($currentCommunityHasUser == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if (! $currentCommunityHasUser->isAdmin()) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+
+        $communityHasUser->setAdmin($request->get('admin') == 'true');
+        
+        if ($communityHasUser->save($app)) {
             return new Response('Success', StatusCodes::HTTP_OK);
         }
         

@@ -134,6 +134,7 @@ class Community extends BaseModel
             $user = User::getById($a->getUserId(), $app)->jsonSerialize();
             $user['admin'] = $a->isAdmin();
             $user['isCurrentUser'] = $a->getUserId() == $app['auth']->getUser()->getId();
+            $user['communityId'] = $a->getCommunityId();
             $users[] = $user;
         }
         

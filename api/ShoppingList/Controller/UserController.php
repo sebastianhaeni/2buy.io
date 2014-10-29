@@ -26,7 +26,7 @@ class UserController extends BaseController
         $email = $request->get('email');
         $password = $request->get('password');
         
-        $user = new User(null, null, $name, $email, $password, null, false, false, false);
+        $user = new User(null, $name, $email, $password, null);
         $user->setPassword($password);
         
         if ($user->save($app)) {

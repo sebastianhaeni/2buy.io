@@ -252,11 +252,27 @@
         buttonContainer.append(deleteButton);
         div.append(buttonContainer);
 
-        div.find('.admin-flag').prop('checked', member.admin == '1');
+        div.find('.admin-flag').prop('checked', member.admin == '1').change(
+                function() {
+                    $.ajax({
+                        url : '/api/v1/community/' + member.communityId
+                                + '/member/' + member.id,
+                        method : 'put',
+                        data : {
+                            admin : div.find('.admin-flag').prop('checked')
+                        },
+                        success : function() {
+                            // hide error alert
+                        },
+                        error : function() {
+                            // show error alert
+                        }
+                    })
+                });
 
         deleteButton.click(function() {
             $('#delete-member-name').html(member.name);
-            $('#delete-invite-dialog').attr('data-community-id',
+            $('#delete-member-dialog').attr('data-community-id',
                     member.communityId).attr('data-id', member.id)
                     .modal('show');
         });
