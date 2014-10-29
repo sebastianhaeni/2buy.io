@@ -156,7 +156,7 @@ class Authentication implements ServiceProviderInterface
      * @param Request $request            
      * @return NULL|\ShoppingList\Model\User
      */
-    public function getUser(Request $request)
+    public function getUser(Request $request = null)
     {
         if (! $this->isLoggedIn($request)) {
             return null;

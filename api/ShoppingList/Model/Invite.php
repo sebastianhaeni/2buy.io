@@ -30,10 +30,10 @@ class Invite extends BaseModel
     }
 
     /**
-     *
-     * @param int $id            
-     * @param Application $app            
-     * @return NULL|\ShoppingList\Model\Community
+     * 
+     * @param unknown $id
+     * @param Application $app
+     * @return NULL|\ShoppingList\Model\Invite
      */
     public static function getById($id, Application $app)
     {

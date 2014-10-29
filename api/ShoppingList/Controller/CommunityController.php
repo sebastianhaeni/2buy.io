@@ -8,6 +8,7 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Util\StatusCodes;
 use ShoppingList\Model\Invite;
+use ShoppingList\Model\User;
 
 /**
  *
@@ -202,5 +203,83 @@ class CommunityController extends BaseController
         }
         
         return $app->json(Invite::getByCommunityId($community->getId(), $app));
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function deleteInvite(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('idCommunity'), $app);
+        $invite = Invite::getById($request->get('id'), $app);
+        
+        if ($community == null || $invite == null || $community->getId() != $invite->getCommunityId()) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
+        
+        if ($communityHasUser == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if (! $communityHasUser->isAdmin()) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if ($invite->delete($app)) {
+            return new Response('Success', StatusCodes::HTTP_OK);
+        }
+        
+        return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function deleteMember(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('idCommunity'), $app);
+        $member = User::getById($request->get('id'), $app);
+        $communityHasUser = CommunityHasUser::getByUserId($request->get('id'), $app);
+        
+        if ($community == null || $member == null || $communityHasUser == null || count($communityHasUser) <= 0) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        // Check if the user is in the community
+        $validCommunity = false;
+        foreach ($communityHasUser as $a) {
+            if ($a->getCommunityId() == $community->getId()) {
+                $validCommunity = true;
+                break;
+            }
+        }
+        
+        if (! $validCommunity) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $currentCommunityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
+        
+        if ($currentCommunityHasUser == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if (! $communityHasUser->isAdmin()) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if ($communityHasUser->delete($app)) {
+            return new Response('Success', StatusCodes::HTTP_OK);
+        }
+        
+        return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
     }
 }

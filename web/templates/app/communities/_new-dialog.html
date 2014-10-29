@@ -1,0 +1,30 @@
+<div class="modal fade" id="new-community-dialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <form class="form-horizontal" id="new-community-form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Create new community</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="alert alert-danger hide" id="delete-community-error-message">
+                        The community could not be created due to an error.
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new-community-name" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="new-community-name" placeholder="Enter name" required pattern=".{3,}" title="3 characters mininum">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

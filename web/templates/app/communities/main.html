@@ -7,23 +7,23 @@
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Communities</h1>
-            <div class="btn-group" data-toggle="buttons" id="community-mode-switch">
-                <label class="btn btn-default active">
-                    <input type="radio" name="options" id="btn-select-community" checked> Select
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="options" id="btn-edit-community"> Edit
-                </label>
-                <label class="btn btn-default">
-                    <input type="radio" name="options" id="btn-create-community"> New
-                </label>
-            </div>
         </div>
     </div>
     
-    {% include "app/communities/_select.html" %}
-    {% include "app/communities/_edit.html" %}
-    {% include "app/communities/_new.html" %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button id="new-community-btn" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create Community</button>
+        </div>
+    </div>
+    
+    <div class="row top-buffer" id="community-list">
+        <div class="list col-md-8 col-md-offset-2">
+        </div>
+    </div>
+
+    {% include "app/communities/_new-dialog.html" %}
+    {% include "app/communities/_edit-dialog.html" %}
+    {% include "app/communities/_delete-dialog.html" %}
     
 </div>
 {% endblock %}

@@ -133,6 +133,7 @@ class Community extends BaseModel
         foreach ($communityHasUser as $a) {
             $user = User::getById($a->getUserId(), $app)->jsonSerialize();
             $user['admin'] = $a->isAdmin();
+            $user['isCurrentUser'] = $a->getUserId() == $app['auth']->getUser()->getId();
             $users[] = $user;
         }
         

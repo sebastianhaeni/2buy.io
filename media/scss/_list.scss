@@ -1,9 +1,19 @@
 .list {
     overflow: hidden;
     
+    &.list-sm .item {
+    	.title {
+    		font-size: 1em;
+    	}
+    	input[type=checkbox] {
+    		width: 12px;
+    		height: 12px;
+    	}
+    }
+    
     .item {
         text-align: left;
-        margin: 1.5em;
+        margin-bottom: 1.5em;
         border-radius: 5px;
         overflow: hidden;
 		border: 1px solid #cdcdcd;
@@ -17,13 +27,11 @@
         
         & > .input-group-addon {
         	background-color: #ededed;
-        	padding: 10px;
         }
         
         .title {
             font-size: 1.7em;
             margin: 0;
-            cursor: pointer;
             height: 100%;
         }
         
@@ -39,6 +47,9 @@
         &.clickable {
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
             
+            .title {
+            	cursor: pointer;
+            }
             &:hover {
                 background-color: #ededed;
             }
