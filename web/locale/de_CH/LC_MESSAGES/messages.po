@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ShoppingList\n"
-"POT-Creation-Date: 2014-10-30 21:25+0100\n"
-"PO-Revision-Date: 2014-10-30 22:12+0100\n"
+"POT-Creation-Date: 2014-10-30 23:56+0100\n"
+"PO-Revision-Date: 2014-10-30 23:57+0100\n"
 "Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: de_CH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,6 +22,14 @@ msgstr "Kontakt - %page%"
 #: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:48
 msgid "Contact"
 msgstr "Kontakt"
+
+#: ../../cache/2b/61/b4197004f8050817f7a3ccb071b293eefb424d50050a91b40fef856e79c8.php:46
+msgid "de_CH"
+msgstr "Deutsch"
+
+#: ../../cache/2b/61/b4197004f8050817f7a3ccb071b293eefb424d50050a91b40fef856e79c8.php:48
+msgid "en_US"
+msgstr "English"
 
 #: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:45
 msgid "Coming soon"
@@ -67,17 +75,9 @@ msgstr "AGB"
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:72
-msgid "de"
-msgstr "Deutsch"
-
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:75
-msgid "en"
-msgstr "English"
-
 #: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:45
 msgid "Home"
-msgstr "Home"
+msgstr "Startseite"
 
 #: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:77
 msgid "Sign Up"
@@ -86,3 +86,9 @@ msgstr "Registrieren"
 #: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:87
 msgid "Sign In"
 msgstr "Anmelden"
+
+#~ msgid "de"
+#~ msgstr "Deutsch"
+
+#~ msgid "en"
+#~ msgstr "English"

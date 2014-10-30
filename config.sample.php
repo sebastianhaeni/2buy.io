@@ -26,7 +26,7 @@ $config['email'] = [
 
 $config['i18n'] = [
     'languages' => [
-        'de',
-        'en'
+        'en_US',
+        'de_CH'
     ]
 ];

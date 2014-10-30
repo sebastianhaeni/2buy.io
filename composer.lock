@@ -765,13 +765,21 @@
             "time": "2014-10-23 15:29:03"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
     "platform": {
         "php": ">=5.5"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

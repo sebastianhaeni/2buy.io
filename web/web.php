@@ -2,6 +2,7 @@
 use Symfony\Component\HttpFoundation\Response;
 
 require_once __DIR__ . '/../bootstrap.php';
+require_ONCE __DIR__ . '/locale/locale.php';
 
 // load route definitions
 $routes = json_decode(file_get_contents(__DIR__ . '/routes.json'), true);
@@ -24,5 +25,5 @@ $template = $app['twig']->loadTemplate($templateName . '.html');
 (new Response($template->render(array(
     'config' => $app['config'],
     'page' => $templateName,
-    'selectedLang' => include __DIR__ . '/locale/locale.php'
+    'selectedLang' => $config['i18n']['selectedLang']
 ))))->send();
