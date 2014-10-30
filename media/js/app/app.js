@@ -8,13 +8,9 @@
         }
     });
 
-    if ($.cookie('community') != undefined) {
-        $.ajax({
-            url : '/api/v1/community/' + $.cookie('community'),
-            success : function(response) {
-                $('#community-name').html(response.name);
-            }
-        });
+    if ($.cookie('community') == undefined
+            && window.location.pathname != '/app') {
+        window.location.href = '/app';
     }
 
     $('#logout').click(function() {

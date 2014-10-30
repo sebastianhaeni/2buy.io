@@ -1,14 +1,10 @@
-{% extends "app/layout.html" %}
-
-{% block app_navigation %}
-{% include "app/shoppinglist/_navigation.html" %}
-{% endblock %}
+{% extends "app/shoppinglist/layout.html" %}
 
 {% block content %}
 <div class="container">
     <div class="row">
     
-        <div id="history">
+        <div id="history" class="col-md-12">
             <div class="text-center administrator">
                 <button type="button" class="btn btn-danger" id="button-clear-history">Clear History</button>
                 <div class="list">     

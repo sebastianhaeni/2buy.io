@@ -10,7 +10,7 @@
 </head>
 <body>
 
-{% include "app/_navigation.html" with {app_navigation: block('app_navigation')} %}
+{% include "app/_navigation.html" with {app_navigation: block('app_navigation'), app_name: block('app_name')} %}
 {% include "app/_change-password.html" %}
 {% include "app/_settings.html" %}
 

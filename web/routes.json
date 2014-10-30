@@ -1,0 +1,21 @@
+{
+	"/" : "public/home",
+	"/contact" : "public/contact",
+	"/developers" : "public/developers",
+	"/getstarted" : "public/getstarted",
+	"/privacy" : "public/privacy",
+	"/signin" : "public/signin",
+	"/signup" : "public/signup",
+	"/terms" : "public/terms",
+	
+	"/app" : "app/communities/main",
+	
+    "/app/shoppinglist" : "app/shoppinglist/main",
+    "/app/shoppinglist/history" : "app/shoppinglist/history",
+    "/app/shoppinglist/statistics" : "app/shoppinglist/statistics",
+    "/app/shoppinglist/products" : "app/shoppinglist/products",
+    
+    "/app/bills" : "app/bills/main",
+    "/app/bills/history" : "app/bills/history",
+    "/app/bills/statistics" : "app/bills/statistics"
+}

@@ -1,84 +1,27 @@
 <?php
-use Silex\Application;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-// valid pages
-$app['validPages'] = [
-    'public' => [
-        'home',
-        'developers',
-        'getstarted',
-        'signup',
-        'signin',
-        'terms',
-        'privacy',
-        'contact'
-    ],
-    'app' => [
-        'shoppinglist',
-        'communities'
-    ],
-    'shoppinglist' => [
-        'history',
-        'products',
-        'statistics'
-    ]
-];
+// load route definitions
+$routes = json_decode(file_get_contents(__DIR__ . '/routes.json'), true);
 
-$app->get('/', function () use($app)
-{
-    $subRequest = Request::create('/home', 'GET');
-    return $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
-});
+// default template
+$templateName = 'notfound';
 
-$app->get('/{page}', function (Application $app, $page) use($app)
-{
-    $templateName = 'notfound';
-    
-    if ($page == 'app') {
-        $templateName = 'app/communities/main';
-    } elseif (in_array($page, $app['validPages']['public'])) {
-        $templateName = 'public/' . $page;
-    }
-    
-    $template = $app['twig']->loadTemplate($templateName . '.html');
-    return $template->render(array(
-        'config' => $app['config'],
-        'page' => $templateName
-    ));
-});
+// requested template
+$route = $_SERVER['REQUEST_URI'];
 
-$app->get('/app/{page}', function (Application $app, $page) use($app)
-{
-    $templateName = 'notfound.html';
-    
-    if (in_array($page, $app['validPages']['app'])) {
-        $templateName = 'app/' . $page . '/main.html';
-    }
-    
-    $template = $app['twig']->loadTemplate($templateName);
-    return $template->render(array(
-        'config' => $app['config'],
-        'page' => $templateName
-    ));
-});
+// check if the route and template exist 
+if (array_key_exists($route, $routes) && file_exists(__DIR__ . '/templates/' . $routes[$route] . '.html')) {
+    $templateName = $routes[$route];
+}
 
-$app->get('/app/shoppinglist/{page}', function (Application $app, $page) use($app)
-{
-    $templateName = 'notfound.html';
-    
-    if (in_array($page, $app['validPages']['shoppinglist'])) {
-        $templateName = 'app/shoppinglist/' . $page . '.html';
-    }
-    
-    $template = $app['twig']->loadTemplate($templateName);
-    return $template->render(array(
-        'config' => $app['config'],
-        'page' => $templateName
-    ));
-});
+// load template
+$template = $app['twig']->loadTemplate($templateName . '.html');
 
-$app->run();
+// render and send template
+(new Response($template->render(array(
+    'config' => $app['config'],
+    'page' => $templateName
+))))->send();

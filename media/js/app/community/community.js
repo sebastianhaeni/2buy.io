@@ -179,8 +179,7 @@
         }
 
         div.find('.title').click(function() {
-            var id = $(this).attr('data-id');
-            $.cookie('community', id);
+            $.cookie('community', item.id);
             window.location.href = 'app/shoppinglist';
         });
 

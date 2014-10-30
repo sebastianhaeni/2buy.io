@@ -1,14 +1,10 @@
-{% extends "app/layout.html" %}
-
-{% block app_navigation %}
-{% include "app/shoppinglist/_navigation.html" %}
-{% endblock %}
+{% extends "app/shoppinglist/layout.html" %}
 
 {% block content %}
 <div class="container">
     <div class="row">
 
-        <div id="statslist">
+        <div id="statslist" class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Anzahl Käufe</div>
                 <canvas id="buyerChart" style="width: 100%;"></canvas>

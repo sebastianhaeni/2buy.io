@@ -13,6 +13,17 @@
     }
 }
 
+.navbar>.container-fluid li .navbar-brand {
+    margin-left: -55px;
+    cursor: pointer;
+}
+
+@media (max-width: $screen-xs-max) {
+    .navbar>.container-fluid li .navbar-brand {
+        margin-left: -35px;
+    }
+}
+
 .navbar {
     border-radius: 0;
 }
@@ -24,3 +35,4 @@
 .top-buffer {
     margin-top: 20px;
 }
+

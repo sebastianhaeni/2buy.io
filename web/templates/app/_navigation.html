@@ -6,7 +6,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/app" id="community-name">Shopping List</a>
+            <ul>
+                <li>
+                    <a class="navbar-brand" data-toggle="dropdown" id="community-name">
+                        {% if app_name is not empty %}{{ app_name }}{% else %}SebaList{% endif %}  
+                        <b class="caret {% if page starts with 'app/communities' %}hide{% endif %}"></b>
+                    </a>
+                    <ul class="dropdown-menu {% if page starts with 'app/communities' %}hide{% endif %}" role="menu" id="app-switcher">
+                        <li class="{% if page starts with 'app/shoppinglist' %}active{% endif %}"><a href="/app/shoppinglist">Shopping List</a></li>
+                        <li class="{% if page starts with 'app/bills' %}active{% endif %}"><a href="/app/bills">Bills</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
         <div class="collapse navbar-collapse" id="site-navbar">
