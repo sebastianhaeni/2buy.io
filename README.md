@@ -31,6 +31,10 @@ The app is intended to work very well on mobile devices. Desktop resolutions sho
 
 [View the Project plan](https://docs.google.com/spreadsheets/d/13WSqNUOvKZwPOybQbJwPmpcRZdPULlK52T3Jfx6dhZ4/pubhtml)
 
+## i18n
+To translate text into different locales, we use gettext. To edit the translations you can use [PoEdit](http://poedit.net/).
+
+To extract new strings from the source, you can generate the twig templates into php files with <code>php web/locale/update-i18n.php</code> and then update the .po file within PoEdit.
 
 ## Features
 <ul>

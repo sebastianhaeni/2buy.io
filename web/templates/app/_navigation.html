@@ -9,7 +9,7 @@
             <ul>
                 <li>
                     <a class="navbar-brand" data-toggle="dropdown" id="community-name">
-                        {% if app_name is not empty %}{{ app_name }}{% else %}SebaList{% endif %}  
+                        {% if app_name is not empty %}{{ app_name }}{% else %}{{ config['product_name'] }}{% endif %}  
                         <b class="caret {% if page starts with 'app/communities' %}hide{% endif %}"></b>
                     </a>
                     <ul class="dropdown-menu {% if page starts with 'app/communities' %}hide{% endif %}" role="menu" id="app-switcher">

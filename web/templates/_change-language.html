@@ -1,0 +1,10 @@
+<select id="select-language" class="btn btn-xs">
+    {% for lang in config['i18n']['languages'] %}
+        <option value="{{ lang }}" {% if selectedLang == lang %}selected{% endif %}>{{ lang|trans }}</option>
+    {% endfor %}
+</select>
+
+<!-- 
+{% trans "de" %}
+{% trans "en" %}
+ -->

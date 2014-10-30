@@ -1,4 +1,7 @@
 <?php
+/**
+ * This script goes over every twig template and creates its php counterpart.
+ */
 include __DIR__ . '/../../vendor/autoload.php';
 
 $tplDir = __DIR__ . '/../templates';
@@ -11,7 +14,6 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
-// configure Twig the way you want
 
 // iterate over all your templates
 foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($tplDir), RecursiveIteratorIterator::LEAVES_ONLY) as $file) {
@@ -21,4 +23,3 @@ foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($tplDir), 
         $twig->loadTemplate($templateName);
     }
 }
-

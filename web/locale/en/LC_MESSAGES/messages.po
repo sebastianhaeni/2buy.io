@@ -1,0 +1,91 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ShoppingList\n"
+"POT-Creation-Date: 2014-10-30 21:25+0100\n"
+"PO-Revision-Date: 2014-10-30 22:12+0100\n"
+"Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ../../cache\n"
+
+#: ../../cache/0b/84/a9c9e8d1dd981756c57aaae69b1ba37870d5e0e60b51b1d6f3578b841cb0.php:44
+msgid "Contact - %page%"
+msgstr "Contact - %page%"
+
+#: ../../cache/0b/84/a9c9e8d1dd981756c57aaae69b1ba37870d5e0e60b51b1d6f3578b841cb0.php:54
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:48
+msgid "Contact"
+msgstr "Contact"
+
+#: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:45
+msgid "Coming soon"
+msgstr "Coming soon"
+
+#: ../../cache/73/0a/a6f3891885024e62da38a704168922ab9ec2f4a2904daf4f2bf13cc09903.php:44
+msgid "Page not found - %page%"
+msgstr "Page not found - %page%"
+
+#: ../../cache/73/0a/a6f3891885024e62da38a704168922ab9ec2f4a2904daf4f2bf13cc09903.php:54
+msgid "Oops. Page could not be found."
+msgstr "Oops. Page could not be found."
+
+#: ../../cache/77/24/ed7b4b10f30f16b3d8161d3a429ee4f31134a2ba91772c533f4750e4249e.php:45
+msgid "Developers - %page%"
+msgstr "Developers - %page%"
+
+#: ../../cache/77/24/ed7b4b10f30f16b3d8161d3a429ee4f31134a2ba91772c533f4750e4249e.php:55
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:29
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:65
+msgid "Developers"
+msgstr "Developers"
+
+#: ../../cache/af/19/beecb2c2b059549e9d34b7e7910096d1f81874ecf044471b80b1ff9afd93.php:45
+msgid "Get Started - %page%"
+msgstr "Get Started - %page%"
+
+#: ../../cache/af/19/beecb2c2b059549e9d34b7e7910096d1f81874ecf044471b80b1ff9afd93.php:55
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:25
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:55
+msgid "Get Started"
+msgstr "Get Started"
+
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:36
+msgid "&copy; 2014"
+msgstr "&copy; 2014"
+
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:40
+msgid "Terms"
+msgstr "Terms"
+
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:44
+msgid "Privacy"
+msgstr "Privacy"
+
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:72
+msgid "de"
+msgstr "German"
+
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:75
+msgid "en"
+msgstr "English"
+
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:45
+msgid "Home"
+msgstr "Home"
+
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:77
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:87
+msgid "Sign In"
+msgstr "Sign In"
+
+#~ msgid "Change language:"
+#~ msgstr "Change language:"

@@ -1,9 +1,13 @@
 {% extends "public/layout.html" %}
 
-{% block title%}Developers - {{ parent() }}{% endblock %}
+{% block title%}
+    {% set page = parent() %}
+    {% trans %}Developers - {{ page }}{% endtrans %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
-	<h1>Developers</h1>
+	<h1>{% trans "Developers" %}</h1>
     
     <p>Under construction</p>
 </div>
