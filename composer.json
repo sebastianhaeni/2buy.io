@@ -16,7 +16,8 @@
         "silex/silex": "~1.2",
         "doctrine/dbal": "2.2.*",
         "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev",
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "twig/extensions": "~1.1.0"
     },
     "autoload": {
    		"psr-4": {"ShoppingList\\": "api/ShoppingList"}

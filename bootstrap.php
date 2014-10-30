@@ -35,3 +35,4 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/web/templates'
 ));
+$app['twig']->addExtension(new Twig_Extensions_Extension_I18n());
