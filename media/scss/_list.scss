@@ -2,6 +2,8 @@
     overflow: hidden;
     
     &.list-sm .item {
+    	margin-bottom: .7em;
+    	
     	.title {
     		font-size: 1em;
     	}
@@ -63,7 +65,7 @@
 
 @keyframes item-drop-in {
     from {
-    	top: -20px;
+    	top: 20px;
     	opacity: 0;
     }
     to {
