@@ -158,6 +158,9 @@
             editButton.click(function() {
                 editingCommunityName = item.name;
 
+                $('#member-list').html('');
+                $('#invite-list').html('');
+                
                 loadMembers(item.id);
                 loadInvites(item.id);
 
