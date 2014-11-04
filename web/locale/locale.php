@@ -16,7 +16,7 @@ if (empty($lang) || ! in_array($lang, $config['i18n']['languages'])) {
 
 // Set language
 putenv('LC_ALL=' . $lang);
-setlocale(LC_ALL, $lang);
+setlocale(LC_ALL, $lang . '.UTF-8');
 
 // Specify the location of the translation tables
 bindtextdomain('messages', __DIR__);
