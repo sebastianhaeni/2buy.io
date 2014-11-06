@@ -75,7 +75,8 @@ class Router
         // TODO
         
         // Transaction
-        $app->get('/v1/community/{id}/transaction/', 'ShoppingList\\Controller\\TransactionController::getTransactions');
+        $app->get('/v1/community/{id}/transaction', 'ShoppingList\\Controller\\TransactionController::getTransactions');
+        $app->post('/v1/community/{id}/transaction', 'ShoppingList\\Controller\\TransactionController::insertTransaction');
         
         // User
         $app->get('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');

@@ -54,6 +54,27 @@ class Product extends BaseModel
 
     /**
      *
+     * @param int $id            
+     * @param Application $app            
+     * @return NULL|\ShoppingList\Model\Product
+     */
+    public static function getByCommunityId($communityId, Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ?', array(
+            $communityId
+        ));
+        
+        $products = [];
+        
+        foreach ($data as $product) {
+            $products[] = self::getProduct($product);
+        }
+        
+        return $products;
+    }
+
+    /**
+     *
      * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Product
      */
@@ -76,7 +97,7 @@ class Product extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO product (communityId, name, addedBy, inSuggestions) VALUES (?,?,?,?)', array(
+            return 1 == $app['db']->executeUpdate('INSERT INTO product (idCommunity, name, addedBy, inSuggestions) VALUES (?,?,?,?)', array(
                 $this->getCommunityId(),
                 $this->getName(),
                 $this->getAddedBy(),

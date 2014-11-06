@@ -42,6 +42,16 @@ abstract class BaseModel implements \JsonSerializable
         $this->_isPersisted = $value;
     }
 
+    /**
+     * Returns the current timestamp that can be inserted into the database.
+     * 
+     * @return string
+     */
+    public static function getCurrentTimeStamp()
+    {
+        return date('Y-m-d H:i:s');
+    }
+
     public abstract function delete(Application $app);
 
     public abstract function getId();

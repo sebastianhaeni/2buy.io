@@ -138,7 +138,7 @@ class Transaction extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO remember_me_token (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate) VALUES (?,?,?,?,?,?,?,?,?)', array(
+            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate) VALUES (?,?,?,?,?,?,?,?,?)', array(
                 $this->getProductId(),
                 $this->getReportedBy(),
                 $this->getReportedDate(),
