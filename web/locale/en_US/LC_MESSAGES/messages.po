@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ShoppingList\n"
 "POT-Creation-Date: 2014-10-30 23:57+0100\n"
-"PO-Revision-Date: 2014-10-30 23:57+0100\n"
+"PO-Revision-Date: 2014-11-06 15:51+0100\n"
 "Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -77,7 +77,7 @@ msgstr "Privacy"
 
 #: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:45
 msgid "Home"
-msgstr "Home2"
+msgstr "Home"
 
 #: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:77
 msgid "Sign Up"
