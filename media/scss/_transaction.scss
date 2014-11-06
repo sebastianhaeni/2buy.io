@@ -1,0 +1,77 @@
+
+.transaction {
+    touch-action: cross-slide-x;
+    transition: background-color 0.5s ease;
+    
+    &.buyed {
+        background-color: rgb(92, 184, 92);
+    }
+
+    &.cancelled {
+        background-color: rgb(217, 83, 79);
+    }
+
+    .product {
+        display: block;
+        float: left;
+        font-weight: bold;
+        margin-right: 10px;
+        line-height: 35px;
+    }
+
+    .amount {
+        margin: 0 10px;
+        display: block;
+        float: left;
+        line-height: 35px;
+        &:after {
+            content: 'x';
+        }
+    }
+
+    .reportedDate {
+        font-size: 0.8em;
+        white-space: nowrap;
+        line-height: 35px;
+        margin-right: 10px;
+    }
+
+    .reportedBy {
+        white-space: nowrap;
+        margin-right: 10px;
+        line-height: 35px;
+    }
+
+    .buttons {
+        float: right;
+        display: block;
+        & > button:first-child {
+            margin-right: 10px;
+        }
+    }
+}
+
+#transactionlist .transaction span {
+    white-space: normal;
+    line-height: inherit;
+    margin: 0 6px 0 0;
+}
+
+#transactionlist .reportedBy {
+    font-weight: bold;
+}
+
+.swipe-instructions {
+    opacity: 0.8;
+    font-size: 1.2em;
+    padding-bottom: 20px;
+    div {
+        &:first-child {
+            float: left;
+        }
+
+        &:last-child {
+            float: right;
+        }
+    }
+}

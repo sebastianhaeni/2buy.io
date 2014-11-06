@@ -69,13 +69,13 @@ class Router
         $app->delete('/v1/community/{idCommunity}/invite/{id}', 'ShoppingList\\Controller\\CommunityController::deleteInvite');
         
         // Product
-        // TODO
+        $app->get('/v1/community/{id}/product', 'ShoppingList\\Controller\\ProductController::getProducts');
         
         // Statistics
         // TODO
         
         // Transaction
-        // TODO
+        $app->get('/v1/community/{id}/transaction/', 'ShoppingList\\Controller\\TransactionController::getTransactions');
         
         // User
         $app->get('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');

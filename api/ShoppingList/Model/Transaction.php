@@ -30,6 +30,16 @@ class Transaction extends BaseModel
 
     private $_closeDate;
 
+    private $_product;
+
+    private $_reporter;
+
+    private $_editor;
+
+    private $_buyer;
+
+    private $_canceller;
+
     /**
      *
      * @param int $id            
@@ -74,16 +84,48 @@ class Transaction extends BaseModel
 
     /**
      *
+     * @param int $communityId            
+     * @param Application $app            
+     * @return NULL|\ShoppingList\Model\Transaction
+     */
+    public static function getByCommunityId($communityId, Application $app, $filter)
+    {
+        $data = $app['db']->fetchAll('
+            SELECT * FROM transaction 
+            INNER JOIN product ON transaction.idProduct = product.idProduct 
+            WHERE product.idCommunity = ?', array(
+            $communityId
+        ));
+        
+        $transactions = [];
+        foreach ($data as $transaction) {
+            $transactions[] = self::getTransaction($transaction, $app);
+        }
+        
+        return $transactions;
+    }
+
+    /**
+     *
      * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Transaction
      */
-    private static function getTransaction($data)
+    private static function getTransaction($data, Application $app = null)
     {
         if ($data == null) {
             return null;
         }
         
         $transaction = new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate']);
+        
+        if ($app != null) {
+            $transaction->setProduct(Product::getById($transaction->getProductId(), $app));
+            $transaction->setReporter(User::getById($transaction->getReportedBy(), $app));
+            $transaction->setEditor(User::getById($transaction->getEditedBy(), $app));
+            $transaction->setBuyer(User::getById($transaction->getBoughtBy(), $app));
+            $transaction->setCanceller(User::getById($transaction->getCancelledBy(), $app));
+        }
+        
         $transaction->setPersisted(true);
         return $transaction;
     }
@@ -144,7 +186,7 @@ class Transaction extends BaseModel
      *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
-    protected function delete(Application $app)
+    public function delete(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('DELETE FROM transaction WHERE idTransaction = ?', array(
@@ -171,6 +213,37 @@ class Transaction extends BaseModel
         }
         
         return true;
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'productId' => $this->getProductId(),
+            'product' => $this->getProduct(),
+            'reportedBy' => $this->getReportedBy(),
+            'reportedDate' => $this->getReportedDate(),
+            'reporter' => $this->getReporter(),
+            'editedBy' => $this->getEditedBy(),
+            'editor' => $this->getEditor(),
+            'amount' => $this->getAmount(),
+            'boughtBy' => $this->getBoughtBy(),
+            'buyer' => $this->getBuyer(),
+            'cancelled' => $this->getCancelled(),
+            'cancelledBy' => $this->getCancelledBy(),
+            'canceller' => $this->getCanceller(),
+            'closeDate' => $this->getCloseDate()
+        ];
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
     }
 
     public function getId()
@@ -223,6 +296,31 @@ class Transaction extends BaseModel
         return $this->_closeDate;
     }
 
+    public function getProduct()
+    {
+        return $this->_product;
+    }
+
+    public function getReporter()
+    {
+        return $this->_reporter;
+    }
+
+    public function getEditor()
+    {
+        return $this->_editor;
+    }
+
+    public function getBuyer()
+    {
+        return $this->_buyer;
+    }
+
+    public function getCanceller()
+    {
+        return $this->_canceller;
+    }
+
     public function setProductId($productId)
     {
         $this->_productId = $productId;
@@ -266,5 +364,30 @@ class Transaction extends BaseModel
     public function setCloseDate($closeDate)
     {
         $this->_closeDate = $closeDate;
+    }
+
+    public function setProduct($value)
+    {
+        $this->_product = $value;
+    }
+
+    public function setReporter($value)
+    {
+        $this->_reporter = $value;
+    }
+
+    public function setEditor($value)
+    {
+        $this->_editor = $value;
+    }
+
+    public function setBuyer($value)
+    {
+        $this->_buyer = $value;
+    }
+
+    public function setCanceller($value)
+    {
+        $this->_canceller = $value;
     }
 }

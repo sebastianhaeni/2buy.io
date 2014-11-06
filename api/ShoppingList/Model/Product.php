@@ -118,7 +118,7 @@ class Product extends BaseModel
      *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
-    protected function delete(Application $app)
+    public function delete(Application $app)
     {
         try {
             return 1 == $app['db']->executeUpdate('DELETE FROM product WHERE idProduct = ?', array(
@@ -144,6 +144,27 @@ class Product extends BaseModel
         }
         
         return true;
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see JsonSerializable::jsonSerialize()
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'communityId' => $this->getCommunityId(),
+            'name' => $this->getName(),
+            'addedBy' => $this->getAddedBy(),
+            'inSuggestions' => $this->getInSuggestions()
+        ];
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
     }
 
     public function getId()

@@ -128,7 +128,7 @@ class Community extends BaseModel
     {
         $communityHasUser = CommunityHasUser::getByCommunityId($this->getId(), $app);
         
-        $users = array();
+        $users = [];
         
         foreach ($communityHasUser as $a) {
             $user = User::getById($a->getUserId(), $app)->jsonSerialize();
@@ -139,6 +139,41 @@ class Community extends BaseModel
         }
         
         return $users;
+    }
+
+    /**
+     *
+     * @param Application $app            
+     * @return multitype:unknown
+     */
+    public function getProducts(Application $app)
+    {
+        $data = Product::getByCommunityId($this->getId(), $app);
+        $products = [];
+        
+        foreach ($data as $p) {
+            $products[] = $p;
+        }
+        
+        return $products;
+    }
+
+    /**
+     *
+     * @param Application $app            
+     * @param string $filter            
+     * @return multitype:unknown
+     */
+    public function getTransactions(Application $app, $filter)
+    {
+        $data = Transaction::getByCommunityId($this->getId(), $app, $filter);
+        $products = [];
+        
+        foreach ($data as $p) {
+            $products[] = $p;
+        }
+        
+        return $products;
     }
 
     /**
