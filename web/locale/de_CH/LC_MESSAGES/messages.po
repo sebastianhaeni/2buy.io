@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ShoppingList\n"
-"POT-Creation-Date: 2014-10-30 23:56+0100\n"
-"PO-Revision-Date: 2014-10-30 23:57+0100\n"
-"Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
+"POT-Creation-Date: 2014-11-07 14:42+0100\n"
+"PO-Revision-Date: 2014-11-07 14:43+0100\n"
+"Last-Translator: David Wiedmer <dave@sidefyn.ch>\n"
 "Language-Team: \n"
 "Language: de_CH\n"
 "MIME-Version: 1.0\n"
@@ -14,78 +14,152 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ../../cache\n"
 
-#: ../../cache/0b/84/a9c9e8d1dd981756c57aaae69b1ba37870d5e0e60b51b1d6f3578b841cb0.php:44
-msgid "Contact - %page%"
-msgstr "Kontakt - %page%"
-
-#: ../../cache/0b/84/a9c9e8d1dd981756c57aaae69b1ba37870d5e0e60b51b1d6f3578b841cb0.php:54
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:48
-msgid "Contact"
-msgstr "Kontakt"
-
-#: ../../cache/2b/61/b4197004f8050817f7a3ccb071b293eefb424d50050a91b40fef856e79c8.php:46
-msgid "de_CH"
-msgstr "Deutsch"
-
-#: ../../cache/2b/61/b4197004f8050817f7a3ccb071b293eefb424d50050a91b40fef856e79c8.php:48
-msgid "en_US"
-msgstr "English"
-
-#: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:45
-msgid "Coming soon"
-msgstr "Kommt bald"
-
-#: ../../cache/73/0a/a6f3891885024e62da38a704168922ab9ec2f4a2904daf4f2bf13cc09903.php:44
-msgid "Page not found - %page%"
-msgstr "Seite nicht gefunden - %page%"
-
-#: ../../cache/73/0a/a6f3891885024e62da38a704168922ab9ec2f4a2904daf4f2bf13cc09903.php:54
-msgid "Oops. Page could not be found."
-msgstr "Oops. Seite konnte nicht gefunden werden."
-
-#: ../../cache/77/24/ed7b4b10f30f16b3d8161d3a429ee4f31134a2ba91772c533f4750e4249e.php:45
-msgid "Developers - %page%"
-msgstr "Entwickler - %page%"
-
-#: ../../cache/77/24/ed7b4b10f30f16b3d8161d3a429ee4f31134a2ba91772c533f4750e4249e.php:55
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:29
-#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:65
-msgid "Developers"
-msgstr "Entwickler"
-
-#: ../../cache/af/19/beecb2c2b059549e9d34b7e7910096d1f81874ecf044471b80b1ff9afd93.php:45
+#: ../../cache/05/90/4b913f829ffd44664571d433233e8723fa4565325727bfac828dce71e41c.php:45
 msgid "Get Started - %page%"
 msgstr "Los legen - %page%"
 
-#: ../../cache/af/19/beecb2c2b059549e9d34b7e7910096d1f81874ecf044471b80b1ff9afd93.php:55
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:25
-#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:55
+#: ../../cache/05/90/4b913f829ffd44664571d433233e8723fa4565325727bfac828dce71e41c.php:55
+#: ../../cache/94/87/c033d31dcd5a3fcc0fa48d99230b76f94f9a163a6cab919d7a62ea1377fe.php:25
+#: ../../cache/a2/51/23a004abe0084b46ba5f3fe51ad3ed812c4b632aa64c2d868a5ef06dd75b.php:55
 msgid "Get Started"
 msgstr "Los legen"
 
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:36
+#: ../../cache/0f/be/7c55cfb2146d6f593d4fce0bed10cc04d57c555ba60cd70cb36e5fa33a52.php:38
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:46
+msgid "3 characters mininum"
+msgstr ""
+
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:27
+msgid "Add article to shopping list"
+msgstr ""
+
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:35
+msgid "The article could not be added due to an error."
+msgstr ""
+
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:42
+#: ../../cache/a1/4b/62ef5dcb10b683b5c77aea5bf9c1fe3201592d2dbd25a569bfa43a9760f8.php:35
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:55
+msgid "Name"
+msgstr "Name"
+
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:54
+#: ../../cache/a1/4b/62ef5dcb10b683b5c77aea5bf9c1fe3201592d2dbd25a569bfa43a9760f8.php:44
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:77
+msgid "Amount"
+msgstr ""
+
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:64
+#: ../../cache/a1/4b/62ef5dcb10b683b5c77aea5bf9c1fe3201592d2dbd25a569bfa43a9760f8.php:54
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:87
+msgid "Close"
+msgstr ""
+
+#: ../../cache/23/50/9f18c908a157dbe4783c6f4fd4706f5fde6b27e528673adae555005f76f8.php:68
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:91
+msgid "Add"
+msgstr ""
+
+#: ../../cache/37/25/37995a8819a4c7410a2692b9201b3643e1e59d3ca3f2ff64fc5e65dba927.php:51
+msgid "Add Article"
+msgstr ""
+
+#: ../../cache/37/25/37995a8819a4c7410a2692b9201b3643e1e59d3ca3f2ff64fc5e65dba927.php:55
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:47
+msgid "Barcode"
+msgstr ""
+
+#: ../../cache/37/25/37995a8819a4c7410a2692b9201b3643e1e59d3ca3f2ff64fc5e65dba927.php:65
+msgid "Buy"
+msgstr ""
+
+#: ../../cache/37/25/37995a8819a4c7410a2692b9201b3643e1e59d3ca3f2ff64fc5e65dba927.php:69
+msgid "Delete"
+msgstr ""
+
+#: ../../cache/49/18/87aa9e5dca0df290fa0d300cc20e825f5a553ed9c16cdb7dfc6c283cf1c0.php:45
+msgid "Coming soon"
+msgstr "Kommt bald"
+
+#: ../../cache/58/62/ae67c6f207afec7c47ad93e2b8ea4fc21e2e08b728c08a0e091b809157e9.php:44
+msgid "Contact - %page%"
+msgstr "Kontakt - %page%"
+
+#: ../../cache/58/62/ae67c6f207afec7c47ad93e2b8ea4fc21e2e08b728c08a0e091b809157e9.php:54
+#: ../../cache/94/87/c033d31dcd5a3fcc0fa48d99230b76f94f9a163a6cab919d7a62ea1377fe.php:48
+msgid "Contact"
+msgstr "Kontakt"
+
+#: ../../cache/79/27/52a67400676978d7a0c5f5c1eab831221b29531680dd893b7b304754a170.php:45
+msgid "Developers - %page%"
+msgstr "Entwickler - %page%"
+
+#: ../../cache/79/27/52a67400676978d7a0c5f5c1eab831221b29531680dd893b7b304754a170.php:55
+#: ../../cache/94/87/c033d31dcd5a3fcc0fa48d99230b76f94f9a163a6cab919d7a62ea1377fe.php:29
+#: ../../cache/a2/51/23a004abe0084b46ba5f3fe51ad3ed812c4b632aa64c2d868a5ef06dd75b.php:65
+msgid "Developers"
+msgstr "Entwickler"
+
+#: ../../cache/7e/f9/bfa2484e999a2c856299db104acf1af7a09485a579d985e5e58b18ee2374.php:44
+msgid "Page not found - %page%"
+msgstr "Seite nicht gefunden - %page%"
+
+#: ../../cache/7e/f9/bfa2484e999a2c856299db104acf1af7a09485a579d985e5e58b18ee2374.php:54
+msgid "Oops. Page could not be found."
+msgstr "Oops. Seite konnte nicht gefunden werden."
+
+#: ../../cache/94/87/c033d31dcd5a3fcc0fa48d99230b76f94f9a163a6cab919d7a62ea1377fe.php:36
 msgid "&copy; 2014"
 msgstr "&copy; 2014"
 
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:40
+#: ../../cache/94/87/c033d31dcd5a3fcc0fa48d99230b76f94f9a163a6cab919d7a62ea1377fe.php:40
 msgid "Terms"
 msgstr "AGB"
 
-#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:44
+#: ../../cache/94/87/c033d31dcd5a3fcc0fa48d99230b76f94f9a163a6cab919d7a62ea1377fe.php:44
 msgid "Privacy"
 msgstr "Privatsphäre"
 
-#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:45
+#: ../../cache/a1/4b/62ef5dcb10b683b5c77aea5bf9c1fe3201592d2dbd25a569bfa43a9760f8.php:27
+msgid "Edit article"
+msgstr ""
+
+#: ../../cache/a1/4b/62ef5dcb10b683b5c77aea5bf9c1fe3201592d2dbd25a569bfa43a9760f8.php:58
+msgid "Save"
+msgstr ""
+
+#: ../../cache/a2/51/23a004abe0084b46ba5f3fe51ad3ed812c4b632aa64c2d868a5ef06dd75b.php:45
 msgid "Home"
 msgstr "Startseite"
 
-#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:77
+#: ../../cache/a2/51/23a004abe0084b46ba5f3fe51ad3ed812c4b632aa64c2d868a5ef06dd75b.php:77
 msgid "Sign Up"
 msgstr "Registrieren"
 
-#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:87
+#: ../../cache/a2/51/23a004abe0084b46ba5f3fe51ad3ed812c4b632aa64c2d868a5ef06dd75b.php:87
 msgid "Sign In"
 msgstr "Anmelden"
+
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:27
+msgid "Barcode Scanner"
+msgstr ""
+
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:40
+msgid "Rescan barcode"
+msgstr ""
+
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:64
+#: ../../cache/c3/5b/e361d5699e20239e39698be7e8b09d1378152f020a8fcc49bb50400901ed.php:68
+msgid "Image"
+msgstr ""
+
+#: ../../cache/cc/a9/bf92e0513a860c822b4682e4f7d416815fddbc54ba5c6379c8f643df21da.php:46
+msgid "de_CH"
+msgstr "Deutsch"
+
+#: ../../cache/cc/a9/bf92e0513a860c822b4682e4f7d416815fddbc54ba5c6379c8f643df21da.php:48
+msgid "en_US"
+msgstr "English"
 
 #~ msgid "de"
 #~ msgstr "Deutsch"
