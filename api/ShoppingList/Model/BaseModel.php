@@ -15,12 +15,12 @@ abstract class BaseModel implements \JsonSerializable
 
     /**
      *
-     * @param Application $app            
+     * @param Application $app
      * @return boolean
      */
     public function save(Application $app)
     {
-        if (! $this->validate()) {
+        if (!$this->validate()) {
             return false;
         }
         if ($this->isPersisted()) {
@@ -28,7 +28,7 @@ abstract class BaseModel implements \JsonSerializable
         }
         $result = $this->insert($app);
         $this->setId($app['db']->lastInsertId());
-        
+
         return $result;
     }
 
@@ -44,7 +44,7 @@ abstract class BaseModel implements \JsonSerializable
 
     /**
      * Returns the current timestamp that can be inserted into the database.
-     * 
+     *
      * @return string
      */
     public static function getCurrentTimeStamp()
@@ -64,7 +64,8 @@ abstract class BaseModel implements \JsonSerializable
 
     public abstract function validate();
 
-    public static function getById($id, Application $app){
+    public static function getById($id, Application $app)
+    {
         return new NotImplementedException();
     }
 }
