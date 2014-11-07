@@ -177,8 +177,8 @@ class CommunityController extends BaseController
         
         $communityHasUser = new CommunityHasUser($community->getId(), $user->getId(), false, true);
         
-        if (! $communityHasUser->save($app) || ! $invite->delete($app)) {
-            return new Response('Error saving community association or deleting invite', StatusCodes::HTTP_BAD_REQUEST);
+        if (! $communityHasUser->save($app)) {
+            return new Response('Error saving community association', StatusCodes::HTTP_BAD_REQUEST);
         }
         
         return new Response('Success', StatusCodes::HTTP_OK);
