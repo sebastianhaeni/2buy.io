@@ -64,5 +64,7 @@ abstract class BaseModel implements \JsonSerializable
 
     public abstract function validate();
 
-    public static function getById($id, Application $app);
+    public static function getById($id, Application $app){
+        return new NotImplementedException();
+    }
 }
