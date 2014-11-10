@@ -21,7 +21,7 @@
         var amount = '<span class="amount">' + a.amount + '</span>';
         var product = '<span class="product">' + a.product.name + '</span>';
         var reportedBy = '<span class="reportedBy">' + a.reporter.name + '</span>';
-        var reportedDate = '<span class="reportedDate">' + a.reportedDate + '</span>';
+        var reportedDate = '<span class="reportedDate">' + moment(a.reportedDate).format('lll') + '</span>';
 
         var div = $('<div class="item transaction" data-id="' + a.id + '">' + amount
                 + product + reportedBy + reportedDate + '</div>');
