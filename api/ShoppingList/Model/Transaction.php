@@ -86,11 +86,12 @@ class Transaction extends BaseModel
      *
      * @param int $communityId            
      * @param Application $app            
+     * @param int $productId            
      * @return NULL|\ShoppingList\Model\Transaction
      */
-    public static function getActiveTransactions($communityId, Application $app)
+    public static function getActiveTransactions($communityId, Application $app, $productId = null)
     {
-        return self::getTransactions($communityId, $app, 'boughtBy IS NULL AND cancelled = 0');
+        return self::getTransactions($communityId, $app, 'boughtBy IS NULL AND cancelled = 0', $productId);
     }
 
     /**
@@ -99,16 +100,23 @@ class Transaction extends BaseModel
      * @param Application $app            
      * @param string $filter
      *            sanitized where clause
+     * @param int $productId            
      * @return NULL|\ShoppingList\Model\Transaction
      */
-    private static function getTransactions($communityId, Application $app, $filter)
+    private static function getTransactions($communityId, Application $app, $filter, $productId = null)
     {
+        $params = [
+            $communityId
+        ];
+        
+        if ($productId != null) {
+            $params[] = $productId;
+        }
+        
         $data = $app['db']->fetchAll('
             SELECT * FROM transaction
             INNER JOIN product ON transaction.idProduct = product.idProduct
-            WHERE product.idCommunity = ? AND ' . $filter, array(
-            $communityId
-        ));
+            WHERE product.idCommunity = ? AND ' . ($productId != null ? 'product.idProduct = ? AND ' : '') . $filter, $params);
         
         $transactions = [];
         foreach ($data as $transaction) {
@@ -151,7 +159,7 @@ class Transaction extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate) VALUES (?,?,?,?,?,?,?,?,?)', array(
+            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate) VALUES (?,?,?,?,?,?,?,?,?)', [
                 $this->getProductId(),
                 $this->getReportedBy(),
                 $this->getReportedDate(),
@@ -161,7 +169,7 @@ class Transaction extends BaseModel
                 $this->getCancelled(),
                 $this->getCancelledBy(),
                 $this->getCloseDate()
-            ));
+            ]);
         } catch (\PDOException $ex) {
             return false;
         }

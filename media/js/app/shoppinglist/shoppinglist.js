@@ -51,6 +51,7 @@
     function addTransaction(a) {
 
         if($('#shoppinglist div[data-id=' + a.id + ']').length > 0){
+        	$('.transaction[data-id=' + a.id + '] .amount').html(a.amount);
             return;
         }
         
