@@ -88,12 +88,25 @@ class Transaction extends BaseModel
      * @param Application $app            
      * @return NULL|\ShoppingList\Model\Transaction
      */
-    public static function getByCommunityId($communityId, Application $app, $filter)
+    public static function getActiveTransactions($communityId, Application $app)
+    {
+        return self::getTransactions($communityId, $app, 'boughtBy IS NULL AND cancelled = 0');
+    }
+
+    /**
+     *
+     * @param int $communityId            
+     * @param Application $app            
+     * @param string $filter
+     *            sanitized where clause
+     * @return NULL|\ShoppingList\Model\Transaction
+     */
+    private static function getTransactions($communityId, Application $app, $filter)
     {
         $data = $app['db']->fetchAll('
-            SELECT * FROM transaction 
-            INNER JOIN product ON transaction.idProduct = product.idProduct 
-            WHERE product.idCommunity = ?', array(
+            SELECT * FROM transaction
+            INNER JOIN product ON transaction.idProduct = product.idProduct
+            WHERE product.idCommunity = ? AND ' . $filter, array(
             $communityId
         ));
         

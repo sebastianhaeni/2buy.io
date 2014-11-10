@@ -31,7 +31,7 @@ class TransactionController extends BaseController
             return new Response('Error finding community', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        return $app->json($community->getTransactions($app, $request->get('filter')));
+        return $app->json(Transaction::getActiveTransactions($community->getId(), $app));
     }
 
     /**

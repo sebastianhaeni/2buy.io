@@ -159,24 +159,6 @@ class Community extends BaseModel
     }
 
     /**
-     *
-     * @param Application $app            
-     * @param string $filter            
-     * @return multitype:unknown
-     */
-    public function getTransactions(Application $app, $filter)
-    {
-        $data = Transaction::getByCommunityId($this->getId(), $app, $filter);
-        $products = [];
-        
-        foreach ($data as $p) {
-            $products[] = $p;
-        }
-        
-        return $products;
-    }
-
-    /**
      * (non-PHPdoc)
      *
      * @see JsonSerializable::jsonSerialize()
