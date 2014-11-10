@@ -38,49 +38,67 @@ To extract new strings from the source, you can generate the twig templates into
 
 ## Features
 <ul>
-  <li>User authentication</li>
-  <li>Multiple communities</li>
-  <li>Add new articles
+  <li>[x] User authentication</li>
+  <li>[x] Multiple communities</li>
+  <li>[ ] Shopping List
     <ul>
-      <li>Autocomplete text box</li>
-      <li>Amount</li>
-      <li>Send notification to others</li>
-      <li>Add to history</li>
+      <li>[x] Add new articles
+        <ul>
+          <li>[x] Autocomplete text box</li>
+          <li>[x] Amount</li>
+          <li>[ ] Send notification to others</li>
+          <li>[x] Add to history</li>
+        </ul>
+      </li>
+      <li>[ ] Mark article as bought (swipe left)
+        <ul>
+          <li>[ ] Send notification to others</li>
+          <li>[ ] Add to history</li>
+        </ul>
+      </li>
+      <li>[ ] Delete article (swipe right)
+        <ul>
+          <li>[ ] Send notification to others</li>
+          <li>[ ] Add to history</li>
+        </ul>
+      </li>
+      <li>[ ] History
+        <ul>
+          <li>[ ] Show all passed actions</li>
+        </ul>
+      </li>
+      <li>[ ] Statistics
+        <ul>
+          <li>[ ] Show users weighted by orders (cake diagram)</li>
+          <li>[ ] Show users weighted by purchases (cake diagram)</li>
+        </ul>
+      </li>
+      <li>[ ] Article suggestions
+        <ul>
+          <li>[ ] Admin can define list of suggested articles</li>
+          <li>[ ] Admin can create articles</li>
+          <li>[ ] Admin can delete articles</li>
+          <li>[ ] Admin can edit articles</li>
+        </ul>
+      </li>
     </ul>
   </li>
-  <li>Mark article as bought (swipe left)
+  <li>[ ] Bills
     <ul>
-      <li>Send notification to others</li>
-      <li>Add to history</li>
+      <li>[ ] Upload bill</li>
+      <li>[ ] Show bills</li>
+      <li>[ ] Mark bill as paid</li>
+      <li>[ ] Delete bill</li>
+      <li>[ ] Bill history</li>
+      <li>[ ] Bill statistics</li>
     </ul>
   </li>
-  <li>Delete article (swipe right)
+  <li>[ ] Notifications
     <ul>
-      <li>Send notification to others</li>
-      <li>Add to history</li>
+      <li>[ ] E-Mail</li>
     </ul>
   </li>
-  <li>History
-    <ul>
-      <li>Show all passed actions</li>
-    </ul>
-  </li>
-  <li>Statistics
-    <ul>
-      <li>Show users weighted by orders (cake diagram)</li>
-      <li>Show users weighted by purchases (cake diagram)</li>
-    </ul>
-  </li>
-  <li>Article suggestions
-    <ul>
-      <li>Admin can define list of suggested articles</li>
-    </ul>
-  </li>
-  <li>Notifications
-    <ul>
-      <li>E-Mail</li>
-    </ul>
-  </li>
-  <li>Offline capability (no conflict merging)</li>
-  <li>Multi Language</li>
+  <li>[ ] Offline capability (no conflict merging)</li>
+  <li>[x] Multi Language</li>
 </ul>
+
