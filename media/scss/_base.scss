@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+.navbar-header ul {
+    list-style-type: none;
+}
+
 @media (max-width: $screen-xs-max) {
     .navbar>.container-fluid li .navbar-brand {
         margin-left: -35px;
