@@ -75,6 +75,31 @@ class Product extends BaseModel
 
     /**
      *
+     * @param int $id            
+     * @param Application $app            
+     * @param string $query            
+     * @return NULL|\ShoppingList\Model\Product
+     */
+    public static function getSuggestions($communityId, Application $app, $query)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ? AND inSuggestions = 1 AND name LIKE ?', array(
+            $communityId,
+            $query . '%'
+        ));
+        
+        $products = [];
+        
+        foreach ($data as $product) {
+            $products[] = [
+                'value' => self::getProduct($product)->getName()
+            ];
+        }
+        
+        return $products;
+    }
+
+    /**
+     *
      * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Product
      */

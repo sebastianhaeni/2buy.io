@@ -3,6 +3,8 @@ namespace ShoppingList\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
+use ShoppingList\Model\Community;
+use ShoppingList\Model\Product;
 
 /**
  *
@@ -26,5 +28,22 @@ class ProductController extends BaseController
         }
         
         return $app->json($community->getProducts($app));
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function getSuggestions(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return $app->json(Product::getSuggestions($community->getId(), $app, $request->get('query')));
     }
 }

@@ -70,6 +70,7 @@ class Router
         
         // Product
         $app->get('/v1/community/{id}/product', 'ShoppingList\\Controller\\ProductController::getProducts');
+        $app->get('/v1/community/{id}/product/suggestions', 'ShoppingList\\Controller\\ProductController::getSuggestions');
         
         // Statistics
         // TODO

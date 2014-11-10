@@ -58,6 +58,21 @@
         return false;
     });
     
+    var suggestions = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: '/api/v1/community/' + $.cookie('community') + '/product/suggestions?query=%QUERY'
+    });
+       
+    suggestions.initialize();
+       
+    $('#add-article-name').typeahead(null, {
+        name: 'add-article-name',
+        displayKey: 'value',
+        source: suggestions.ttAdapter()
+    });
+    
     loadArticles();
     
 })(jQuery);
+
