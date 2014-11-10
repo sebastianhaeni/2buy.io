@@ -1,22 +1,22 @@
-<div class="modal fade" id="edit-article" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="edit-transaction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <form action="#" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">{% trans "Edit article" %}</h4>
+                    <h4 class="modal-title">{% trans "Edit article" %}</h4>
                 </div>
                 <div class="modal-body">
                 
                     <div class="form-group">
-                        <label for="product-name">{% trans "Name" %}:</label>
-                        <input type="text" name="edit-product-name" id="edit-product-name" class="form-control" disabled />
+                        <label for="edit-transaction-name">{% trans "Name" %}:</label>
+                        <input type="text" name="edit-transaction-name" id="edit-transaction-name" class="form-control" disabled />
                     </div>
 
                     <div class="row">
                         <div class="form-group col-lg-2 col-md-2 col-xs-3">
-                            <label for="product-amount">{% trans "Amount" %}:</label> 
-                            <input type="number" name="edit-product-amount" id="edit-product-amount" class="form-control" value="1" min="1" max="500" />
+                            <label for="edit-transaction-amount">{% trans "Amount" %}:</label> 
+                            <input type="number" name="edit-transaction-amount" id="edit-transaction-amount" class="form-control" value="1" min="1" max="500" />
                         </div>
                     </div>
                     

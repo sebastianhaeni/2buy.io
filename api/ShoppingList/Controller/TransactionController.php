@@ -23,7 +23,7 @@ class TransactionController extends BaseController
      * @param Application $app            
      * @return \ShoppingList\Controller\Response
      */
-    public function getTransactions(Request $request, Application $app)
+    public function getActiveTransactions(Request $request, Application $app)
     {
         $community = Community::getById($request->get('id'), $app);
         
@@ -67,6 +67,69 @@ class TransactionController extends BaseController
         }
         
         $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, $amount, null, 0, null, null);
+        if (! $transaction->save($app)) {
+            return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return new Response('Success', StatusCodes::HTTP_OK);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function buy(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error finding community', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction = Transaction::getById($request->get('idTransaction'), $app);
+        
+        if ($transaction == null) {
+            return new Response('Error finding transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction->setBoughtBy($app['auth']->getUser($request)
+            ->getId());
+        $transaction->setCloseDate(BaseModel::getCurrentTimeStamp());
+        
+        if (! $transaction->save($app)) {
+            return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return new Response('Success', StatusCodes::HTTP_OK);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function cancel(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error finding community', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction = Transaction::getById($request->get('idTransaction'), $app);
+        
+        if ($transaction == null) {
+            return new Response('Error finding transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction->setCancelledBy($app['auth']->getUser($request)
+            ->getId());
+        $transaction->setCancelled(true);
+        $transaction->setCloseDate(BaseModel::getCurrentTimeStamp());
+        
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
         }

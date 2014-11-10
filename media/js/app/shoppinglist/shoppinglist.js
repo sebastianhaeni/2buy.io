@@ -1,18 +1,54 @@
 (function($) {
     'use strict';
+    
+    var tapHold = null;
+    var editingTransactionId = null;
 
-    function loadArticles(){
+    function loadTransactions(){
         $.ajax({
-            url : '/api/v1/community/' + $.cookie('community') + '/transaction?filter=boughtBy:null,cancelled:0',
+            url : '/api/v1/community/' + $.cookie('community') + '/transaction/active',
             success : function(response) {
-                $.each(response, function(i, article) {
-                    addArticle(article);
+                $.each(response, function(i, transaction) {
+                    addTransaction(transaction);
+                });
+                
+                $('#shoppinglist .transaction').draggable({ 
+                    axis: 'x', 
+                    revert: function(){
+                        return !$(this).hasClass('buyed') && !$(this).hasClass('cancelled');  
+                    },
+                    drag: function(){
+                        var width = $(this).width();
+                        var left = parseInt($(this).css('left'));
+                        
+                        if(left < -(width / 3)){
+                            $(this).addClass('buyed');
+                            return;
+                        } else if (left > (width / 3)){
+                            $(this).addClass('cancelled');
+                            return;
+                        }
+                        $(this).removeClass('buyed');
+                        $(this).removeClass('cancelled');
+                    },
+                    stop: function(){
+                        if($(this).hasClass('buyed')){
+                            buy($(this));
+                        } else if($(this).hasClass('cancelled')){
+                            cancel($(this));
+                        }
+                    }
+                }).on('mousedown', function(){
+                    tapHold = $(this);
+                    setTimeout(editTransaction.bind(this, $(this)), 600);
+                }).on('mouseup', function(){
+                    tapHold = null;
                 });
             }
         });
     }
 
-    function addArticle(a) {
+    function addTransaction(a) {
 
         if($('#shoppinglist div[data-id=' + a.id + ']').length > 0){
             return;
@@ -27,6 +63,48 @@
                 + product + reportedBy + reportedDate + '</div>');
 
         $('#shoppinglist .list').append(div);
+    }
+    
+    function buy(el){
+        var transactionId = el.attr('data-id');
+        $.ajax({
+            url: '/api/v1/community/' + $.cookie('community') + '/transaction/buy/' + transactionId,
+            type: 'put',
+            success: function(response){
+                el.hide('slow', function(){
+                    $(this).remove();
+                });
+            }
+        });
+    }
+
+    function cancel(el){
+        var transactionId = el.attr('data-id');
+        $.ajax({
+            url: '/api/v1/community/' + $.cookie('community') + '/transaction/cancel/' + transactionId,
+            type: 'put',
+            success: function(response){
+                el.hide('slow', function(){
+                    $(this).remove();
+                });
+            }
+        });
+    }
+    
+    function editTransaction(el){
+        if(tapHold == null){
+            return;
+        }
+        if($(this).hasClass('ui-draggable')){
+            var left = parseInt($(this).css('left'));
+            if(!isNaN(left) && Math.abs(left) > 5){
+                return;
+            }
+            editingTransactionId = $(this).attr('data-id');
+            $('#edit-transaction-name').val($(this).children('.product').html());
+            $('#edit-transaction-amount').val($(this).children('.amount').html());
+            $('#edit-transaction').modal('show');
+        }
     }
     
     $('#add-article form').submit(function(){
@@ -47,7 +125,7 @@
                 $('#add-article-name').val('');
                 $('#add-article-amount').val(1);
                 $('#add-article').modal('hide');
-                loadArticles();
+                loadTransactions();
             },
             error: function(){
                 $('#add-article form').find(':input').prop('disabled', false);
@@ -72,7 +150,7 @@
         source: suggestions.ttAdapter()
     });
     
-    loadArticles();
+    loadTransactions();
     
 })(jQuery);
 

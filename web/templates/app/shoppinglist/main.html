@@ -3,6 +3,7 @@
 
 {% block content %}
 {% include "app/shoppinglist/dialogs/_add-article.html" %}
+{% include "app/shoppinglist/dialogs/_edit-transaction.html" %}
 {% include "app/shoppinglist/dialogs/_barcode.html" %}
 <div class="container">
     <div class="row">
@@ -31,5 +32,6 @@
 {{ parent() }}
 <script src="/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
 <script src="/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script src="/bower_components/jquery-ui/ui/minified/draggable.min.js"></script>
 <script src="/media/js/app/shoppinglist/shoppinglist.js"></script>
 {% endblock %}

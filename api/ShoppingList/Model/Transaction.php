@@ -175,9 +175,9 @@ class Transaction extends BaseModel
     protected function update(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('UPDATE remember_me_token SET 
+            return 1 == $app['db']->executeUpdate('UPDATE transaction SET 
                 idProduct = ?, reportedBy = ?, reportedDate = ?, editedBy = ?, amount = ?, boughtBy = ?, cancelled = ?, cancelledBy = ?, closeDate = ? 
-                WHERE idToken= ?', array(
+                WHERE idTransaction = ?', array(
                 $this->getProductId(),
                 $this->getReportedBy(),
                 $this->getReportedDate(),
