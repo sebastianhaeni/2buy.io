@@ -82,9 +82,24 @@ class Product extends BaseModel
      */
     public static function getSuggestions($communityId, Application $app, $query)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ? AND inSuggestions = 1 AND name LIKE ?', array(
-            $communityId,
-            $query . '%'
+        $data = $app['db']->fetchAll('
+             SELECT
+                product.*
+            FROM
+                product
+            LEFT JOIN transaction
+            	ON transaction.idProduct = product.idProduct
+            WHERE
+                name LIKE ?
+                AND product.inSuggestions = 1
+            	AND product.idCommunity = ?
+            GROUP BY
+            	product.idProduct
+            ORDER BY
+                COUNT(product.idProduct) DESC,
+            	name', array(
+            $query . '%',
+            $communityId
         ));
         
         $products = [];

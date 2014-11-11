@@ -180,18 +180,26 @@
         return false;
     });
     
-    var suggestions = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: '/api/v1/community/' + $.cookie('community') + '/product/suggestions?query=%QUERY'
-    });
-       
-    suggestions.initialize();
-       
-    $('#add-article-name').typeahead(null, {
+    $('#add-article-name').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 0
+    }, {
         name: 'add-article-name',
         displayKey: 'value',
-        source: suggestions.ttAdapter()
+        source: function(query, cb) {
+            console.log(query);
+            $.ajax({
+                url: '/api/v1/community/' + $.cookie('community') + '/product/suggestions',
+                data: {query: query},
+                success: cb
+            });
+        }
+    }).on('click', function () {
+        var ev = $.Event('keydown');
+        ev.keyCode = ev.which = 40;
+        $(this).trigger(ev);
+        return true;
     });
     
     loadTransactions();
