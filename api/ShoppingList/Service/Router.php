@@ -37,7 +37,7 @@ class Router
     private function constructPublicRoutes(Application $app)
     {
         // API documentation
-        $app->get('/', 'ShoppingList\\Router::redirectToDev');
+        $app->get('/', 'ShoppingList\\Service\\Router::redirectToDev');
         
         // Home
         $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
@@ -93,7 +93,7 @@ class Router
     }
 
     /**
-     * Redirect requests to the api without any params to the API documentation paeg.
+     * Redirect requests to the api without any params to the API documentation page.
      *
      * @param Request $request            
      * @param Application $app            
