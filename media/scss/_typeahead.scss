@@ -8,6 +8,8 @@
 
 .tt-dropdown-menu {
     width: 80%;
+    max-height: 300px;
+    overflow-y: auto;
     margin-top: 8px;
     padding: 8px 0;
     background-color: #fff;
