@@ -77,9 +77,11 @@ class Router
         
         // Transaction
         $app->get('/v1/community/{id}/transaction/active', 'ShoppingList\\Controller\\TransactionController::getActiveTransactions');
+        $app->get('/v1/community/{id}/transaction/history', 'ShoppingList\\Controller\\TransactionController::getHistory');
         $app->post('/v1/community/{id}/transaction', 'ShoppingList\\Controller\\TransactionController::insertTransaction');
         $app->put('/v1/community/{id}/transaction/buy/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::buy');
         $app->put('/v1/community/{id}/transaction/cancel/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::cancel');
+        $app->put('/v1/community/{id}/transaction/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::update');
         
         // User
         $app->get('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');

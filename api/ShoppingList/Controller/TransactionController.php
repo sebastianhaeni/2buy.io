@@ -38,6 +38,23 @@ class TransactionController extends BaseController
      *
      * @param Request $request            
      * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function getHistory(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error finding community', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return $app->json(Transaction::getHistory($community->getId(), $app));
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function insertTransaction(Request $request, Application $app)
@@ -129,6 +146,43 @@ class TransactionController extends BaseController
             ->getId());
         $transaction->setCancelled(true);
         $transaction->setCloseDate(BaseModel::getCurrentTimeStamp());
+        
+        if (! $transaction->save($app)) {
+            return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return new Response('Success', StatusCodes::HTTP_OK);
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function update(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error finding community', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $amount = $request->get('amount');
+        
+        if ($amount == null || $amount <= 0) {
+            return new Response('Invalid amount value', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction = Transaction::getById($request->get('idTransaction'), $app);
+        
+        if ($transaction == null) {
+            return new Response('Error finding transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction->setEditedBy($app['auth']->getUser($request)
+            ->getId());
+        $transaction->setAmount($amount);
         
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);

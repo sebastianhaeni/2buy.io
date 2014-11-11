@@ -142,12 +142,36 @@
                 $('#add-article form').find(':input').prop('disabled', false);
                 $('#add-article-name').val('');
                 $('#add-article-amount').val(1);
+                $('#add-article-error-message').addClass('hide');
                 $('#add-article').modal('hide');
                 loadTransactions();
             },
             error: function(){
                 $('#add-article form').find(':input').prop('disabled', false);
                 $('#add-article-error-message').removeClass('hide');
+            }
+        });
+        
+        return false;
+    });
+    
+    $('#edit-transaction form').submit(function(){
+        var amount = $('#edit-transaction-amount').val();
+        $(this).find(':input').prop('disabled', true);
+        
+        $.ajax({
+            url: '/api/v1/community/' + $.cookie('community') + '/transaction/' + editingTransactionId,
+            data: {amount: amount},
+            method: 'put',
+            success: function(){
+                $('#edit-transaction form').find(':input').prop('disabled', false);
+                $('#edit-transaction-error-message').addClass('hide');
+                $('.transaction[data-id=' + editingTransactionId + '] .amount').html(amount);
+                $('#edit-transaction').modal('hide');
+            },
+            error: function(){
+                $('#edit-transaction form').find(':input').prop('disabled', false);
+                $('#edit-transaction-error-message').removeClass('hide');
             }
         });
         

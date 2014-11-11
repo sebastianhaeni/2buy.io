@@ -97,6 +97,17 @@ class Transaction extends BaseModel
      *
      * @param int $communityId            
      * @param Application $app            
+     * @return NULL|\ShoppingList\Model\Transaction
+     */
+    public static function getHistory($communityId, Application $app)
+    {
+        return self::getTransactions($communityId, $app, 'boughtBy IS NOT NULL OR cancelled = 1');
+    }
+
+    /**
+     *
+     * @param int $communityId            
+     * @param Application $app            
      * @param string $filter
      *            sanitized where clause
      * @return NULL|\ShoppingList\Model\Transaction
