@@ -90,6 +90,9 @@ class Router
         $app->put('/v1/user/password', 'ShoppingList\\Controller\\UserController::changePassword');
         $app->put('/v1/user', 'ShoppingList\\Controller\\UserController::updateCurrentUser');
         $app->get('/v1/user', 'ShoppingList\\Controller\\UserController::getInfo');
+        
+        // Barcode
+        $app->get('/v1/barcode/{barcode}', 'ShoppingList\\Controller\\BarcodeController::get');
     }
 
     /**

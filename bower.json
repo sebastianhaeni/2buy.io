@@ -25,6 +25,7 @@
     "typeahead.js": "0.10.5",
     "font-awesome": "~4.2.0",
     "jSync": "sebastianhaeni/jSync",
-    "moment": "~2.8.3"
+    "moment": "~2.8.3",
+    "BarcodeReader": "EddieLa/BarcodeReader"
   }
 }
