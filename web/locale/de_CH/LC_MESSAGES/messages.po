@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ShoppingList\n"
 "POT-Creation-Date: 2014-11-11 17:01+0100\n"
-"PO-Revision-Date: 2014-11-11 17:01+0100\n"
+"PO-Revision-Date: 2014-11-11 17:18+0100\n"
 "Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -17,19 +17,19 @@ msgstr ""
 #: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:27
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:90
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:35
 msgid "The settings could not be saved due to an unknown error."
-msgstr ""
+msgstr "Die Einstellungen konnten nicht gespeichert werden."
 
 #: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:42
 msgid "Email Address"
-msgstr ""
+msgstr "Email Adresse"
 
 #: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:50
 msgid "Phone Number"
-msgstr ""
+msgstr "Telefon Nr."
 
 #: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:59
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:69
@@ -43,33 +43,33 @@ msgstr ""
 #: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:50
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:87
 msgid "Close"
-msgstr ""
+msgstr "Schliessen"
 
 #: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:63
 #: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:65
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:54
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:53
 msgid "Add Article"
-msgstr ""
+msgstr "Artikel hinzufügen"
 
 #: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:57
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:47
 msgid "Barcode"
-msgstr ""
+msgstr "Barcode"
 
 #: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:67
 msgid "Buy"
-msgstr ""
+msgstr "Kaufen"
 
 #: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:71
 #: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:54
 #: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:54
 #: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:54
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:25
 #: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:55
@@ -106,33 +106,33 @@ msgstr "Kontakt"
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:27
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:94
 msgid "Change Password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:35
 msgid "The password could not be changed due to an unknown error."
-msgstr ""
+msgstr "Das Passwort konnte nicht gespeichert werden."
 
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:42
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:47
 msgid "Old Password"
-msgstr ""
+msgstr "Altes Passwort"
 
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:55
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:60
 msgid "New Password"
-msgstr ""
+msgstr "Neues Passwort"
 
 #: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:73
 msgid "Change"
-msgstr ""
+msgstr "Ändern"
 
 #: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:27
 msgid "Edit article"
-msgstr ""
+msgstr "Artikel bearbeiten"
 
 #: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:35
 msgid "The article could not be saved due to an error."
-msgstr ""
+msgstr "Der Artikel konnte nicht gespeichert werden."
 
 #: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:42
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:42
@@ -141,13 +141,13 @@ msgstr ""
 #: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:42
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:55
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:51
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:54
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:77
 msgid "Amount"
-msgstr ""
+msgstr "Anzahl"
 
 #: ../../cache/1f/8f/1ba1d5df3f216c24624a657fe823804383c8c1041c85853034cebf3fd03c.php:45
 #: ../../cache/b8/df/6ee52487f8667278cc7196df9db548ce1f369da922275e60bfe2af0b0cfb.php:45
@@ -157,7 +157,7 @@ msgstr "Kommt bald"
 
 #: ../../cache/30/d7/b8099e0bd5cf50746948fcca23fab2d9ee93892e156df95f1610059190f3.php:44
 msgid "Privacy Policy - %page%"
-msgstr ""
+msgstr "Datenschutz - %page%"
 
 #: ../../cache/33/2c/8f79f119fd22c70ebcc82b6ec7ce7c5d55298a4b840e0874c849339045cd.php:44
 #, fuzzy
@@ -174,11 +174,11 @@ msgstr "Oops. Seite konnte nicht gefunden werden."
 
 #: ../../cache/35/3c/b34770c5013e4003c3751dbda09ad3942638f4277c9d36a648c8aa17873f.php:54
 msgid "Communities"
-msgstr ""
+msgstr "Gemeinschaft"
 
 #: ../../cache/35/3c/b34770c5013e4003c3751dbda09ad3942638f4277c9d36a648c8aa17873f.php:63
 msgid "Create Community"
-msgstr ""
+msgstr "Gemeinschaft erstellen"
 
 #: ../../cache/38/e7/b02330675be1a6854a5d0b33682d8eedbe75b9ae58e54835d6b0a53994df.php:45
 #, fuzzy
@@ -187,21 +187,21 @@ msgstr "Kontakt - %page%"
 
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:27
 msgid "Add article to shopping list"
-msgstr ""
+msgstr "Artikel der Einkaufsliste hinzufügen"
 
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:35
 msgid "The article could not be added due to an error."
-msgstr ""
+msgstr "Der Artikel konnte nicht hinzugefügt werden."
 
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:46
 #: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:47
 msgid "3 characters mininum"
-msgstr ""
+msgstr "Minimal 3 Zeichen"
 
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:68
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:91
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #: ../../cache/39/fe/4dea1622923d22416a9919f4d1893e82f7bf7c39bb3f6de7f8370d785378.php:45
 #, fuzzy
@@ -210,31 +210,31 @@ msgstr "Seite nicht gefunden - %page%"
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:26
 msgid "Edit community"
-msgstr ""
+msgstr "Gemeinschaft bearbeiten"
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:42
 msgid "The community could not be edited due to an error."
-msgstr ""
+msgstr "Die Gemeinschaft konnte nicht bearbeitet werden."
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:65
 msgid "Members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:73
 msgid "Invites"
-msgstr ""
+msgstr "Einladungen"
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:82
 msgid "The invite could not be sent due to an error."
-msgstr ""
+msgstr "Die Einladung konnte nicht gesendet werden."
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:90
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:94
 msgid "Send"
-msgstr ""
+msgstr "Senden"
 
 #: ../../cache/4b/45/0d23b87472b7fb74f9280a2cc90668e0b0a657213de6ff28c70c1026f915.php:45
 msgid "Developers - %page%"
@@ -242,15 +242,15 @@ msgstr "Entwickler - %page%"
 
 #: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:27
 msgid "Create new community"
-msgstr ""
+msgstr "Neue Gemeinschaft erstellen"
 
 #: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:35
 msgid "The community could not be created due to an error."
-msgstr ""
+msgstr "Die Gemeinschaft konnte nicht erstellt werden."
 
 #: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:60
 msgid "Create"
-msgstr ""
+msgstr "Erstellen"
 
 #: ../../cache/65/d7/e873729b8f96d4925254ea4d94f119346d91d96f5fa9b4357ddc369980a3.php:46
 msgid "de_CH"
@@ -263,21 +263,21 @@ msgstr "English"
 #: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:26
 #: ../../cache/e0/a7/16fb6350f7c37b0ce75ec4753febc88246e2091d256be4bd461477f8a003.php:26
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:37
 #: ../../cache/e0/a7/16fb6350f7c37b0ce75ec4753febc88246e2091d256be4bd461477f8a003.php:37
 msgid "History"
-msgstr ""
+msgstr "Historie"
 
 #: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:48
 #: ../../cache/e0/a7/16fb6350f7c37b0ce75ec4753febc88246e2091d256be4bd461477f8a003.php:48
 msgid "Statistics"
-msgstr ""
+msgstr "Statistik"
 
 #: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:59
 msgid "Products"
-msgstr ""
+msgstr "Produkte"
 
 #: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:45
 msgid "Home"
@@ -293,41 +293,45 @@ msgstr "Anmelden"
 
 #: ../../cache/9a/24/f57d0c5101d0a0bc7c3de0358e30c21d91e19db16bc74eff60b48da098fa.php:47
 msgid "Purchase count"
-msgstr ""
+msgstr "Anzahl Käufe"
 
 #: ../../cache/9a/24/f57d0c5101d0a0bc7c3de0358e30c21d91e19db16bc74eff60b48da098fa.php:54
 msgid "Order count"
-msgstr ""
+msgstr "Anzahl Bestellungen"
 
 #: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:27
 msgid "Delete member"
-msgstr ""
+msgstr "Mitglied löschen"
 
 #: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:35
 msgid "The member could not be deleted due to an error."
-msgstr ""
+msgstr "Das Mitglied konnte nicht gelöscht werden."
 
 #: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:42
 msgid ""
 "Are you sure you want to delete the member <b id=\"delete-member-name"
 "\">unknown</b>?"
 msgstr ""
+"Sind Sie sicher, dass das Mitglied <b id=\"delete-member-name\">unbekannt</"
+"b> gelöscht werden soll?"
 
 #: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:27
 msgid "Clear history"
-msgstr ""
+msgstr "Historie leeren"
 
 #: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:35
 msgid "The history could not be cleared due to an error."
-msgstr ""
+msgstr "Die Historie konnte nicht geleert werden."
 
 #: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:42
 msgid "Are you sure you want to clear all transactions and statistics?"
 msgstr ""
+"Sind Sie sicher, dass alle Transaktionen und Statistiken gelöscht werden "
+"sollen?"
 
 #: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:54
 msgid "Clear"
-msgstr ""
+msgstr "Leeren"
 
 #: ../../cache/c2/72/ed34fa539357b8dd9b45f84b3478fd18c7e7fa5ee27b0a1a82c6195e5f96.php:44
 msgid "Contact - %page%"
@@ -335,7 +339,7 @@ msgstr "Kontakt - %page%"
 
 #: ../../cache/c3/41/2e0c5e9b825b20a4adc930d9384c496ab763e06b5086271556e281e271a2.php:27
 msgid "&copy; %year%"
-msgstr ""
+msgstr "&copy; %year%"
 
 #: ../../cache/c4/dd/a7c6cd91d559aa159f17f272b26029074c278d71d5ab5175c3f5a34ad796.php:45
 msgid "Get Started - %page%"
@@ -343,64 +347,68 @@ msgstr "Los legen - %page%"
 
 #: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:27
 msgid "Delete invite"
-msgstr ""
+msgstr "Einladung löschen"
 
 #: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:35
 msgid "The invite could not be deleted due to an error."
-msgstr ""
+msgstr "Die Einladung konnte nicht gelöscht werden."
 
 #: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:42
 msgid ""
 "Are you sure you want to delete the invite <b id=\"delete-invite-name"
 "\">unknown</b>?"
 msgstr ""
+"Sind Sie sicher, dass die Einladung <b id=\"delete-invite-name\">unbekannt</"
+"b> gelöscht werden soll?"
 
 #: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:27
 msgid "Delete community"
-msgstr ""
+msgstr "Gemeinschaft löschen"
 
 #: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:35
 msgid "The community could not be deleted due to an error."
-msgstr ""
+msgstr "Die Gemeinschaft konnte nicht gelöscht werden."
 
 #: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:42
 msgid ""
 "Are you sure you want to delete the community <b id=\"delete-community-name"
 "\">unknown</b>?"
 msgstr ""
+"Sind Sie sicher, dass die Gemeinschaft <b id=\"delete-commuity-name"
+"\">unbekannt</b> gelöscht werden soll?"
 
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:27
 msgid "Barcode Scanner"
-msgstr ""
+msgstr "Barcode Scanner"
 
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:40
 msgid "Rescan barcode"
-msgstr ""
+msgstr "Scan wiederholen"
 
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:64
 #: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:68
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:53
 msgid "Clear History"
-msgstr ""
+msgstr "Historie leeren"
 
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:57
 msgid "Shopping List"
-msgstr ""
+msgstr "Einkaufsliste"
 
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:65
 msgid "Bills"
-msgstr ""
+msgstr "Quittungen"
 
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:85
 msgid "Anonymous"
-msgstr ""
+msgstr "Unbekannt"
 
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:99
 msgid "Change Community"
-msgstr ""
+msgstr "Gemeinschaft ändern"
 
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:104
 #, fuzzy
