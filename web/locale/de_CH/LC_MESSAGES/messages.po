@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ShoppingList\n"
 "POT-Creation-Date: 2014-11-11 17:01+0100\n"
-"PO-Revision-Date: 2014-11-11 17:18+0100\n"
+"PO-Revision-Date: 2014-11-11 23:40+0100\n"
 "Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
 "Language-Team: \n"
 "Language: de_CH\n"
@@ -160,9 +160,8 @@ msgid "Privacy Policy - %page%"
 msgstr "Datenschutz - %page%"
 
 #: ../../cache/33/2c/8f79f119fd22c70ebcc82b6ec7ce7c5d55298a4b840e0874c849339045cd.php:44
-#, fuzzy
 msgid "Terms of Service - %page%"
-msgstr "Los legen - %page%"
+msgstr "AGB - %page%"
 
 #: ../../cache/33/51/630e279d96099f4e94579e071b02a0cacf4cd3e5218a9afe2b17f7e68aa9.php:44
 msgid "Page not found - %page%"
@@ -181,9 +180,8 @@ msgid "Create Community"
 msgstr "Gemeinschaft erstellen"
 
 #: ../../cache/38/e7/b02330675be1a6854a5d0b33682d8eedbe75b9ae58e54835d6b0a53994df.php:45
-#, fuzzy
 msgid "Sign Up - %page%"
-msgstr "Kontakt - %page%"
+msgstr "Registrieren - %page%"
 
 #: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:27
 msgid "Add article to shopping list"
@@ -204,9 +202,8 @@ msgid "Add"
 msgstr "Hinzufügen"
 
 #: ../../cache/39/fe/4dea1622923d22416a9919f4d1893e82f7bf7c39bb3f6de7f8370d785378.php:45
-#, fuzzy
 msgid "Sign In - %page%"
-msgstr "Seite nicht gefunden - %page%"
+msgstr "Anmelden - %page%"
 
 #: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:26
 msgid "Edit community"
@@ -411,9 +408,8 @@ msgid "Change Community"
 msgstr "Gemeinschaft ändern"
 
 #: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:104
-#, fuzzy
 msgid "Sign Out"
-msgstr "Registrieren"
+msgstr "Abmelden"
 
 #~ msgid "de"
 #~ msgstr "Deutsch"
