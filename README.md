@@ -62,15 +62,15 @@ To extract new strings from the source, you can generate the twig templates into
           <li>[x] Add to history</li>
         </ul>
       </li>
-      <li>[ ] History
+      <li>[x] History
         <ul>
-          <li>[ ] Show all passed actions</li>
+          <li>[x] Show all passed actions</li>
         </ul>
       </li>
-      <li>[ ] Statistics
+      <li>[x] Statistics
         <ul>
-          <li>[ ] Show users weighted by orders (cake diagram)</li>
-          <li>[ ] Show users weighted by purchases (cake diagram)</li>
+          <li>[x] Show users weighted by orders (cake diagram)</li>
+          <li>[x] Show users weighted by purchases (cake diagram)</li>
         </ul>
       </li>
       <li>[ ] Article suggestions
