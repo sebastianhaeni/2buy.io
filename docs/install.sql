@@ -139,13 +139,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `phone`) VALUES
-(1, 'Administrator', 'admin@shoppinglist.ch', '$2y$10$Kph8hEg215iNlolNbOJXDeUakBKSPNMw8CLO9EYyXjzUGE3qk7gKm', NULL);
-
---
 -- Constraints for dumped tables
 --
 
