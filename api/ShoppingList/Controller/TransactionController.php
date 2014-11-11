@@ -83,7 +83,19 @@ class TransactionController extends BaseController
             }
         }
         
-        $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, $amount, null, 0, null, null);
+        $transactions = Transaction::getActiveTransactions($community->getId(), $app, $selectedProduct->getId());
+        
+        if (count($transactions) == 0) {
+            $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, $amount, null, 0, null, null);
+        } else {
+            $transaction = $transactions[0];
+            if ($transaction->getAmount() > $amount) {
+                return new Response('Product already in list', StatusCodes::HTTP_OK);
+            }
+            
+            $transaction->setAmount($amount);
+        }
+        
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
         }

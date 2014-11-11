@@ -50,16 +50,16 @@ To extract new strings from the source, you can generate the twig templates into
           <li>[x] Add to history</li>
         </ul>
       </li>
-      <li>[ ] Mark article as bought (swipe left)
+      <li>[x] Mark article as bought (swipe left)
         <ul>
           <li>[ ] Send notification to others</li>
-          <li>[ ] Add to history</li>
+          <li>[x] Add to history</li>
         </ul>
       </li>
-      <li>[ ] Delete article (swipe right)
+      <li>[x] Delete article (swipe right)
         <ul>
           <li>[ ] Send notification to others</li>
-          <li>[ ] Add to history</li>
+          <li>[x] Add to history</li>
         </ul>
       </li>
       <li>[ ] History
