@@ -91,7 +91,7 @@ class Transaction extends BaseModel
      */
     public static function getActiveTransactions($communityId, Application $app, $productId = null)
     {
-        return self::getTransactions($communityId, $app, 'boughtBy IS NULL AND cancelled = 0', $productId);
+        return self::getTransactions($communityId, $app, 'closeDate IS NULL', $productId);
     }
 
     /**
@@ -102,7 +102,7 @@ class Transaction extends BaseModel
      */
     public static function getHistory($communityId, Application $app)
     {
-        return self::getTransactions($communityId, $app, 'boughtBy IS NOT NULL OR cancelled = 1');
+        return self::getTransactions($communityId, $app, 'closeDate IS NOT NULL');
     }
 
     /**
@@ -208,6 +208,24 @@ class Transaction extends BaseModel
                 $this->getCloseDate(),
                 $this->getId()
             ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @param int $communityId            
+     * @param Application $app            
+     * @return boolean
+     */
+    public static function clearHistory($communityId, Application $app)
+    {
+        try {
+            $app['db']->executeUpdate('DELETE transaction.* FROM transaction INNER JOIN product ON transaction.idProduct = product.idProduct WHERE product.idCommunity = ? AND closeDate IS NOT NULL', array(
+                $communityId
+            ));
+            return true;
         } catch (\PDOException $ex) {
             return false;
         }

@@ -9,6 +9,7 @@ use ShoppingList\Model\Product;
 use ShoppingList\Model\Transaction;
 use ShoppingList\Util\StatusCodes;
 use ShoppingList\Model\BaseModel;
+use ShoppingList\Model\CommunityHasUser;
 
 /**
  *
@@ -49,6 +50,37 @@ class TransactionController extends BaseController
         }
         
         return $app->json(Transaction::getHistory($community->getId(), $app));
+    }
+
+    /**
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \ShoppingList\Controller\Response
+     */
+    public function clearHistory(Request $request, Application $app)
+    {
+        $community = Community::getById($request->get('id'), $app);
+        
+        if ($community == null) {
+            return new Response('Error finding community', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
+        
+        if ($communityHasUser == null) {
+            return new Response('Error, user not in community', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if (! $communityHasUser->isAdmin()) {
+            return new Response('Error, user is not admin', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        if (! Transaction::clearHistory($community->getId(), $app)) {
+            return new Response('Error deleting database records', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return new Response('Success', StatusCodes::HTTP_OK);
     }
 
     /**

@@ -78,6 +78,7 @@ class Router
         // Transaction
         $app->get('/v1/community/{id}/transaction/active', 'ShoppingList\\Controller\\TransactionController::getActiveTransactions');
         $app->get('/v1/community/{id}/transaction/history', 'ShoppingList\\Controller\\TransactionController::getHistory');
+        $app->delete('/v1/community/{id}/transaction/history/clear', 'ShoppingList\\Controller\\TransactionController::clearHistory');
         $app->post('/v1/community/{id}/transaction', 'ShoppingList\\Controller\\TransactionController::insertTransaction');
         $app->put('/v1/community/{id}/transaction/buy/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::buy');
         $app->put('/v1/community/{id}/transaction/cancel/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::cancel');
