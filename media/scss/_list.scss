@@ -2,15 +2,15 @@
     overflow: hidden;
     
     &.list-sm .item {
-    	margin-bottom: .7em;
-    	
-    	.title {
-    		font-size: 1em;
-    	}
-    	input[type=checkbox] {
-    		width: 12px;
-    		height: 12px;
-    	}
+        margin-bottom: .7em;
+        
+        .title {
+            font-size: 1em;
+        }
+        input[type=checkbox] {
+            width: 12px;
+            height: 12px;
+        }
     }
     
     .item {
@@ -19,8 +19,19 @@
         margin-bottom: 1.5em;
         border-radius: 5px;
         overflow: hidden;
-		border: 1px solid #cdcdcd;
-		animation: item-drop-in .3s;
+        border: 1px solid #cdcdcd;
+        &:not(.disable-item-drop-in) {
+            animation: item-drop-in .3s;
+        }
+        transition: width .3s ease, height .3s ease, background-color 0.5s ease;
+        
+        &.holding:not(.ui-draggable-dragging) {
+            animation: item-holding .6s;
+        }
+        
+        &.ui-draggable {
+            cursor: move;
+        }
         
         & > * {
             background: none;
@@ -29,7 +40,7 @@
         }
         
         & > .input-group-addon {
-        	background-color: #ededed;
+            background-color: #ededed;
         }
         
         .title {
@@ -39,19 +50,19 @@
         }
         
         input[type=checkbox] {
-        	width: 20px;
-        	height: 20px;
+            width: 20px;
+            height: 20px;
         }
         
         .glyphicon-envelope {
-        	top: -3px;
+            top: -3px;
         }
         
         &.clickable {
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
             
             .title {
-            	cursor: pointer;
+                cursor: pointer;
             }
             &:hover {
                 background-color: #ededed;
@@ -63,14 +74,19 @@
     }
 }
 
-
 @keyframes item-drop-in {
     from {
-    	top: 20px;
-    	opacity: 0;
+        top: 20px;
+        opacity: 0;
     }
     to {
-		top: 0;
-		opacity: 1;
-	}
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes item-holding {
+    to {
+        box-shadow: 0 0 15px #555 inset;
+    }
 }

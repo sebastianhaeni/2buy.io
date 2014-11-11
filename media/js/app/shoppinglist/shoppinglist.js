@@ -1,6 +1,7 @@
 (function($) {
     'use strict';
     
+    var holdTime = 600;
     var tapHold = null;
     var editingTransactionId = null;
 
@@ -39,11 +40,27 @@
                         }
                     }
                 }).on('mousedown', function(){
-                    tapHold = $(this);
-                    setTimeout(editTransaction.bind(this, $(this)), 600);
+                    tapHold = $(this).addClass('holding').attr('data-hold-start', new Date().getTime());
+                    setTimeout(editTransaction.bind(this, $(this)), holdTime);
+                }).on('mouseout', function(){
+                    if(tapHold != null){
+                        tapHold.removeClass('holding');
+                        tapHold = null;
+                    }
                 }).on('mouseup', function(){
-                    tapHold = null;
+                    if(tapHold != null){
+                        tapHold.removeClass('holding');
+                        tapHold = null;
+                    }
+                }).on('click', function(){
+                    console.log(this);
+                    $('#shoppinglist .transaction').removeClass('active');
+                    $(this).addClass('active');
                 });
+                
+                setTimeout(function(){
+                    $('#shoppinglist .transaction').addClass('disable-item-drop-in');
+                }, 300);
             }
         });
     }
@@ -56,11 +73,12 @@
         
         var amount = '<span class="amount">' + a.amount + '</span>';
         var product = '<span class="product">' + a.product.name + '</span>';
-        var reportedBy = '<span class="reportedBy">' + a.reporter.name + '</span>';
-        var reportedDate = '<span class="reportedDate">' + moment(a.reportedDate).format('lll') + '</span>';
-
-        var div = $('<div class="item transaction" data-id="' + a.id + '">' + amount
-                + product + reportedBy + reportedDate + '</div>');
+        
+        var details = '<div class="details">'
+            + '<span class="reportedBy details">' + a.reporter.name + '</span>' 
+            + '<span class="reportedDate details">' + moment(a.reportedDate).format('lll') + '</span></div>';
+        
+        var div = $('<div class="item transaction" data-id="' + a.id + '">' + amount + product + details + '</div>');
 
         $('#shoppinglist .list').append(div);
     }
@@ -92,7 +110,7 @@
     }
     
     function editTransaction(el){
-        if(tapHold == null){
+        if(tapHold == null || parseInt($(this).attr('data-hold-start')) > new Date().getTime() - holdTime){
             return;
         }
         if($(this).hasClass('ui-draggable')){

@@ -1,7 +1,7 @@
 
 .transaction {
     touch-action: cross-slide-x;
-    transition: background-color 0.5s ease;
+    height: 36px;
     
     &.buyed {
         background-color: rgb(92, 184, 92);
@@ -28,6 +28,15 @@
             content: 'x';
         }
     }
+    
+    .details {
+        margin: 10px;
+        clear: both;
+    }
+    
+    &.active {
+        height: 80px;
+    }
 
     .reportedDate {
         font-size: 0.8em;
@@ -42,13 +51,6 @@
         line-height: 35px;
     }
 
-    .buttons {
-        float: right;
-        display: block;
-        & > button:first-child {
-            margin-right: 10px;
-        }
-    }
 }
 
 #transactionlist .transaction span {
