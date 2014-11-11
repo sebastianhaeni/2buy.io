@@ -153,6 +153,17 @@ class UserController extends BaseController
      */
     public function getInfo(Request $request, Application $app)
     {
-        return $app->json($app['auth']->getUser($request));
+        $user = $app['auth']->getUser($request)->jsonSerialize();
+        
+        $communityId = $request->cookies->get('community');
+        if (! empty($communityId)) {
+            $communityHasUser = CommunityHasUser::getById($communityId . ':' . $user['id'], $app);
+            
+            if ($communityHasUser != null) {
+                $user['communityHasUser'] = $communityHasUser;
+            }
+        }
+        
+        return $app->json($user);
     }
 }
