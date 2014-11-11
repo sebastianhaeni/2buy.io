@@ -4,13 +4,19 @@
     height: 36px;
     
     &.buyed {
+        &.closed {
+            animation: item-drop-out-left .3s forwards;
+        }
         background-color: rgb(92, 184, 92);
     }
 
     &.cancelled {
+        &.closed {
+            animation: item-drop-out-right .3s forwards;
+        }
         background-color: rgb(217, 83, 79);
     }
-
+    
     .product {
         display: block;
         float: left;

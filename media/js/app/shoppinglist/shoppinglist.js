@@ -90,9 +90,10 @@
             url: '/api/v1/community/' + $.cookie('community') + '/transaction/buy/' + transactionId,
             type: 'put',
             success: function(response){
-                el.hide('slow', function(){
-                    $(this).remove();
-                });
+                el.addClass('closed');
+            },
+            error: function(){
+                alert('Error!');
             }
         });
     }
@@ -103,9 +104,10 @@
             url: '/api/v1/community/' + $.cookie('community') + '/transaction/cancel/' + transactionId,
             type: 'put',
             success: function(response){
-                el.hide('slow', function(){
-                    $(this).remove();
-                });
+                el.addClass('closed');
+            },
+            error: function(){
+                alert('Error!');
             }
         });
     }
