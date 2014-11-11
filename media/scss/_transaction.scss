@@ -2,6 +2,7 @@
 .transaction {
     touch-action: cross-slide-x;
     height: 36px;
+    background-color: rgba(255, 255, 255, .5);
     
     &.buyed {
         &.closed {
@@ -67,6 +68,30 @@
 
 #transactionlist .reportedBy {
     font-weight: bold;
+}
+
+.swipe-instructions-background {
+	width: 100%; 
+	overflow: hidden;
+	position: absolute; 
+	height: 400px;
+	left: 0;
+	
+	.cart, .trash {
+		position: absolute;
+        height: 200px;
+        width: 200px;
+        font-size: 200px;
+        opacity: .2;
+	}
+	
+	.cart {
+        left: -100px;
+	}
+	
+	.trash {
+		right: -100px;
+	}
 }
 
 .swipe-instructions {
