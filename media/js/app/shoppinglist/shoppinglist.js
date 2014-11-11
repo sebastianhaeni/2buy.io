@@ -53,7 +53,6 @@
                         tapHold = null;
                     }
                 }).on('click', function(){
-                    console.log(this);
                     $('#shoppinglist .transaction').removeClass('active');
                     $(this).addClass('active');
                 });

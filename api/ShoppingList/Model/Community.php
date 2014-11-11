@@ -57,6 +57,64 @@ class Community extends BaseModel
     }
 
     /**
+     *
+     * @param Application $app            
+     * @return boolean
+     */
+    public function getPurchaseData(Application $app)
+    {
+        try {
+            return $app['db']->fetchAll('
+                SELECT
+                	COUNT(buyer.idUser) as buyCount,
+                	buyer.idUser as buyerId,
+                    buyer.name as buyerName
+                FROM
+                	transaction
+                INNER JOIN user buyer
+                	ON transaction.boughtBy = buyer.idUser
+                INNER JOIN community_has_user
+                    ON buyer.idUser = community_has_user.idUser
+                WHERE community_has_user.idCommunity = ?
+                GROUP BY transaction.boughtBy
+                ORDER BY buyCount DESC', [
+                $this->getId()
+            ]);
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
+     *
+     * @param Application $app            
+     * @return boolean
+     */
+    public function getOrderData(Application $app)
+    {
+        try {
+            return $app['db']->fetchAll('
+                SELECT
+                	COUNT(reporter.idUser) as reportCount,
+                	reporter.idUser as reporterId,
+                    reporter.name as reporterName
+                FROM
+                	transaction
+                INNER JOIN user reporter
+                	ON transaction.reportedBy = reporter.idUser
+                INNER JOIN community_has_user
+                    ON reporter.idUser = community_has_user.idUser
+                WHERE community_has_user.idCommunity = ?
+                GROUP BY transaction.reportedBy
+                ORDER BY reportCount DESC', [
+                $this->getId()
+            ]);
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    /**
      * (non-PHPdoc)
      *
      * @see \ShoppingList\Model\BaseModel::insert()

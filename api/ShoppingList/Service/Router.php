@@ -73,7 +73,8 @@ class Router
         $app->get('/v1/community/{id}/product/suggestions', 'ShoppingList\\Controller\\ProductController::getSuggestions');
         
         // Statistics
-        // TODO
+        $app->get('/v1/community/{id}/stats/purchases', 'ShoppingList\\Controller\\StatisticsController::getPurchaseData');
+        $app->get('/v1/community/{id}/stats/orders', 'ShoppingList\\Controller\\StatisticsController::getOrderData');
         
         // Transaction
         $app->get('/v1/community/{id}/transaction/active', 'ShoppingList\\Controller\\TransactionController::getActiveTransactions');
