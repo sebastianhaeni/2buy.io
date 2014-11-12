@@ -1,0 +1,7 @@
+.settings/
+.project
+.buildpath
+bower_components/
+vendor/
+*.bak
+/config.php
