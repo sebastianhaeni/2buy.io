@@ -15,6 +15,9 @@ if (! stream_resolve_include_path($autoload)) {
 require_once $autoload;
 require_once $config;
 
+// Providing password_hash() and password_verify() in PHP <= 5.4
+require_once __DIR__.'/vendor/Antnee/phpPasswordHashingLib/passwordLib.php';
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Router;
