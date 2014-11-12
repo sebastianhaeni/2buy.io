@@ -5,6 +5,7 @@
     var canvas;
     var workerCount = 0;
     var resultArray = [];
+    var maxCanvasSize = 1500;
 
     $('#barcode-scanner').on('show.bs.modal', function() {
         $('#barcode-image').click();
@@ -39,7 +40,7 @@
         ctx = canvas.getContext("2d");
 
         $img.load(function() {
-            canvas.width = this.width > 400 ? 400 : this.width;
+            canvas.width = this.width > maxCanvasSize ? maxCanvasSize : this.width;
             canvas.height = this.height / (this.width / canvas.width);
 
             ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
