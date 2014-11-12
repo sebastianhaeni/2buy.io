@@ -5,7 +5,7 @@
     var canvas;
     var workerCount = 0;
     var resultArray = [];
-    var maxCanvasSize = 1600;
+    var canvasSize = 400;
 
     $('#barcode-scanner').on('show.bs.modal', function() {
         $('#barcode-image').click();
@@ -40,7 +40,7 @@
         ctx = canvas.getContext("2d");
 
         $img.load(function() {
-            canvas.width = this.width > maxCanvasSize ? maxCanvasSize : this.width;
+            canvas.width = this.width > canvasSize ? canvasSize : this.width;
             canvas.height = this.height / (this.width / canvas.width);
 
             ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
@@ -53,8 +53,7 @@
 
         var data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
 
-//        workerCount = 4;
-        workerCount = 1;
+        workerCount = 4;
 
         DecodeWorker.postMessage({
             ImageData : data,
@@ -64,30 +63,30 @@
             DecodeNr: 1,
             cmd : "normal"
         });
-//        RightWorker.postMessage({
-//            ImageData : data,
-//            Width : canvas.width,
-//            Height : canvas.height,
-//            FormatPriority: ['EAN-13'],
-//            DecodeNr: 1,
-//            cmd : "right"
-//        });
-//        LeftWorker.postMessage({
-//            ImageData : data,
-//            Width : canvas.width,
-//            Height : canvas.height,
-//            FormatPriority: ['EAN-13'],
-//            DecodeNr: 1,
-//            cmd : "left"
-//        });
-//        FlipWorker.postMessage({
-//            ImageData : data,
-//            Width : canvas.width,
-//            Height : canvas.height,
-//            FormatPriority: ['EAN-13'],
-//            DecodeNr: 1,
-//            cmd : "flip"
-//        });
+        RightWorker.postMessage({
+            ImageData : data,
+            Width : canvas.width,
+            Height : canvas.height,
+            FormatPriority: ['EAN-13'],
+            DecodeNr: 1,
+            cmd : "right"
+        });
+        LeftWorker.postMessage({
+            ImageData : data,
+            Width : canvas.width,
+            Height : canvas.height,
+            FormatPriority: ['EAN-13'],
+            DecodeNr: 1,
+            cmd : "left"
+        });
+        FlipWorker.postMessage({
+            ImageData : data,
+            Width : canvas.width,
+            Height : canvas.height,
+            FormatPriority: ['EAN-13'],
+            DecodeNr: 1,
+            cmd : "flip"
+        });
 
     }
 
@@ -128,6 +127,7 @@
             });
         } else if (resultArray.length === 0) {
             if (workerCount <= 0) {
+                // TODO show proper dialog
                 alert('Erkennung fehlgeschlagen. Versuchen Sie es erneut.');
                 $('#barcode-scanner .progress').hide();
             }
@@ -136,13 +136,13 @@
 
     var path = '/bower_components/BarcodeReader/src/DecoderWorker.js';
 
-//    var DecodeWorker = new Worker(path);
-//    var RightWorker = new Worker(path);
-//    var LeftWorker = new Worker(path);
-//    var FlipWorker = new Worker(path);
+    var DecodeWorker = new Worker(path);
+    var RightWorker = new Worker(path);
+    var LeftWorker = new Worker(path);
+    var FlipWorker = new Worker(path);
 
-//    DecodeWorker.onmessage = receiveMessage;
-//    RightWorker.onmessage = receiveMessage;
-//    LeftWorker.onmessage = receiveMessage;
-//    FlipWorker.onmessage = receiveMessage;
+    DecodeWorker.onmessage = receiveMessage;
+    RightWorker.onmessage = receiveMessage;
+    LeftWorker.onmessage = receiveMessage;
+    FlipWorker.onmessage = receiveMessage;
 })(jQuery);
