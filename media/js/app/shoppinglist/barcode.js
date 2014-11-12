@@ -53,7 +53,8 @@
 
         var data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
 
-        workerCount = 4;
+//        workerCount = 4;
+        workerCount = 1;
 
         DecodeWorker.postMessage({
             ImageData : data,
