@@ -5,7 +5,7 @@
     var canvas;
     var workerCount = 0;
     var resultArray = [];
-    var maxCanvasSize = 800;
+    var maxCanvasSize = 1600;
 
     $('#barcode-scanner').on('show.bs.modal', function() {
         $('#barcode-image').click();
@@ -63,30 +63,30 @@
             DecodeNr: 1,
             cmd : "normal"
         });
-        RightWorker.postMessage({
-            ImageData : data,
-            Width : canvas.width,
-            Height : canvas.height,
-            FormatPriority: ['EAN-13'],
-            DecodeNr: 1,
-            cmd : "right"
-        });
-        LeftWorker.postMessage({
-            ImageData : data,
-            Width : canvas.width,
-            Height : canvas.height,
-            FormatPriority: ['EAN-13'],
-            DecodeNr: 1,
-            cmd : "left"
-        });
-        FlipWorker.postMessage({
-            ImageData : data,
-            Width : canvas.width,
-            Height : canvas.height,
-            FormatPriority: ['EAN-13'],
-            DecodeNr: 1,
-            cmd : "flip"
-        });
+//        RightWorker.postMessage({
+//            ImageData : data,
+//            Width : canvas.width,
+//            Height : canvas.height,
+//            FormatPriority: ['EAN-13'],
+//            DecodeNr: 1,
+//            cmd : "right"
+//        });
+//        LeftWorker.postMessage({
+//            ImageData : data,
+//            Width : canvas.width,
+//            Height : canvas.height,
+//            FormatPriority: ['EAN-13'],
+//            DecodeNr: 1,
+//            cmd : "left"
+//        });
+//        FlipWorker.postMessage({
+//            ImageData : data,
+//            Width : canvas.width,
+//            Height : canvas.height,
+//            FormatPriority: ['EAN-13'],
+//            DecodeNr: 1,
+//            cmd : "flip"
+//        });
 
     }
 
@@ -135,13 +135,13 @@
 
     var path = '/bower_components/BarcodeReader/src/DecoderWorker.js';
 
-    var DecodeWorker = new Worker(path);
-    var RightWorker = new Worker(path);
-    var LeftWorker = new Worker(path);
-    var FlipWorker = new Worker(path);
+//    var DecodeWorker = new Worker(path);
+//    var RightWorker = new Worker(path);
+//    var LeftWorker = new Worker(path);
+//    var FlipWorker = new Worker(path);
 
-    DecodeWorker.onmessage = receiveMessage;
-    RightWorker.onmessage = receiveMessage;
-    LeftWorker.onmessage = receiveMessage;
-    FlipWorker.onmessage = receiveMessage;
+//    DecodeWorker.onmessage = receiveMessage;
+//    RightWorker.onmessage = receiveMessage;
+//    LeftWorker.onmessage = receiveMessage;
+//    FlipWorker.onmessage = receiveMessage;
 })(jQuery);
