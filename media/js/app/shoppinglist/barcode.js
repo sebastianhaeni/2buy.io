@@ -5,7 +5,7 @@
     var canvas;
     var workerCount = 0;
     var resultArray = [];
-    var maxCanvasSize = 1500;
+    var maxCanvasSize = 800;
 
     $('#barcode-scanner').on('show.bs.modal', function() {
         $('#barcode-image').click();
