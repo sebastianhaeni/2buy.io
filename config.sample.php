@@ -2,7 +2,7 @@
 global $config;
 $config = array();
 
-$config['product_name'] = 'SebaList';
+$config['product_name'] = 'Shopping List';
 $config['debug']        = true;
 $config['http_cache']   = false;
 $config['site_url']     = 'http://localhost/';
@@ -20,8 +20,8 @@ $config['email'] = [
     'server'	 => 'localhost',
     'port' 		 => 465,
     'security'   => 'ssl',
-    'username'   => 'TODO',
-    'password'   => 'TODO'
+    'username'   => '',
+    'password'   => ''
 ];
 
 $config['i18n'] = [
