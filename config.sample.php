@@ -2,7 +2,7 @@
 global $config;
 $config = array();
 
-$config['product_name'] = 'Shopping List';
+$config['product_name'] = '2buy.io';
 $config['debug']        = true;
 $config['http_cache']   = false;
 $config['site_url']     = 'http://localhost/';
