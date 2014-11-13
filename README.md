@@ -1,7 +1,7 @@
-Shopping List
+2buy.io
 ===================================
 
-## Dependencies
+## Environment Dependencies
 1.  [nodejs](http://nodejs.org/)
 2.  [Bower](http://bower.io/) (<code>npm install -g bower</code>)
 3.  [Composer](https://getcomposer.org/)
@@ -35,6 +35,14 @@ The app is intended to work very well on mobile devices. Desktop resolutions sho
 To translate text into different locales, we use gettext. To edit the translations you can use [PoEdit](http://poedit.net/).
 
 To extract new strings from the source, you can generate the twig templates into php files with <code>php web/locale/update-i18n.php</code> and then update the .po file within PoEdit.
+
+## Branching & Deployment
+
+The stable branch is 'prod'.
+Changes are first to be tested on stage before being merged into 'prod' branch.
+'master' and 'stage' are deployed automatically to the respective server ([dev.2buy.io](http://dev.2buy.io) resp. [stage.2buy.io](http://stage.2buy.io)). Updating bower, composer or the database will still require human action though.
+
+Production deployment is done manually by the person in charge of releases.
 
 ## Features
 <ul>
