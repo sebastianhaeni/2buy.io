@@ -98,7 +98,7 @@ class Product extends BaseModel
             ORDER BY
                 COUNT(product.idProduct) DESC,
             	name', array(
-            $query . '%',
+            '%' . $query . '%',
             $communityId
         ));
         

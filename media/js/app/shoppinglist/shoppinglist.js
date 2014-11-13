@@ -187,7 +187,6 @@
         name: 'add-article-name',
         displayKey: 'value',
         source: function(query, cb) {
-            console.log(query);
             $.ajax({
                 url: '/api/v1/community/' + $.cookie('community') + '/product/suggestions',
                 data: {query: query},
@@ -199,6 +198,12 @@
         ev.keyCode = ev.which = 40;
         $(this).trigger(ev);
         return true;
+    });
+    
+    $('#add-article').on('shown.bs.modal', function() {
+        var ev = $.Event('keydown');
+        ev.keyCode = ev.which = 40;
+        $('#add-article-name').focus().trigger(ev);
     });
     
     loadTransactions();
