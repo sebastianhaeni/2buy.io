@@ -25,4 +25,4 @@ bind_textdomain_codeset('messages', 'UTF-8');
 // Choose domain
 textdomain('messages');
 
-$config['i18n']['selectedLang'] = $lang;
+$app['selectedLang'] = $lang;
