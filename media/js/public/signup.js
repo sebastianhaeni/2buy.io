@@ -21,6 +21,14 @@
 
         return false;
     });
+    
+    $('#register-password-repeat').keyup(function(){
+        if($(this).val() != $('#register-password').val()){
+            this.setCustomValidity("✗");
+        } else {
+            this.setCustomValidity("");
+        }
+    });
 
     $('#signup-form :input').on('input', function() {
         $('#signup-error-message').addClass('hide');
