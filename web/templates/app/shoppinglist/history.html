@@ -1,7 +1,12 @@
 {% extends "app/shoppinglist/layout.html" %}
 
-{% block content %}
+{% block title %}
+    {% set page = parent() %}
+    {% set app_name = block('app_name') %}
+    {% trans %}History - {{ app_name }} - {{ page }}{% endtrans %}
+{% endblock %}
 
+{% block content %}
 {% include "app/shoppinglist/dialogs/_clear-history.html" %}
 
 <div class="container">

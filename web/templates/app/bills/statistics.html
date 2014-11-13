@@ -1,5 +1,11 @@
 {% extends "app/bills/layout.html" %}
 
+{% block title %}
+    {% set page = parent() %}
+    {% set app_name = block('app_name') %}
+    {% trans %}Statistics - {{ app_name }} - {{ page }}{% endtrans %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
