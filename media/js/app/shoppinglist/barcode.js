@@ -134,6 +134,10 @@
         }
     }
 
+    if(!$('#shoppinglist').length){
+    	return;
+    }
+    
     var path = '/bower_components/BarcodeReader/src/DecoderWorker.js';
 
     var DecodeWorker = new Worker(path);
