@@ -11,7 +11,8 @@
 2. Install [nodejs](http://nodejs.org/)
 3. Install [Composer](https://getcomposer.org/)
 4. Install [Ruby](https://www.ruby-lang.org/en/installation/)
-5. Execute the following script in the project dir:
+5. Install [Bower](http://bower.io/) (<code>npm install -g bower</code>)
+6. Execute the following script in the project dir:
 
     ```
     gem install sass
@@ -20,7 +21,7 @@
     npm install
     bower install
     ```
-6. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
+7. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
 
