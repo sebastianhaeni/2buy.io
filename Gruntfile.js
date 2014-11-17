@@ -26,7 +26,7 @@ module.exports = function(grunt) {
                          'bower_components/jquery-ui/ui/mouse.js',
                          'bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
                          'bower_components/jquery.cookie/jquery.cookie.js',
-                         'bower_components/chart.js/Chart.min.js',
+                         'bower_components/chartjs/Chart.js',
                          'bower_components/typeahead.js/dist/typeahead.bundle.min.js',
                          'bower_components/moment/min/moment-with-locales.js',
                          'bower_components/jquery-ui/ui/draggable.js',

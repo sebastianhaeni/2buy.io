@@ -12,7 +12,8 @@
 3. Install [Composer](https://getcomposer.org/)
 4. Install [Ruby](https://www.ruby-lang.org/en/installation/)
 5. Install [Bower](http://bower.io/) (<code>npm install -g bower</code>)
-6. Execute the following script in the project dir:
+6. Install Grunt-Cli (<code>npm install grunt-cli -g</code>)
+7. Execute the following script in the project dir:
 
     ```
     gem install sass
@@ -21,7 +22,7 @@
     npm install
     bower install
     ```
-7. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
+8. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
 
