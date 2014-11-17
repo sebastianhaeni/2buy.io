@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% block head %}
-<meta charset="utf-8">
-<title>{% block title %}{{ config['product_name'] }}{% endblock %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<link href="/media/css/public.css" rel="stylesheet">
-{% endblock %}
+    {% block head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{{ config['product_name'] }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href="/media/css/public.css" rel="stylesheet">
+    <link rel="manifest" href="/media/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name=”theme-color” content=”#ffffff″>
+    <link rel="apple-touch-startup-image" href="/media/img/logo2buy192.png">
+    <link rel=”icon” type="image/png" sizes=”192×192″ href=”/media/img/logo2buy192.png”>
+    {% endblock %}
 </head>
 <body>
 

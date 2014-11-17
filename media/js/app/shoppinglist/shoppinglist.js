@@ -75,7 +75,7 @@
         
         var details = '<div class="details">'
             + '<span class="reportedBy details">' + a.reporter.name + '</span>' 
-            + '<span class="reportedDate details">' + moment(a.reportedDate).format('lll') + '</span></div>';
+            + '<span class="reportedDate details">' + moment(a.reportedDate).format('l') + '</span></div>';
         
         var div = $('<div class="item transaction" data-id="' + a.id + '">' + amount + product + details + '</div>');
 
