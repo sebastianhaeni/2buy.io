@@ -14,6 +14,7 @@
 5. Execute the following script in the project dir:
 
     ```
+    gem install sass
     gem install compass
     composer install
     npm install

@@ -58,10 +58,10 @@ module.exports = function(grunt) {
                     spawn: false,
                 }
             },
-			css: {
-				files: ['**/*.scss'],
-				tasks: ['compass']
-			}
+            css: {
+                files: ['**/*.scss'],
+                tasks: ['compass']
+            }
         },
     });
 
