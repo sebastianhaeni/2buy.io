@@ -83,7 +83,7 @@ class Product extends BaseModel
     public static function getSuggestions($communityId, Application $app, $query)
     {
         $data = $app['db']->fetchAll('
-             SELECT
+            SELECT
                 product.*
             FROM
                 product
@@ -96,7 +96,7 @@ class Product extends BaseModel
             GROUP BY
             	product.idProduct
             ORDER BY
-                COUNT(product.idProduct) DESC,
+                COUNT(transaction.idProduct) DESC,
             	name', array(
             '%' . $query . '%',
             $communityId

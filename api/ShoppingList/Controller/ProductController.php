@@ -5,6 +5,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use ShoppingList\Model\Community;
 use ShoppingList\Model\Product;
+use Symfony\Component\HttpFoundation\Response;
+use ShoppingList\Util\StatusCodes;
 
 /**
  *
