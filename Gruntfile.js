@@ -52,14 +52,14 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['**/*.js'],
+                files: ['media/**/*.js'],
                 tasks: ['uglify'],
                 options: {
                     spawn: false,
                 }
             },
             css: {
-                files: ['**/*.scss'],
+                files: ['media/scss/*.scss'],
                 tasks: ['compass']
             }
         },
