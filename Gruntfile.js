@@ -12,7 +12,6 @@ module.exports = function(grunt) {
                     'media/js/dist/public.min.js': [
                         'bower_components/jquery/dist/jquery.min.js',
                         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-                        'bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
                         'bower_components/jquery.cookie/jquery.cookie.js',
                         'media/js/*.js', 
                         'media/js/public/*.js', 
