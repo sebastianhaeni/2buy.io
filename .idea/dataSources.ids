@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - shoppinglist@localhost" uuid="266b32a3-e872-4ad2-b14d-5b0c9b5a2454">
+    <database-info product="MySQL" version="5.6.16" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.26 ( Revision: ${bzr.revision-id} )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="shoppinglist"/>
+    <table name="community" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idCommunity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idCommunity"/>
+      <exported-key name="community_has_user_ibfk_1" table="community_has_user" schema="" catalog="shoppinglist" columns="idCommunity"/>
+      <exported-key name="invite_ibfk_1" table="invite" schema="" catalog="shoppinglist" columns="idCommunity"/>
+      <exported-key name="product_ibfk_1" table="product" schema="" catalog="shoppinglist" columns="idCommunity"/>
+    </table>
+    <table name="community_has_user" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idCommunity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="admin" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="receiveNotifications" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="idCommunity,idUser"/>
+      <foreign-key name="community_has_user_ibfk_1" columns="idCommunity" ref-table="community" ref-schema="" ref-catalog="shoppinglist" ref-columns="idCommunity" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="community_has_user_ibfk_2" columns="idUser" ref-table="user" ref-schema="" ref-catalog="shoppinglist" ref-columns="idUser" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="invite" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idInvite" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idCommunity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="email" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idInvite"/>
+      <foreign-key name="invite_ibfk_1" columns="idCommunity" ref-table="community" ref-schema="" ref-catalog="shoppinglist" ref-columns="idCommunity" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="product" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idProduct" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idCommunity" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="inSuggestions" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="idProduct"/>
+      <foreign-key name="product_ibfk_1" columns="idCommunity" ref-table="community" ref-schema="" ref-catalog="shoppinglist" ref-columns="idCommunity" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="transaction_ibfk_1" table="transaction" schema="" catalog="shoppinglist" columns="idProduct"/>
+      <index name="addedBy" unique="false" columns="addedBy"/>
+    </table>
+    <table name="remember_me_token" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idToken" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="token" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ip" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="userAgent" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="timestampCreated" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <primary-key name="PRIMARY" columns="idToken"/>
+      <foreign-key name="remember_me_token_ibfk_1" columns="idUser" ref-table="user" ref-schema="" ref-catalog="shoppinglist" ref-columns="idUser" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="transaction" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idTransaction" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idProduct" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="reportedBy" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="reportedDate" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="editedBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="amount" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="boughtBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="cancelled" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="cancelledBy" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="closeDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="idTransaction"/>
+      <foreign-key name="transaction_ibfk_1" columns="idProduct" ref-table="product" ref-schema="" ref-catalog="shoppinglist" ref-columns="idProduct" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="transaction_ibfk_2" columns="reportedBy" ref-table="user" ref-schema="" ref-catalog="shoppinglist" ref-columns="idUser" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="transaction_ibfk_3" columns="editedBy" ref-table="user" ref-schema="" ref-catalog="shoppinglist" ref-columns="idUser" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="transaction_ibfk_4" columns="boughtBy" ref-table="user" ref-schema="" ref-catalog="shoppinglist" ref-columns="idUser" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="transaction_ibfk_5" columns="cancelledBy" ref-table="user" ref-schema="" ref-catalog="shoppinglist" ref-columns="idUser" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="user" schema="" catalog="shoppinglist" type="TABLE">
+      <column name="idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idUser"/>
+      <exported-key name="community_has_user_ibfk_2" table="community_has_user" schema="" catalog="shoppinglist" columns="idUser"/>
+      <exported-key name="remember_me_token_ibfk_1" table="remember_me_token" schema="" catalog="shoppinglist" columns="idUser"/>
+      <exported-key name="transaction_ibfk_2" table="transaction" schema="" catalog="shoppinglist" columns="reportedBy"/>
+      <exported-key name="transaction_ibfk_3" table="transaction" schema="" catalog="shoppinglist" columns="editedBy"/>
+      <exported-key name="transaction_ibfk_4" table="transaction" schema="" catalog="shoppinglist" columns="boughtBy"/>
+      <exported-key name="transaction_ibfk_5" table="transaction" schema="" catalog="shoppinglist" columns="cancelledBy"/>
+      <index name="email" unique="true" columns="email"/>
+    </table>
+  </data-source>
+</component>
