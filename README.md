@@ -2,25 +2,30 @@
 ===================================
 
 ## Environment Dependencies
-1.  [nodejs](http://nodejs.org/)
-2.  [Bower](http://bower.io/) (<code>npm install -g bower</code>)
-3.  [Composer](https://getcomposer.org/)
-4.  Apache with PHP >= 5.5
-5.  MySQL >= 5.6
+* Apache with PHP >= 5.5
+* MySQL >= 5.6
 
 ## Install instructions
 
-1. Install dependencies listed above
-2. Install bower packages: <code>bower install</code>
-3. Install composer packages: <code>composer install</code>
-4. Create MySQL Database with <code>install.sql</code>.
-5. Create <code>config.php</code> with <code>config.sample.php</code> to match your local environment
+1. Create MySQL Database with <code>install.sql</code>.
+2. Install [nodejs](http://nodejs.org/)
+3. Install [Composer](https://getcomposer.org/)
+4. Install [Ruby](https://www.ruby-lang.org/en/installation/)
+5. Execute the following script in the project dir:
+
+    ```
+    gem install compass
+    composer install
+    npm install
+    bower install
+    ```
+6. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
 
 The default admin user has the email <code>admin@shoppinglist.ch</code> and the password <code>1234</code>.
 
-To build the SCSS file I can recommend [Prepros](http://alphapixels.com/prepros/).
+Compiling <code>.js</code> and <code>.scss</code> happens automatically when the Grunt file watcher is active. Start it like so: <code>grunt watch</code>.
 
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.
@@ -109,4 +114,3 @@ Production deployment is done manually by the person in charge of releases.
   <li>[ ] Offline capability (no conflict merging)</li>
   <li>[x] Multi Language</li>
 </ul>
-

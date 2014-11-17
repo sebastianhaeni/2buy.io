@@ -51,6 +51,8 @@
         return false;
     });
     
-    loadHistory();
+    if($('#history').length == 1){
+        loadHistory();
+    }
     
 })(jQuery);

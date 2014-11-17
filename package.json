@@ -1,0 +1,28 @@
+{
+  "name": "2buy",
+  "version": "1.0.0",
+  "description": "Shopping List web app",
+  "main": "web/index.php",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastianhaeni/ch.bfh.bti7054.w2014.q.ShoppingList.git"
+  },
+  "author": "Sebastian Häni",
+  "bugs": {
+    "url": "https://github.com/sebastianhaeni/ch.bfh.bti7054.w2014.q.ShoppingList/issues"
+  },
+  "homepage": "https://github.com/sebastianhaeni/ch.bfh.bti7054.w2014.q.ShoppingList",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-contrib-compass": "^1.0.1",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "dependencies": {
+    "bower": "^1.3.12"
+  }
+}
