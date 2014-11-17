@@ -36,13 +36,15 @@
         }
     }
     
-    .details {
-        margin: 10px;
-        clear: both;
-    }
+    @media (max-width: $screen-xs-min) {
+	    .details {
+        	clear: both;
+	        margin: 10px;
+        }
     
-    &.active {
-        height: 80px;
+	    &.active {
+	        height: 80px;
+	    }
     }
 
     .reportedDate {

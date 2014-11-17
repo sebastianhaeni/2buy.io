@@ -42,7 +42,6 @@
                 }).on('mousedown', function(){
                     tapHold = $(this).addClass('holding').attr('data-hold-start', new Date().getTime());
                     setTimeout(editTransaction.bind(this, $(this)), holdTime);
-                    $('#shoppinglist .transaction').removeClass('active');
                     $(this).addClass('active');
                 }).on('mouseout', function(){
                     if(tapHold != null){
@@ -124,6 +123,12 @@
             $('#edit-transaction').modal('show');
         }
     }
+    
+    $(document).click(function(event){
+    	if(!$(event.target).closest('.transaction').length && !$(event.target).closest('#edit-transaction').length){
+    		$('.transaction').removeClass('active');
+    	}
+    });
     
     $('#add-article form').submit(function(){
         
