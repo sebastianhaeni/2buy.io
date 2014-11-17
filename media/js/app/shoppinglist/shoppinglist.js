@@ -146,6 +146,7 @@
             success: function(){
                 $('#add-article form').find(':input').prop('disabled', false);
                 $('#add-article-name').val('');
+                
                 $('#add-article-amount').val(1);
                 $('#add-article-error-message').addClass('hide');
                 $('#add-article').modal('hide');
@@ -193,7 +194,7 @@
         source: function(query, cb) {
             $.ajax({
                 url: '/api/v1/community/' + $.cookie('community') + '/product/suggestions',
-                data: {query: query},
+                data: {query: $('#add-article-name').val()},
                 success: cb
             });
         }

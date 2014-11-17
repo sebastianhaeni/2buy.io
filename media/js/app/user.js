@@ -69,7 +69,7 @@
                 $('#settings-email').val(response.email);
                 $('#settings-phone').val(response.phone);
                 
-                if(response.communityHasUser.admin == '1'){
+                if(response.hasOwnProperty('communityHasUser') && response.communityHasUser.admin == '1'){
                     $('.community-admin').removeClass('community-admin');
                 }
             }
