@@ -15,6 +15,7 @@
                 
                 $('#shoppinglist .transaction').draggable({ 
                     axis: 'x', 
+					distance: 15,
                     revert: function(){
                         return !$(this).hasClass('buyed') && !$(this).hasClass('cancelled');  
                     },
