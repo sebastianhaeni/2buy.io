@@ -2,6 +2,7 @@
     'use strict';
     
     var holdTime = 600;
+    var clickTime = 100;
     var tapHold = null;
     var editingTransactionId = null;
 
@@ -15,7 +16,7 @@
                 
                 $('#shoppinglist .transaction').draggable({ 
                     axis: 'x', 
-					distance: 15,
+					delay: clickTime,
                     revert: function(){
                         return !$(this).hasClass('buyed') && !$(this).hasClass('cancelled');  
                     },
@@ -41,9 +42,14 @@
                         }
                     }
                 }).on('mousedown', function(){
-                    tapHold = $(this).addClass('holding').attr('data-hold-start', new Date().getTime());
-                    setTimeout(editTransaction.bind(this, $(this)), holdTime);
-                    $(this).addClass('active');
+                    var t = $(this);
+                    tapHold = t.addClass('holding').attr('data-hold-start', new Date().getTime());
+                    setTimeout(editTransaction.bind(this, t), holdTime);
+                    setTimeout(function(){
+                        if(t.hasClass('holding')){
+                            t.addClass('active');
+                        }
+                    }, clickTime);
                 }).on('mouseout', function(){
                     if(tapHold != null){
                         tapHold.removeClass('holding');
