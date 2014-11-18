@@ -5,7 +5,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Model\Community;
+use ShoppingList\Util\CommunityChecker;
+
 /**
+ * Provides data to generate statistical diagrams.
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
@@ -13,6 +16,7 @@ class StatisticsController extends BaseController
 {
 
     /**
+     * Returns each community member with their purchase count.
      *
      * @param Request $request            
      * @param Application $app            
@@ -20,16 +24,17 @@ class StatisticsController extends BaseController
      */
     public function getPurchaseData(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        return $app->json($community->getPurchaseData($app));
+        return $app->json($checker->getCommunity()
+            ->getPurchaseData($app));
     }
 
     /**
+     * Returns each community member with their order count.
      *
      * @param Request $request            
      * @param Application $app            
@@ -37,12 +42,12 @@ class StatisticsController extends BaseController
      */
     public function getOrderData(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        return $app->json($community->getOrderData($app));
+        return $app->json($checker->getCommunity()
+            ->getOrderData($app));
     }
 }

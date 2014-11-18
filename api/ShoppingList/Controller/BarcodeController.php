@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 
 /**
+ * Provides a method to get a product name and an optional image for a EAN-13 barcode.
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
@@ -12,6 +13,7 @@ class BarcodeController extends BaseController
 {
 
     /**
+     * Fetches product name and image url from another API with barcode.
      *
      * @param Request $request            
      * @param Application $app            
@@ -41,6 +43,7 @@ class BarcodeController extends BaseController
     }
 
     /**
+     * Fetches response from a HTTP/GET call.
      *
      * @param string $url            
      * @return content of url

@@ -7,8 +7,10 @@ use ShoppingList\Model\Community;
 use ShoppingList\Model\Product;
 use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Util\StatusCodes;
+use ShoppingList\Util\CommunityChecker;
 
 /**
+ * Provides functions for /community/{id}/product.
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
@@ -16,6 +18,7 @@ class ProductController extends BaseController
 {
 
     /**
+     * Gets all products of a community if the current user is in it.
      *
      * @param Request $request            
      * @param Application $app            
@@ -23,16 +26,18 @@ class ProductController extends BaseController
      */
     public function getProducts(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        return $app->json($community->getProducts($app));
+        return $app->json($checker->getCommunity()
+            ->getProducts($app));
     }
 
     /**
+     * Gets product suggestions of a community if the user is in it.
+     * Suggestions are sorted by product usage and name.
      *
      * @param Request $request            
      * @param Application $app            
@@ -40,12 +45,12 @@ class ProductController extends BaseController
      */
     public function getSuggestions(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        return $app->json(Product::getSuggestions($community->getId(), $app, $request->get('query')));
+        return $app->json(Product::getSuggestions($checker->getCommunity()
+            ->getId(), $app, $request->get('query')));
     }
 }

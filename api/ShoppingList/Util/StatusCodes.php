@@ -4,7 +4,7 @@ namespace ShoppingList\Util;
 /**
  * Contains every HTTP status code that exists as constants.
  * Yes, every single one.
- * 
+ *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
 class StatusCodes
