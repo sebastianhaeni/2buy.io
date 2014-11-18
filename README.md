@@ -7,28 +7,32 @@
 
 ## Install instructions
 
-1. Create MySQL Database with <code>install.sql</code>.
-2. Install [nodejs](http://nodejs.org/)
-3. Install [Composer](https://getcomposer.org/)
-4. Install [Ruby](https://www.ruby-lang.org/en/installation/)
-5. Install [Bower](http://bower.io/) (<code>npm install -g bower</code>)
-6. Install Grunt-Cli (<code>npm install grunt-cli -g</code>)
-7. Execute the following script in the project dir:
+1. Create MySQL Database with <code>docs/install.sql</code>. Optionally execute <code>docs/test-data.sql</code> to create test data.
+2. Make sure you have installed the following dependencies:
+	* [nodejs](http://nodejs.org/)
+	* [Composer](https://getcomposer.org/)
+	* [Ruby](https://www.ruby-lang.org/en/installation/)
+3. Execute the following lines in a terminal in the project dir:
 
     ```
     gem install sass
     gem install compass
-    composer install
+    npm install -g bower
+    npm install -g grunt-cli
     npm install
     bower install
+    composer install
     ```
-8. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
+4. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.
 
-The default admin user has the email <code>admin@shoppinglist.ch</code> and the password <code>1234</code>.
+The default admin user has the email <code>admin@2buy.io</code> and the password <code>1234</code>.
 
-Compiling <code>.js</code> and <code>.scss</code> happens automatically when the Grunt file watcher is active. Start it like so: <code>grunt watch</code>.
+## Building
+
+* Execute <code>grunt</code> to manually compile <code>.js</code> and <code>.scss</code>.
+* Execute <code>grunt watch</code> to automatically compile <code>.js</code> and <code>.scss</code> as soon as they change.
 
 ## Description
 The Shopping List provides members of a community household with a convenient way to tell others what’s currently needed in terms of everyday-articles. Users can add articles to the shopping list so the next member who goes shopping can purchase the missing articles. All the members are notified when someone performs an action in the app.

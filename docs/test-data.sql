@@ -2,7 +2,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `shoppinglist`
+-- Database: `2buy`
 --
 
 --
@@ -17,7 +17,7 @@ INSERT INTO `community` (`idCommunity`, `name`) VALUES
 --
 
 INSERT INTO `user` (`idUser`, `name`, `email`, `password`, `phone`) VALUES
-(1, 'Administrator', 'admin@shoppinglist.ch', '$2y$10$Kph8hEg215iNlolNbOJXDeUakBKSPNMw8CLO9EYyXjzUGE3qk7gKm', NULL);
+(1, 'Administrator', 'admin@2buy.io', '$2y$10$Kph8hEg215iNlolNbOJXDeUakBKSPNMw8CLO9EYyXjzUGE3qk7gKm', NULL);
 
 --
 -- Dumping data for table `community_has_user`
