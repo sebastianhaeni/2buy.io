@@ -56,6 +56,15 @@ Changes are first to be tested on stage before being merged into 'prod' branch.
 
 Production deployment is done manually by the person in charge of releases.
 
+### Current status
+
+|Branch     |Status                                                                              |
+|-----------|------------------------------------------------------------------------------------|
+|Development|[![](https://shoppinglist.dploy.io/badge/13023223952324/14083.png)](http://dploy.io)|
+|Staging    |[![](https://shoppinglist.dploy.io/badge/13023223952324/14190.png)](http://dploy.io)|
+|Production |[![](https://shoppinglist.dploy.io/badge/13023223952324/14189.png)](http://dploy.io)|
+
+
 ## Features
 <ul>
   <li>[x] User authentication</li>
