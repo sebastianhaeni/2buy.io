@@ -17,11 +17,11 @@ $config['database'] = [
 ];
 
 $config['email'] = [
-    'server'	 => 'localhost',
-    'port' 		 => 465,
-    'security'   => 'ssl',
-    'username'   => '',
-    'password'   => ''
+    'server'   => 'localhost',
+    'port'     => 465,
+    'security' => 'ssl',
+    'username' => '',
+    'password' => ''
 ];
 
 $config['i18n'] = [
