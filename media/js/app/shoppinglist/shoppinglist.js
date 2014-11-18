@@ -16,7 +16,7 @@
                 
                 $('#shoppinglist .transaction').draggable({ 
                     axis: 'x', 
-					delay: clickTime,
+                    delay: clickTime,
                     revert: function(){
                         return !$(this).hasClass('buyed') && !$(this).hasClass('cancelled');  
                     },
@@ -71,7 +71,7 @@
 
     function addTransaction(a) {
         if($('#shoppinglist div[data-id=' + a.id + ']').length > 0){
-        	$('.transaction[data-id=' + a.id + '] .amount').html(a.amount);
+            $('.transaction[data-id=' + a.id + '] .amount').html(a.amount);
             return;
         }
         
@@ -162,9 +162,9 @@
     }
     
     $(document).click(function(event){
-    	if(!$(event.target).closest('.transaction').length && !$(event.target).closest('#edit-transaction').length){
-    		$('.transaction').removeClass('active');
-    	}
+        if(!$(event.target).closest('.transaction').length && !$(event.target).closest('#edit-transaction').length){
+            $('.transaction').removeClass('active');
+        }
     });
     
     $('#add-article form').submit(function(){
