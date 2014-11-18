@@ -79,6 +79,7 @@ class TransactionController extends BaseController
     }
 
     /**
+     * Creates a new transaction.
      *
      * @param Request $request            
      * @param Application $app            
@@ -131,6 +132,7 @@ class TransactionController extends BaseController
     }
 
     /**
+     * Marks a transaction as bought and thus closed.
      *
      * @param Request $request            
      * @param Application $app            
@@ -161,6 +163,7 @@ class TransactionController extends BaseController
     }
 
     /**
+     * Marks a transaction as canceled and thus closed.
      *
      * @param Request $request            
      * @param Application $app            
@@ -183,6 +186,38 @@ class TransactionController extends BaseController
             ->getId());
         $transaction->setCancelled(true);
         $transaction->setCloseDate(BaseModel::getCurrentTimeStamp());
+        
+        if (! $transaction->save($app)) {
+            return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        return new Response('Success', StatusCodes::HTTP_OK);
+    }
+
+    /**
+     * Marks a closed transaction as unclosed.
+     *
+     * @param Request $request            
+     * @param Application $app            
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function undo(Request $request, Application $app)
+    {
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
+        }
+        
+        $transaction = Transaction::getById($request->get('idTransaction'), $app);
+        
+        if ($transaction == null) {
+            return new Response('Error finding transaction', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
+        $transaction->setCancelledBy(null);
+        $transaction->setCancelled(false);
+        $transaction->setBoughtBy(null);
+        $transaction->setCloseDate(null);
         
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);

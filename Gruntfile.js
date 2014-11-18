@@ -2,64 +2,59 @@ module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        uglify: {
-            options: {
-                sourceMap: true
+        pkg : grunt.file.readJSON('package.json'),
+        uglify : {
+            options : {
+                sourceMap : true
             },
-            js: {
-                files: {
-                    'media/js/dist/public.min.js': [
-                        'bower_components/jquery/dist/jquery.min.js',
-                        'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-                        'bower_components/jquery.cookie/jquery.cookie.js',
-                        'media/js/*.js', 
-                        'media/js/public/*.js', 
-                        'media/js/public/**/*.js'
-                    ],
-                    'media/js/dist/app.min.js': [
-                         'bower_components/jquery/dist/jquery.min.js',
-                         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
-                         'bower_components/jquery-ui/ui/core.js',
-                         'bower_components/jquery-ui/ui/widget.js',
-                         'bower_components/jquery-ui/ui/mouse.js',
-                         'bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
-                         'bower_components/jquery.cookie/jquery.cookie.js',
-                         'bower_components/chartjs/Chart.js',
-                         'bower_components/typeahead.js/dist/typeahead.bundle.js',
-                         'bower_components/moment/min/moment-with-locales.js',
-                         'bower_components/jquery-ui/ui/draggable.js',
-                         'media/js/*.js', 
-                         'media/js/app/*.js', 
-                         'media/js/app/**/*.js'
-                    ]
+            js : {
+                files : {
+                    'media/js/dist/public.min.js' : [ 'bower_components/jquery/dist/jquery.min.js',
+                            'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+                            'bower_components/jquery.cookie/jquery.cookie.js', 'media/js/*.js', 'media/js/public/*.js',
+                            'media/js/public/**/*.js' ],
+                    'media/js/dist/app.min.js' : [ 'bower_components/jquery/dist/jquery.min.js',
+                            'bower_components/jquery-ui/ui/core.js', 'bower_components/jquery-ui/ui/widget.js',
+                            'bower_components/jquery-ui/ui/mouse.js',
+                            'bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
+                            'bower_components/jquery-ui/ui/draggable.js',
+                            'bower_components/jquery.cookie/jquery.cookie.js',
+                            'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+                            'bower_components/chartjs/Chart.js',
+                            'bower_components/typeahead.js/dist/typeahead.bundle.js',
+                            'bower_components/moment/min/moment-with-locales.js', 'bower_components/toastr/toastr.js',
+                            'media/js/*.js', 'media/js/app/*.js', 'media/js/app/**/*.js' ]
                 }
             }
         },
-        compass: {
-            dist: {
-                options: {
-                    sassDir: 'media/scss',
-                    cssDir: 'media/css',
-                    environment: 'production'
+        compass : {
+            dist : {
+                options : {
+                    sassDir : 'media/scss',
+                    cssDir : 'media/css',
+                    environment : 'production'
                 },
-                files: {
-                    'media/css/app.css': 'media/scss/app.scss',
-                    'media/css/public.css': 'media/scss/public.scss'
+                files : {
+                    'media/css/app.css' : 'media/scss/app.scss',
+                    'media/css/public.css' : 'media/scss/public.scss'
                 }
             }
         },
-        watch: {
-            scripts: {
-                files: ['media/**/*.js'],
-                tasks: ['uglify'],
-                options: {
-                    spawn: false,
+        watch : {
+            config : {
+                files : [ 'Gruntfile.js' ],
+                tasks : [ 'uglify', 'compass' ]
+            },
+            scripts : {
+                files : [ 'media/**/*.js' ],
+                tasks : [ 'uglify' ],
+                options : {
+                    spawn : false,
                 }
             },
-            css: {
-                files: ['media/scss/*.scss'],
-                tasks: ['compass']
+            css : {
+                files : [ 'media/scss/*.scss' ],
+                tasks : [ 'compass' ]
             }
         },
     });

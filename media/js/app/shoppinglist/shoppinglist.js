@@ -87,6 +87,21 @@
             type: 'put',
             success: function(response){
                 el.addClass('closed');
+                toastr.options.positionClass = 'toast-bottom-left';
+                toastr.options.timeOut = 4000;
+                toastr.options.progressBar = true;
+                // TODO remove translatable text from js
+                toastr.success('<div class="pull-left">Article bought</div>'
+                        + '<div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="' + transactionId + '"><i class="fa fa-undo"></i> Undo</button></div>');
+                $('.btn-undo[data-id=' + transactionId + ']').click(function(){
+                    $.ajax({
+                        url: '/api/v1/community/' + $.cookie('community') + '/transaction/undo/' + transactionId,
+                        type: 'put',
+                        success: function(){
+                            $('.transaction[data-id=' + transactionId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                        }
+                    });
+                });
             },
             error: function(){
                 alert('Error!');
@@ -101,6 +116,21 @@
             type: 'put',
             success: function(response){
                 el.addClass('closed');
+                toastr.options.positionClass = 'toast-bottom-left';
+                toastr.options.timeOut = 4000;
+                toastr.options.progressBar = true;
+                // TODO remove translatable text from js
+                toastr.error('<div class="pull-left">Article canceled</div>'
+                        + '<div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="' + transactionId + '"><i class="fa fa-undo"></i> Undo</button></div>');
+                $('.btn-undo[data-id=' + transactionId + ']').click(function(){
+                    $.ajax({
+                        url: '/api/v1/community/' + $.cookie('community') + '/transaction/undo/' + transactionId,
+                        type: 'put',
+                        success: function(){
+                            $('.transaction[data-id=' + transactionId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                        }
+                    });
+                });
             },
             error: function(){
                 alert('Error!');

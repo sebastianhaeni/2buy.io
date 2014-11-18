@@ -26,6 +26,7 @@
     "jSync": "sebastianhaeni/jSync",
     "moment": "~2.8.3",
     "BarcodeReader": "EddieLa/BarcodeReader",
-    "chartjs": "v1.0.1-beta.2"
+    "chartjs": "v1.0.1-beta.2",
+    "toastr": "~2.1.0"
   }
 }
