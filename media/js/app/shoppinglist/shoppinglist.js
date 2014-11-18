@@ -96,6 +96,7 @@
                 el.addClass('closed');
                 toastr.options.positionClass = 'toast-bottom-left';
                 toastr.options.timeOut = 4000;
+                toastr.options.extendedTimeOut = 4000;
                 toastr.options.progressBar = true;
                 // TODO remove translatable text from js
                 toastr.success('<div class="pull-left">Article bought</div>'
@@ -125,6 +126,7 @@
                 el.addClass('closed');
                 toastr.options.positionClass = 'toast-bottom-left';
                 toastr.options.timeOut = 4000;
+                toastr.options.extendedTimeOut = 4000;
                 toastr.options.progressBar = true;
                 // TODO remove translatable text from js
                 toastr.error('<div class="pull-left">Article canceled</div>'
