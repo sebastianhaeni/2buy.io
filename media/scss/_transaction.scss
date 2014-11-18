@@ -36,6 +36,10 @@
         }
     }
     
+    &.active {
+    	box-shadow: 0 0 3px #000 inset;
+    }
+    
     @media (max-width: $screen-xs-min) {
 	    .details {
         	clear: both;

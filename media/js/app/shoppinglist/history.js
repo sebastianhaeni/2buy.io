@@ -26,7 +26,7 @@
                 + '<span class="reportedDate">' + moment(item.boughtDate).format('lll') + '</span>'; 
         }
         
-        var div = $('<div class="transaction item" data-id="' + item.id + '">' + content + '</div>');
+        var div = $('<div class="item-history item" data-id="' + item.id + '">' + content + '</div>');
         
         $('#history .list').append(div);
     }

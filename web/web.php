@@ -29,5 +29,6 @@ $template = $app['twig']->loadTemplate($templateName . $templateExt);
 (new Response($template->render(array(
     'config' => $app['config'],
     'page' => $templateName,
-    'selectedLang' => $app['selectedLang']
+    'selectedLang' => $app['selectedLang'],
+    'htmlLang' => substr($app['selectedLang'], 0, strpos($app['selectedLang'], '_'))
 ))))->send();
