@@ -336,5 +336,11 @@
 
         return false;
     });
+    
+    $('#new-community-dialog').on('shown.bs.modal', function() {
+        var ev = $.Event('keydown');
+        ev.keyCode = ev.which = 40;
+        $('#new-community-name').focus().trigger(ev);
+    });
 
 })(jQuery);

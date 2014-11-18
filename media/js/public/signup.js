@@ -8,12 +8,9 @@
             data : data,
             method : 'post',
             success : function(response) {
-                $('#signup-form').hide();
-                $('#signup-error-message').addClass('hide');
-                $('#signup-success-message').removeClass('hide');
+                window.location.href = 'app';
             },
             error : function(response) {
-                console.log(response);
                 $('#signup-form :input').prop('disabled', false);
                 $('#signup-error-message').removeClass('hide');
             }

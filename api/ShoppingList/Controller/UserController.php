@@ -43,7 +43,7 @@ class UserController extends BaseController
                 }
             }
             
-            return new Response('Success', StatusCodes::HTTP_CREATED);
+            return $app['auth']->login($user, true, $request);
         }
         
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
