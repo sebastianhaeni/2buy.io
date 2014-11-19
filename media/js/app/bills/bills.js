@@ -1,6 +1,14 @@
 (function ($) {
     'use strict';
 
+    $('#barcode-scanner').on('show.bs.modal', function() {
+        $('#barcode-image').click();
+    });
+
+    $('#button-scan-barcode').click(function() {
+        $('#barcode-image').click();
+    });
+
     function loadBills() {
         $.ajax({
             url: '/api/v1/community/' + $.cookie('community') + '/bill/active',
