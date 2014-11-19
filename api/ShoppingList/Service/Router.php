@@ -85,6 +85,15 @@ class Router
         $app->put   ('/v1/community/{id}/transaction/buy/{idTransaction}',    'ShoppingList\\Controller\\TransactionController::buy');
         $app->put   ('/v1/community/{id}/transaction/cancel/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::cancel');
         $app->put   ('/v1/community/{id}/transaction/undo/{idTransaction}',   'ShoppingList\\Controller\\TransactionController::undo');
+
+        // Bill
+        $app->get   ('/v1/community/{id}/bill/active',                  'ShoppingList\\Controller\\BillController::getActiveBills');
+        $app->get   ('/v1/community/{id}/bill/history',                 'ShoppingList\\Controller\\BillController::getHistory');
+        $app->delete('/v1/community/{id}/bill/history/clear',           'ShoppingList\\Controller\\BillController::clearHistory');
+        $app->post  ('/v1/community/{id}/bill',                         'ShoppingList\\Controller\\BillController::insertBill');
+        $app->put   ('/v1/community/{id}/bill/accept/{idBill}',         'ShoppingList\\Controller\\BillController::accept');
+        $app->put   ('/v1/community/{id}/bill/decline/{idBill}',        'ShoppingList\\Controller\\BillController::decline');
+        $app->put   ('/v1/community/{id}/bill/undo/{idBill}',           'ShoppingList\\Controller\\BillController::undo');
         
         // User
         $app->get('/v1/user/logout',   'ShoppingList\\Controller\\UserController::logout');

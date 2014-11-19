@@ -1,17 +1,24 @@
 {% extends "app/bills/layout.html" %}
 
 {% block title %}
-    {% set page = parent() %}
-    {% set app_name = block('app_name') %}
-    {% trans %}Statistics - {{ app_name }} - {{ page }}{% endtrans %}
+{% set page = parent() %}
+{% set app_name = block('app_name') %}
+{% trans %}Statistics - {{ app_name }} - {{ page }}{% endtrans %}
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row">
-
-        <p class="alert alert-info">{% trans "Coming soon" %}</p>
-
+        <div id="bill-statslist" class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans "Purchase count" %}</div>
+                <canvas id="buyerChart" style="width: 100%;"></canvas>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans "Order count" %}</div>
+                <canvas id="reporterChart" style="width: 100%;"></canvas>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
