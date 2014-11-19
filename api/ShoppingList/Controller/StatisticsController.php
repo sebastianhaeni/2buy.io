@@ -29,7 +29,7 @@ class StatisticsController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json($checker->getCommunity()
+        return $this->json($checker->getCommunity()
             ->getPurchaseData($app));
     }
 
@@ -47,7 +47,7 @@ class StatisticsController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json($checker->getCommunity()
+        return $this->json($checker->getCommunity()
             ->getOrderData($app));
     }
 }

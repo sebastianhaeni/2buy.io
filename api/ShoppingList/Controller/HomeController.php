@@ -20,7 +20,7 @@ class HomeController extends BaseController
      */
     public function info(Request $request, Application $app)
     {
-        return $app->json(array(
+        return $this->json(array(
             'date' => date('c'),
             'author' => 'ShoppingList',
             'version' => '1.0'

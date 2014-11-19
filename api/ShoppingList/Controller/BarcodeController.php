@@ -39,7 +39,7 @@ class BarcodeController extends BaseController
             $data['image'] = "http://www.codecheck.info/" . $matches[1];
         }
         
-        return $app->json($data);
+        return $this->json($data);
     }
 
     /**

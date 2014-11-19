@@ -31,7 +31,7 @@ class BillController extends BaseController
             return $checker->getResponse();
         }
 
-        return $app->json(Bill::getActiveBills($checker->getCommunity()
+        return $this->json(Bill::getActiveBills($checker->getCommunity()
             ->getId(), $app));
     }
 
@@ -49,7 +49,7 @@ class BillController extends BaseController
             return $checker->getResponse();
         }
 
-        return $app->json(Bill::getHistory($checker->getCommunity()
+        return $this->json(Bill::getHistory($checker->getCommunity()
             ->getId(), $app));
     }
 

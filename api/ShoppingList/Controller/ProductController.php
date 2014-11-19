@@ -31,7 +31,7 @@ class ProductController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json($checker->getCommunity()
+        return $this->json($checker->getCommunity()
             ->getProducts($app));
     }
 
@@ -50,7 +50,7 @@ class ProductController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json(Product::getSuggestions($checker->getCommunity()
+        return $this->json(Product::getSuggestions($checker->getCommunity()
             ->getId(), $app, $request->get('query')));
     }
 }

@@ -1,13 +1,14 @@
 (function ($) {
     'use strict';
 
-    $('#barcode-scanner').on('show.bs.modal', function() {
-        $('#barcode-image').click();
-    });
-
-    $('#button-scan-barcode').click(function() {
-        $('#barcode-image').click();
-    });
+    // WARNING do not check in code that triggers or listens to events on other pages than bills
+    //    $('#barcode-scanner').on('show.bs.modal', function() {
+    //        $('#barcode-image').click();
+    //    });
+    //
+    //    $('#button-scan-barcode').click(function() {
+    //        $('#barcode-image').click();
+    //    });
 
     function loadBills() {
         $.ajax({

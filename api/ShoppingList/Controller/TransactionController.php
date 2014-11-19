@@ -34,7 +34,7 @@ class TransactionController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json(Transaction::getActiveTransactions($checker->getCommunity()
+        return $this->json(Transaction::getActiveTransactions($checker->getCommunity()
             ->getId(), $app));
     }
 
@@ -52,7 +52,7 @@ class TransactionController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json(Transaction::getHistory($checker->getCommunity()
+        return $this->json(Transaction::getHistory($checker->getCommunity()
             ->getId(), $app));
     }
 

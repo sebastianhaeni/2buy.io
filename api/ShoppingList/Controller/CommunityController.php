@@ -60,7 +60,7 @@ class CommunityController extends BaseController
             return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        return $app->json($user->getCommunities($app));
+        return $this->json($user->getCommunities($app));
     }
 
     /**
@@ -77,7 +77,7 @@ class CommunityController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json($checker->getCommunity(), $app);
+        return $this->json($checker->getCommunity(), $app);
     }
 
     /**
@@ -186,7 +186,7 @@ class CommunityController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json($checker->getCommunity()
+        return $this->json($checker->getCommunity()
             ->getMembers($app));
     }
 
@@ -204,7 +204,7 @@ class CommunityController extends BaseController
             return $checker->getResponse();
         }
         
-        return $app->json(Invite::getByCommunityId($checker->getCommunity()
+        return $this->json(Invite::getByCommunityId($checker->getCommunity()
             ->getId(), $app));
     }
 

@@ -93,7 +93,7 @@ class UserController extends BaseController
      */
     public function isLoggedIn(Request $request, Application $app)
     {
-        return $app->json(array(
+        return $this->json(array(
             'loggedIn' => $app['auth']->isLoggedIn($request)
         ));
     }
@@ -164,6 +164,6 @@ class UserController extends BaseController
             }
         }
         
-        return $app->json($user);
+        return $this->json($user);
     }
 }
