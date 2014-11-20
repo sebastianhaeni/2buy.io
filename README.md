@@ -12,17 +12,7 @@
 	* [nodejs](http://nodejs.org/)
 	* [Composer](https://getcomposer.org/)
 	* [Ruby](https://www.ruby-lang.org/en/installation/)
-3. Execute the following lines in a terminal in the project dir:
-
-    ```
-    gem install sass
-    gem install compass
-    npm install -g bower
-    npm install -g grunt-cli
-    npm install
-    bower install
-    composer install
-    ```
+3. Execute <code>npm install</code> (may take a while)
 4. Create <code>config.php</code> with <code>config.sample.php</code> to match your environment
 
 To test if you successfully installed the API component you can call <code>/api/v1</code>.

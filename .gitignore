@@ -7,3 +7,4 @@ vendor/
 .project
 .buildpath
 *.bak
+/npm-debug.log
