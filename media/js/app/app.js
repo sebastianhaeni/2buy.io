@@ -1,5 +1,10 @@
 (function($) {
 	'use strict';
+	
+	window.app2buy = angular.module('app2buy', []).config(function($interpolateProvider){
+	    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+	});
+
 
 	$.ajax({
 		url : '/api/v1/user/isLoggedIn',
@@ -29,3 +34,5 @@
 	}
 
 })(jQuery);
+
+

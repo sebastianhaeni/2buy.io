@@ -12,10 +12,20 @@
 <div class="container">
     <div class="row">
     
-        <div id="history" class="col-md-12">
+        <div id="history" class="col-md-12" ng-controller="ShoppinglistHistoryController">
             <div class="text-center administrator">
                 <button type="button" class="btn btn-danger community-admin" data-toggle="modal" data-target="#clear-history-dialog">{% trans "Clear History" %}</button>
                 <div class="list top-buffer">     
+                    
+                    <div class="item-history item" ng-repeat="transaction in transactions" data-id="{[{ transaction.id }]}">
+                        <span class="amount">{[{ transaction.amount }]}</span> 
+                        <span class="product">{[{ transaction.product.name }]}</span>
+                        {% trans "reported by" %}
+                        <span class="reportedBy">{[{ transaction.reporter.naem }]}</span>
+                        {% trans "at" %}
+                        <span class="reportedDate">{[{ transaction.reportedDate }]}</span>
+                    </div>
+                
                 </div>
             </div>
         </div>

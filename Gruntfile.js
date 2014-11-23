@@ -5,7 +5,8 @@ module.exports = function(grunt) {
         pkg : grunt.file.readJSON('package.json'),
         uglify : {
             options : {
-                sourceMap : true
+                sourceMap : true,
+                mangle: false
             },
             js : {
                 files : {
@@ -19,6 +20,7 @@ module.exports = function(grunt) {
                             'bower_components/jquery-ui/ui/mouse.js', 'bower_components/jquery-ui/ui/draggable.js',
                             'bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
                             'bower_components/jquery.cookie/jquery.cookie.js',
+                            'bower_components/angularjs/angular.min.js',
                             'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
                             'bower_components/chartjs/Chart.js',
                             'bower_components/typeahead.js/dist/typeahead.bundle.js',
@@ -62,6 +64,7 @@ module.exports = function(grunt) {
     // Load plugins
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).

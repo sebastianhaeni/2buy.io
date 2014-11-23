@@ -1,6 +1,11 @@
 (function($) {
     'use strict';
     
+    app2buy.controller('ShoppinglistHistoryController', function($scope){
+    	$scope.transactions = [{id:1,amount:1,product:{name:'test'}}
+    	];
+    });
+    
     function loadHistory(){
         $.ajax({
             url: '/api/v1/community/' + $.cookie('community') + '/transaction/history',
