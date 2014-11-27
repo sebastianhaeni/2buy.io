@@ -21,9 +21,17 @@
                         <span class="amount">{[{ transaction.amount }]}</span> 
                         <span class="product">{[{ transaction.product.name }]}</span>
                         {% trans "reported by" %}
-                        <span class="reportedBy">{[{ transaction.reporter.naem }]}</span>
+                        <span class="reportedBy">{[{ transaction.reporter.name }]}</span>
                         {% trans "at" %}
-                        <span class="reportedDate">{[{ transaction.reportedDate }]}</span>
+                        <span class="reportedDate">{[{ transaction.reportedDate | amDateFormat: 'l' }]}</span>
+                        
+                        <span ng-if="transaction.cancelled == 0">{% trans "bought by" %}</span>
+                        <span ng-if="transaction.cancelled != 0">{% trans "cancelled by" %}</span>
+                        <span ng-if="transaction.cancelled == 0" class="reportedBy text-success">{[{ transaction.buyer.name }]}</span>
+                        <span ng-if="transaction.cancelled != 0" class="reportedBy text-danger">{[{ transaction.canceller.name }]}</span>
+                        {% trans "at" %}
+                        <span class="reportedDate">{[{ transaction.closeDate | amDateFormat: 'l' }]}</span>
+                        
                     </div>
                 
                 </div>
