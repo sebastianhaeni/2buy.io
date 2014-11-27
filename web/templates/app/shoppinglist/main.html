@@ -38,4 +38,12 @@
 
     </div>
 </div>
+
+<textarea class="hide" id="toastr-template-bought">
+    <div class="pull-left">{% trans "Article bought" %}</div><div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="{id}"><i class="fa fa-undo"></i> {% trans "Undo" %}</button></div>
+</textarea>
+<textarea class="hide" id="toastr-template-cancelled">
+    <div class="pull-left">{% trans "Article cancelled" %}</div><div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="{id}"><i class="fa fa-undo"></i> {% trans "Undo" %}</button></div>
+</textarea>
+
 {% endblock %}
