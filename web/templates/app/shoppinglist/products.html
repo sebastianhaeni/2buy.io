@@ -20,12 +20,12 @@
                 <span class="input-group-addon" title="{% trans "In suggestions" %}">
                     <input type="checkbox" class="notifiaction-flag" ng-checked="product.inSuggestions == '1'">
                 </span>
-                <span class="form-control">{[{ product.name }]}</span>
+                <span class="form-control product-name">{[{ product.name }]}</span>
                 <span class="input-group-addon">
                     <button type="button" class="btn btn-default btn-xs">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button type="button" class="btn btn-default btn-xs btn-danger">
+                    <button type="button" class="btn btn-default btn-xs btn-danger delete-product" ng-click="showDeleteDialog(product.id, product.name)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </span>
