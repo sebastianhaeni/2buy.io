@@ -28,6 +28,10 @@
                         }
                     });
                 };
+                
+                $scope.refresh = function(){
+                	$scope.products = ShoppinglistProduct.query();
+                }
             } ]);
 
     app2buy.factory('ShoppinglistProduct', [ '$resource', function($resource) {
@@ -107,7 +111,7 @@
                 $('#new-product-error-message').addClass('hide');
                 $('#new-product-dialog').modal('hide');
                 
-                // TODO apply changes to model
+                angular.element(document.querySelector('[ng-controller=ShoppinglistProductController]')).scope().refresh();
             },
             error: function(){
                 $('#new-product-form').find(':input').prop('disabled', false);
@@ -117,5 +121,5 @@
         
         return false;
     });
-
+    
 })(jQuery);

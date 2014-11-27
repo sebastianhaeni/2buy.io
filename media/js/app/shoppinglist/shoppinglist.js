@@ -76,13 +76,16 @@
         }
         
         var amount = '<span class="amount">' + a.amount + '</span>';
-        var product = '<span class="product">' + escape(a.product.name) + '</span>';
+        var product = '<span class="product"></span>';
         
         var details = '<div class="details">'
-            + '<span class="reportedBy details">' + escape(a.reporter.name) + '</span>' 
+            + '<span class="reportedBy details"></span>' 
             + '<span class="reportedDate details">' + moment(a.reportedDate).format('l') + '</span></div>';
         
         var div = $('<div class="item transaction" data-id="' + a.id + '">' + amount + product + details + '</div>');
+        
+        div.find('.product').text(a.product.name);
+        div.find('.reportedBy').text(a.reporter.name);
 
         $('#shoppinglist .list').append(div);
     }

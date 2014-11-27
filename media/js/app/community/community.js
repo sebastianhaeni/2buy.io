@@ -141,8 +141,9 @@
                 + item.id
                 + '">'
                 + '<span class="input-group-addon"><input type="checkbox" class="notification-flag"> <span class="glyphicon glyphicon-envelope move-up"></span></span>'
-                + '<span class="form-control title">' + escape(item.name)
-                + '</span></div>');
+                + '<span class="form-control title"></span></div>');
+        
+        div.find('.title').text(item.name);
 
         if (item.administrator == '1') {
             var editButton = $('<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>');
