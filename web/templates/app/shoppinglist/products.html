@@ -7,6 +7,11 @@
 {% endblock %}
 
 {% block content %}
+
+{% include "app/shoppinglist/dialogs/_delete-product.html" %}
+{% include "app/shoppinglist/dialogs/_edit-product.html" %}
+{% include "app/shoppinglist/dialogs/_new-product.html" %}
+
 <div class="container">
     <div class="row top-buffer" id="product-list" ng-controller="ShoppinglistProductController">
         <div class="list list-sm col-md-8 col-md-offset-2">
