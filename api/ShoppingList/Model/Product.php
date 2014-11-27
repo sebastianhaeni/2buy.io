@@ -115,6 +115,21 @@ class Product extends BaseModel
 
     /**
      *
+     * @param string $name            
+     * @param int $comminityId            
+     * @param Application $app            
+     * @return boolean
+     */
+    public static function existsNameCommunity($name, $communityId, Application $app)
+    {
+        return 0 <= $app['db']->executeUpdate('SELECT idProduct FROM product WHERE idCommunity = ? AND name LIKE ?', array(
+            $communityId,
+            $name
+        ));
+    }
+
+    /**
+     *
      * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Product
      */

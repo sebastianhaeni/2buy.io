@@ -74,7 +74,10 @@ class ProductController extends BaseController
             return $checker->getResponse();
         }
         
-        // TODO check if the name is not already in use
+        if (Product::existsNameCommunity($request->get('name'), $checker->getCommunity()->getId(), $app)) {
+            return new Response('Already exists', StatusCodes::HTTP_NOT_MODIFIED);
+        }
+        
         $product = new Product(null, $checker->getCommunity()->getId(), $request->get('name'), $app['auth']->getUser()->getId(), 0);
         
         if (! $product->save($app)) {
@@ -108,14 +111,15 @@ class ProductController extends BaseController
         }
         
         if ($request->get('name') != null) {
+            if (Product::existsNameCommunity($request->get('name'), $checker->getCommunity()->getId(), $app)) {
+                return new Response('Already exists', StatusCodes::HTTP_BAD_REQUEST);
+            }
             $product->setName($request->get('name'));
         }
         
         if ($request->get('inSuggestions') != null) {
             $product->setInSuggestions($request->get('inSuggestions') == '1');
         }
-        
-        // TODO check if the name is not already in use
         
         if (! $product->save($app)) {
             return new Response('Could not save', StatusCodes::HTTP_BAD_REQUEST);
