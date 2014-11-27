@@ -114,7 +114,7 @@ class TransactionController extends BaseController
         $transactions = Transaction::getActiveTransactions($checker->getCommunity()->getId(), $app, $selectedProduct->getId());
         
         if (count($transactions) == 0) {
-            $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, $amount, null, 0, null, null);
+            $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), null, BaseModel::getCurrentTimeStamp(), null, $amount, 0, null, 0, null, null, null);
         } else {
             $transaction = $transactions[0];
             if ($transaction->getAmount() > $amount) {

@@ -14,6 +14,8 @@ class Transaction extends BaseModel
 
     private $_productId;
 
+    private $_billId;
+
     private $_reportedBy;
 
     private $_reportedDate;
@@ -21,6 +23,8 @@ class Transaction extends BaseModel
     private $_editedBy;
 
     private $_amount;
+
+    private $_price;
 
     private $_boughtBy;
 
@@ -30,9 +34,7 @@ class Transaction extends BaseModel
 
     private $_closeDate;
 
-    private $_price;
-
-    private $_billId;
+    private $_notificationDate;
 
     private $_product;
 
@@ -48,39 +50,41 @@ class Transaction extends BaseModel
 
     /**
      *
-     * @param int $id
-     * @param int $productId
-     * @param int $reportedBy
-     * @param string $reportedDate
-     * @param int $editedBy
-     * @param int $amount
-     * @param int $boughtBy
-     * @param boolean $cancelled
-     * @param int $cancelledBy
-     * @param string $closeDate
-     * @param double $price
-     * @param int $billId
+     * @param int $id            
+     * @param int $productId            
+     * @param int $reportedBy            
+     * @param int $billId            
+     * @param string $reportedDate            
+     * @param int $editedBy            
+     * @param int $amount            
+     * @param double $price            
+     * @param int $boughtBy            
+     * @param boolean $cancelled            
+     * @param int $cancelledBy            
+     * @param string $closeDate            
+     * @param string $notificationDate            
      */
-    public function __construct($id, $productId, $reportedBy, $reportedDate, $editedBy, $amount, $boughtBy, $cancelled, $cancelledBy, $closeDate, $price, $billId)
+    public function __construct($id, $productId, $reportedBy, $billId, $reportedDate, $editedBy, $amount, $price, $boughtBy, $cancelled, $cancelledBy, $closeDate, $notificationDate)
     {
         $this->_id = $id;
         $this->setProductId($productId);
         $this->setReportedBy($reportedBy);
+        $this->setBillId($billId);
         $this->setReportedDate($reportedDate);
         $this->setEditedBy($editedBy);
         $this->setAmount($amount);
+        $this->setPrice($price);
         $this->setBoughtBy($boughtBy);
         $this->setCancelled($cancelled);
         $this->setCancelledBy($cancelledBy);
         $this->setCloseDate($closeDate);
-        $this->setPrice($price);
-        $this->setBillId($billId);
+        $this->setNotificationDate($notificationDate);
     }
 
     /**
      *
-     * @param int $id
-     * @param Application $app
+     * @param int $id            
+     * @param Application $app            
      * @return NULL|\ShoppingList\Model\Transaction
      */
     public static function getById($id, Application $app)
@@ -88,13 +92,13 @@ class Transaction extends BaseModel
         $data = $app['db']->fetchAssoc('SELECT * FROM transaction WHERE idTransaction = ?', array(
             $id
         ));
-
+        
         return self::getTransaction($data);
     }
 
     /**
      *
-     * @param NULL|array $data
+     * @param NULL|array $data            
      * @return NULL|\ShoppingList\Model\Transaction
      */
     private static function getTransaction($data, Application $app = null)
@@ -102,9 +106,9 @@ class Transaction extends BaseModel
         if ($data == null) {
             return null;
         }
-
-        $transaction = new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate'], $data['price'], $data['idBill']);
-
+        
+        $transaction = new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['idBill'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['price'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate'], $data['notificationDate']);
+        
         if ($app != null) {
             $transaction->setProduct(Product::getById($transaction->getProductId(), $app));
             $transaction->setReporter(User::getById($transaction->getReportedBy(), $app));
@@ -113,7 +117,7 @@ class Transaction extends BaseModel
             $transaction->setCanceller(User::getById($transaction->getCancelledBy(), $app));
             $transaction->setBill(Bill::getById($transaction->getBillId(), $app));
         }
-
+        
         $transaction->setPersisted(true);
         return $transaction;
     }
@@ -178,11 +182,21 @@ class Transaction extends BaseModel
         $this->_billId = $billId;
     }
 
+    public function getNotificationDate()
+    {
+        return $this->_notificationDate;
+    }
+
+    public function setNotificationDate($notificationDate)
+    {
+        $this->_notificationDate = $notificationDate;
+    }
+
     /**
      *
-     * @param int $communityId
-     * @param Application $app
-     * @param int $productId
+     * @param int $communityId            
+     * @param Application $app            
+     * @param int $productId            
      * @return NULL|\ShoppingList\Model\Transaction
      */
     public static function getActiveTransactions($communityId, Application $app, $productId = null)
@@ -192,11 +206,11 @@ class Transaction extends BaseModel
 
     /**
      *
-     * @param int $communityId
-     * @param Application $app
+     * @param int $communityId            
+     * @param Application $app            
      * @param string $filter
      *            sanitized where clause
-     * @param int $productId
+     * @param int $productId            
      * @return NULL|\ShoppingList\Model\Transaction
      */
     private static function getTransactions($communityId, Application $app, $filter, $productId = null)
@@ -204,28 +218,46 @@ class Transaction extends BaseModel
         $params = [
             $communityId
         ];
-
+        
         if ($productId != null) {
             $params[] = $productId;
         }
-
+        
         $data = $app['db']->fetchAll('
             SELECT * FROM transaction
             INNER JOIN product ON transaction.idProduct = product.idProduct
             WHERE product.idCommunity = ? AND ' . ($productId != null ? 'product.idProduct = ? AND ' : '') . $filter, $params);
-
+        
         $transactions = [];
         foreach ($data as $transaction) {
             $transactions[] = self::getTransaction($transaction, $app);
         }
+        
+        return $transactions;
+    }
 
+    /**
+     * Fetches transactions that have been closed for at least 5 minutes and haven't set a notification sent date.
+     * 
+     * @param Application $app            
+     */
+    public static function getScheduledClosedNotifications(Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE closeDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND notificationDate IS NULL', array());
+        
+        $transactions = [];
+        
+        foreach ($data as $transaction) {
+            $transactions[] = self::getTransaction($transaction);
+        }
+        
         return $transactions;
     }
 
     /**
      *
-     * @param int $communityId
-     * @param Application $app
+     * @param int $communityId            
+     * @param Application $app            
      * @return NULL|\ShoppingList\Model\Transaction
      */
     public static function getHistory($communityId, Application $app)
@@ -235,8 +267,8 @@ class Transaction extends BaseModel
 
     /**
      *
-     * @param int $communityId
-     * @param Application $app
+     * @param int $communityId            
+     * @param Application $app            
      * @return boolean
      */
     public static function clearHistory($communityId, Application $app)
@@ -277,11 +309,11 @@ class Transaction extends BaseModel
         if ($this->getProductId() == null) {
             return false;
         }
-
+        
         if ($this->getAmount() < 1) {
             return false;
         }
-
+        
         return true;
     }
 
@@ -297,20 +329,21 @@ class Transaction extends BaseModel
             'productId' => $this->getProductId(),
             'product' => $this->getProduct(),
             'reportedBy' => $this->getReportedBy(),
+            'billId' => $this->getBillId(),
+            'bill' => $this->getBill(),
             'reportedDate' => $this->getReportedDate(),
             'reporter' => $this->getReporter(),
             'editedBy' => $this->getEditedBy(),
             'editor' => $this->getEditor(),
             'amount' => $this->getAmount(),
+            'price' => $this->getPrice(),
             'boughtBy' => $this->getBoughtBy(),
             'buyer' => $this->getBuyer(),
             'cancelled' => $this->getCancelled(),
             'cancelledBy' => $this->getCancelledBy(),
             'canceller' => $this->getCanceller(),
             'closeDate' => $this->getCloseDate(),
-            'price' => $this->getPrice(),
-            'billId' => $this->getBillId(),
-            'bill' => $this->getBill()
+            'notificationDate' => $this->getNotificationDate()
         ];
     }
 
@@ -382,7 +415,7 @@ class Transaction extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate, price, idBill) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [
+            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate, price, idBill, notificationDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)', [
                 $this->getProductId(),
                 $this->getReportedBy(),
                 $this->getReportedDate(),
@@ -393,7 +426,8 @@ class Transaction extends BaseModel
                 $this->getCancelledBy(),
                 $this->getCloseDate(),
                 $this->getPrice(),
-                $this->getBillId()
+                $this->getBillId(),
+                $this->getNotificationDate()
             ]);
         } catch (\PDOException $ex) {
             return false;
@@ -459,7 +493,7 @@ class Transaction extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE transaction SET
-                idProduct = ?, reportedBy = ?, reportedDate = ?, editedBy = ?, amount = ?, boughtBy = ?, cancelled = ?, cancelledBy = ?, closeDate = ?, price = ?, idBill = ?
+                idProduct = ?, reportedBy = ?, reportedDate = ?, editedBy = ?, amount = ?, boughtBy = ?, cancelled = ?, cancelledBy = ?, closeDate = ?, price = ?, idBill = ?, notificationDate = ?
                 WHERE idTransaction = ?', array(
                 $this->getProductId(),
                 $this->getReportedBy(),
@@ -472,6 +506,7 @@ class Transaction extends BaseModel
                 $this->getCloseDate(),
                 $this->getPrice(),
                 $this->getBillId(),
+                $this->getNotificationDate(),
                 $this->getId()
             ));
         } catch (\PDOException $ex) {

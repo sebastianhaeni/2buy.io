@@ -24,14 +24,10 @@ class NotificationController extends BaseController
      */
     public function update(Request $request, Application $app)
     {
-        $notifications = Notification::getScheduledNotifications($app);
+        $transactions = Transaction::getScheduledClosedNotifications($app);
         
-        foreach ($notifications as $notification) {
-            // TODO send notification
-            // if (! $notification->delete($app)) {
-            // return new Response('Error', StatusCodes::HTTP_INTERNAL_SERVER_ERROR);
-            // }
-        }
+        foreach ($transactions as $transaction) {}
+        
         return new Response('Success', StatusCodes::HTTP_OK);
     }
 }
