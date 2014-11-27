@@ -92,12 +92,12 @@ Production deployment is done manually by the person in charge of releases.
           <li>[x] Show users weighted by purchases (cake diagram)</li>
         </ul>
       </li>
-      <li>[ ] Article suggestions
+      <li>[x] Article suggestions
         <ul>
-          <li>[ ] Admin can define list of suggested articles</li>
-          <li>[ ] Admin can create articles</li>
-          <li>[ ] Admin can delete articles</li>
-          <li>[ ] Admin can edit articles</li>
+          <li>[x] Admin can define list of suggested articles</li>
+          <li>[x] Admin can create articles</li>
+          <li>[x] Admin can delete articles</li>
+          <li>[x] Admin can edit articles</li>
         </ul>
       </li>
     </ul>
