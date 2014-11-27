@@ -50,6 +50,10 @@ class ProductController extends BaseController
         
         $product = Product::getById($request->get('idProduct'), $app);
         
+        if ($product == null) {
+            return new Response('Product not found', StatusCodes::HTTP_BAD_REQUEST);
+        }
+        
         if ($product->getCommunityId() != $checker->getCommunity()->getId()) {
             return new Response('Product not in community', StatusCodes::HTTP_BAD_REQUEST);
         }

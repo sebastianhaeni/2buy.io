@@ -74,10 +74,10 @@ class Router
         // Product
         $app->get   ('/v1/community/{id}/product',             'ShoppingList\\Controller\\ProductController::getProducts');
         $app->post  ('/v1/community/{id}/product',            'ShoppingList\\Controller\\ProductController::createProduct');
+        $app->get   ('/v1/community/{id}/product/suggestions', 'ShoppingList\\Controller\\ProductController::getSuggestions');
         $app->get   ('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::getProduct');
         $app->put   ('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::updateProduct');
         $app->delete('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::deleteProduct');
-        $app->get   ('/v1/community/{id}/product/suggestions', 'ShoppingList\\Controller\\ProductController::getSuggestions');
         
         // Statistics
         $app->get('/v1/community/{id}/stats/purchases', 'ShoppingList\\Controller\\StatisticsController::getPurchaseData');
