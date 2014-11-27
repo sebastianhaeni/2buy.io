@@ -24,7 +24,7 @@ class NotificationController extends BaseController
      */
     public function update(Request $request, Application $app)
     {
-        $notifications = Notification::getScheduled($app);
+        $notifications = Notification::getScheduledNotifications($app);
         
         foreach ($notifications as $notification) {
             // TODO send notification

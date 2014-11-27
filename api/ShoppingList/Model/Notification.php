@@ -58,7 +58,7 @@ class Notification extends BaseModel
      * @param Application $app            
      * @return NULL|\ShoppingList\Model\Notification
      */
-    public static function getScheduled(Application $app)
+    public static function getScheduledNotifications(Application $app)
     {
         $data = $app['db']->fetchAll('SELECT * FROM notification WHERE scheduled > NOW()', array());
         

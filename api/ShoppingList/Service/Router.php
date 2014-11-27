@@ -41,6 +41,9 @@ class Router
         
         // Home
         $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
+
+        // Notification
+        $app->get('/v1/notification/update', 'ShoppingList\\Controller\\NotificationController::update');
         
         // User
         $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
@@ -94,9 +97,6 @@ class Router
         $app->put   ('/v1/community/{id}/bill/accept/{idBill}',         'ShoppingList\\Controller\\BillController::accept');
         $app->put   ('/v1/community/{id}/bill/decline/{idBill}',        'ShoppingList\\Controller\\BillController::decline');
         $app->put   ('/v1/community/{id}/bill/undo/{idBill}',           'ShoppingList\\Controller\\BillController::undo');
-        
-        // Notification
-        $app->get('/v1/notification/update', 'ShoppingList\\Controller\\NotificationController::update');
         
         // User
         $app->get('/v1/user/logout',   'ShoppingList\\Controller\\UserController::logout');
