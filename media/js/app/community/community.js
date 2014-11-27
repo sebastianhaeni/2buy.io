@@ -143,7 +143,7 @@
         var div = $('<div class="input-group item clickable" data-id="'
                 + item.id
                 + '">'
-                + '<span class="input-group-addon"><input type="checkbox" class="notification-flag"> <span class="glyphicon glyphicon-envelope"></span></span>'
+                + '<span class="input-group-addon"><input type="checkbox" class="notification-flag"> <span class="glyphicon glyphicon-envelope move-up"></span></span>'
                 + '<span class="form-control title">' + item.name
                 + '</span></div>');
 
