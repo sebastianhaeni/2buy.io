@@ -127,8 +127,7 @@
             });
         } else if (resultArray.length === 0) {
             if (workerCount <= 0) {
-                // TODO show proper dialog
-                alert('Erkennung fehlgeschlagen. Versuchen Sie es erneut.');
+                $('#barcode-fail-dialog').modal('show');
                 $('#barcode-scanner .progress').hide();
             }
         }
