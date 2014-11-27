@@ -60,7 +60,7 @@ class Product extends BaseModel
      */
     public static function getByCommunityId($communityId, Application $app)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ?', array(
+        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ? ORDER BY name', array(
             $communityId
         ));
         
@@ -157,7 +157,7 @@ class Product extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE product SET
-            communityId = ?,
+            idCommunity = ?,
             name = ?,
             addedBy = ?,
             inSuggestions = ?

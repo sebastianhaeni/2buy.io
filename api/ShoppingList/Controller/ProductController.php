@@ -70,13 +70,8 @@ class ProductController extends BaseController
             return $checker->getResponse();
         }
         
-        $product = new Product();
-        $product->setName($request->get('name'));
-        $product->setAddedBy($app['auth']->getUser()
-            ->getId());
-        $product->setCommunityId($checker->getCommunity()
-            ->getId());
-        $product->setInSuggestions(0);
+        // TODO check if the name is not already in use
+        $product = new Product(null, $checker->getCommunity()->getId(), $request->get('name'), $app['auth']->getUser()->getId(), 0);
         
         if (! $product->save($app)) {
             return new Response('Could not save', StatusCodes::HTTP_BAD_REQUEST);
@@ -108,8 +103,15 @@ class ProductController extends BaseController
             return new Response('Product not in community', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        $product->setName($request->get('name'));
-        $product->setInSuggestions($request->get('inSuggestions'));
+        if ($request->get('name') != null) {
+            $product->setName($request->get('name'));
+        }
+        
+        if ($request->get('inSuggestions') != null) {
+            $product->setInSuggestions($request->get('inSuggestions') == '1');
+        }
+        
+        // TODO check if the name is not already in use
         
         if (! $product->save($app)) {
             return new Response('Could not save', StatusCodes::HTTP_BAD_REQUEST);

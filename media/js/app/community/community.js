@@ -53,12 +53,9 @@
                         name : name
                     },
                     success : function() {
-                        $('#community-list [data-id=' + id + '] .title').html(
-                                name);
-                        $('#edit-community-name-error-message')
-                                .addClass('hide');
-                        $('#edit-community-name-form :input').prop('disabled',
-                                false);
+                        $('#community-list [data-id=' + id + '] .title').text(name);
+                        $('#edit-community-name-error-message').addClass('hide');
+                        $('#edit-community-name-form :input').prop('disabled', false);
                         editingCommunityName = name;
                         $('#edit-community-name-form button[type=submit]')
                                 .prop('disabled', true);
@@ -144,7 +141,7 @@
                 + item.id
                 + '">'
                 + '<span class="input-group-addon"><input type="checkbox" class="notification-flag"> <span class="glyphicon glyphicon-envelope move-up"></span></span>'
-                + '<span class="form-control title">' + item.name
+                + '<span class="form-control title">' + escape(item.name)
                 + '</span></div>');
 
         if (item.administrator == '1') {
@@ -172,7 +169,7 @@
 
             deleteButton.click(function() {
                 $('#delete-community-error-message').addClass('hide');
-                $('#delete-community-name').html(item.name);
+                $('#delete-community-name').text(item.name);
                 $('#delete-community-dialog').attr('data-id', item.id);
                 $('#delete-community-dialog').modal('show');
             });
@@ -263,7 +260,7 @@
                 });
 
         deleteButton.click(function() {
-            $('#delete-member-name').html(member.name);
+            $('#delete-member-name').text(member.name);
             $('#delete-member-dialog').attr('data-community-id',
                     member.communityId).attr('data-id', member.id)
                     .modal('show');
@@ -290,7 +287,7 @@
         div.append(buttonContainer);
 
         deleteButton.click(function() {
-            $('#delete-invite-name').html(invite.email);
+            $('#delete-invite-name').text(invite.email);
             $('#delete-invite-dialog').attr('data-community-id',
                     invite.communityId).attr('data-id', invite.id)
                     .modal('show');
