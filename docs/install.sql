@@ -188,7 +188,28 @@ CREATE TABLE IF NOT EXISTS `user` (
 )
   ENGINE =InnoDB
   DEFAULT CHARSET =latin1
-  AUTO_INCREMENT =2;
+  AUTO_INCREMENT =1;
+  
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notification`
+--
+
+DROP TABLE IF EXISTS `notification`;  
+CREATE TABLE IF NOT EXISTS `notification` (
+  `idNotification` int(11)      NOT NULL AUTO_INCREMENT,
+  `emailRecipient` varchar(250) NOT NULL,
+  `subject`        varchar(250) NOT NULL,
+  `message`        text         NOT NULL,
+  `scheduled`      DATETIME     NOT NULL,
+  PRIMARY KEY (`idNotification`)
+) 
+  ENGINE =InnoDB 
+  DEFAULT CHARSET =latin1 
+  AUTO_INCREMENT =1 ;
+  
 
 --
 -- Constraints for dumped tables
