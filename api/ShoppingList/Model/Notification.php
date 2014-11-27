@@ -31,10 +31,10 @@ class Notification extends BaseModel
     public function __construct($id, $emailRecipient, $subject, $message, $scheduled)
     {
         $this->_id = $id;
-        $this->setCommunityId($communityId);
-        $this->setName($name);
-        $this->setAddedBy($addedBy);
-        $this->setInSuggestins($inSuggestions);
+        $this->setEmailRecipient($emailRecipient);
+        $this->setSubject($subject);
+        $this->setMessage($message);
+        $this->setScheduled($scheduled);
     }
 
     /**

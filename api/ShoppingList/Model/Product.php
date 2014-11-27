@@ -34,7 +34,7 @@ class Product extends BaseModel
         $this->setCommunityId($communityId);
         $this->setName($name);
         $this->setAddedBy($addedBy);
-        $this->setInSuggestins($inSuggestions);
+        $this->setInSuggestions($inSuggestions);
     }
 
     /**
@@ -268,7 +268,7 @@ class Product extends BaseModel
         $this->_addedBy = $addedBy;
     }
 
-    public function setInSuggestins($inSuggestions)
+    public function setInSuggestions($inSuggestions)
     {
         $this->_inSuggestions = $inSuggestions;
     }
