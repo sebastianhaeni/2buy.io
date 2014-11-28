@@ -48,11 +48,11 @@ Production deployment is done manually by the person in charge of releases.
 
 ### Current status
 
-|Branch     |Status                                                                              |
-|-----------|------------------------------------------------------------------------------------|
-|Development|[![](https://shoppinglist.dploy.io/badge/13023223952324/14083.png)](http://dploy.io)|
-|Staging    |[![](https://shoppinglist.dploy.io/badge/13023223952324/14190.png)](http://dploy.io)|
-|Production |[![](https://shoppinglist.dploy.io/badge/13023223952324/14189.png)](http://dploy.io)|
+|Branch     |Status                                                                                           |
+|-----------|-------------------------------------------------------------------------------------------------|
+|Development|[![](https://shoppinglist.dploy.io/badge/13023223952324/14083.png)](http://shoppinglist.dploy.io)|
+|Staging    |[![](https://shoppinglist.dploy.io/badge/13023223952324/14189.png)](http://shoppinglist.dploy.io)|
+|Production |[![](https://shoppinglist.dploy.io/badge/13023223952324/14190.png)](http://shoppinglist.dploy.io)|
 
 
 ## Features
