@@ -6,14 +6,14 @@
     
     &.buyed {
         &.closed {
-            animation: item-drop-out-left .3s forwards;
+            @include animation(item-drop-out-left .3s forwards);
         }
         background-color: rgb(92, 184, 92);
     }
 
     &.cancelled {
         &.closed {
-            animation: item-drop-out-right .3s forwards;
+            @include animation(item-drop-out-right .3s forwards);
         }
         background-color: rgb(217, 83, 79);
     }
@@ -36,13 +36,19 @@
         }
     }
     
-    .details {
-        margin: 10px;
-        clear: both;
+    &.active {
+    	box-shadow: 0 0 3px #000 inset;
     }
     
-    &.active {
-        height: 80px;
+    @media (max-width: $screen-xs-min) {
+	    .details {
+        	clear: both;
+	        margin: 10px;
+        }
+    
+	    &.active {
+	        height: 80px;
+	    }
     }
 
     .reportedDate {
@@ -58,16 +64,6 @@
         line-height: 35px;
     }
 
-}
-
-#transactionlist .transaction span {
-    white-space: normal;
-    line-height: inherit;
-    margin: 0 6px 0 0;
-}
-
-#transactionlist .reportedBy {
-    font-weight: bold;
 }
 
 .swipe-instructions-background {

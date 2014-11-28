@@ -3,17 +3,40 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2014 at 12:11 AM
+-- Generation Time: Nov 27, 2014 at 11:01 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
-SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS = 0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
 -- Database: `shoppinglist`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE IF NOT EXISTS `bill` (
+  `idBill` int(11) NOT NULL AUTO_INCREMENT,
+  `price` double(19,2) NOT NULL,
+  `picturePath` varchar(255) NOT NULL,
+  `idCommunity` int(11) NOT NULL,
+  `createdBy` int(11) NOT NULL,
+  `createdDate` datetime NOT NULL,
+  `accepted` tinyint(1) DEFAULT NULL,
+  `closedBy` int(11) DEFAULT NULL,
+  `closedDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`idBill`),
+  KEY `idCommunity` (`idCommunity`),
+  KEY `createdBy` (`createdBy`),
+  KEY `closedBy` (`closedBy`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -26,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `community` (
   `idCommunity` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`idCommunity`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -39,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `community_has_user` (
   `idCommunity` int(11) NOT NULL,
   `idUser` int(11) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
+  `bankAccountNumber` varchar(255) DEFAULT NULL,
+  `bankAccountName` varchar(255) DEFAULT NULL,
   `receiveNotifications` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idCommunity`,`idUser`),
   KEY `idUser` (`idUser`)
@@ -75,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`idProduct`),
   KEY `idCommunity` (`idCommunity`),
   KEY `addedBy` (`addedBy`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -93,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `remember_me_token` (
   `timestampCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idToken`),
   KEY `idUser` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -105,21 +130,25 @@ DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE IF NOT EXISTS `transaction` (
   `idTransaction` int(11) NOT NULL AUTO_INCREMENT,
   `idProduct` int(11) NOT NULL,
+  `idBill` int(11) DEFAULT NULL,
   `reportedBy` int(11) NOT NULL,
   `reportedDate` datetime NOT NULL,
   `editedBy` int(11) DEFAULT NULL,
   `amount` int(11) NOT NULL,
+  `price` double(19,2) DEFAULT NULL,
   `boughtBy` int(11) DEFAULT NULL,
   `cancelled` tinyint(1) NOT NULL DEFAULT '0',
   `cancelledBy` int(11) DEFAULT NULL,
   `closeDate` datetime DEFAULT NULL,
+  `notificationDate` datetime DEFAULT NULL,
   PRIMARY KEY (`idTransaction`),
   KEY `idProduct` (`idProduct`),
   KEY `reportedBy` (`reportedBy`),
   KEY `editedBy` (`editedBy`),
   KEY `boughtBy` (`boughtBy`),
-  KEY `cancelledBy` (`cancelledBy`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `cancelledBy` (`cancelledBy`),
+  KEY `idBill` (`idBill`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -136,11 +165,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   `phone` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bill`
+--
+ALTER TABLE `bill`
+  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`createdBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bill_ibfk_2` FOREIGN KEY (`closedBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `bill_ibfk_3` FOREIGN KEY (`idCommunity`) REFERENCES `community` (`idCommunity`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `community_has_user`
@@ -171,9 +208,11 @@ ALTER TABLE `remember_me_token`
 -- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_5` FOREIGN KEY (`cancelledBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`reportedBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_3` FOREIGN KEY (`editedBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`boughtBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE;
-SET FOREIGN_KEY_CHECKS=1;
+  ADD CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`boughtBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaction_ibfk_5` FOREIGN KEY (`cancelledBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaction_ibfk_6` FOREIGN KEY (`idBill`) REFERENCES `bill` (`idBill`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+SET FOREIGN_KEY_CHECKS = 1;

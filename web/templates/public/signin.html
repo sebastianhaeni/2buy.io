@@ -1,6 +1,6 @@
 {% extends "public/layout.html" %}
 
-{% block title%}
+{% block title %}
     {% set page = parent() %}
     {% trans %}Sign In - {{ page }}{% endtrans %}
 {% endblock %}
@@ -34,7 +34,7 @@
                   <div class="col-sm-offset-4 col-sm-8">
                       <div class="checkbox">
                           <label>
-                              <input type="checkbox" name="remember-me"> Remember me
+                              <input type="checkbox" name="remember-me" checked> Remember me
                           </label>
                       </div>
                   </div>
@@ -49,10 +49,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block javascript %}
-{{ parent() }}
-<script src="media/js/public/home.js"></script>
-<script src="media/js/public/signin.js"></script>
 {% endblock %}

@@ -1,7 +1,10 @@
 .settings/
+bower_components/
+node_modules/
+.sass-cache/
+vendor/
+/config.php
 .project
 .buildpath
-bower_components/
-vendor/
 *.bak
-/config.php
+/npm-debug.log

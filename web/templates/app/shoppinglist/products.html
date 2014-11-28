@@ -1,55 +1,46 @@
-{% extends "app/shoppinglist/layout.html" %}
+{% extends "app/shoppinglist/layout.html" %} 
 
-{% block content %}
+{% block title %} 
+    {% set page = parent() %} 
+    {% set app_name = block('app_name') %} 
+    {% trans %}Products - {{ app_name }} - {{ page }}{% endtrans %} 
+{% endblock %} 
+
+{% block content %} 
+
+{% include "app/shoppinglist/dialogs/_delete-product.html" %}
+{% include "app/shoppinglist/dialogs/_edit-product.html" %}
+{% include "app/shoppinglist/dialogs/_new-product.html" %}
+
 <div class="container">
-    <div class="row">
-
-        <div id="productlist" class="col-md-12">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Aktiv</th>
-                    <th class="col-md-12">Artikel</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                    <!-- Start Beispieldaten -->
-                    <tr data-id="1">
-                        <td><input type="checkbox"></td>
-                        <td>Abfallsäcke 35L</td>
-                        <td class="text-right">
-                            <button type="button" class="btn btn-danger remove"><span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-id="2">
-                        <td><input type="checkbox"></td>
-                        <td>Acetto Balsamico</td>
-                        <td class="text-right">
-                            <button type="button" class="btn btn-danger remove"><span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-id="3">
-                        <td><input type="checkbox"></td>
-                        <td>Alufolie</td>
-                        <td class="text-right">
-                            <button type="button" class="btn btn-danger remove"><span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <!-- Ende Beispieldaten -->
-            
-                </tbody>
-            </table>
-        </div>
+	<div class="row text-center">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new-product-dialog">{% trans "New Product" %}</button>
+    </div>
+    
+    <div class="row top-buffer" id="product-list" ng-controller="ShoppinglistProductController">
         
+        <div class="list list-sm col-md-8 col-md-offset-2">
+			
+            <div class="input-group item" ng-repeat="product in products" data-id="{[{ product.id }]}">
+            
+                <span class="input-group-addon" title="{% trans "In suggestions" %}">
+                    <input type="checkbox" ng-checked="product.inSuggestions == '1'" ng-click="toggleInSuggestions(product)">
+                </span>
+                
+                <span class="form-control product-name">{[{ product.name }]}</span>
+                
+                <span class="input-group-addon">
+                    <button type="button" class="btn btn-default btn-xs" ng-click="showEditDialog(product)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="button" class="btn btn-default btn-xs btn-danger delete-product" ng-click="showDeleteDialog(product)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </span>
+            
+            </div>
+
+        </div>
     </div>
 </div>
-{% endblock %}
-
-{% block javascript %}
-{{ parent() }}
-<script src="/media/js/app/shoppinglist/products.js"></script>
 {% endblock %}

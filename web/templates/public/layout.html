@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ htmlLang }}">
 <head>
-{% block head %}
-<meta charset="utf-8">
-<title>{% block title %}Shopping List{% endblock %}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<link href="/media/css/public.css" rel="stylesheet">
-{% endblock %}
+    {% block head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{{ config['product_name'] }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0f3e8b">
+    <link href="/media/css/public.css" rel="stylesheet">
+    <link rel="manifest" href="/media/manifest.json">
+    <link rel="apple-touch-startup-image" href="/media/img/logo2buy192.png">
+    <link rel="icon" type="image/png" sizes="192×192" href="/media/img/logo2buy192.png">
+    {% endblock %}
 </head>
 <body>
 
@@ -17,11 +22,7 @@
 {% include 'public/_footer.html' %}
 
 {% block javascript %}
-<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-<script src="/bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-<script src="/bower_components/jquery.cookie/jquery.cookie.js"></script>
-<script src="/media/js/change-language.js"></script>
+<script src="/media/js/dist/public.min.js"></script>
 {% endblock %}
 </body>
 </html>

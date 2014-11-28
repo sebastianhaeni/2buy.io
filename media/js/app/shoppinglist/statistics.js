@@ -8,8 +8,18 @@
         return "#" + ((1 << 24) * Math.random() | 0).toString(16);
     }
 
-    function showStats(el){
+    function showStats(){
+        showBuyerStats();
+        showReporterStats();
+    }
+    
+    function showBuyerStats(){
         var buyerCanvas = $("#buyerChart").get(0);
+        
+        if(buyerCanvas == null){
+            return;
+        }
+        
         buyerCanvas.width = $("#buyerChart").width();
         buyerCanvas.height = $("#buyerChart").width();
         var buyerCtx = buyerCanvas.getContext("2d");
@@ -24,8 +34,15 @@
                 new Chart(buyerCtx).Pie(pieData, {});
             }
         });
-
+    }
+    
+    function showReporterStats(){
         var reporterCanvas = $("#reporterChart").get(0);
+        
+        if(reporterCanvas == null){
+            return;
+        }
+        
         reporterCanvas.width = $("#reporterChart").width();
         reporterCanvas.height = $("#reporterChart").width();
         var reporterCtx = reporterCanvas.getContext("2d");

@@ -10,18 +10,18 @@ $config['site_url']     = 'http://localhost/';
 $config['database'] = [
     'driver'   => 'pdo_mysql',
     'host'     => '127.0.0.1',
-    'dbname'   => 'shoppinglist',
+    'dbname'   => '2buy',
     'user'     => 'root',
     'password' => '',
     'charset'  => 'utf8'
 ];
 
 $config['email'] = [
-    'server'	 => 'localhost',
-    'port' 		 => 465,
-    'security'   => 'ssl',
-    'username'   => '',
-    'password'   => ''
+    'server'   => 'localhost',
+    'port'     => 465,
+    'security' => 'ssl',
+    'username' => '',
+    'password' => ''
 ];
 
 $config['i18n'] = [

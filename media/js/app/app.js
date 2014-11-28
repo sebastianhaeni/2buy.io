@@ -1,31 +1,35 @@
 (function($) {
-	'use strict';
+    'use strict';
 
-	$.ajax({
-		url : '/api/v1/user/isLoggedIn',
-		success : function(response) {
-			if (!response.loggedIn) {
-				window.location.href = 'signin';
-			}
-		}
-	});
+    window.app2buy = angular.module('app2buy', [ 'ngResource', 'angularMoment' ]).config(
+            function($interpolateProvider) {
+                $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+            });
 
-	if ($.cookie('community') == undefined
-			&& window.location.pathname != '/app') {
-		window.location.href = '/app';
-	}
+    $.ajax({
+        url : '/api/v1/user/isLoggedIn',
+        success : function(response) {
+            if (!response.loggedIn) {
+                window.location.href = 'signin';
+            }
+        }
+    });
 
-	$('#logout').click(function() {
-		logout();
-	});
+    if ($.cookie('community') == undefined && window.location.pathname != '/app') {
+        window.location.href = '/app';
+    }
 
-	function logout() {
-		$.ajax({
-			url : '/api/v1/user/logout',
-			success : function() {
-				window.location.href = '/';
-			}
-		});
-	}
+    $('#logout').click(function() {
+        logout();
+    });
+
+    function logout() {
+        $.ajax({
+            url : '/api/v1/user/logout',
+            success : function() {
+                window.location.href = '/';
+            }
+        });
+    }
 
 })(jQuery);

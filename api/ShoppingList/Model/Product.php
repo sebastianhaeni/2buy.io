@@ -34,7 +34,7 @@ class Product extends BaseModel
         $this->setCommunityId($communityId);
         $this->setName($name);
         $this->setAddedBy($addedBy);
-        $this->setInSuggestins($inSuggestions);
+        $this->setInSuggestions($inSuggestions);
     }
 
     /**
@@ -60,7 +60,7 @@ class Product extends BaseModel
      */
     public static function getByCommunityId($communityId, Application $app)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ?', array(
+        $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ? ORDER BY name', array(
             $communityId
         ));
         
@@ -83,7 +83,7 @@ class Product extends BaseModel
     public static function getSuggestions($communityId, Application $app, $query)
     {
         $data = $app['db']->fetchAll('
-             SELECT
+            SELECT
                 product.*
             FROM
                 product
@@ -96,9 +96,9 @@ class Product extends BaseModel
             GROUP BY
             	product.idProduct
             ORDER BY
-                COUNT(product.idProduct) DESC,
+                COUNT(transaction.idProduct) DESC,
             	name', array(
-            $query . '%',
+            '%' . $query . '%',
             $communityId
         ));
         
@@ -111,6 +111,21 @@ class Product extends BaseModel
         }
         
         return $products;
+    }
+
+    /**
+     *
+     * @param string $name            
+     * @param int $comminityId            
+     * @param Application $app            
+     * @return boolean
+     */
+    public static function existsNameCommunity($name, $communityId, Application $app)
+    {
+        return 0 <= $app['db']->executeUpdate('SELECT idProduct FROM product WHERE idCommunity = ? AND name LIKE ?', array(
+            $communityId,
+            $name
+        ));
     }
 
     /**
@@ -157,7 +172,7 @@ class Product extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE product SET
-            communityId = ?,
+            idCommunity = ?,
             name = ?,
             addedBy = ?,
             inSuggestions = ?
@@ -268,7 +283,7 @@ class Product extends BaseModel
         $this->_addedBy = $addedBy;
     }
 
-    public function setInSuggestins($inSuggestions)
+    public function setInSuggestions($inSuggestions)
     {
         $this->_inSuggestions = $inSuggestions;
     }

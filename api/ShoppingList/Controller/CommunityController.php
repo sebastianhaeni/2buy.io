@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Util\StatusCodes;
 use ShoppingList\Model\Invite;
 use ShoppingList\Model\User;
+use ShoppingList\Util\CommunityChecker;
 
 /**
+ * Provides the functions for /community.
  *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
@@ -18,6 +20,7 @@ class CommunityController extends BaseController
 {
 
     /**
+     * Creates a new community.
      *
      * @param Request $request            
      * @param Application $app            
@@ -43,6 +46,7 @@ class CommunityController extends BaseController
     }
 
     /**
+     * Returns all communities of the current user.
      *
      * @param Request $request            
      * @param Application $app            
@@ -56,10 +60,11 @@ class CommunityController extends BaseController
             return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        return $app->json($user->getCommunities($app));
+        return $this->json($user->getCommunities($app));
     }
 
     /**
+     * Returns a certain community if the current user is in it.
      *
      * @param Request $request            
      * @param Application $app            
@@ -67,10 +72,17 @@ class CommunityController extends BaseController
      */
     public function getById(Request $request, Application $app)
     {
-        return $app->json(Community::getById($request->get('id'), $app));
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
+        }
+        
+        return $this->json($checker->getCommunity(), $app);
     }
 
     /**
+     * Updates a community.
+     * Only an admin can change the name.
      *
      * @param Request $request            
      * @param Application $app            
@@ -78,27 +90,21 @@ class CommunityController extends BaseController
      */
     public function update(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app, true);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
-        
-        if ($communityHasUser == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if ($communityHasUser->isAdmin() && null !== $request->get('name')) {
-            $community->setName($request->get('name'));
-            if (! $community->save($app)) {
+        if (null !== $request->get('name')) {
+            $checker->getCommunity()->setName($request->get('name'));
+            if (! $checker->getCommunity()->save($app)) {
                 return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
             }
         }
         
         if (null !== $request->get('receiveNotifications')) {
-            $communityHasUser->setReceiveNotifications($request->get('receiveNotifications') == 'true');
-            if (! $communityHasUser->save($app)) {
+            $checker->getCommunityHasUser()->setReceiveNotifications($request->get('receiveNotifications') == 'true');
+            if (! $checker->getCommunityHasUser()->save($app)) {
                 return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
             }
         }
@@ -107,6 +113,7 @@ class CommunityController extends BaseController
     }
 
     /**
+     * Deletes a community.
      *
      * @param Request $request            
      * @param Application $app            
@@ -114,23 +121,12 @@ class CommunityController extends BaseController
      */
     public function delete(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app, true);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
-        
-        if ($communityHasUser == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if (! $communityHasUser->isAdmin()) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if ($community->delete($app)) {
+        if ($checker->getCommunity()->delete($app)) {
             return new Response('Success', StatusCodes::HTTP_OK);
         }
         
@@ -138,6 +134,8 @@ class CommunityController extends BaseController
     }
 
     /**
+     * Invites a user to the community.
+     * Only an admin can do this.
      *
      * @param Request $request            
      * @param Application $app            
@@ -145,28 +143,18 @@ class CommunityController extends BaseController
      */
     public function inviteUser(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
+        $checker = new CommunityChecker($request, $app, true);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
+        }
+        
         $email = $request->get('email');
-        
-        if ($community == null) {
-            return new Response('Community not found', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
-        
-        if ($communityHasUser == null) {
-            return new Response('User not logged in', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if (! $communityHasUser->isAdmin()) {
-            return new Response('User is not admin', StatusCodes::HTTP_BAD_REQUEST);
-        }
         
         // detect if the user already is registered and add him to the community, instead of adding an invite
         $user = User::getByEmail($email, $app);
         
         if ($user == null) {
-            $invite = new Invite(null, $community->getId(), $email);
+            $invite = new Invite(null, $checker->getCommunity()->getId(), $email);
             
             if ($invite->save($app)) {
                 return new Response('Success', StatusCodes::HTTP_OK);
@@ -175,7 +163,7 @@ class CommunityController extends BaseController
             return new Response('Error saving invite', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        $communityHasUser = new CommunityHasUser($community->getId(), $user->getId(), false, true);
+        $communityHasUser = new CommunityHasUser($checker->getCommunity()->getId(), $user->getId(), false, true);
         
         if (! $communityHasUser->save($app)) {
             return new Response('Error saving community association', StatusCodes::HTTP_BAD_REQUEST);
@@ -185,6 +173,7 @@ class CommunityController extends BaseController
     }
 
     /**
+     * Returns the members of a community if the current user is in it.
      *
      * @param Request $request            
      * @param Application $app            
@@ -192,16 +181,17 @@ class CommunityController extends BaseController
      */
     public function getMembers(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        return $app->json($community->getMembers($app));
+        return $this->json($checker->getCommunity()
+            ->getMembers($app));
     }
 
     /**
+     * Returns the invitees of a community if the current user is in it.
      *
      * @param Request $request            
      * @param Application $app            
@@ -209,16 +199,18 @@ class CommunityController extends BaseController
      */
     public function getInvites(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('id'), $app);
-        
-        if ($community == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        return $app->json(Invite::getByCommunityId($community->getId(), $app));
+        return $this->json(Invite::getByCommunityId($checker->getCommunity()
+            ->getId(), $app));
     }
 
     /**
+     * Deletes an invite.
+     * Only an admin can do this.
      *
      * @param Request $request            
      * @param Application $app            
@@ -226,22 +218,12 @@ class CommunityController extends BaseController
      */
     public function deleteInvite(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('idCommunity'), $app);
-        $invite = Invite::getById($request->get('id'), $app);
-        
-        if ($community == null || $invite == null || $community->getId() != $invite->getCommunityId()) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
+        $checker = new CommunityChecker($request, $app, true);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
         }
         
-        $communityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
-        
-        if ($communityHasUser == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if (! $communityHasUser->isAdmin()) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
+        $invite = Invite::getById($request->get('idInvite'), $app);
         
         if ($invite->delete($app)) {
             return new Response('Success', StatusCodes::HTTP_OK);
@@ -251,6 +233,8 @@ class CommunityController extends BaseController
     }
 
     /**
+     * Deletes a member.
+     * Only an admin can do this. A user cannot delete himself.
      *
      * @param Request $request            
      * @param Application $app            
@@ -258,18 +242,22 @@ class CommunityController extends BaseController
      */
     public function deleteMember(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('idCommunity'), $app);
-        $member = User::getById($request->get('id'), $app);
-        $communityHasUser = CommunityHasUser::getByUserId($request->get('id'), $app);
+        $checker = new CommunityChecker($request, $app, true);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
+        }
         
-        if ($community == null || $member == null || $communityHasUser == null || count($communityHasUser) <= 0) {
-            return new Response('Community or member not found', StatusCodes::HTTP_BAD_REQUEST);
+        $member = User::getById($request->get('idMember'), $app);
+        $communityHasUser = CommunityHasUser::getByUserId($request->get('idMember'), $app);
+        
+        if ($member == null || $communityHasUser == null || count($communityHasUser) <= 0) {
+            return new Response('Member not found or is not in community', StatusCodes::HTTP_BAD_REQUEST);
         }
         
         // Check if the user is in the community
         $validCommunity = false;
         foreach ($communityHasUser as $a) {
-            if ($a->getCommunityId() == $community->getId()) {
+            if ($a->getCommunityId() == $checker->getCommunity()->getId()) {
                 $validCommunity = true;
                 $communityHasUser = $a;
                 break;
@@ -280,16 +268,6 @@ class CommunityController extends BaseController
             return new Response('Member is not in community', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        $currentCommunityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
-        
-        if ($currentCommunityHasUser == null) {
-            return new Response('User is not logged in', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if (! $currentCommunityHasUser->isAdmin()) {
-            return new Response('User is not admin of community', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
         if ($communityHasUser->delete($app)) {
             return new Response('Success', StatusCodes::HTTP_OK);
         }
@@ -298,6 +276,8 @@ class CommunityController extends BaseController
     }
 
     /**
+     * Updates a member of a community.
+     * Only an admin can do this. An admin cannot remove his own admin status.
      *
      * @param Request $request            
      * @param Application $app            
@@ -305,18 +285,22 @@ class CommunityController extends BaseController
      */
     public function updateMember(Request $request, Application $app)
     {
-        $community = Community::getById($request->get('idCommunity'), $app);
-        $member = User::getById($request->get('id'), $app);
-        $communityHasUser = CommunityHasUser::getByUserId($request->get('id'), $app);
+        $checker = new CommunityChecker($request, $app, true);
+        if (! $checker->isGood()) {
+            return $checker->getResponse();
+        }
         
-        if ($community == null || $member == null || $communityHasUser == null || count($communityHasUser) <= 0) {
+        $member = User::getById($request->get('idMember'), $app);
+        $communityHasUser = CommunityHasUser::getByUserId($request->get('idMember'), $app);
+        
+        if ($member == null || $communityHasUser == null || count($communityHasUser) <= 0) {
             return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
         }
         
         // Check if the user is in the community
         $validCommunity = false;
         foreach ($communityHasUser as $a) {
-            if ($a->getCommunityId() == $community->getId()) {
+            if ($a->getCommunityId() == $checker->getCommunity()->getId()) {
                 $validCommunity = true;
                 $communityHasUser = $a;
                 break;
@@ -324,16 +308,6 @@ class CommunityController extends BaseController
         }
         
         if (! $validCommunity) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        $currentCommunityHasUser = CommunityHasUser::getById($community->getId() . ':' . $app['auth']->getUser($request)->getId(), $app);
-        
-        if ($currentCommunityHasUser == null) {
-            return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
-        }
-        
-        if (! $currentCommunityHasUser->isAdmin()) {
             return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
         }
         

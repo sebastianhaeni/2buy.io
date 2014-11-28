@@ -8,4 +8,6 @@
         });
 		window.location.reload();
 	});
+	
+	moment.locale($(document.querySelector("html")).attr('lang'));
 })(jQuery);

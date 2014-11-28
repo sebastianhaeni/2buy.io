@@ -41,6 +41,9 @@ class Router
         
         // Home
         $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
+
+        // Notification
+        $app->get('/v1/notification/update', 'ShoppingList\\Controller\\NotificationController::update');
         
         // User
         $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
@@ -56,40 +59,54 @@ class Router
     private function constructAppRoutes(Application $app)
     {
         // Community
-        $app->post('/v1/community', 'ShoppingList\\Controller\\CommunityController::create');
-        $app->put('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::update');
-        $app->post('/v1/community/{id}/invite', 'ShoppingList\\Controller\\CommunityController::inviteUser');
-        $app->delete('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::delete');
-        $app->get('/v1/community', 'ShoppingList\\Controller\\CommunityController::getAll');
-        $app->get('/v1/community/{id}', 'ShoppingList\\Controller\\CommunityController::getById');
-        $app->get('/v1/community/{id}/member', 'ShoppingList\\Controller\\CommunityController::getMembers');
-        $app->get('/v1/community/{id}/invite', 'ShoppingList\\Controller\\CommunityController::getInvites');
-        $app->put('/v1/community/{idCommunity}/member/{id}', 'ShoppingList\\Controller\\CommunityController::updateMember');
-        $app->delete('/v1/community/{idCommunity}/member/{id}', 'ShoppingList\\Controller\\CommunityController::deleteMember');
-        $app->delete('/v1/community/{idCommunity}/invite/{id}', 'ShoppingList\\Controller\\CommunityController::deleteInvite');
+        $app->post  ('/v1/community',                        'ShoppingList\\Controller\\CommunityController::create');
+        $app->put   ('/v1/community/{id}',                   'ShoppingList\\Controller\\CommunityController::update');
+        $app->post  ('/v1/community/{id}/invite',            'ShoppingList\\Controller\\CommunityController::inviteUser');
+        $app->delete('/v1/community/{id}',                   'ShoppingList\\Controller\\CommunityController::delete');
+        $app->get   ('/v1/community',                        'ShoppingList\\Controller\\CommunityController::getAll');
+        $app->get   ('/v1/community/{id}',                   'ShoppingList\\Controller\\CommunityController::getById');
+        $app->get   ('/v1/community/{id}/member',            'ShoppingList\\Controller\\CommunityController::getMembers');
+        $app->get   ('/v1/community/{id}/invite',            'ShoppingList\\Controller\\CommunityController::getInvites');
+        $app->put   ('/v1/community/{id}/member/{idMember}', 'ShoppingList\\Controller\\CommunityController::updateMember');
+        $app->delete('/v1/community/{id}/member/{idMember}', 'ShoppingList\\Controller\\CommunityController::deleteMember');
+        $app->delete('/v1/community/{id}/invite/{idInvite}', 'ShoppingList\\Controller\\CommunityController::deleteInvite');
         
         // Product
-        $app->get('/v1/community/{id}/product', 'ShoppingList\\Controller\\ProductController::getProducts');
-        $app->get('/v1/community/{id}/product/suggestions', 'ShoppingList\\Controller\\ProductController::getSuggestions');
+        $app->get   ('/v1/community/{id}/product',             'ShoppingList\\Controller\\ProductController::getProducts');
+        $app->post  ('/v1/community/{id}/product',            'ShoppingList\\Controller\\ProductController::createProduct');
+        $app->get   ('/v1/community/{id}/product/suggestions', 'ShoppingList\\Controller\\ProductController::getSuggestions');
+        $app->get   ('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::getProduct');
+        $app->put   ('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::updateProduct');
+        $app->delete('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::deleteProduct');
         
         // Statistics
         $app->get('/v1/community/{id}/stats/purchases', 'ShoppingList\\Controller\\StatisticsController::getPurchaseData');
-        $app->get('/v1/community/{id}/stats/orders', 'ShoppingList\\Controller\\StatisticsController::getOrderData');
+        $app->get('/v1/community/{id}/stats/orders',    'ShoppingList\\Controller\\StatisticsController::getOrderData');
         
         // Transaction
-        $app->get('/v1/community/{id}/transaction/active', 'ShoppingList\\Controller\\TransactionController::getActiveTransactions');
-        $app->get('/v1/community/{id}/transaction/history', 'ShoppingList\\Controller\\TransactionController::getHistory');
-        $app->delete('/v1/community/{id}/transaction/history/clear', 'ShoppingList\\Controller\\TransactionController::clearHistory');
-        $app->post('/v1/community/{id}/transaction', 'ShoppingList\\Controller\\TransactionController::insertTransaction');
-        $app->put('/v1/community/{id}/transaction/buy/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::buy');
-        $app->put('/v1/community/{id}/transaction/cancel/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::cancel');
-        $app->put('/v1/community/{id}/transaction/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::update');
+        $app->get   ('/v1/community/{id}/transaction/active',                 'ShoppingList\\Controller\\TransactionController::getActiveTransactions');
+        $app->get   ('/v1/community/{id}/transaction/history',                'ShoppingList\\Controller\\TransactionController::getHistory');
+        $app->delete('/v1/community/{id}/transaction/history/clear',          'ShoppingList\\Controller\\TransactionController::clearHistory');
+        $app->post  ('/v1/community/{id}/transaction',                        'ShoppingList\\Controller\\TransactionController::insertTransaction');
+        $app->put   ('/v1/community/{id}/transaction/{idTransaction}',        'ShoppingList\\Controller\\TransactionController::update');
+        $app->put   ('/v1/community/{id}/transaction/buy/{idTransaction}',    'ShoppingList\\Controller\\TransactionController::buy');
+        $app->put   ('/v1/community/{id}/transaction/cancel/{idTransaction}', 'ShoppingList\\Controller\\TransactionController::cancel');
+        $app->put   ('/v1/community/{id}/transaction/undo/{idTransaction}',   'ShoppingList\\Controller\\TransactionController::undo');
+
+        // Bill
+        $app->get   ('/v1/community/{id}/bill/active',                  'ShoppingList\\Controller\\BillController::getActiveBills');
+        $app->get   ('/v1/community/{id}/bill/history',                 'ShoppingList\\Controller\\BillController::getHistory');
+        $app->delete('/v1/community/{id}/bill/history/clear',           'ShoppingList\\Controller\\BillController::clearHistory');
+        $app->post  ('/v1/community/{id}/bill',                         'ShoppingList\\Controller\\BillController::insertBill');
+        $app->put   ('/v1/community/{id}/bill/accept/{idBill}',         'ShoppingList\\Controller\\BillController::accept');
+        $app->put   ('/v1/community/{id}/bill/decline/{idBill}',        'ShoppingList\\Controller\\BillController::decline');
+        $app->put   ('/v1/community/{id}/bill/undo/{idBill}',           'ShoppingList\\Controller\\BillController::undo');
         
         // User
-        $app->get('/v1/user/logout', 'ShoppingList\\Controller\\UserController::logout');
+        $app->get('/v1/user/logout',   'ShoppingList\\Controller\\UserController::logout');
         $app->put('/v1/user/password', 'ShoppingList\\Controller\\UserController::changePassword');
-        $app->put('/v1/user', 'ShoppingList\\Controller\\UserController::updateCurrentUser');
-        $app->get('/v1/user', 'ShoppingList\\Controller\\UserController::getInfo');
+        $app->put('/v1/user',          'ShoppingList\\Controller\\UserController::updateCurrentUser');
+        $app->get('/v1/user',          'ShoppingList\\Controller\\UserController::getInfo');
         
         // Barcode
         $app->get('/v1/barcode/{barcode}', 'ShoppingList\\Controller\\BarcodeController::get');

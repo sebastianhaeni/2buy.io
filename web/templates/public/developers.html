@@ -1,6 +1,6 @@
 {% extends "public/layout.html" %}
 
-{% block title%}
+{% block title %}
     {% set page = parent() %}
     {% trans %}Developers - {{ page }}{% endtrans %}
 {% endblock %}
@@ -11,9 +11,4 @@
     
     <p>Under construction</p>
 </div>
-{% endblock %}
-
-{% block javascript %}
-{{ parent() }}
-<script src="media/js/public/home.js"></script>
 {% endblock %}

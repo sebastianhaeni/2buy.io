@@ -2,6 +2,7 @@
     'use strict';
     
     var holdTime = 600;
+    var clickTime = 100;
     var tapHold = null;
     var editingTransactionId = null;
 
@@ -15,6 +16,7 @@
                 
                 $('#shoppinglist .transaction').draggable({ 
                     axis: 'x', 
+                    delay: clickTime,
                     revert: function(){
                         return !$(this).hasClass('buyed') && !$(this).hasClass('cancelled');  
                     },
@@ -40,8 +42,14 @@
                         }
                     }
                 }).on('mousedown', function(){
-                    tapHold = $(this).addClass('holding').attr('data-hold-start', new Date().getTime());
-                    setTimeout(editTransaction.bind(this, $(this)), holdTime);
+                    var t = $(this);
+                    tapHold = t.addClass('holding').attr('data-hold-start', new Date().getTime());
+                    setTimeout(editTransaction.bind(this, t), holdTime);
+                    setTimeout(function(){
+                        if(t.hasClass('holding')){
+                            t.addClass('active');
+                        }
+                    }, clickTime);
                 }).on('mouseout', function(){
                     if(tapHold != null){
                         tapHold.removeClass('holding');
@@ -52,9 +60,6 @@
                         tapHold.removeClass('holding');
                         tapHold = null;
                     }
-                }).on('click', function(){
-                    $('#shoppinglist .transaction').removeClass('active');
-                    $(this).addClass('active');
                 });
                 
                 setTimeout(function(){
@@ -65,20 +70,22 @@
     }
 
     function addTransaction(a) {
-
         if($('#shoppinglist div[data-id=' + a.id + ']').length > 0){
-        	$('.transaction[data-id=' + a.id + '] .amount').html(a.amount);
+            $('.transaction[data-id=' + a.id + '] .amount').html(a.amount);
             return;
         }
         
         var amount = '<span class="amount">' + a.amount + '</span>';
-        var product = '<span class="product">' + a.product.name + '</span>';
+        var product = '<span class="product"></span>';
         
         var details = '<div class="details">'
-            + '<span class="reportedBy details">' + a.reporter.name + '</span>' 
-            + '<span class="reportedDate details">' + moment(a.reportedDate).format('lll') + '</span></div>';
+            + '<span class="reportedBy details"></span>' 
+            + '<span class="reportedDate details">' + moment(a.reportedDate).format('l') + '</span></div>';
         
         var div = $('<div class="item transaction" data-id="' + a.id + '">' + amount + product + details + '</div>');
+        
+        div.find('.product').text(a.product.name);
+        div.find('.reportedBy').text(a.reporter.name);
 
         $('#shoppinglist .list').append(div);
     }
@@ -90,6 +97,21 @@
             type: 'put',
             success: function(response){
                 el.addClass('closed');
+                toastr.options.positionClass = 'toast-bottom-left';
+                toastr.options.timeOut = 4000;
+                toastr.options.extendedTimeOut = 4000;
+                toastr.options.progressBar = true;
+
+                toastr.success($('#toastr-template-bought').val().replace('{id}', transactionId));
+                $('.btn-undo[data-id=' + transactionId + ']').click(function(){
+                    $.ajax({
+                        url: '/api/v1/community/' + $.cookie('community') + '/transaction/undo/' + transactionId,
+                        type: 'put',
+                        success: function(){
+                            $('.transaction[data-id=' + transactionId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                        }
+                    });
+                });
             },
             error: function(){
                 alert('Error!');
@@ -104,6 +126,21 @@
             type: 'put',
             success: function(response){
                 el.addClass('closed');
+                toastr.options.positionClass = 'toast-bottom-left';
+                toastr.options.timeOut = 4000;
+                toastr.options.extendedTimeOut = 4000;
+                toastr.options.progressBar = true;
+
+                toastr.error($('#toastr-template-cancelled').val().replace('{id}', transactionId));
+                $('.btn-undo[data-id=' + transactionId + ']').click(function(){
+                    $.ajax({
+                        url: '/api/v1/community/' + $.cookie('community') + '/transaction/undo/' + transactionId,
+                        type: 'put',
+                        success: function(){
+                            $('.transaction[data-id=' + transactionId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                        }
+                    });
+                });
             },
             error: function(){
                 alert('Error!');
@@ -127,6 +164,12 @@
         }
     }
     
+    $(document).click(function(event){
+        if(!$(event.target).closest('.transaction').length && !$(event.target).closest('#edit-transaction').length){
+            $('.transaction').removeClass('active');
+        }
+    });
+    
     $('#add-article form').submit(function(){
         
         var name = $('#add-article-name').val();
@@ -143,6 +186,7 @@
             success: function(){
                 $('#add-article form').find(':input').prop('disabled', false);
                 $('#add-article-name').val('');
+                
                 $('#add-article-amount').val(1);
                 $('#add-article-error-message').addClass('hide');
                 $('#add-article').modal('hide');
@@ -188,10 +232,9 @@
         name: 'add-article-name',
         displayKey: 'value',
         source: function(query, cb) {
-            console.log(query);
             $.ajax({
                 url: '/api/v1/community/' + $.cookie('community') + '/product/suggestions',
-                data: {query: query},
+                data: {query: $('#add-article-name').val()},
                 success: cb
             });
         }
@@ -202,7 +245,15 @@
         return true;
     });
     
-    loadTransactions();
+    $('#add-article').on('shown.bs.modal', function() {
+        var ev = $.Event('keydown');
+        ev.keyCode = ev.which = 40;
+        $('#add-article-name').focus().trigger(ev);
+    });
+    
+    if($('#shoppinglist').length == 1){
+        loadTransactions();
+    }
     
 })(jQuery);
 

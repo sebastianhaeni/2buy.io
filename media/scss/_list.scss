@@ -21,19 +21,17 @@
         overflow: hidden;
         border: 1px solid #cdcdcd;
         &:not(.disable-item-drop-in) {
-            animation: item-drop-in .3s;
+            @include animation(item-drop-in .3s);
         }
         transition: width .3s ease, height .3s ease, background-color 0.5s ease;
         
         &.holding:not(.ui-draggable-dragging) {
-            animation: item-holding .6s;
+            @include animation(item-holding .6s);
         }
         
         &.ui-draggable {
             cursor: move;
         }
-        
-        
         
         & > * {
             background: none;
@@ -56,7 +54,7 @@
             height: 20px;
         }
         
-        .glyphicon-envelope {
+        .move-up {
             top: -3px;
         }
         
@@ -76,7 +74,7 @@
     }
 }
 
-@keyframes item-drop-in {
+@include keyframes(item-drop-in) {
     from {
         top: 20px;
         opacity: 0;
@@ -87,7 +85,7 @@
     }
 }
 
-@keyframes item-drop-out-left {
+@include keyframes(item-drop-out-left) {
     to {
         left: -5000px;
         margin: 0;
@@ -97,7 +95,7 @@
     }
 }
 
-@keyframes item-drop-out-right {
+@include keyframes(item-drop-out-right) {
     to {
         left: 5000px;
         margin: 0;
@@ -107,7 +105,7 @@
     }
 }
 
-@keyframes item-holding {
+@include keyframes(item-holding) {
     to {
         box-shadow: 0 0 15px #555 inset;
     }
