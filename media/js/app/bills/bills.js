@@ -104,8 +104,7 @@
 
 
         var details = ''
-            + '<span class="createdBy">Bills from ' + bill.creater.name + '</span><div class="details">' + createDetailBill(bill) + '</div>';
-
+            + '<span class="createdBy">' + bill.creater.name + '</span><div class="details">' + createDetailBill(bill) + '</div>';
         var div = $('<div class="item bill-user" data-id="' + bill.creater.name + '">' + price + details + '</div>');
 
         $('#billlist .list').append(div);
@@ -124,9 +123,7 @@
             + bill.price
             + '</span>';
 
-        var divbill = '<div class="item bill" data-id="' + bill.id + '">' + detailsbill + '</div>';
-
-        return divbill;
+        return '<div class="item bill" data-id="' + bill.id + '">' + detailsbill + '</div>';
     }
 
     function accept(el) {
