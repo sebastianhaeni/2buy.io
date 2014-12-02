@@ -158,7 +158,7 @@ class BillController extends BaseController
             return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
         }
 
-        $bill->setAccepted(false);
+        $bill->setAccepted(0);
         $bill->setClosedBy($app['auth']->getUser($request)
             ->getId());
         $bill->setClosedDate(BaseModel::getCurrentTimeStamp());

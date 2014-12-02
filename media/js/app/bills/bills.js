@@ -86,15 +86,15 @@
     }
 
     function addBill(bill) {
-        if ($('#billlist div[data-id=' + bill.name + ']').length > 0) {
-            var priceTotalElement = $('.bill-user[data-id=' + bill.name + '] .price-total');
+        if ($('#billlist div[data-id=' + bill.creater.name + ']').length > 0) {
+            var priceTotalElement = $('.bill-user[data-id=' + bill.creater.name + '] .price-total');
             var num = Number(priceTotalElement.text()) + Number(bill.price);
             priceTotalElement.html(parseFloat(num).toFixed(2));
 
-            if ($('#billlist div[data-id=' + bill.name + '] div[data-id=' + bill.id + ']').length > 0) {
+            if ($('#billlist div[data-id=' + bill.creater.name + '] div[data-id=' + bill.id + ']').length > 0) {
 
             } else {
-                $('.bill-user[data-id=' + bill.name + '] .details').append($(createDetailBill(bill)));
+                $('.bill-user[data-id=' + bill.creater.name + '] .details').append($(createDetailBill(bill)));
 
             }
             return;
@@ -106,7 +106,7 @@
         var details = ''
             + '<span class="createdBy">Bills from ' + bill.creater.name + '</span><div class="details">' + createDetailBill(bill) + '</div>';
 
-        var div = $('<div class="item bill-user" data-id="' + bill.name + '">' + price + details + '</div>');
+        var div = $('<div class="item bill-user" data-id="' + bill.creater.name + '">' + price + details + '</div>');
 
         $('#billlist .list').append(div);
     }
