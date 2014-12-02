@@ -91,11 +91,11 @@ class BillController extends BaseController
 
         $price = $request->get('price');
         $files = $request->files->get('bill-scan');
-        $path = __DIR__.'/../web/upload/';
+        $path = __DIR__ . '/../web/upload/';
         $filename = $files['FileUpload']->getClientOriginalName();
-        $files['FileUpload']->move($path,$filename);
+        $files['FileUpload']->move($path, $filename);
 
-        $picturePath = $path. $filename;
+        $picturePath = $path . $filename;
 
         $bill = new Bill(null, $price, $picturePath, $checker->getCommunity()->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, null, null);
 
@@ -120,19 +120,21 @@ class BillController extends BaseController
             return $checker->getResponse();
         }
 
-        $bill = Bill::getById($request->get('idBill'), $app);
+        foreach (explode(',', $request->get('idBill')) as $id) {
+            $bill = Bill::getById($id, $app);
 
-        if ($bill == null) {
-            return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
-        }
+            if ($bill == null) {
+                return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
+            }
 
-        $bill->setAccepted(true);
-        $bill->setClosedBy($app['auth']->getUser($request)
-            ->getId());
-        $bill->setClosedDate(BaseModel::getCurrentTimeStamp());
+            $bill->setAccepted(true);
+            $bill->setClosedBy($app['auth']->getUser($request)
+                ->getId());
+            $bill->setClosedDate(BaseModel::getCurrentTimeStamp());
 
-        if (!$bill->save($app)) {
-            return new Response('Error saving bill', StatusCodes::HTTP_BAD_REQUEST);
+            if (!$bill->save($app)) {
+                return new Response('Error saving bill', StatusCodes::HTTP_BAD_REQUEST);
+            }
         }
 
         return new Response('Success', StatusCodes::HTTP_OK);
@@ -152,19 +154,22 @@ class BillController extends BaseController
             return $checker->getResponse();
         }
 
-        $bill = Bill::getById($request->get('idBill'), $app);
+        foreach (explode(',', $request->get('idBill')) as $id) {
 
-        if ($bill == null) {
-            return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
-        }
+            $bill = Bill::getById($id, $app);
 
-        $bill->setAccepted(0);
-        $bill->setClosedBy($app['auth']->getUser($request)
-            ->getId());
-        $bill->setClosedDate(BaseModel::getCurrentTimeStamp());
+            if ($bill == null) {
+                return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
+            }
 
-        if (!$bill->save($app)) {
-            return new Response('Error saving bill', StatusCodes::HTTP_BAD_REQUEST);
+            $bill->setAccepted(0);
+            $bill->setClosedBy($app['auth']->getUser($request)
+                ->getId());
+            $bill->setClosedDate(BaseModel::getCurrentTimeStamp());
+
+            if (!$bill->save($app)) {
+                return new Response('Error saving bill', StatusCodes::HTTP_BAD_REQUEST);
+            }
         }
 
         return new Response('Success', StatusCodes::HTTP_OK);

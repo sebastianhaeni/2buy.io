@@ -39,9 +39,9 @@
                     },
                     stop: function () {
                         if ($(this).hasClass('accepted')) {
-                            accept($(this));
+                            acceptUser($(this));
                         } else if ($(this).hasClass('declined')) {
-                            decline($(this));
+                            declineUser($(this));
                         }
                     }
                 });
@@ -126,6 +126,45 @@
         return '<div class="item bill" data-id="' + bill.id + '">' + detailsbill + '</div>';
     }
 
+    function acceptUser(el) {
+        var details = el.find('.bill');
+        var billIds = "";
+        $.each(details, function () {
+            billIds += ',' + $(this).attr('data-id');
+        });
+
+        billIds = billIds.substr(1, billIds.length);
+
+        $.ajax({
+            url: '/api/v1/community/' + $.cookie('community') + '/bill/accept/' + billIds,
+            type: 'put',
+            success: function (response) {
+                el.addClass('closed');
+                toastr.options.positionClass = 'toast-bottom-left';
+                toastr.options.timeOut = 4000;
+                toastr.options.progressBar = true;
+                // TODO remove translatable text from js
+                toastr.success('<div class="pull-left">Bill accepted</div>'
+                + '<div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="' + billIds + '"><i class="fa fa-undo"></i> Undo</button></div>');
+                $('.btn-undo[data-id="' + billIds + '"]').click(function () {
+                    $.ajax({
+                        url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billIds,
+                        type: 'put',
+                        success: function () {
+                            $.each(billIds.split(','), function (billId) {
+                                $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('accepted').css('left', 0);
+                            });
+
+                        }
+                    });
+                });
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+    }
+
     function accept(el) {
         var billId = el.attr('data-id');
         $.ajax({
@@ -144,7 +183,46 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
                         type: 'put',
                         success: function () {
+
+
                             $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('accepted').css('left', 0);
+                        }
+                    });
+                });
+            },
+            error: function () {
+                alert('Error!');
+            }
+        });
+    }
+
+
+    function declineUser(el) {
+        var details = el.find('.bill');
+        var billIds = "";
+        $.each(details, function () {
+            billIds += ',' + $(this).attr('data-id');
+        });
+
+        billIds = billIds.substr(1, billIds.length);
+
+        $.ajax({
+            url: '/api/v1/community/' + $.cookie('community') + '/bill/decline/' + billIds,
+            type: 'put',
+            success: function (response) {
+                el.addClass('closed');
+                toastr.options.positionClass = 'toast-bottom-left';
+                toastr.options.timeOut = 4000;
+                toastr.options.progressBar = true;
+                // TODO remove translatable text from js
+                toastr.error('<div class="pull-left">Bill declined</div>'
+                + '<div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="' + billId + '"><i class="fa fa-undo"></i> Undo</button></div>');
+                $('.btn-undo[data-id=' + billId + ']').click(function () {
+                    $.ajax({
+                        url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
+                        type: 'put',
+                        success: function () {
+                            $('.bill-user[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
                         }
                     });
                 });
