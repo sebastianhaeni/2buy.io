@@ -18,7 +18,35 @@
                     addBill(bill);
                 });
 
-                $('#billlist .bill').draggable({
+                $('#billlist .bill-user').draggable({
+                    axis: 'x',
+                    revert: function () {
+                        return !$(this).hasClass('accepted') && !$(this).hasClass('declined');
+                    },
+                    drag: function () {
+                        var width = $(this).width();
+                        var left = parseInt($(this).css('left'));
+
+                        if (left < -(width / 3)) {
+                            $(this).addClass('accepted');
+                            return;
+                        } else if (left > (width / 3)) {
+                            $(this).addClass('declined');
+                            return;
+                        }
+                        $(this).removeClass('accepted');
+                        $(this).removeClass('declined');
+                    },
+                    stop: function () {
+                        if ($(this).hasClass('accepted')) {
+                            accept($(this));
+                        } else if ($(this).hasClass('declined')) {
+                            decline($(this));
+                        }
+                    }
+                });
+
+                $('#billlist .bill-user .details .bill').draggable({
                     axis: 'x',
                     revert: function () {
                         return !$(this).hasClass('accepted') && !$(this).hasClass('declined');
@@ -47,27 +75,58 @@
                 });
 
                 setTimeout(function () {
-                    $('#billlist .bill').addClass('disable-item-drop-in');
+                    $('#billlist .bill-user').addClass('disable-item-drop-in');
+                }, 300);
+
+                setTimeout(function () {
+                    $('#billlist .bill-user .details .bill').addClass('disable-item-drop-in');
                 }, 300);
             }
         });
     }
 
-    function addBill(a) {
-        if ($('#billlist div[data-id=' + a.id + ']').length > 0) {
-            $('.bill[data-id=' + a.id + '] .price').html(a.price);
+    function addBill(bill) {
+        if ($('#billlist div[data-id=' + bill.name + ']').length > 0) {
+            var priceTotalElement = $('.bill-user[data-id=' + bill.name + '] .price-total');
+            var num = Number(priceTotalElement.text()) + Number(bill.price);
+            priceTotalElement.html(parseFloat(num).toFixed(2));
+
+            if ($('#billlist div[data-id=' + bill.name + '] div[data-id=' + bill.id + ']').length > 0) {
+
+            } else {
+                $('.bill-user[data-id=' + bill.name + '] .details').append($(createDetailBill(bill)));
+
+            }
             return;
         }
 
-        var price = '<span class="price">' + a.price + '</span>';
+        var price = '<span class="price-total">' + bill.price + '</span>';
 
-        var details = '<div class="details">'
-            + '<span class="createdBy details">' + a.creater.name + '</span>'
-            + '<span class="createdDate details">' + moment(a.createdDate).format('l') + '</span></div>';
 
-        var div = $('<div class="item bill" data-id="' + a.id + '">' + price + details + '</div>');
+        var details = ''
+            + '<span class="createdBy">Bills from ' + bill.creater.name + '</span><div class="details">' + createDetailBill(bill) + '</div>';
+
+        var div = $('<div class="item bill-user" data-id="' + bill.name + '">' + price + details + '</div>');
 
         $('#billlist .list').append(div);
+    }
+
+    function createDetailBill(bill) {
+
+        var image = '<div class="imageContainer"><div class="imageCenterer"><img src="/media/img/bills/'
+            + bill.picturePath
+            + '" /></div></div>';
+
+        var detailsbill = image
+            + '<span class="createdDate detail">'
+            + moment(bill.createdDate).format('l')
+            + '</span><span class="price detail">'
+            + bill.price
+            + '</span>';
+
+        var divbill = '<div class="item bill" data-id="' + bill.id + '">' + detailsbill + '</div>';
+
+        return divbill;
     }
 
     function accept(el) {
@@ -117,7 +176,7 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
                         type: 'put',
                         success: function () {
-                            $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            $('.bill-user[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
                         }
                     });
                 });

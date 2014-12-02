@@ -21,6 +21,7 @@
                         return !$(this).hasClass('buyed') && !$(this).hasClass('cancelled');  
                     },
                     drag: function(){
+                        console.log($(this));
                         var width = $(this).width();
                         var left = parseInt($(this).css('left'));
                         

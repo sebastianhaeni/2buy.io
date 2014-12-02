@@ -136,6 +136,9 @@ class Bill extends BaseModel
      */
     public static function getActiveBills($communityId, Application $app)
     {
+
+
+
         return self::getBills($communityId, $app, 'closedDate IS NULL');
     }
 
@@ -210,6 +213,16 @@ class Bill extends BaseModel
         }
     }
 
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
+    }
+
     /**
      * (non-PHPdoc)
      *
@@ -222,6 +235,16 @@ class Bill extends BaseModel
         }
 
         return true;
+    }
+
+    public function getPicturePath()
+    {
+        return $this->_picturePath;
+    }
+
+    public function setPicturePath($picturePath)
+    {
+        $this->_picturePath = $picturePath;
     }
 
     /**
@@ -247,6 +270,26 @@ class Bill extends BaseModel
         ];
     }
 
+    public function getPrice()
+    {
+        return $this->_price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->_price = $price;
+    }
+
+    public function getCreatedDate()
+    {
+        return $this->_createdDate;
+    }
+
+    public function setCreatedDate($createdDate)
+    {
+        $this->_createdDate = $createdDate;
+    }
+
     public function getCreater()
     {
         return $this->_creater;
@@ -255,6 +298,26 @@ class Bill extends BaseModel
     public function setCreater($creater)
     {
         $this->_creater = $creater;
+    }
+
+    public function getAccepted()
+    {
+        return $this->_accepted;
+    }
+
+    public function setAccepted($accepted)
+    {
+        $this->_accepted = $accepted;
+    }
+
+    public function getClosedDate()
+    {
+        return $this->_closedDate;
+    }
+
+    public function setClosedDate($closedDate)
+    {
+        $this->_closedDate = $closedDate;
     }
 
     public function getCloser()
@@ -300,56 +363,6 @@ class Bill extends BaseModel
         }
     }
 
-    public function getPrice()
-    {
-        return $this->_price;
-    }
-
-    public function setPrice($price)
-    {
-        $this->_price = $price;
-    }
-
-    public function getPicturePath()
-    {
-        return $this->_picturePath;
-    }
-
-    public function setPicturePath($picturePath)
-    {
-        $this->_picturePath = $picturePath;
-    }
-
-    public function getCreatedDate()
-    {
-        return $this->_createdDate;
-    }
-
-    public function setCreatedDate($createdDate)
-    {
-        $this->_createdDate = $createdDate;
-    }
-
-    public function getAccepted()
-    {
-        return $this->_accepted;
-    }
-
-    public function setAccepted($accepted)
-    {
-        $this->_accepted = $accepted;
-    }
-
-    public function getClosedDate()
-    {
-        return $this->_closedDate;
-    }
-
-    public function setClosedDate($closedDate)
-    {
-        $this->_closedDate = $closedDate;
-    }
-
     /**
      * (non-PHPdoc)
      *
@@ -374,15 +387,5 @@ class Bill extends BaseModel
         } catch (\PDOException $ex) {
             return false;
         }
-    }
-
-    public function getId()
-    {
-        return $this->_id;
-    }
-
-    protected function setId($id)
-    {
-        $this->_id = $id;
     }
 }

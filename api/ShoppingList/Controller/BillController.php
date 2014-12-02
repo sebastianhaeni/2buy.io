@@ -90,7 +90,12 @@ class BillController extends BaseController
         }
 
         $price = $request->get('price');
-        $picturePath = 'asdf'; //$request->get('picturePath');
+        $files = $request->files->get('bill-scan');
+        $path = __DIR__.'/../web/upload/';
+        $filename = $files['FileUpload']->getClientOriginalName();
+        $files['FileUpload']->move($path,$filename);
+
+        $picturePath = $path. $filename;
 
         $bill = new Bill(null, $price, $picturePath, $checker->getCommunity()->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, null, null);
 
@@ -153,7 +158,7 @@ class BillController extends BaseController
             return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
         }
 
-        $bill->setAccepted(0);
+        $bill->setAccepted(false);
         $bill->setClosedBy($app['auth']->getUser($request)
             ->getId());
         $bill->setClosedDate(BaseModel::getCurrentTimeStamp());

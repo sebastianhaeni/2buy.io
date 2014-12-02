@@ -1,102 +1,154 @@
+.bill-user {
 
-.bill {
+  .price-total {
+    margin: 0 10px;
+    display: block;
+    float: right;
+    line-height: 35px;
+    font-weight: bold;
+    &:after {
+      content: 'x';
+    }
+  }
+
+  .createdBy {
+    white-space: nowrap;
+    margin-right: 10px;
+    line-height: 35px;
+    font-weight: bold;
+  }
+
+  &.accepted {
+    &.closed {
+      @include animation(item-drop-out-left .3s forwards);
+    }
+    background-color: rgb(92, 184, 92);
+  }
+
+  &.declined {
+    &.closed {
+      @include animation(item-drop-out-right .3s forwards);
+    }
+    background-color: rgb(217, 83, 79);
+  }
+
+  .bill {
     touch-action: cross-slide-x;
-    height: 36px;
+    height: 100px;
     background-color: rgba(255, 255, 255, .5);
-    
+
     &.accepted {
-        &.closed {
-            @include animation(item-drop-out-left .3s forwards);
-        }
-        background-color: rgb(92, 184, 92);
+      &.closed {
+        @include animation(item-drop-out-left .3s forwards);
+      }
+      background-color: rgb(92, 184, 92);
     }
 
     &.declined {
-        &.closed {
-            @include animation(item-drop-out-right .3s forwards);
-        }
-        background-color: rgb(217, 83, 79);
+      &.closed {
+        @include animation(item-drop-out-right .3s forwards);
+      }
+      background-color: rgb(217, 83, 79);
     }
-    
-    .bill {
-        display: block;
-        float: left;
-        font-weight: bold;
-        margin-right: 10px;
-        line-height: 35px;
+
+    .bill{
+
+      display: block;
+      float: left;
+      font-weight: bold;
+      margin-right: 10px;
+      line-height: 35px;
+    }
+
+    .imageContainer {
+      width: 200px;
+      height: 100px;
+      overflow: hidden;
+      position: relative;
+      float: left;
+
+      .imageCenterer {
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -100px;
+        img {
+          width: 205px;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+
     }
 
     .price {
-        margin: 0 10px;
-        display: block;
-        float: left;
-        line-height: 35px;
-        &:after {
-            content: 'x';
-        }
+      margin: 0 10px;
+      display: block;
+      float: right;
+      line-height: 35px;
+      &:after {
+        content: 'x';
+      }
     }
-    
+
     @media (max-width: $screen-xs-min) {
-	    .details {
-        	clear: both;
-	        margin: 10px;
-        }
-    
-	    &.active {
-	        height: 80px;
-	    }
+      .details {
+        clear: both;
+        margin: 10px;
+      }
+
+      &.active {
+        height: 80px;
+      }
     }
 
     .createdDate {
-        font-size: 0.8em;
-        white-space: nowrap;
-        line-height: 35px;
-        margin-right: 10px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      line-height: 35px;
+      margin-right: 10px;
+      font-weight: bold;
     }
 
-    .createdBy {
-        white-space: nowrap;
-        margin-right: 10px;
-        line-height: 35px;
-    }
-
+  }
 }
 
 .swipe-instructions-background-bill {
-	width: 100%; 
-	overflow: hidden;
-	position: absolute; 
-	height: 400px;
-	left: 0;
-	
-	.ok, .remove {
-		position: absolute;
-        height: 200px;
-        width: 200px;
-        font-size: 200px;
-        opacity: .2;
-	}
-	
-	.ok {
-        left: -50px;
-	}
-	
-	.remove {
-		right: -50px;
-	}
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  height: 400px;
+  left: 0;
+
+  .ok, .remove {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    font-size: 200px;
+    opacity: .2;
+  }
+
+  .ok {
+    left: -50px;
+  }
+
+  .remove {
+    right: -50px;
+  }
 }
 
 .swipe-instructions-bill {
-    opacity: 0.8;
-    font-size: 1.2em;
-    padding-bottom: 20px;
-    div {
-        &:first-child {
-            float: left;
-        }
-
-        &:last-child {
-            float: right;
-        }
+  opacity: 0.8;
+  font-size: 1.2em;
+  padding-bottom: 20px;
+  div {
+    &:first-child {
+      float: left;
     }
+
+    &:last-child {
+      float: right;
+    }
+  }
 }
