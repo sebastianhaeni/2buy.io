@@ -164,6 +164,9 @@
     }
 
     function accept(el) {
+        var priceTotalElement = el.closest('.bill-user').find('.price-total');
+        var num = Number(priceTotalElement.text()) - Number(el.find('.price').text());
+        priceTotalElement.html(parseFloat(num).toFixed(2));
         var billId = el.attr('data-id');
         $.ajax({
             url: '/api/v1/community/' + $.cookie('community') + '/bill/accept/' + billId,
@@ -181,9 +184,9 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
                         type: 'put',
                         success: function () {
-
-
                             $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('accepted').css('left', 0);
+                            var num = Number(priceTotalElement.text()) + Number(el.find('.price').text());
+                            priceTotalElement.html(parseFloat(num).toFixed(2));
                         }
                     });
                 });
@@ -196,6 +199,7 @@
 
 
     function declineUser(el) {
+        var userId = el.attr('data-id');
         var details = el.find('.bill');
         var billIds = "";
         $.each(details, function () {
@@ -220,7 +224,7 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billIds,
                         type: 'put',
                         success: function () {
-                            $('.bill-user[data-id="' + billIds + '"]').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            $('.bill-user[data-id="' + userId + '"]').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
                         }
                     });
                 });
@@ -232,6 +236,9 @@
     }
 
     function decline(el) {
+        var priceTotalElement = el.closest('.bill-user').find('.price-total');
+        var num = Number(priceTotalElement.text()) - Number(el.find('.price').text());
+        priceTotalElement.html(parseFloat(num).toFixed(2));
         var billId = el.attr('data-id');
         $.ajax({
             url: '/api/v1/community/' + $.cookie('community') + '/bill/decline/' + billId,
@@ -249,7 +256,9 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
                         type: 'put',
                         success: function () {
-                            $('.bill-user[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            var num = Number(priceTotalElement.text()) + Number(el.find('.price').text());
+                            priceTotalElement.html(parseFloat(num).toFixed(2));
                         }
                     });
                 });
