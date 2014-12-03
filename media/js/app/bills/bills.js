@@ -86,28 +86,28 @@
     }
 
     function addBill(bill) {
-        if ($('#billlist div[data-id=' + bill.creater.name + ']').length > 0) {
-            var priceTotalElement = $('.bill-user[data-id=' + bill.creater.name + '] .price-total');
+        if ($('#billlist .bill-user[data-id=' + bill.createdBy + ']').length > 0) {
+            var priceTotalElement = $('.bill-user[data-id=' + bill.createdBy + '] .price-total');
             var num = Number(priceTotalElement.text()) + Number(bill.price);
             priceTotalElement.html(parseFloat(num).toFixed(2));
 
-            if ($('#billlist div[data-id=' + bill.creater.name + '] div[data-id=' + bill.id + ']').length > 0) {
+            if ($('#billlist div[data-id=' + bill.createdBy + '] div[data-id=' + bill.id + ']').length > 0) {
 
             } else {
-                $('.bill-user[data-id=' + bill.creater.name + '] .details').append($(createDetailBill(bill)));
+                $('.bill-user[data-id=' + bill.createdBy + '] .details').append($(createDetailBill(bill)));
 
             }
-            return;
+        } else {
+
+            var price = '<span class="price-total">' + bill.price + '</span>';
+
+
+            var details = ''
+                + '<span class="createdBy">' + bill.creater.name + '</span><div class="details">' + createDetailBill(bill) + '</div>';
+            var div = $('<div class="item bill-user" data-id=' + bill.createdBy + '>' + price + details + '</div>');
+
+            $('#billlist .list').append(div);
         }
-
-        var price = '<span class="price-total">' + bill.price + '</span>';
-
-
-        var details = ''
-            + '<span class="createdBy">' + bill.creater.name + '</span><div class="details">' + createDetailBill(bill) + '</div>';
-        var div = $('<div class="item bill-user" data-id="' + bill.creater.name + '">' + price + details + '</div>');
-
-        $('#billlist .list').append(div);
     }
 
     function createDetailBill(bill) {
@@ -127,6 +127,7 @@
     }
 
     function acceptUser(el) {
+        var userId = el.attr('data-id');
         var details = el.find('.bill');
         var billIds = "";
         $.each(details, function () {
@@ -151,10 +152,7 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billIds,
                         type: 'put',
                         success: function () {
-                            $.each(billIds.split(','), function (billId) {
-                                $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('accepted').css('left', 0);
-                            });
-
+                            $('.bill-user[data-id="' + userId + '"]').removeClass('closed').removeClass('declined').removeClass('accepted').css('left', 0);
                         }
                     });
                 });
@@ -216,13 +214,13 @@
                 toastr.options.progressBar = true;
                 // TODO remove translatable text from js
                 toastr.error('<div class="pull-left">Bill declined</div>'
-                + '<div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="' + billId + '"><i class="fa fa-undo"></i> Undo</button></div>');
-                $('.btn-undo[data-id=' + billId + ']').click(function () {
+                + '<div class="pull-right"><button class="btn btn-danger btn-xs btn-undo" data-id="' + billIds + '"><i class="fa fa-undo"></i> Undo</button></div>');
+                $('.btn-undo[data-id="' + billIds + '"]').click(function () {
                     $.ajax({
-                        url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
+                        url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billIds,
                         type: 'put',
                         success: function () {
-                            $('.bill-user[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            $('.bill-user[data-id="' + billIds + '"]').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
                         }
                     });
                 });

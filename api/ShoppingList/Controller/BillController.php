@@ -189,18 +189,21 @@ class BillController extends BaseController
             return $checker->getResponse();
         }
 
-        $bill = Bill::getById($request->get('idBill'), $app);
+        foreach (explode(',', $request->get('idBill')) as $id) {
 
-        if ($bill == null) {
-            return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
-        }
+            $bill = Bill::getById($id, $app);
 
-        $bill->setClosedBy(null);
-        $bill->setClosedDate(null);
-        $bill->setAccepted(null);
+            if ($bill == null) {
+                return new Response('Error finding bill', StatusCodes::HTTP_BAD_REQUEST);
+            }
 
-        if (!$bill->save($app)) {
-            return new Response('Error saving bill', StatusCodes::HTTP_BAD_REQUEST);
+            $bill->setClosedBy(null);
+            $bill->setClosedDate(null);
+            $bill->setAccepted(null);
+
+            if (!$bill->save($app)) {
+                return new Response('Error saving bill', StatusCodes::HTTP_BAD_REQUEST);
+            }
         }
 
         return new Response('Success', StatusCodes::HTTP_OK);
