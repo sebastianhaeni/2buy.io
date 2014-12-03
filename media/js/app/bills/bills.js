@@ -173,6 +173,10 @@
             type: 'put',
             success: function (response) {
                 el.addClass('closed');
+                if (el.closest('.bill-user').find('.bill').not('.closed').length == 0){
+                    el.closest('.bill-user').addClass('accepted');
+                    el.closest('.bill-user').addClass('closed');
+                }
                 toastr.options.positionClass = 'toast-bottom-left';
                 toastr.options.timeOut = 4000;
                 toastr.options.progressBar = true;
@@ -187,6 +191,7 @@
                             $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('accepted').css('left', 0);
                             var num = Number(priceTotalElement.text()) + Number(el.find('.price').text());
                             priceTotalElement.html(parseFloat(num).toFixed(2));
+                            el.closest('.bill-user').removeClass('closed').removeClass('declined').removeClass('accepted');
                         }
                     });
                 });
@@ -245,6 +250,10 @@
             type: 'put',
             success: function (response) {
                 el.addClass('closed');
+                if (el.closest('.bill-user').find('.bill').not('.closed').length == 0){
+                    el.closest('.bill-user').addClass('declined');
+                    el.closest('.bill-user').addClass('closed');
+                }
                 toastr.options.positionClass = 'toast-bottom-left';
                 toastr.options.timeOut = 4000;
                 toastr.options.progressBar = true;
@@ -259,6 +268,7 @@
                             $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('buyed').css('left', 0);
                             var num = Number(priceTotalElement.text()) + Number(el.find('.price').text());
                             priceTotalElement.html(parseFloat(num).toFixed(2));
+                            el.closest('.bill-user').removeClass('closed').removeClass('declined').removeClass('accepted');
                         }
                     });
                 });
