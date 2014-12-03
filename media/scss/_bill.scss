@@ -10,7 +10,7 @@
     line-height: 35px;
     font-weight: bold;
     &:after {
-      content: 'x';
+      content: ' CHF';
     }
   }
 
@@ -91,7 +91,7 @@
       float: right;
       line-height: 35px;
       &:after {
-        content: 'x';
+        content: ' CHF';
       }
     }
 

@@ -1,7 +1,9 @@
 <?php
 namespace ShoppingList\Controller;
 
+use ShoppingList\Service\Authentication;
 use Silex\Application;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use ShoppingList\Model\Bill;
@@ -89,15 +91,19 @@ class BillController extends BaseController
             return $checker->getResponse();
         }
 
+        $files = $request->files->get('file');
+        /* Make sure that Upload Directory is properly configured and writable */
+        $path = __DIR__ . '/../../../media/img/bills/';
+        $filename = Authentication::getRandomToken() . $files->getClientOriginalName();
+        try {
+            $files->move($path, $filename);
+        } catch (FileException $ex) {
+            return new Response($ex->getMessage(), StatusCodes::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
         $price = $request->get('price');
-        $files = $request->files->get('bill-scan');
-        $path = __DIR__ . '/../web/upload/';
-        $filename = $files['FileUpload']->getClientOriginalName();
-        $files['FileUpload']->move($path, $filename);
 
-        $picturePath = $path . $filename;
-
-        $bill = new Bill(null, $price, $picturePath, $checker->getCommunity()->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, null, null);
+        $bill = new Bill(null, $price, $filename, $checker->getCommunity()->getId(), $app['auth']->getUser()->getId(), BaseModel::getCurrentTimeStamp(), null, null, null);
 
         if (!$bill->save($app)) {
             return new Response('Error saving new bill', StatusCodes::HTTP_BAD_REQUEST);

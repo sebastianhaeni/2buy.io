@@ -2,13 +2,18 @@
     'use strict';
 
     // WARNING do not check in code that triggers or listens to events on other pages than bills
-    //    $('#barcode-scanner').on('show.bs.modal', function() {
-    //        $('#barcode-image').click();
-    //    });
-    //
-    //    $('#button-scan-barcode').click(function() {
-    //        $('#barcode-image').click();
-    //    });
+
+    $('#scan-bill').on('change', function(e) {
+        var file = e.target.files[0];
+        var imageType = /image.*/;
+
+        if (!file.type.match(imageType)) {
+            return;
+        }
+
+    });
+
+
 
     function loadBills() {
         $.ajax({
@@ -280,16 +285,18 @@
     }
 
     $('#add-bill form').submit(function () {
-
-        var price = $('#add-bill-price').val();
-        var name = $('#add-bill-name').val();
+        var fd = new FormData();
+        fd.append('file', $('#scan-bill').get(0).files[0] );
+        fd.append('price', $('#add-bill-price').val());
 
         $(this).find(':input').prop('disabled', true);
 
         $.ajax({
             url: '/api/v1/community/' + $.cookie('community') + '/bill',
-            data: {name: name, price: price},
+            data: fd,
             method: 'post',
+            processData: false,
+            contentType: false,
             success: function () {
                 $('#add-bill form').find(':input').prop('disabled', false);
                 $('#add-bill-price').val('');
@@ -307,7 +314,7 @@
     $('#add-bill').on('shown.bs.modal', function () {
         var ev = $.Event('keydown');
         ev.keyCode = ev.which = 40;
-        $('#add-bill-name').focus().trigger(ev);
+        $('#add-bill-price').focus().trigger(ev);
     });
 
     if ($('#billlist').length == 1) {
