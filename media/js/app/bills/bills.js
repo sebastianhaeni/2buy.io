@@ -224,7 +224,7 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billIds,
                         type: 'put',
                         success: function () {
-                            $('.bill-user[data-id="' + userId + '"]').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            $('.bill-user[data-id="' + userId + '"]').removeClass('closed').removeClass('declined').removeClass('buyed').css('left', 0);
                         }
                     });
                 });
@@ -256,7 +256,7 @@
                         url: '/api/v1/community/' + $.cookie('community') + '/bill/undo/' + billId,
                         type: 'put',
                         success: function () {
-                            $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('cancelled').removeClass('buyed').css('left', 0);
+                            $('.bill[data-id=' + billId + ']').removeClass('closed').removeClass('declined').removeClass('buyed').css('left', 0);
                             var num = Number(priceTotalElement.text()) + Number(el.find('.price').text());
                             priceTotalElement.html(parseFloat(num).toFixed(2));
                         }
