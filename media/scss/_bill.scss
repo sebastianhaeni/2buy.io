@@ -1,5 +1,8 @@
 .bill-user {
 
+  padding-left: 10px;
+  padding-right: 10px;
+
   .price-total {
     margin: 0 10px;
     display: block;
@@ -13,7 +16,7 @@
 
   .createdBy {
     white-space: nowrap;
-    margin-right: 10px;
+    margin-left: 10px;
     line-height: 35px;
     font-weight: bold;
   }
@@ -95,7 +98,8 @@
     @media (max-width: $screen-xs-min) {
       .details {
         clear: both;
-        margin: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
       }
 
       &.active {
@@ -104,10 +108,9 @@
     }
 
     .createdDate {
-      font-size: 0.8em;
       white-space: nowrap;
       line-height: 35px;
-      margin-right: 10px;
+      margin-left: 10px;
       font-weight: bold;
     }
 
