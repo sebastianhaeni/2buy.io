@@ -15,6 +15,8 @@
                     <ul class="dropdown-menu {% if page starts with 'app/communities' %}hide{% endif %}" role="menu" id="app-switcher">
                         <li class="{% if page starts with 'app/shoppinglist' %}active{% endif %}"><a href="/app/shoppinglist">{% trans "Shopping List" %}</a></li>
                         <li class="{% if page starts with 'app/bills' %}active{% endif %}"><a href="/app/bills">{% trans "Bills" %}</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/app"><span class="glyphicon glyphicon-refresh"></span> {% trans "Change Community" %}</a></li>
                     </ul>
                 </li>
             </ul>
