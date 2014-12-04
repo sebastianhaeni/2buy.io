@@ -1,21 +1,43 @@
 {% extends "app/bills/layout.html" %}
 
 {% block title %}
-    {% set page = parent() %}
-    {% set app_name = block('app_name') %}
-    {% trans %}History - {{ app_name }} - {{ page }}{% endtrans %}
+{% set page = parent() %}
+{% set app_name = block('app_name') %}
+{% trans %}History - {{ app_name }} - {{ page }}{% endtrans %}
 {% endblock %}
 
 {% block content %}
+{% include "app/bills/dialogs/_clear-history.html" %}
+
 <div class="container">
     <div class="row">
-        <div id="bill-history" class="col-md-12">
+
+        <div id="bill-history" class="col-md-12" ng-controller="BilllistHistoryController">
             <div class="text-center administrator">
                 <button type="button" class="btn btn-danger community-admin" data-toggle="modal" data-target="#clear-history-dialog">{% trans "Clear History" %}</button>
                 <div class="list top-buffer">
+
+                    <div class="item-history item" ng-repeat="bill in bills" data-id="{[{ bill.id }]}">
+                        <span class="price">{[{ bill.price }]}</span>
+                        <span class="picturePath">{[{ bill.picturePath }]}</span>
+                        {% trans "reported by" %}
+                        <span class="createdBy">{[{ bill.creater.name }]}</span>
+                        {% trans "at" %}
+                        <span class="createdDate">{[{ bill.createdDate | amDateFormat: 'l' }]}</span>
+
+                        <span ng-if="bill.accepted == 1">{% trans "accepted by" %}</span>
+                        <span ng-if="bill.accepted == 0">{% trans "declined by" %}</span>
+                        <span ng-if="bill.accepted == 1" class="createdBy text-success">{[{ bill.closer.name }]}</span>
+                        <span ng-if="bill.accepted == 0" class="createdBy text-danger">{[{ bill.closer.name }]}</span>
+                        {% trans "at" %}
+                        <span class="reportedDate">{[{ bill.closedDate | amDateFormat: 'l' }]}</span>
+
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 {% endblock %}

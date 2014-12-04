@@ -28,7 +28,7 @@
                 $('#clear-history-form').find(':input').prop('disabled', false);
                 $('#clear-history-error-message').addClass('hide');
                 $('#clear-history-dialog').modal('hide');
-                $('#history .list').html('');
+                $('#transaction-history .list').html('');
             },
             error : function() {
                 $('#clear-history-form').find(':input').prop('disabled', false);
