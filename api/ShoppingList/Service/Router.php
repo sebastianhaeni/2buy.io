@@ -70,7 +70,9 @@ class Router
         $app->put   ('/v1/community/{id}/member/{idMember}', 'ShoppingList\\Controller\\CommunityController::updateMember');
         $app->delete('/v1/community/{id}/member/{idMember}', 'ShoppingList\\Controller\\CommunityController::deleteMember');
         $app->delete('/v1/community/{id}/invite/{idInvite}', 'ShoppingList\\Controller\\CommunityController::deleteInvite');
-        
+        $app->put   ('/v1/community/{id}/ownpreferences',    'ShoppingList\\Controller\\CommunityController::editOwnPreferences');
+        $app->get   ('/v1/community/{id}/ownpreferences',    'ShoppingList\\Controller\\CommunityController::getOwnPreferences');
+
         // Product
         $app->get   ('/v1/community/{id}/product',             'ShoppingList\\Controller\\ProductController::getProducts');
         $app->post  ('/v1/community/{id}/product',            'ShoppingList\\Controller\\ProductController::createProduct');
@@ -82,7 +84,9 @@ class Router
         // Statistics
         $app->get('/v1/community/{id}/stats/purchases', 'ShoppingList\\Controller\\StatisticsController::getPurchaseData');
         $app->get('/v1/community/{id}/stats/orders',    'ShoppingList\\Controller\\StatisticsController::getOrderData');
-        
+        $app->get('/v1/community/{id}/stats/paid',    'ShoppingList\\Controller\\StatisticsController::getPaidData');
+        $app->get('/v1/community/{id}/stats/declined',    'ShoppingList\\Controller\\StatisticsController::getDeclinedData');
+
         // Transaction
         $app->get   ('/v1/community/{id}/transaction/active',                 'ShoppingList\\Controller\\TransactionController::getActiveTransactions');
         $app->get   ('/v1/community/{id}/transaction/history',                'ShoppingList\\Controller\\TransactionController::getHistory');

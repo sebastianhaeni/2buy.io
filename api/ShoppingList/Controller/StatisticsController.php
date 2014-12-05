@@ -18,17 +18,17 @@ class StatisticsController extends BaseController
     /**
      * Returns each community member with their purchase count.
      *
-     * @param Request $request            
-     * @param Application $app            
+     * @param Request $request
+     * @param Application $app
      * @return \ShoppingList\Controller\Response
      */
     public function getPurchaseData(Request $request, Application $app)
     {
         $checker = new CommunityChecker($request, $app);
-        if (! $checker->isGood()) {
+        if (!$checker->isGood()) {
             return $checker->getResponse();
         }
-        
+
         return $this->json($checker->getCommunity()
             ->getPurchaseData($app));
     }
@@ -36,18 +36,54 @@ class StatisticsController extends BaseController
     /**
      * Returns each community member with their order count.
      *
-     * @param Request $request            
-     * @param Application $app            
+     * @param Request $request
+     * @param Application $app
      * @return \ShoppingList\Controller\Response
      */
     public function getOrderData(Request $request, Application $app)
     {
         $checker = new CommunityChecker($request, $app);
-        if (! $checker->isGood()) {
+        if (!$checker->isGood()) {
             return $checker->getResponse();
         }
-        
+
         return $this->json($checker->getCommunity()
             ->getOrderData($app));
+    }
+
+    /**
+     * Returns each community member with their paid sum.
+     *
+     * @param Request $request
+     * @param Application $app
+     * @return \ShoppingList\Controller\Response
+     */
+    public function getPaidData(Request $request, Application $app)
+    {
+        $checker = new CommunityChecker($request, $app);
+        if (!$checker->isGood()) {
+            return $checker->getResponse();
+        }
+
+        return $this->json($checker->getCommunity()
+            ->getPaidData($app));
+    }
+
+    /**
+     * Returns each community member with their declined sum.
+     *
+     * @param Request $request
+     * @param Application $app
+     * @return \ShoppingList\Controller\Response
+     */
+    public function getDeclinedData(Request $request, Application $app)
+    {
+        $checker = new CommunityChecker($request, $app);
+        if (!$checker->isGood()) {
+            return $checker->getResponse();
+        }
+
+        return $this->json($checker->getCommunity()
+            ->getDeclinedData($app));
     }
 }

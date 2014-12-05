@@ -22,11 +22,11 @@ class User extends BaseModel
 
     /**
      *
-     * @param int $id            
-     * @param string $name            
-     * @param string $email            
-     * @param string $password            
-     * @param string $phone            
+     * @param int $id
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     * @param string $phone
      */
     public function __construct($id, $name, $email, $password, $phone)
     {
@@ -37,10 +37,15 @@ class User extends BaseModel
         $this->setPhone($phone);
     }
 
+    public function setPassword($password, $isPlain = true)
+    {
+        $this->_password = $isPlain ? password_hash($password, PASSWORD_DEFAULT) : $password;
+    }
+
     /**
      *
-     * @param int $id            
-     * @param Application $app            
+     * @param int $id
+     * @param Application $app
      * @return NULL|\ShoppingList\Model\User
      */
     public static function getById($id, Application $app)
@@ -48,28 +53,13 @@ class User extends BaseModel
         $data = $app['db']->fetchAssoc('SELECT * FROM user WHERE idUser = ?', array(
             $id
         ));
-        
+
         return self::getUser($data);
     }
 
     /**
      *
-     * @param string $email            
-     * @param Application $app            
-     * @return NULL|\ShoppingList\Model\User
-     */
-    public static function getByEmail($email, Application $app)
-    {
-        $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE email = ?', array(
-            $email
-        ));
-        
-        return self::getUser($user);
-    }
-
-    /**
-     *
-     * @param array $data            
+     * @param array $data
      * @return NULL|\ShoppingList\Model\User
      */
     private static function getUser($data)
@@ -77,56 +67,26 @@ class User extends BaseModel
         if ($data == null) {
             return null;
         }
-        
+
         $user = new User($data['idUser'], $data['name'], $data['email'], $data['password'], $data['phone']);
         $user->setPersisted(true);
-        
+
         return $user;
     }
 
     /**
-     * (non-PHPdoc)
      *
-     * @see \ShoppingList\Model\BaseModel::update()
+     * @param string $email
+     * @param Application $app
+     * @return NULL|\ShoppingList\Model\User
      */
-    protected function update(Application $app)
+    public static function getByEmail($email, Application $app)
     {
-        try {
-            return 1 == $app['db']->executeUpdate('UPDATE user SET 
-            name = ?,
-            email = ?,
-            password = ?,
-            phone = ?
-            WHERE idUser = ?
-            ', array(
-                $this->getName(),
-                $this->getEmail(),
-                $this->_password,
-                $this->getPhone(),
-                $this->getId()
-            ));
-        } catch (\PDOException $ex) {
-            return false;
-        }
-    }
+        $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE email = ?', array(
+            $email
+        ));
 
-    /**
-     * (non-PHPdoc)
-     *
-     * @see \ShoppingList\Model\BaseModel::insert()
-     */
-    protected function insert(Application $app)
-    {
-        try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO user (name, email, password, phone) VALUES (?,?,?,?)', array(
-                $this->getName(),
-                $this->getEmail(),
-                $this->_password,
-                $this->getPhone()
-            ));
-        } catch (\PDOException $ex) {
-            return false;
-        }
+        return self::getUser($user);
     }
 
     /**
@@ -155,16 +115,16 @@ class User extends BaseModel
         if (strlen($this->getName()) < 2) {
             return false;
         }
-        if (! filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL)) {
             return false;
         }
-        
+
         return true;
     }
 
     /**
      *
-     * @param string $password            
+     * @param string $password
      * @return boolean
      */
     public function verifyPassword($password)
@@ -174,28 +134,50 @@ class User extends BaseModel
 
     /**
      *
-     * @param Application $app            
+     * @param Application $app
      * @return number|multitype:unknown
      */
     public function getCommunities(Application $app)
     {
         $communityHasUser = CommunityHasUser::getByUserId($this->getId(), $app);
-        
+
         $communities = array();
-        
+
         foreach ($communityHasUser as $a) {
             $community = Community::getById($a->getCommunityId(), $app)->jsonSerialize();
             $community['administrator'] = $a->isAdmin();
             $community['receiveNotifications'] = $a->getReceiveNotifications();
             $communities[] = $community;
         }
-        
-        usort($communities, function ($a, $b)
-        {
+
+        usort($communities, function ($a, $b) {
             return strnatcmp($a['name'], $b['name']);
         });
-        
+
         return $communities;
+    }
+
+    /**
+     *
+     * @param Application $app
+     * @return number|multitype:unknown
+     */
+    public function getCurrentCommunitiyHasUser($communityId, Application $app)
+    {
+        try {
+            return $app['db']->fetchAll('
+                SELECT
+                	*
+                FROM
+                	community_has_user
+
+                WHERE community_has_user.idCommunity = ?
+                AND community_has_user.idUser = ?', [
+                $this->getId(), $communityId
+            ]);
+        } catch (\PDOException $ex) {
+            return false;
+        }
     }
 
     /**
@@ -213,9 +195,35 @@ class User extends BaseModel
         ];
     }
 
-    protected function setId($id)
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::update()
+     */
+    protected function update(Application $app)
     {
-        $this->_id = $id;
+        try {
+            return 1 == $app['db']->executeUpdate('UPDATE user SET
+            name = ?,
+            email = ?,
+            password = ?,
+            phone = ?
+            WHERE idUser = ?
+            ', array(
+                $this->getName(),
+                $this->getEmail(),
+                $this->_password,
+                $this->getPhone(),
+                $this->getId()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
+    }
+
+    public function getName()
+    {
+        return $this->_name;
     }
 
     public function setName($name)
@@ -223,14 +231,19 @@ class User extends BaseModel
         $this->_name = $name;
     }
 
+    public function getEmail()
+    {
+        return $this->_email;
+    }
+
     public function setEmail($email)
     {
         $this->_email = $email;
     }
 
-    public function setPassword($password, $isPlain = true)
+    public function getPhone()
     {
-        $this->_password = $isPlain ? password_hash($password, PASSWORD_DEFAULT) : $password;
+        return $this->_phone;
     }
 
     public function setPhone($phone)
@@ -243,23 +256,27 @@ class User extends BaseModel
         return $this->_id;
     }
 
-    public function getCommunityId()
+    protected function setId($id)
     {
-        return $this->_communityId;
+        $this->_id = $id;
     }
 
-    public function getName()
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::insert()
+     */
+    protected function insert(Application $app)
     {
-        return $this->_name;
-    }
-
-    public function getEmail()
-    {
-        return $this->_email;
-    }
-
-    public function getPhone()
-    {
-        return $this->_phone;
+        try {
+            return 1 == $app['db']->executeUpdate('INSERT INTO user (name, email, password, phone) VALUES (?,?,?,?)', array(
+                $this->getName(),
+                $this->getEmail(),
+                $this->_password,
+                $this->getPhone()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
     }
 }
