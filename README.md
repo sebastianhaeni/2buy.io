@@ -104,12 +104,22 @@ Production deployment is done manually by the person in charge of releases.
   </li>
   <li>[ ] Bills
     <ul>
-      <li>[ ] Upload bill</li>
-      <li>[ ] Show bills</li>
-      <li>[ ] Mark bill as paid</li>
-      <li>[ ] Delete bill</li>
-      <li>[ ] Bill history</li>
-      <li>[ ] Bill statistics</li>
+      <li>[x] Upload bill</li>
+      <li>[x] Show bills</li>
+      <li>[x] Mark bill as paid</li>
+      <li>[x] Decline bill</li>
+      <li>[x] History
+        <ul>
+          <li>[x] Show all passed actions</li>
+          <li>[x] Clear all passed actions</li>
+        </ul>
+      </li>
+      <li>[x] Statistics
+        <ul>
+          <li>[x] Show users weighted by sum of paid bills (cake diagram)</li>
+          <li>[x] Show users weighted by sum of declined bills (cake diagram)</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>[ ] Notifications

@@ -20,8 +20,7 @@
 
         <div id="billlist" class="col-md-12">
             <div class="text-center">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-bill">{% trans "Add
-                    Bill" %}
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-bill">{% trans "Add Bill" %}
                 </button>
             </div>
             <div class="top-buffer">
@@ -32,8 +31,11 @@
                     <div><span class="glyphicon glyphicon-arrow-left"></span> <span
                             class="glyphicon glyphicon-ok"></span> {% trans "Accept" %}
                     </div>
-                    <div>{% trans "Decline" %} <span class="glyphicon glyphicon-remove"></span> <span
-                            class="glyphicon glyphicon-arrow-right"></span></div>
+                    <div>
+                        {% trans "Decline" %}
+                        <span class="glyphicon glyphicon-remove"></span> 
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </div>
                 </div>
             </div>
         </div>

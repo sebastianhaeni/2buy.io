@@ -16,8 +16,8 @@ class Community extends BaseModel
 
     /**
      *
-     * @param int $id            
-     * @param string $name            
+     * @param int $id
+     * @param string $name
      */
     public function __construct($id, $name)
     {
@@ -27,8 +27,8 @@ class Community extends BaseModel
 
     /**
      *
-     * @param int $id            
-     * @param Application $app            
+     * @param int $id
+     * @param Application $app
      * @return NULL|\ShoppingList\Model\Community
      */
     public static function getById($id, Application $app)
@@ -36,13 +36,13 @@ class Community extends BaseModel
         $data = $app['db']->fetchAssoc('SELECT * FROM community WHERE idCommunity = ?', array(
             $id
         ));
-        
+
         return self::getCommunity($data);
     }
 
     /**
      *
-     * @param NULL|array $data            
+     * @param NULL|array $data
      * @return NULL|\ShoppingList\Model\Community
      */
     private static function getCommunity($data)
@@ -50,7 +50,7 @@ class Community extends BaseModel
         if ($data == null) {
             return null;
         }
-        
+
         $community = new Community($data['idCommunity'], $data['name']);
         $community->setPersisted(true);
         return $community;
@@ -58,7 +58,7 @@ class Community extends BaseModel
 
     /**
      *
-     * @param Application $app            
+     * @param Application $app
      * @return boolean
      */
     public function getPurchaseData(Application $app)
@@ -85,9 +85,19 @@ class Community extends BaseModel
         }
     }
 
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    protected function setId($id)
+    {
+        $this->_id = $id;
+    }
+
     /**
      *
-     * @param Application $app            
+     * @param Application $app
      * @return boolean
      */
     public function getOrderData(Application $app)
@@ -115,33 +125,62 @@ class Community extends BaseModel
     }
 
     /**
-     * (non-PHPdoc)
      *
-     * @see \ShoppingList\Model\BaseModel::insert()
+     * @param Application $app
+     * @return boolean
      */
-    protected function insert(Application $app)
+    public function getPaidData(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO community (name) VALUES (?)', array(
-                $this->getName()
-            ));
+            return $app['db']->fetchAll('
+                SELECT
+                	SUM(bill.price) as sumBills,
+                	creater.idUser as createrId,
+                    creater.name as createrName
+                FROM
+                	bill
+                INNER JOIN user creater
+                	ON bill.createdBy = creater.idUser
+                INNER JOIN community_has_user
+                    ON creater.idUser = community_has_user.idUser
+                WHERE community_has_user.idCommunity = ?
+                AND bill.closedDate IS NOT NULL
+                AND bill.accepted = 1
+                GROUP BY bill.createdBy
+                ORDER BY sumBills DESC', [
+                $this->getId()
+            ]);
         } catch (\PDOException $ex) {
             return false;
         }
     }
 
     /**
-     * (non-PHPdoc)
      *
-     * @see \ShoppingList\Model\BaseModel::update()
+     * @param Application $app
+     * @return boolean
      */
-    protected function update(Application $app)
+    public function getDeclinedData(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('UPDATE community SET name = ? WHERE idCommunity = ?', array(
-                $this->getName(),
+            return $app['db']->fetchAll('
+                SELECT
+                	SUM(bill.price) as sumBills,
+                	creater.idUser as createrId,
+                    creater.name as createrName
+                FROM
+                	bill
+                INNER JOIN user creater
+                	ON bill.createdBy = creater.idUser
+                INNER JOIN community_has_user
+                    ON creater.idUser = community_has_user.idUser
+                WHERE community_has_user.idCommunity = ?
+                AND bill.closedDate IS NOT NULL
+                AND bill.accepted = 0
+                GROUP BY bill.createdBy
+                ORDER BY sumBills DESC', [
                 $this->getId()
-            ));
+            ]);
         } catch (\PDOException $ex) {
             return false;
         }
@@ -173,21 +212,21 @@ class Community extends BaseModel
         if (strlen($this->getName()) < 2) {
             return false;
         }
-        
+
         return true;
     }
 
     /**
      *
-     * @param Application $app            
+     * @param Application $app
      * @return multitype:unknown
      */
     public function getMembers(Application $app)
     {
         $communityHasUser = CommunityHasUser::getByCommunityId($this->getId(), $app);
-        
+
         $users = [];
-        
+
         foreach ($communityHasUser as $a) {
             $user = User::getById($a->getUserId(), $app)->jsonSerialize();
             $user['admin'] = $a->isAdmin();
@@ -195,24 +234,24 @@ class Community extends BaseModel
             $user['communityId'] = $a->getCommunityId();
             $users[] = $user;
         }
-        
+
         return $users;
     }
 
     /**
      *
-     * @param Application $app            
+     * @param Application $app
      * @return multitype:unknown
      */
     public function getProducts(Application $app)
     {
         $data = Product::getByCommunityId($this->getId(), $app);
         $products = [];
-        
+
         foreach ($data as $p) {
             $products[] = $p;
         }
-        
+
         return $products;
     }
 
@@ -229,9 +268,20 @@ class Community extends BaseModel
         ];
     }
 
-    public function getId()
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::insert()
+     */
+    protected function insert(Application $app)
     {
-        return $this->_id;
+        try {
+            return 1 == $app['db']->executeUpdate('INSERT INTO community (name) VALUES (?)', array(
+                $this->getName()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
     }
 
     public function getName()
@@ -239,13 +289,25 @@ class Community extends BaseModel
         return $this->_name;
     }
 
-    protected function setId($id)
-    {
-        $this->_id = $id;
-    }
-
     public function setName($name)
     {
         $this->_name = $name;
+    }
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \ShoppingList\Model\BaseModel::update()
+     */
+    protected function update(Application $app)
+    {
+        try {
+            return 1 == $app['db']->executeUpdate('UPDATE community SET name = ? WHERE idCommunity = ?', array(
+                $this->getName(),
+                $this->getId()
+            ));
+        } catch (\PDOException $ex) {
+            return false;
+        }
     }
 }
