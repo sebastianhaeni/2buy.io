@@ -39,6 +39,17 @@
     touch-action: cross-slide-x;
     height: 100px;
     background-color: rgba(255, 255, 255, .5);
+    
+    &:active, &:hover {
+    	height: 30vh;
+    	
+    	.hover-image {
+    		
+    		width: auto;
+    		max-width: 100%;
+    		position: absolute;
+    	}
+    }
 
     &.accepted {
       &.closed {
@@ -54,35 +65,12 @@
       background-color: rgb(217, 83, 79);
     }
 
-    .bill{
-
+    .bill {
       display: block;
       float: left;
       font-weight: bold;
       margin-right: 10px;
       line-height: 35px;
-    }
-
-    .imageContainer {
-      width: 200px;
-      height: 100px;
-      overflow: hidden;
-      position: relative;
-      float: left;
-
-      .imageCenterer {
-        width: 200px;
-        position: absolute;
-        left: 50%;
-        top: 0;
-        margin-left: -100px;
-        img {
-          width: 31vw;
-          display: block;
-          margin: 0 auto;
-        }
-      }
-
     }
 
     .price {

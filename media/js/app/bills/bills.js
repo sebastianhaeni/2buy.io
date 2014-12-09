@@ -117,9 +117,9 @@
 
     function createDetailBill(bill) {
 
-        var image = '<div class="imageContainer"><div class="imageCenterer"><img src="/media/img/bills/'
+        var image = '<img src="/media/img/bills/'
             + bill.picturePath
-            + '" /></div></div>';
+            + '" class="hover-image" />';
 
         var detailsbill = image
             + '<span class="createdDate detail">'
