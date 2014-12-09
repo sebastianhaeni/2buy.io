@@ -1,538 +1,591 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ShoppingList\n"
-"POT-Creation-Date: 2014-12-04 10:50+0100\n"
-"PO-Revision-Date: 2014-12-04 10:52+0100\n"
+"POT-Creation-Date: 2014-12-09 23:25+0100\n"
+"PO-Revision-Date: 2014-12-09 23:25+0100\n"
 "Last-Translator: Sebastian Häni <haeni.sebastian@gmail.com>\n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ../../cache\n"
 
-#: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:27
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:90
-msgid "Settings"
-msgstr "Settings"
-
-#: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:35
-msgid "The settings could not be saved due to an unknown error."
-msgstr "The settings could not be saved due to an unknown error."
-
-#: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:42
-msgid "Email Address"
-msgstr "Email Address"
-
-#: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:50
-msgid "Phone Number"
-msgstr "Phone Number"
-
-#: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:59
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:69
-#: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:61
-#: ../../cache/26/71/ae744989c5b097e4e15bc52c694ae30d3130b39d21a269e5a272ae8108ce.php:49
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:67
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:114
-#: ../../cache/43/cf/6af91065f226cd6db9c7f91bb3b8b9a4d0535c6956ec67afe9caadd8676e.php:56
-#: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:56
-#: ../../cache/77/7e/34f555c16939eaa39842405d723e61ba98f0031c31d89d85d2ef9f7c1ade.php:51
-#: ../../cache/89/61/8579bf68c948a8e421a5f15181a9902a8844379be2ba577a18c07eefa696.php:56
-#: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:50
-#: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:50
-#: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:50
-#: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:50
-#: ../../cache/dd/a5/74b861a76e14651d1f2cff7874e4a17855cffc193292327a35dcbc51f97d.php:50
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:87
-msgid "Close"
-msgstr "Close"
-
-#: ../../cache/07/18/45c58366ca4177edda31fc0e37422d5f08ea26feba767f0240a5a3aad013.php:63
-#: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:65
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:54
-#: ../../cache/43/cf/6af91065f226cd6db9c7f91bb3b8b9a4d0535c6956ec67afe9caadd8676e.php:60
-msgid "Save"
-msgstr "Save"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:47
-#: ../../cache/1f/8f/1ba1d5df3f216c24624a657fe823804383c8c1041c85853034cebf3fd03c.php:44
-msgid "%app_name% - %page%"
-msgstr "%app_name% - %page%"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:75
-msgid "Add Article"
-msgstr "Add Article"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:79
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:47
-msgid "Barcode"
-msgstr "Barcode"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:89
-msgid "Buy"
-msgstr "Buy"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:93
-#: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:54
-#: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:54
-#: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:54
-#: ../../cache/dd/a5/74b861a76e14651d1f2cff7874e4a17855cffc193292327a35dcbc51f97d.php:54
-msgid "Delete"
-msgstr "Delete"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:105
-msgid "Article bought"
-msgstr "Article bought"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:107
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:115
-msgid "Undo"
-msgstr "Undo"
-
-#: ../../cache/0e/86/d12045f94c2919a6b62197aca132b7df0259821489304fb2ef541bef9c49.php:113
-msgid "Article cancelled"
-msgstr "Article cancelled"
-
-#: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:25
-#: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:55
-#: ../../cache/c4/dd/a7c6cd91d559aa159f17f272b26029074c278d71d5ab5175c3f5a34ad796.php:54
-msgid "Get Started"
-msgstr "Get Started"
-
-#: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:29
-#: ../../cache/4b/45/0d23b87472b7fb74f9280a2cc90668e0b0a657213de6ff28c70c1026f915.php:54
-#: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:65
-msgid "Developers"
-msgstr "Developers"
-
-#: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:36
-msgid "&copy; 2014"
-msgstr "&copy; 2014"
-
-#: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:40
-#: ../../cache/c3/41/2e0c5e9b825b20a4adc930d9384c496ab763e06b5086271556e281e271a2.php:31
-msgid "Terms"
-msgstr "Terms"
-
-#: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:44
-#: ../../cache/c3/41/2e0c5e9b825b20a4adc930d9384c496ab763e06b5086271556e281e271a2.php:35
-msgid "Privacy"
-msgstr "Privacy"
-
-#: ../../cache/12/c5/c5d766c4c0ac347389b332a6e9dca73dd6dbfb80cab8c781af42321f75a3.php:48
-#: ../../cache/c2/72/ed34fa539357b8dd9b45f84b3478fd18c7e7fa5ee27b0a1a82c6195e5f96.php:54
-#: ../../cache/c3/41/2e0c5e9b825b20a4adc930d9384c496ab763e06b5086271556e281e271a2.php:39
-msgid "Contact"
-msgstr "Contact"
-
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:27
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:94
-msgid "Change Password"
-msgstr "Change Password"
-
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:35
-msgid "The password could not be changed due to an unknown error."
-msgstr "The password could not be changed due to an unknown error."
-
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:42
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:47
-msgid "Old Password"
-msgstr "Old Password"
-
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:55
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:60
-msgid "New Password"
-msgstr "New Password"
-
-#: ../../cache/1b/b0/1718455c696d0082e6fad8155c3d2e4cce9c96fae5247c9adb113a25649b.php:73
-msgid "Change"
-msgstr "Change"
-
-#: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:27
-msgid "Edit article"
-msgstr "Edit article"
-
-#: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:35
-msgid "The article could not be saved due to an error."
-msgstr "The article could not be saved due to an error."
-
-#: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:42
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:44
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:36
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:50
-#: ../../cache/43/cf/6af91065f226cd6db9c7f91bb3b8b9a4d0535c6956ec67afe9caadd8676e.php:42
-#: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:42
-#: ../../cache/89/61/8579bf68c948a8e421a5f15181a9902a8844379be2ba577a18c07eefa696.php:42
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:55
-msgid "Name"
-msgstr "Name"
-
-#: ../../cache/1e/de/47eace21a87dac1633f36a40d509f4f1331aeb3a2faddab15526fb9c9741.php:51
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:56
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:77
-msgid "Amount"
-msgstr "Amount"
-
-#: ../../cache/1f/8f/1ba1d5df3f216c24624a657fe823804383c8c1041c85853034cebf3fd03c.php:66
-msgid "Add Bill"
-msgstr "Add Bill"
-
-#: ../../cache/1f/8f/1ba1d5df3f216c24624a657fe823804383c8c1041c85853034cebf3fd03c.php:78
-msgid "Accept"
-msgstr "Accept"
-
-#: ../../cache/1f/8f/1ba1d5df3f216c24624a657fe823804383c8c1041c85853034cebf3fd03c.php:84
-msgid "Decline"
-msgstr "Decline"
-
-#: ../../cache/26/71/ae744989c5b097e4e15bc52c694ae30d3130b39d21a269e5a272ae8108ce.php:26
-msgid "Barcode recognition failed"
-msgstr "Barcode recognition failed"
-
-#: ../../cache/26/71/ae744989c5b097e4e15bc52c694ae30d3130b39d21a269e5a272ae8108ce.php:34
-msgid "The barcode could not be recognized."
-msgstr "The barcode could not be recognized."
-
-#: ../../cache/26/71/ae744989c5b097e4e15bc52c694ae30d3130b39d21a269e5a272ae8108ce.php:41
-msgid "Please try again."
-msgstr "Please try again."
-
-#: ../../cache/30/d7/b8099e0bd5cf50746948fcca23fab2d9ee93892e156df95f1610059190f3.php:44
-msgid "Privacy Policy - %page%"
-msgstr "Privacy Policy - %page%"
-
-#: ../../cache/33/2c/8f79f119fd22c70ebcc82b6ec7ce7c5d55298a4b840e0874c849339045cd.php:44
-msgid "Terms of Service - %page%"
-msgstr "Terms of Service - %page%"
-
-#: ../../cache/33/51/630e279d96099f4e94579e071b02a0cacf4cd3e5218a9afe2b17f7e68aa9.php:44
-msgid "Page not found - %page%"
-msgstr "Page not found - %page%"
-
-#: ../../cache/33/51/630e279d96099f4e94579e071b02a0cacf4cd3e5218a9afe2b17f7e68aa9.php:54
-msgid "Oops. Page could not be found."
-msgstr "Oops. Page could not be found."
-
-#: ../../cache/35/3c/b34770c5013e4003c3751dbda09ad3942638f4277c9d36a648c8aa17873f.php:53
-msgid "Communities"
-msgstr "Communities"
-
-#: ../../cache/35/3c/b34770c5013e4003c3751dbda09ad3942638f4277c9d36a648c8aa17873f.php:62
-msgid "Create Community"
-msgstr "Create Community"
-
-#: ../../cache/38/e7/b02330675be1a6854a5d0b33682d8eedbe75b9ae58e54835d6b0a53994df.php:44
-msgid "Sign Up - %page%"
-msgstr "Sign Up - %page%"
-
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:27
-msgid "Add article to shopping list"
-msgstr "Add article to shopping list"
-
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:35
-msgid "The article could not be added due to an error."
-msgstr "The article could not be added due to an error."
-
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:48
-#: ../../cache/43/cf/6af91065f226cd6db9c7f91bb3b8b9a4d0535c6956ec67afe9caadd8676e.php:47
-#: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:47
-#: ../../cache/89/61/8579bf68c948a8e421a5f15181a9902a8844379be2ba577a18c07eefa696.php:47
-msgid "3 characters mininum"
-msgstr "3 characters mininum"
-
-#: ../../cache/38/f2/f16624bb57e128d49f62cbf113e2dadf2137ae2c89021007925e551f194e.php:71
-#: ../../cache/77/7e/34f555c16939eaa39842405d723e61ba98f0031c31d89d85d2ef9f7c1ade.php:55
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:91
-msgid "Add"
-msgstr "Add"
-
-#: ../../cache/39/fe/4dea1622923d22416a9919f4d1893e82f7bf7c39bb3f6de7f8370d785378.php:44
-msgid "Sign In - %page%"
-msgstr "Sign In - %page%"
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:26
-msgid "Edit community"
-msgstr "Edit community"
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:42
-msgid "The community could not be edited due to an error."
-msgstr "The community could not be edited due to an error."
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:65
-msgid "Members"
-msgstr "Members"
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:73
-msgid "Invites"
-msgstr "Invites"
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:82
-msgid "The invite could not be sent due to an error."
-msgstr "The invite could not be sent due to an error."
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:90
-msgid "Email"
-msgstr "Email"
-
-#: ../../cache/3e/11/571c6d650159ac2a8f84c0b0777169b2b47bb93207559f9742928655daf2.php:94
-msgid "Send"
-msgstr "Send"
-
-#: ../../cache/43/cf/6af91065f226cd6db9c7f91bb3b8b9a4d0535c6956ec67afe9caadd8676e.php:27
-msgid "Edit product name"
-msgstr "Edit product name"
-
-#: ../../cache/43/cf/6af91065f226cd6db9c7f91bb3b8b9a4d0535c6956ec67afe9caadd8676e.php:35
-msgid "The product could not be edited due to an error."
-msgstr "The product could not be edited due to an error."
-
-#: ../../cache/4b/45/0d23b87472b7fb74f9280a2cc90668e0b0a657213de6ff28c70c1026f915.php:44
-msgid "Developers - %page%"
-msgstr "Developers - %page%"
-
-#: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:27
-msgid "Create new community"
-msgstr "Create new community"
-
-#: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:35
-msgid "The community could not be created due to an error."
-msgstr "The community could not be created due to an error."
-
-#: ../../cache/54/67/69862a8b2f2ee0fa54f04ab63a66091d05342d529f880c83fc954d23a237.php:60
-#: ../../cache/89/61/8579bf68c948a8e421a5f15181a9902a8844379be2ba577a18c07eefa696.php:60
-msgid "Create"
-msgstr "Create"
-
-#: ../../cache/65/d7/e873729b8f96d4925254ea4d94f119346d91d96f5fa9b4357ddc369980a3.php:46
-msgid "de_CH"
-msgstr "German"
-
-#: ../../cache/65/d7/e873729b8f96d4925254ea4d94f119346d91d96f5fa9b4357ddc369980a3.php:48
-msgid "en_US"
-msgstr "English"
-
-#: ../../cache/77/7e/34f555c16939eaa39842405d723e61ba98f0031c31d89d85d2ef9f7c1ade.php:27
-msgid "Add bill to list"
-msgstr "Add bill to list"
-
-#: ../../cache/77/7e/34f555c16939eaa39842405d723e61ba98f0031c31d89d85d2ef9f7c1ade.php:40
-msgid "Price"
-msgstr "Price"
-
-#: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:26
-#: ../../cache/e0/a7/16fb6350f7c37b0ce75ec4753febc88246e2091d256be4bd461477f8a003.php:26
-msgid "List"
-msgstr "List"
-
-#: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:37
-#: ../../cache/e0/a7/16fb6350f7c37b0ce75ec4753febc88246e2091d256be4bd461477f8a003.php:37
-msgid "History"
-msgstr "History"
-
-#: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:48
-#: ../../cache/e0/a7/16fb6350f7c37b0ce75ec4753febc88246e2091d256be4bd461477f8a003.php:48
-msgid "Statistics"
-msgstr "Statistics"
-
-#: ../../cache/7a/f6/bb9fbd3d117f3974e01a3587a854a25484cf3982599e7d1f8541a554432f.php:59
-msgid "Products"
-msgstr "Products"
-
-#: ../../cache/89/61/8579bf68c948a8e421a5f15181a9902a8844379be2ba577a18c07eefa696.php:27
-msgid "New product"
-msgstr "New product"
-
-#: ../../cache/89/61/8579bf68c948a8e421a5f15181a9902a8844379be2ba577a18c07eefa696.php:35
-msgid "The product could not be created due to an error."
-msgstr "The product could not be created due to an error."
-
-#: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:45
-msgid "Home"
-msgstr "Home"
-
-#: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:77
-msgid "Sign Up"
-msgstr "Sign Up"
-
-#: ../../cache/8f/4a/abcc8379c29bcba3079a1e1b9309a470b3d4281730e31ed05d7f3121d5b9.php:87
-msgid "Sign In"
-msgstr "Sign In"
-
-#: ../../cache/9a/24/f57d0c5101d0a0bc7c3de0358e30c21d91e19db16bc74eff60b48da098fa.php:47
-#: ../../cache/ee/a3/585480b1d954b3fc9c4e38e238848641b8cf39842c3323b012ad70824731.php:44
-msgid "Statistics - %app_name% - %page%"
-msgstr "Statistics - %app_name% - %page%"
-
-#: ../../cache/9a/24/f57d0c5101d0a0bc7c3de0358e30c21d91e19db16bc74eff60b48da098fa.php:61
-#: ../../cache/ee/a3/585480b1d954b3fc9c4e38e238848641b8cf39842c3323b012ad70824731.php:57
-msgid "Purchase count"
-msgstr "Purchase count"
-
-#: ../../cache/9a/24/f57d0c5101d0a0bc7c3de0358e30c21d91e19db16bc74eff60b48da098fa.php:68
-#: ../../cache/ee/a3/585480b1d954b3fc9c4e38e238848641b8cf39842c3323b012ad70824731.php:64
-msgid "Order count"
-msgstr "Order count"
-
-#: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:27
-msgid "Delete member"
-msgstr "Delete member"
-
-#: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:35
-msgid "The member could not be deleted due to an error."
-msgstr "The member could not be deleted due to an error."
-
-#: ../../cache/a3/15/4961077ec8877f4860841de147ee9a8afe99e7def6a40a8d7313deac995a.php:42
-msgid ""
-"Are you sure you want to delete the member <b id=\"delete-member-name\">unknown</b>?"
-msgstr ""
-"Are you sure you want to delete the member <b id=\"delete-member-name\">unknown</b>?"
-
-#: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:27
-msgid "Clear history"
-msgstr "Clear history"
-
-#: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:35
-msgid "The history could not be cleared due to an error."
-msgstr "The history could not be cleared due to an error."
-
-#: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:42
-msgid "Are you sure you want to clear all transactions and statistics?"
-msgstr "Are you sure you want to clear all transactions and statistics?"
-
-#: ../../cache/b5/77/ba69fbd27303e4dab16040242c53860a9b7d55318e67bf5c6a5b4b4adaaf.php:54
-msgid "Clear"
-msgstr "Clear"
-
-#: ../../cache/b8/df/6ee52487f8667278cc7196df9db548ce1f369da922275e60bfe2af0b0cfb.php:47
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:47
-msgid "History - %app_name% - %page%"
-msgstr "History - %app_name% - %page%"
-
-#: ../../cache/b8/df/6ee52487f8667278cc7196df9db548ce1f369da922275e60bfe2af0b0cfb.php:60
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:64
-msgid "Clear History"
-msgstr "Clear History"
-
-#: ../../cache/c2/72/ed34fa539357b8dd9b45f84b3478fd18c7e7fa5ee27b0a1a82c6195e5f96.php:44
+#: ../../cache/0b/84/a9c9e8d1dd981756c57aaae69b1ba37870d5e0e60b51b1d6f3578b841cb0.php:44
 msgid "Contact - %page%"
 msgstr "Contact - %page%"
 
-#: ../../cache/c3/41/2e0c5e9b825b20a4adc930d9384c496ab763e06b5086271556e281e271a2.php:27
-msgid "&copy; %year%"
-msgstr "&copy; %year%"
+#: ../../cache/0b/84/a9c9e8d1dd981756c57aaae69b1ba37870d5e0e60b51b1d6f3578b841cb0.php:54
+#: ../../cache/65/c6/db2aa7ad932862ddd99d646ac3c0b431871b0c46a291c1b77120ff0ae0dd.php:39
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:48
+msgid "Contact"
+msgstr "Contact"
 
-#: ../../cache/c4/dd/a7c6cd91d559aa159f17f272b26029074c278d71d5ab5175c3f5a34ad796.php:44
-msgid "Get Started - %page%"
-msgstr "Get Started - %page%"
-
-#: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:27
-msgid "Delete invite"
-msgstr "Delete invite"
-
-#: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:35
-msgid "The invite could not be deleted due to an error."
-msgstr "The invite could not be deleted due to an error."
-
-#: ../../cache/c8/b1/13143942d915ccd491173e743868b4060ae2dfc6e4de29e54f90703776e4.php:42
-msgid ""
-"Are you sure you want to delete the invite <b id=\"delete-invite-name\">unknown</b>?"
-msgstr ""
-"Are you sure you want to delete the invite <b id=\"delete-invite-name\">unknown</b>?"
-
-#: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:27
+#: ../../cache/12/06/517a87d67b9aece67495ca39c2c9b5e062fb03f9ef5f44d9bb824dcfc66e.php:27
 msgid "Delete community"
 msgstr "Delete community"
 
-#: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:35
+#: ../../cache/12/06/517a87d67b9aece67495ca39c2c9b5e062fb03f9ef5f44d9bb824dcfc66e.php:35
 msgid "The community could not be deleted due to an error."
 msgstr "The community could not be deleted due to an error."
 
-#: ../../cache/d4/ac/a7e07629391d22aa5365062940cb6bf1cee6fcd38a36623e591e70320375.php:42
+#: ../../cache/12/06/517a87d67b9aece67495ca39c2c9b5e062fb03f9ef5f44d9bb824dcfc66e.php:42
 msgid ""
-"Are you sure you want to delete the community <b id=\"delete-community-name\">unknown</"
-"b>?"
+"Are you sure you want to delete the community <b id=\"delete-community-name"
+"\">unknown</b>?"
 msgstr ""
-"Are you sure you want to delete the community <b id=\"delete-community-name\">unknown</"
-"b>?"
+"Are you sure you want to delete the community <b id=\"delete-community-name"
+"\">unknown</b>?"
 
-#: ../../cache/dd/a5/74b861a76e14651d1f2cff7874e4a17855cffc193292327a35dcbc51f97d.php:27
-msgid "Delete product"
-msgstr "Delete product"
+#: ../../cache/12/06/517a87d67b9aece67495ca39c2c9b5e062fb03f9ef5f44d9bb824dcfc66e.php:50
+#: ../../cache/1b/8f/0a037192f2f8ab900a7f8af1d1aa013bc03b0bfe6a708e6fa48faab3192a.php:50
+#: ../../cache/21/02/d70978eb9ac681a03562afef8fb766f0b9a034b9412caf91c8df9cd1d218.php:59
+#: ../../cache/23/cd/cbe5218807aee2085a044cb4c15905cf63ac7c678a69600e6a5213983e17.php:56
+#: ../../cache/63/ed/33788ff60262629e459cd9e626936652a02acc4289b32d6c69792805a0ec.php:61
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:184
+#: ../../cache/76/ad/612a8038435d22dae57e7e16b5b93e726c46d6ab195767d3faaf15c35be4.php:56
+#: ../../cache/8c/57/876a8356c8ed2b5cf72d0b242351bccab9f07a59233bbb089d35e2ccbc16.php:50
+#: ../../cache/9d/32/10cf07f57f01f0a783bbfc4319b71c71cf469fd805ad77f3287769f5a04f.php:50
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:67
+#: ../../cache/a9/be/904def9d5f4a9446c32178738a4f208d42c985852a4262f4bab7c6836625.php:51
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:69
+#: ../../cache/d3/d2/33635c24a5d5e81130fb9edbc2e1a0af39cbe8c8fd1b0ddcf4badbf99bc4.php:56
+#: ../../cache/e4/81/e32c459af096697a7c60e4034ef23c6c9128e38c7b8a0ed25ae2160b4476.php:49
+#: ../../cache/ef/f7/a1550ce45eec382cba6f228a9e9d1b4e84b8f0922975c18219bb9e6c046d.php:50
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:87
+#: ../../cache/ff/44/bcdd4e77404bf72bbabd0bf3a9d4d8e12d661747a4dd7ac01e80b6637e81.php:50
+msgid "Close"
+msgstr "Close"
 
-#: ../../cache/dd/a5/74b861a76e14651d1f2cff7874e4a17855cffc193292327a35dcbc51f97d.php:35
-msgid "The product could not be deleted due to an error."
-msgstr "The product could not be deleted due to an error."
+#: ../../cache/12/06/517a87d67b9aece67495ca39c2c9b5e062fb03f9ef5f44d9bb824dcfc66e.php:54
+#: ../../cache/1b/8f/0a037192f2f8ab900a7f8af1d1aa013bc03b0bfe6a708e6fa48faab3192a.php:54
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:93
+#: ../../cache/9d/32/10cf07f57f01f0a783bbfc4319b71c71cf469fd805ad77f3287769f5a04f.php:54
+#: ../../cache/ef/f7/a1550ce45eec382cba6f228a9e9d1b4e84b8f0922975c18219bb9e6c046d.php:54
+msgid "Delete"
+msgstr "Delete"
 
-#: ../../cache/dd/a5/74b861a76e14651d1f2cff7874e4a17855cffc193292327a35dcbc51f97d.php:42
+#: ../../cache/16/cd/dffcde17855781e76aef9e429f537365b315acd4c47e087747a8315a5929.php:44
+#: ../../cache/b3/b9/99bbca7e885675249bfc473fe4b3de2fabbc7bc9c2060a230e95590bf0f3.php:47
+msgid "Statistics - %app_name% - %page%"
+msgstr "Statistics - %app_name% - %page%"
+
+#: ../../cache/16/cd/dffcde17855781e76aef9e429f537365b315acd4c47e087747a8315a5929.php:58
+msgid "Paid sum"
+msgstr "Paid sum"
+
+#: ../../cache/16/cd/dffcde17855781e76aef9e429f537365b315acd4c47e087747a8315a5929.php:65
+msgid "Declined sum"
+msgstr "Declined sum"
+
+#: ../../cache/1b/8f/0a037192f2f8ab900a7f8af1d1aa013bc03b0bfe6a708e6fa48faab3192a.php:27
+msgid "Delete invite"
+msgstr "Delete invite"
+
+#: ../../cache/1b/8f/0a037192f2f8ab900a7f8af1d1aa013bc03b0bfe6a708e6fa48faab3192a.php:35
+msgid "The invite could not be deleted due to an error."
+msgstr "The invite could not be deleted due to an error."
+
+#: ../../cache/1b/8f/0a037192f2f8ab900a7f8af1d1aa013bc03b0bfe6a708e6fa48faab3192a.php:42
 msgid ""
-"Are you sure you want to delete the product <b id=\"delete-product-name\">unknown</b>?"
+"Are you sure you want to delete the invite <b id=\"delete-invite-name"
+"\">unknown</b>?"
 msgstr ""
-"Are you sure you want to delete the product <b id=\"delete-product-name\">unknown</b>?"
+"Are you sure you want to delete the invite <b id=\"delete-invite-name"
+"\">unknown</b>?"
 
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:27
-msgid "Barcode Scanner"
-msgstr "Barcode Scanner"
+#: ../../cache/21/02/d70978eb9ac681a03562afef8fb766f0b9a034b9412caf91c8df9cd1d218.php:27
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:95
+msgid "Settings"
+msgstr "Settings"
 
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:40
-msgid "Rescan barcode"
-msgstr "Rescan barcode"
+#: ../../cache/21/02/d70978eb9ac681a03562afef8fb766f0b9a034b9412caf91c8df9cd1d218.php:35
+msgid "The settings could not be saved due to an unknown error."
+msgstr "The settings could not be saved due to an unknown error."
 
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:64
-#: ../../cache/f1/c3/2df02611358356c2aa92eaab1e93d20d3b634b92d32950d2e63e899b5968.php:68
-msgid "Image"
-msgstr "Image"
+#: ../../cache/21/02/d70978eb9ac681a03562afef8fb766f0b9a034b9412caf91c8df9cd1d218.php:42
+msgid "Email Address"
+msgstr "Email Address"
 
-#: ../../cache/f4/28/a41f4736c9a2ffcfae19752efae13eadcab88157e7c36daf3c85f92e8e94.php:50
-msgid "Products - %app_name% - %page%"
-msgstr "Products - %app_name% - %page%"
+#: ../../cache/21/02/d70978eb9ac681a03562afef8fb766f0b9a034b9412caf91c8df9cd1d218.php:50
+msgid "Phone Number"
+msgstr "Phone Number"
 
-#: ../../cache/f4/28/a41f4736c9a2ffcfae19752efae13eadcab88157e7c36daf3c85f92e8e94.php:73
-msgid "New Product"
-msgstr "New Product"
+#: ../../cache/21/02/d70978eb9ac681a03562afef8fb766f0b9a034b9412caf91c8df9cd1d218.php:63
+#: ../../cache/23/cd/cbe5218807aee2085a044cb4c15905cf63ac7c678a69600e6a5213983e17.php:60
+#: ../../cache/63/ed/33788ff60262629e459cd9e626936652a02acc4289b32d6c69792805a0ec.php:65
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:54
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:164
+msgid "Save"
+msgstr "Save"
 
-#: ../../cache/f4/28/a41f4736c9a2ffcfae19752efae13eadcab88157e7c36daf3c85f92e8e94.php:85
-msgid "In suggestions"
-msgstr "In suggestions"
+#: ../../cache/23/cd/cbe5218807aee2085a044cb4c15905cf63ac7c678a69600e6a5213983e17.php:27
+msgid "Edit product name"
+msgstr "Edit product name"
 
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:73
+#: ../../cache/23/cd/cbe5218807aee2085a044cb4c15905cf63ac7c678a69600e6a5213983e17.php:35
+msgid "The product could not be edited due to an error."
+msgstr "The product could not be edited due to an error."
+
+#: ../../cache/23/cd/cbe5218807aee2085a044cb4c15905cf63ac7c678a69600e6a5213983e17.php:42
+#: ../../cache/63/ed/33788ff60262629e459cd9e626936652a02acc4289b32d6c69792805a0ec.php:42
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:36
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:50
+#: ../../cache/76/ad/612a8038435d22dae57e7e16b5b93e726c46d6ab195767d3faaf15c35be4.php:42
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:44
+#: ../../cache/d3/d2/33635c24a5d5e81130fb9edbc2e1a0af39cbe8c8fd1b0ddcf4badbf99bc4.php:42
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:55
+msgid "Name"
+msgstr "Name"
+
+#: ../../cache/23/cd/cbe5218807aee2085a044cb4c15905cf63ac7c678a69600e6a5213983e17.php:47
+#: ../../cache/76/ad/612a8038435d22dae57e7e16b5b93e726c46d6ab195767d3faaf15c35be4.php:47
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:48
+#: ../../cache/d3/d2/33635c24a5d5e81130fb9edbc2e1a0af39cbe8c8fd1b0ddcf4badbf99bc4.php:47
+msgid "3 characters mininum"
+msgstr "3 characters mininum"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:47
+#: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:44
+msgid "%app_name% - %page%"
+msgstr "%app_name% - %page%"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:75
+msgid "Add Article"
+msgstr "Add Article"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:79
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:47
+msgid "Barcode"
+msgstr "Barcode"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:89
+msgid "Buy"
+msgstr "Buy"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:105
+msgid "Article bought"
+msgstr "Article bought"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:107
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:115
+msgid "Undo"
+msgstr "Undo"
+
+#: ../../cache/27/5c/9f58433bbb4546830b6935c6917028a06fb752fda28dfc5b6d8b83e75dec.php:113
+msgid "Article cancelled"
+msgstr "Article cancelled"
+
+#: ../../cache/2a/14/2f6aa1c583d2f448e9df7ff021390be0e15a43715983fe86210eb7560dd3.php:26
+#: ../../cache/99/53/c7e8ae710410a5f172b107a26c148ed5487f1bc1731a3c2517b3d6296a0a.php:26
+msgid "List"
+msgstr "List"
+
+#: ../../cache/2a/14/2f6aa1c583d2f448e9df7ff021390be0e15a43715983fe86210eb7560dd3.php:37
+#: ../../cache/99/53/c7e8ae710410a5f172b107a26c148ed5487f1bc1731a3c2517b3d6296a0a.php:37
+msgid "History"
+msgstr "History"
+
+#: ../../cache/2a/14/2f6aa1c583d2f448e9df7ff021390be0e15a43715983fe86210eb7560dd3.php:48
+#: ../../cache/99/53/c7e8ae710410a5f172b107a26c148ed5487f1bc1731a3c2517b3d6296a0a.php:48
+msgid "Statistics"
+msgstr "Statistics"
+
+#: ../../cache/2a/14/2f6aa1c583d2f448e9df7ff021390be0e15a43715983fe86210eb7560dd3.php:59
+msgid "Products"
+msgstr "Products"
+
+#: ../../cache/2b/61/b4197004f8050817f7a3ccb071b293eefb424d50050a91b40fef856e79c8.php:46
+msgid "de_CH"
+msgstr "German"
+
+#: ../../cache/2b/61/b4197004f8050817f7a3ccb071b293eefb424d50050a91b40fef856e79c8.php:48
+msgid "en_US"
+msgstr "English"
+
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:44
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:47
+msgid "History - %app_name% - %page%"
+msgstr "History - %app_name% - %page%"
+
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:61
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:64
+msgid "Clear History"
+msgstr "Clear History"
+
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:70
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:73
 msgid "reported by"
 msgstr "reported by"
 
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:78
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:94
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:75
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:91
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:78
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:94
 msgid "at"
 msgstr "at"
 
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:84
-msgid "bought by"
-msgstr "bought by"
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:81
+msgid "accepted by"
+msgstr "accepted by"
 
-#: ../../cache/f8/a1/dfb28b9dc9aa07d8696417cd2279630b096c6e9853c175fc9d19b4a20812.php:88
-msgid "cancelled by"
-msgstr "cancelled by"
+#: ../../cache/2c/18/ebaa6c352e9264cdb5c2fe49c75df4f5607a202009be0b2e71a0459a7e5a.php:85
+msgid "declined by"
+msgstr "declined by"
 
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:57
+#: ../../cache/42/0b/a4e2837f07c548cb11c0bd323b9abe935563d9d528d7d0d11a6d2b1758c6.php:44
+msgid "Terms of Service - %page%"
+msgstr "Terms of Service - %page%"
+
+#: ../../cache/4c/97/d71648168b6c8712cc3bd3d1177aaccd493d37e477bb85cbae171771509a.php:39
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:57
+#: ../../cache/f3/02/d8a53d44f559151cfdc7be53b2496988387fc464ddbfd7e5afa92d8dacc1.php:39
 msgid "Shopping List"
 msgstr "Shopping List"
 
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:65
+#: ../../cache/5e/fd/df0ef52971beb2bbe89aa0b89799b014badb051c34574ddba27a56f042a2.php:53
+msgid "Communities"
+msgstr "Communities"
+
+#: ../../cache/5e/fd/df0ef52971beb2bbe89aa0b89799b014badb051c34574ddba27a56f042a2.php:62
+msgid "Create Community"
+msgstr "Create Community"
+
+#: ../../cache/63/0d/ccbe3ab136fdd1f8fa07f8064b89e467ab7425bae2ad2fc19428ff52405b.php:44
+msgid "Sign Up - %page%"
+msgstr "Sign Up - %page%"
+
+#: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:66
+msgid "Add Bill"
+msgstr "Add Bill"
+
+#: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:78
+msgid "Accept"
+msgstr "Accept"
+
+#: ../../cache/63/d3/54038a8a24bb789bb335286aad189693265a7bf32a486a9094a55ee2fae6.php:84
+msgid "Decline"
+msgstr "Decline"
+
+#: ../../cache/63/ed/33788ff60262629e459cd9e626936652a02acc4289b32d6c69792805a0ec.php:27
+msgid "Edit article"
+msgstr "Edit article"
+
+#: ../../cache/63/ed/33788ff60262629e459cd9e626936652a02acc4289b32d6c69792805a0ec.php:35
+msgid "The article could not be saved due to an error."
+msgstr "The article could not be saved due to an error."
+
+#: ../../cache/63/ed/33788ff60262629e459cd9e626936652a02acc4289b32d6c69792805a0ec.php:51
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:56
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:77
+msgid "Amount"
+msgstr "Amount"
+
+#: ../../cache/65/c6/db2aa7ad932862ddd99d646ac3c0b431871b0c46a291c1b77120ff0ae0dd.php:27
+msgid "&copy; %year%"
+msgstr "&copy; %year%"
+
+#: ../../cache/65/c6/db2aa7ad932862ddd99d646ac3c0b431871b0c46a291c1b77120ff0ae0dd.php:31
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:40
+msgid "Terms"
+msgstr "Terms"
+
+#: ../../cache/65/c6/db2aa7ad932862ddd99d646ac3c0b431871b0c46a291c1b77120ff0ae0dd.php:35
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:44
+msgid "Privacy"
+msgstr "Privacy"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:26
+msgid "Edit community"
+msgstr "Edit community"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:42
+msgid "The community could not be edited due to an error."
+msgstr "The community could not be edited due to an error."
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:66
+msgid "Members"
+msgstr "Members"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:74
+msgid "Invites"
+msgstr "Invites"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:83
+msgid "The invite could not be sent due to an error."
+msgstr "The invite could not be sent due to an error."
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:92
+msgid " Email"
+msgstr "Email"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:97
+msgid "Send"
+msgstr "Send"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:115
+msgid "Own community preferences"
+msgstr "Own community preferences"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:124
+msgid "The preferences could not be sent due to an error."
+msgstr "The preferences could not be sent due to an error."
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:131
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:138
+msgid "bankaccountnumber"
+msgstr "IBAN"
+
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:147
+#: ../../cache/6b/09/ea4e853a3d5819a7110e78ebe13dda85dac323bd180d705fa5b136e9ceb3.php:154
+msgid "bankaccountname"
+msgstr "Bank Account Name"
+
+#: ../../cache/73/0a/a6f3891885024e62da38a704168922ab9ec2f4a2904daf4f2bf13cc09903.php:44
+msgid "Page not found - %page%"
+msgstr "Page not found - %page%"
+
+#: ../../cache/73/0a/a6f3891885024e62da38a704168922ab9ec2f4a2904daf4f2bf13cc09903.php:54
+msgid "Oops. Page could not be found."
+msgstr "Oops. Page could not be found."
+
+#: ../../cache/76/ad/612a8038435d22dae57e7e16b5b93e726c46d6ab195767d3faaf15c35be4.php:27
+msgid "Create new community"
+msgstr "Create new community"
+
+#: ../../cache/76/ad/612a8038435d22dae57e7e16b5b93e726c46d6ab195767d3faaf15c35be4.php:35
+msgid "The community could not be created due to an error."
+msgstr "The community could not be created due to an error."
+
+#: ../../cache/76/ad/612a8038435d22dae57e7e16b5b93e726c46d6ab195767d3faaf15c35be4.php:60
+#: ../../cache/d3/d2/33635c24a5d5e81130fb9edbc2e1a0af39cbe8c8fd1b0ddcf4badbf99bc4.php:60
+msgid "Create"
+msgstr "Create"
+
+#: ../../cache/77/24/ed7b4b10f30f16b3d8161d3a429ee4f31134a2ba91772c533f4750e4249e.php:44
+msgid "Developers - %page%"
+msgstr "Developers - %page%"
+
+#: ../../cache/77/24/ed7b4b10f30f16b3d8161d3a429ee4f31134a2ba91772c533f4750e4249e.php:54
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:29
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:65
+msgid "Developers"
+msgstr "Developers"
+
+#: ../../cache/83/9f/87096c4408f66a87ca3ce8d2fb3c0d5a3069a0cf07e3527fe6c341f9dc8e.php:50
+msgid "Products - %app_name% - %page%"
+msgstr "Products - %app_name% - %page%"
+
+#: ../../cache/83/9f/87096c4408f66a87ca3ce8d2fb3c0d5a3069a0cf07e3527fe6c341f9dc8e.php:73
+msgid "New Product"
+msgstr "New Product"
+
+#: ../../cache/83/9f/87096c4408f66a87ca3ce8d2fb3c0d5a3069a0cf07e3527fe6c341f9dc8e.php:85
+msgid "In suggestions"
+msgstr "In suggestions"
+
+#: ../../cache/8c/57/876a8356c8ed2b5cf72d0b242351bccab9f07a59233bbb089d35e2ccbc16.php:27
+#: ../../cache/ff/44/bcdd4e77404bf72bbabd0bf3a9d4d8e12d661747a4dd7ac01e80b6637e81.php:27
+msgid "Clear history"
+msgstr "Clear history"
+
+#: ../../cache/8c/57/876a8356c8ed2b5cf72d0b242351bccab9f07a59233bbb089d35e2ccbc16.php:35
+#: ../../cache/ff/44/bcdd4e77404bf72bbabd0bf3a9d4d8e12d661747a4dd7ac01e80b6637e81.php:35
+msgid "The history could not be cleared due to an error."
+msgstr "The history could not be cleared due to an error."
+
+#: ../../cache/8c/57/876a8356c8ed2b5cf72d0b242351bccab9f07a59233bbb089d35e2ccbc16.php:42
+msgid "Are you sure you want to clear all bills and statistics?"
+msgstr "Are you sure you want to clear all bills and statistics?"
+
+#: ../../cache/8c/57/876a8356c8ed2b5cf72d0b242351bccab9f07a59233bbb089d35e2ccbc16.php:54
+#: ../../cache/ff/44/bcdd4e77404bf72bbabd0bf3a9d4d8e12d661747a4dd7ac01e80b6637e81.php:54
+msgid "Clear"
+msgstr "Clear"
+
+#: ../../cache/8e/d5/d12c52ddf2221192a38b417fe05918dc818dead115aec2a17acea29286d8.php:44
+msgid "Privacy Policy - %page%"
+msgstr "Privacy Policy - %page%"
+
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:65
 msgid "Bills"
 msgstr "Bills"
 
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:85
-msgid "Anonymous"
-msgstr "Anonymous"
-
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:99
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:70
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:104
 msgid "Change Community"
 msgstr "Change Community"
 
-#: ../../cache/fb/67/bdb510699f6d2d7878f9850c5b5a841e740161fd458f7ff04b2913adc13e.php:104
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:90
+msgid "Anonymous"
+msgstr "Anonymous"
+
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:99
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:27
+msgid "Change Password"
+msgstr "Change Password"
+
+#: ../../cache/93/d0/ce00bbbb952773b60d1e5a91d18b6f347e99b2fc2c24d7d3fe8ad55683fc.php:109
 msgid "Sign Out"
 msgstr "Sign Out"
+
+#: ../../cache/9d/32/10cf07f57f01f0a783bbfc4319b71c71cf469fd805ad77f3287769f5a04f.php:27
+msgid "Delete member"
+msgstr "Delete member"
+
+#: ../../cache/9d/32/10cf07f57f01f0a783bbfc4319b71c71cf469fd805ad77f3287769f5a04f.php:35
+msgid "The member could not be deleted due to an error."
+msgstr "The member could not be deleted due to an error."
+
+#: ../../cache/9d/32/10cf07f57f01f0a783bbfc4319b71c71cf469fd805ad77f3287769f5a04f.php:42
+msgid ""
+"Are you sure you want to delete the member <b id=\"delete-member-name"
+"\">unknown</b>?"
+msgstr ""
+"Are you sure you want to delete the member <b id=\"delete-member-name"
+"\">unknown</b>?"
+
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:27
+msgid "Add article to shopping list"
+msgstr "Add article to shopping list"
+
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:35
+msgid "The article could not be added due to an error."
+msgstr "The article could not be added due to an error."
+
+#: ../../cache/a4/bc/65f7531c9bca4114de55e161a3352a7420246258a02cdebbf512caa8785e.php:71
+#: ../../cache/a9/be/904def9d5f4a9446c32178738a4f208d42c985852a4262f4bab7c6836625.php:55
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:91
+msgid "Add"
+msgstr "Add"
+
+#: ../../cache/a9/be/904def9d5f4a9446c32178738a4f208d42c985852a4262f4bab7c6836625.php:27
+msgid "Add bill to list"
+msgstr "Add bill to list"
+
+#: ../../cache/a9/be/904def9d5f4a9446c32178738a4f208d42c985852a4262f4bab7c6836625.php:40
+msgid "Price"
+msgstr "Price"
+
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:35
+msgid "The password could not be changed due to an unknown error."
+msgstr "The password could not be changed due to an unknown error."
+
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:42
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:47
+msgid "Old Password"
+msgstr "Old Password"
+
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:55
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:60
+msgid "New Password"
+msgstr "New Password"
+
+#: ../../cache/ad/23/8467d703ad308779205fe7e7301db74d4ebc59c45f6a30441c8bf244379c.php:73
+msgid "Change"
+msgstr "Change"
+
+#: ../../cache/af/19/beecb2c2b059549e9d34b7e7910096d1f81874ecf044471b80b1ff9afd93.php:44
+msgid "Get Started - %page%"
+msgstr "Get Started - %page%"
+
+#: ../../cache/af/19/beecb2c2b059549e9d34b7e7910096d1f81874ecf044471b80b1ff9afd93.php:54
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:25
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:55
+msgid "Get Started"
+msgstr "Get Started"
+
+#: ../../cache/b3/b9/99bbca7e885675249bfc473fe4b3de2fabbc7bc9c2060a230e95590bf0f3.php:61
+msgid "Purchase count"
+msgstr "Purchase count"
+
+#: ../../cache/b3/b9/99bbca7e885675249bfc473fe4b3de2fabbc7bc9c2060a230e95590bf0f3.php:68
+msgid "Order count"
+msgstr "Order count"
+
+#: ../../cache/b7/6a/e5f1d3e7a9594c9cc1e21f73d9bc61dcf254911c04389b664ed7c844ecd2.php:36
+msgid "&copy; 2014"
+msgstr "&copy; 2014"
+
+#: ../../cache/be/8e/3648dabfcfcb626ff145bc3e3d9ebcb08c4eb90c41e22f412fd28718cf80.php:44
+msgid "Sign In - %page%"
+msgstr "Sign In - %page%"
+
+#: ../../cache/d3/d2/33635c24a5d5e81130fb9edbc2e1a0af39cbe8c8fd1b0ddcf4badbf99bc4.php:27
+msgid "New product"
+msgstr "New product"
+
+#: ../../cache/d3/d2/33635c24a5d5e81130fb9edbc2e1a0af39cbe8c8fd1b0ddcf4badbf99bc4.php:35
+msgid "The product could not be created due to an error."
+msgstr "The product could not be created due to an error."
+
+#: ../../cache/e4/81/e32c459af096697a7c60e4034ef23c6c9128e38c7b8a0ed25ae2160b4476.php:26
+msgid "Barcode recognition failed"
+msgstr "Barcode recognition failed"
+
+#: ../../cache/e4/81/e32c459af096697a7c60e4034ef23c6c9128e38c7b8a0ed25ae2160b4476.php:34
+msgid "The barcode could not be recognized."
+msgstr "The barcode could not be recognized."
+
+#: ../../cache/e4/81/e32c459af096697a7c60e4034ef23c6c9128e38c7b8a0ed25ae2160b4476.php:41
+msgid "Please try again."
+msgstr "Please try again."
+
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:45
+msgid "Home"
+msgstr "Home"
+
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:77
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: ../../cache/eb/25/6b89428deca89318595231eeb686fa7e0060bd0aab5a31860c20bb4399cd.php:87
+msgid "Sign In"
+msgstr "Sign In"
+
+#: ../../cache/ef/f7/a1550ce45eec382cba6f228a9e9d1b4e84b8f0922975c18219bb9e6c046d.php:27
+msgid "Delete product"
+msgstr "Delete product"
+
+#: ../../cache/ef/f7/a1550ce45eec382cba6f228a9e9d1b4e84b8f0922975c18219bb9e6c046d.php:35
+msgid "The product could not be deleted due to an error."
+msgstr "The product could not be deleted due to an error."
+
+#: ../../cache/ef/f7/a1550ce45eec382cba6f228a9e9d1b4e84b8f0922975c18219bb9e6c046d.php:42
+msgid ""
+"Are you sure you want to delete the product <b id=\"delete-product-name"
+"\">unknown</b>?"
+msgstr ""
+"Are you sure you want to delete the product <b id=\"delete-product-name"
+"\">unknown</b>?"
+
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:84
+msgid "bought by"
+msgstr "bought by"
+
+#: ../../cache/f8/99/a223dd860f4a108f4381c15242ad9d5c1f36517bf8c67cb1aed7ab1af95b.php:88
+msgid "cancelled by"
+msgstr "cancelled by"
+
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:27
+msgid "Barcode Scanner"
+msgstr "Barcode Scanner"
+
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:40
+msgid "Rescan barcode"
+msgstr "Rescan barcode"
+
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:64
+#: ../../cache/f9/ea/d9fe71d9cb39e9fcbd4cc2fa8a8b79dcef219f645801d22df6487c244a48.php:68
+msgid "Image"
+msgstr "Image"
+
+#: ../../cache/ff/44/bcdd4e77404bf72bbabd0bf3a9d4d8e12d661747a4dd7ac01e80b6637e81.php:42
+msgid "Are you sure you want to clear all transactions and statistics?"
+msgstr "Are you sure you want to clear all transactions and statistics?"
 
 #~ msgid "Coming soon"
 #~ msgstr "Coming soon"

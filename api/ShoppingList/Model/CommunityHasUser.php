@@ -164,7 +164,7 @@ class CommunityHasUser extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO community_has_user (idCommunity, idUser, admin, receiveNotifications) VALUES (?,?,?,?)', array(
+            return 1 == $app['db']->executeUpdate('INSERT INTO community_has_user (idCommunity, idUser, admin, bankAccountNumber, bankAccountName, receiveNotifications) VALUES (?,?,?,?,?,?)', array(
                 $this->getCommunityId(),
                 $this->getUserId(),
                 $this->isAdmin(),

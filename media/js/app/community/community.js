@@ -105,7 +105,6 @@
                 $('#edit-community-invite-email').val('').focus();
                 loadMembers(id);
                 loadInvites(id);
-                loadOwnPreferences(id);
             },
             error: function () {
                 $('#edit-community-invite-form :input').prop('disabled', false);
@@ -385,13 +384,14 @@
                 bankAccountName: bankAccountName
             },
             success: function () {
+            	editingBankAccountNumber = bankAccountNumber;
+            	editingBankAccountName = bankAccountName;
+            	$('#edit-own-community-preferences-form :input').prop('disabled', false);
+            	$('#edit-own-community-preferences-form :input[type=submit]').prop('disabled', true);
                 $('#edit-own-community-preferences-error-message').addClass('hide');
-                loadMembers(id);
-                loadInvites(id);
-                loadOwnPreferences(id);
             },
             error: function () {
-                $('#edit-community-invite-form :input').prop('disabled', false);
+                $('#edit-own-community-preferences-form :input').prop('disabled', false);
                 $('#edit-own-community-preferences-error-message').removeClass('hide');
             }
         });
