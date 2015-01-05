@@ -127,6 +127,5 @@ Production deployment is done manually by the person in charge of releases.
       <li>[ ] E-Mail</li>
     </ul>
   </li>
-  <li>[ ] Offline capability (no conflict merging)</li>
   <li>[x] Multi Language</li>
 </ul>
