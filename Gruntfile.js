@@ -32,6 +32,7 @@ module.exports = function(grunt) {
                             'bower_components/chartjs/Chart.js',
                             'bower_components/typeahead.js/dist/typeahead.bundle.js',
                             'bower_components/toastr/toastr.js', 
+                            'bower_components/lightbox2/js/lightbox.js', 
                             'media/js/*.js', 
                             'media/js/app/*.js',
                             'media/js/app/**/*.js' ]

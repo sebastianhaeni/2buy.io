@@ -39,17 +39,6 @@
     touch-action: cross-slide-x;
     height: 100px;
     background-color: rgba(255, 255, 255, .5);
-    
-    &:active, &:hover {
-    	height: 30vh;
-    	
-    	.hover-image {
-    		
-    		width: auto;
-    		max-width: 100%;
-    		position: absolute;
-    	}
-    }
 
     &.accepted {
       &.closed {
