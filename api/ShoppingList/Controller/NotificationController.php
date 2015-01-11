@@ -54,7 +54,7 @@ class NotificationController extends BaseController
                 
                 foreach ($list as $key => $category) {
                     foreach ($category as $item) {
-                        if (isset($item['triggeredBy']) && $item['triggeredBy'] == $app['auth']->getUser($request)->getId()) {
+                        if (isset($item['triggeredBy']) && $item['triggeredBy'] == $user->getId()) {
                             unset($list[$key]);
                         }
                     }
