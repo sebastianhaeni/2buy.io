@@ -10,7 +10,8 @@ use ShoppingList\Model\Invite;
 use ShoppingList\Model\CommunityHasUser;
 
 /**
- *
+ * User controller.
+ * 
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
 class UserController extends BaseController
@@ -36,7 +37,7 @@ class UserController extends BaseController
             $invites = Invite::getByEmail($email, $app);
             
             foreach ($invites as $invite) {
-                $communityHasUser = new CommunityHasUser($invite->getCommunityId(), $user->getId(), false, true);
+                $communityHasUser = new CommunityHasUser($invite->getCommunityId(), $user->getId(), false, null, null, true);
                 
                 if (! $communityHasUser->save($app) || ! $invite->delete($app)) {
                     return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);

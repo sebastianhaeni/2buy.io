@@ -9,6 +9,7 @@ use ShoppingList\Model\Transaction;
 use ShoppingList\Model\Product;
 use ShoppingList\Model\User;
 use ShoppingList\Model\CommunityHasUser;
+use ShoppingList\Model\Community;
 
 /**
  * Sends notifications via email.
@@ -44,6 +45,7 @@ class NotificationController extends BaseController
     {
         foreach ($changeList as $communityId => $list) {
             $users = CommunityHasUser::getByCommunityId($communityId, $app);
+            $community = Community::getById($communityId, $app);
             $transactions = $list;
             
             foreach ($users as $user) {
@@ -61,9 +63,10 @@ class NotificationController extends BaseController
                 }
                 
                 $list = array_merge($list, [
-                    'config' => $app['config']
+                    'config' => $app['config'],
+                    'communityName' => $community->getName()
                 ]);
-
+                
                 $body = $app['twig']->render('email/community-update.html', $list);
                 
                 $message = \Swift_Message::newInstance()->setSubject('2buy.io')
