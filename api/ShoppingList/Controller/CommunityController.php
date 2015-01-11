@@ -163,7 +163,7 @@ class CommunityController extends BaseController
             return new Response('Error saving invite', StatusCodes::HTTP_BAD_REQUEST);
         }
         
-        $communityHasUser = new CommunityHasUser($checker->getCommunity()->getId(), $user->getId(), false, true);
+        $communityHasUser = new CommunityHasUser($checker->getCommunity()->getId(), $user->getId(), false, null, null, true);
         
         if (! $communityHasUser->save($app)) {
             return new Response('Error saving community association', StatusCodes::HTTP_BAD_REQUEST);

@@ -11,6 +11,7 @@ use ShoppingList\Util\StatusCodes;
 use ShoppingList\Model\BaseModel;
 use ShoppingList\Model\CommunityHasUser;
 use ShoppingList\Util\CommunityChecker;
+use ShoppingList\Model\TransactionLastAction;
 
 /**
  * Provides functions for /community/{id}/transaction.
@@ -114,7 +115,7 @@ class TransactionController extends BaseController
         $transactions = Transaction::getActiveTransactions($checker->getCommunity()->getId(), $app, $selectedProduct->getId());
         
         if (count($transactions) == 0) {
-            $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), null, BaseModel::getCurrentTimeStamp(), null, $amount, 0, null, 0, null, null, null);
+            $transaction = new Transaction(null, $selectedProduct->getId(), $app['auth']->getUser()->getId(), null, BaseModel::getCurrentTimeStamp(), null, $amount, 0, null, 0, null, null, TransactionLastAction::ADD, false);
         } else {
             $transaction = $transactions[0];
             if ($transaction->getAmount() > $amount) {
@@ -154,6 +155,8 @@ class TransactionController extends BaseController
         $transaction->setBoughtBy($app['auth']->getUser($request)
             ->getId());
         $transaction->setCloseDate(BaseModel::getCurrentTimeStamp());
+        $transaction->setLastAction(TransactionLastAction::BUY);
+        $transaction->setNotified(false);
         
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
@@ -186,6 +189,8 @@ class TransactionController extends BaseController
             ->getId());
         $transaction->setCancelled(true);
         $transaction->setCloseDate(BaseModel::getCurrentTimeStamp());
+        $transaction->setLastAction(TransactionLastAction::CANCEL);
+        $transaction->setNotified(false);
         
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);
@@ -254,6 +259,8 @@ class TransactionController extends BaseController
         $transaction->setEditedBy($app['auth']->getUser($request)
             ->getId());
         $transaction->setAmount($amount);
+        $transaction->setLastAction(TransactionLastAction::EDIT);
+        $transaction->setNotified(false);
         
         if (! $transaction->save($app)) {
             return new Response('Error saving transaction', StatusCodes::HTTP_BAD_REQUEST);

@@ -3,11 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2014 at 11:01 PM
+-- Generation Time: Jan 11, 2015 at 08:25 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
-SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
   KEY `idCommunity` (`idCommunity`),
   KEY `createdBy` (`createdBy`),
   KEY `closedBy` (`closedBy`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `community` (
   `idCommunity` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   PRIMARY KEY (`idCommunity`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `invite` (
   `email` varchar(200) NOT NULL,
   PRIMARY KEY (`idInvite`),
   KEY `idCommunity` (`idCommunity`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`idProduct`),
   KEY `idCommunity` (`idCommunity`),
   KEY `addedBy` (`addedBy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=73 ;
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `remember_me_token` (
   `timestampCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idToken`),
   KEY `idUser` (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -140,7 +140,8 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `cancelled` tinyint(1) NOT NULL DEFAULT '0',
   `cancelledBy` int(11) DEFAULT NULL,
   `closeDate` datetime DEFAULT NULL,
-  `notificationDate` datetime DEFAULT NULL,
+  `lastAction` enum('ADD','EDIT','BUY','CANCEL') NOT NULL DEFAULT 'ADD',
+  `notified` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idTransaction`),
   KEY `idProduct` (`idProduct`),
   KEY `reportedBy` (`reportedBy`),
@@ -148,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   KEY `boughtBy` (`boughtBy`),
   KEY `cancelledBy` (`cancelledBy`),
   KEY `idBill` (`idBill`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -165,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `phone` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Constraints for dumped tables
@@ -214,5 +215,4 @@ ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_4` FOREIGN KEY (`boughtBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_5` FOREIGN KEY (`cancelledBy`) REFERENCES `user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_6` FOREIGN KEY (`idBill`) REFERENCES `bill` (`idBill`) ON DELETE SET NULL ON UPDATE CASCADE;
-
-SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS=1;

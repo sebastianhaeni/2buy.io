@@ -34,7 +34,9 @@ class Transaction extends BaseModel
 
     private $_closeDate;
 
-    private $_notificationDate;
+    private $_lastAction;
+
+    private $_notified;
 
     private $_product;
 
@@ -62,9 +64,10 @@ class Transaction extends BaseModel
      * @param boolean $cancelled            
      * @param int $cancelledBy            
      * @param string $closeDate            
-     * @param string $notificationDate            
+     * @param string $lastAction            
+     * @param boolean $notified            
      */
-    public function __construct($id, $productId, $reportedBy, $billId, $reportedDate, $editedBy, $amount, $price, $boughtBy, $cancelled, $cancelledBy, $closeDate, $notificationDate)
+    public function __construct($id, $productId, $reportedBy, $billId, $reportedDate, $editedBy, $amount, $price, $boughtBy, $cancelled, $cancelledBy, $closeDate, $lastAction, $notified)
     {
         $this->_id = $id;
         $this->setProductId($productId);
@@ -78,7 +81,8 @@ class Transaction extends BaseModel
         $this->setCancelled($cancelled);
         $this->setCancelledBy($cancelledBy);
         $this->setCloseDate($closeDate);
-        $this->setNotificationDate($notificationDate);
+        $this->setLastAction($lastAction);
+        $this->setNotified($notified);
     }
 
     /**
@@ -107,7 +111,7 @@ class Transaction extends BaseModel
             return null;
         }
         
-        $transaction = new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['idBill'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['price'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate'], $data['notificationDate']);
+        $transaction = new Transaction($data['idTransaction'], $data['idProduct'], $data['reportedBy'], $data['idBill'], $data['reportedDate'], $data['editedBy'], $data['amount'], $data['price'], $data['boughtBy'], $data['cancelled'], $data['cancelledBy'], $data['closeDate'], $data['lastAction'], $data['notified']);
         
         if ($app != null) {
             $transaction->setProduct(Product::getById($transaction->getProductId(), $app));
@@ -182,14 +186,24 @@ class Transaction extends BaseModel
         $this->_billId = $billId;
     }
 
-    public function getNotificationDate()
+    public function getLastAction()
     {
-        return $this->_notificationDate;
+        return $this->_lastAction;
     }
 
-    public function setNotificationDate($notificationDate)
+    public function getNotified()
     {
-        $this->_notificationDate = $notificationDate;
+        return $this->_notified;
+    }
+
+    public function setLastAction($lastAction)
+    {
+        $this->_lastAction = $lastAction;
+    }
+
+    public function setNotified($notified)
+    {
+        $this->_notified = $notified;
     }
 
     /**
@@ -238,12 +252,12 @@ class Transaction extends BaseModel
 
     /**
      * Fetches transactions that have been closed for at least 5 minutes and haven't set a notification sent date.
-     * 
+     *
      * @param Application $app            
      */
     public static function getScheduledClosedNotifications(Application $app)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE closeDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND notificationDate IS NULL', array());
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND (lastAction = \'BUY\' OR lastAction = \'CANCEL\') AND notified = 0', []);
         
         $transactions = [];
         
@@ -255,6 +269,43 @@ class Transaction extends BaseModel
     }
 
     /**
+     * Fetches transactions that have been freshly added for at least 5 minutes and haven't set a notification sent date.
+     *
+     * @param Application $app            
+     */
+    public static function getScheduledAddedNotifications(Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND lastAction = \'ADD\' AND notified = 0', []);
+        
+        $transactions = [];
+        
+        foreach ($data as $transaction) {
+            $transactions[] = self::getTransaction($transaction);
+        }
+        
+        return $transactions;
+    }
+
+    /**
+     * Fetches transactions that have been freshly edited for at least 5 minutes and haven't set a notification sent date.
+     *
+     * @param Application $app            
+     */
+    public static function getScheduledEditedNotifications(Application $app)
+    {
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND lastAction = \'EDIT\' AND notified = 0', []);
+        
+        $transactions = [];
+        
+        foreach ($data as $transaction) {
+            $transactions[] = self::getTransaction($transaction);
+        }
+        
+        return $transactions;
+    }
+
+    /**
+     * Gets history.
      *
      * @param int $communityId            
      * @param Application $app            
@@ -266,6 +317,7 @@ class Transaction extends BaseModel
     }
 
     /**
+     * Clears history.
      *
      * @param int $communityId            
      * @param Application $app            
@@ -274,9 +326,9 @@ class Transaction extends BaseModel
     public static function clearHistory($communityId, Application $app)
     {
         try {
-            $app['db']->executeUpdate('DELETE transaction.* FROM transaction INNER JOIN product ON transaction.idProduct = product.idProduct WHERE product.idCommunity = ? AND closeDate IS NOT NULL', array(
+            $app['db']->executeUpdate('DELETE transaction.* FROM transaction INNER JOIN product ON transaction.idProduct = product.idProduct WHERE product.idCommunity = ? AND closeDate IS NOT NULL', [
                 $communityId
-            ));
+            ]);
             return true;
         } catch (\PDOException $ex) {
             return false;
@@ -291,9 +343,9 @@ class Transaction extends BaseModel
     public function delete(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('DELETE FROM transaction WHERE idTransaction = ?', array(
+            return 1 == $app['db']->executeUpdate('DELETE FROM transaction WHERE idTransaction = ?', [
                 $this->getId()
-            ));
+            ]);
         } catch (\PDOException $ex) {
             return false;
         }
@@ -343,7 +395,8 @@ class Transaction extends BaseModel
             'cancelledBy' => $this->getCancelledBy(),
             'canceller' => $this->getCanceller(),
             'closeDate' => $this->getCloseDate(),
-            'notificationDate' => $this->getNotificationDate()
+            'lastAction' => $this->getLastAction(),
+            'notified' => $this->getNotified()
         ];
     }
 
@@ -415,7 +468,7 @@ class Transaction extends BaseModel
     protected function insert(Application $app)
     {
         try {
-            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate, price, idBill, notificationDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)', [
+            return 1 == $app['db']->executeUpdate('INSERT INTO transaction (idProduct, reportedBy, reportedDate, editedBy, amount, boughtBy, cancelled, cancelledBy, closeDate, price, idBill, lastAction, notified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)', [
                 $this->getProductId(),
                 $this->getReportedBy(),
                 $this->getReportedDate(),
@@ -427,7 +480,8 @@ class Transaction extends BaseModel
                 $this->getCloseDate(),
                 $this->getPrice(),
                 $this->getBillId(),
-                $this->getNotificationDate()
+                $this->getLastAction(),
+                $this->getNotified()
             ]);
         } catch (\PDOException $ex) {
             return false;
@@ -493,7 +547,7 @@ class Transaction extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('UPDATE transaction SET
-                idProduct = ?, reportedBy = ?, reportedDate = ?, editedBy = ?, amount = ?, boughtBy = ?, cancelled = ?, cancelledBy = ?, closeDate = ?, price = ?, idBill = ?, notificationDate = ?
+                idProduct = ?, reportedBy = ?, reportedDate = ?, editedBy = ?, amount = ?, boughtBy = ?, cancelled = ?, cancelledBy = ?, closeDate = ?, price = ?, idBill = ?, lastAction = ?, notified = ?
                 WHERE idTransaction = ?', array(
                 $this->getProductId(),
                 $this->getReportedBy(),
@@ -506,7 +560,8 @@ class Transaction extends BaseModel
                 $this->getCloseDate(),
                 $this->getPrice(),
                 $this->getBillId(),
-                $this->getNotificationDate(),
+                $this->getLastAction(),
+                $this->getNotified(),
                 $this->getId()
             ));
         } catch (\PDOException $ex) {
@@ -523,4 +578,16 @@ class Transaction extends BaseModel
     {
         $this->_id = $id;
     }
+}
+
+abstract class TransactionLastAction
+{
+
+    const ADD = 'ADD';
+
+    const EDIT = 'EDIT';
+
+    const BUY = 'BUY';
+
+    const CANCEL = 'CANCEL';
 }
