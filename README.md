@@ -1,6 +1,8 @@
 2buy.io
 ===================================
 
+[Watch Demo Video](https://www.youtube.com/watch?v=Rr_NDMHvuiA) or simply go to http://dev.2buy.io
+
 ## Environment Dependencies
 * Apache with PHP >= 5.5
 * MySQL >= 5.6
