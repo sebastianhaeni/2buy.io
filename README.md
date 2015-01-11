@@ -31,6 +31,8 @@ When an article gets bought, the buyer can mark it as bought and gets credit for
 
 The app is intended to work very well on mobile devices. Desktop resolutions should be supported as well, but aren’t the primary use case.
 
+[Demo Screencast](https://www.youtube.com/watch?v=Rr_NDMHvuiA)
+
 [Project presentation](http://prezi.com/mr-zny9qzsig)
 
 [Project plan](https://docs.google.com/spreadsheets/d/13WSqNUOvKZwPOybQbJwPmpcRZdPULlK52T3Jfx6dhZ4/pubhtml)
