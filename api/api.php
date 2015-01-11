@@ -8,9 +8,9 @@ require_once __DIR__ . '/../bootstrap.php';
 
 $app->register(new SessionServiceProvider());
 $app->register(new Authentication());
-$app->register(new Silex\Provider\SwiftmailerServiceProvider(), [
-    'swiftmailer.options' => $app['config']['email']
-]);
+$app->register(new Silex\Provider\SwiftmailerServiceProvider());
+
+$app['swiftmailer.options'] = $app['config']['email'];
 
 $router = new Router();
 $router->constructRoutes($app);
