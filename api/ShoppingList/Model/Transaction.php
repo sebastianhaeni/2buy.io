@@ -251,13 +251,13 @@ class Transaction extends BaseModel
     }
 
     /**
-     * Fetches transactions that have been closed for at least 5 minutes and haven't set a notification sent date.
+     * Fetches transactions that have been closed for at least 1 MINUTEs and haven't set a notification sent date.
      *
      * @param Application $app            
      */
     public static function getScheduledClosedNotifications(Application $app)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND (lastAction = \'BUY\' OR lastAction = \'CANCEL\') AND notified = 0', []);
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 1 MINUTE) AND (lastAction = \'BUY\' OR lastAction = \'CANCEL\') AND notified = 0', []);
         
         $transactions = [];
         
@@ -269,13 +269,13 @@ class Transaction extends BaseModel
     }
 
     /**
-     * Fetches transactions that have been freshly added for at least 5 minutes and haven't set a notification sent date.
+     * Fetches transactions that have been freshly added for at least 1 MINUTEs and haven't set a notification sent date.
      *
      * @param Application $app            
      */
     public static function getScheduledAddedNotifications(Application $app)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND lastAction = \'ADD\' AND notified = 0', []);
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 1 MINUTE) AND lastAction = \'ADD\' AND notified = 0', []);
         
         $transactions = [];
         
@@ -287,13 +287,13 @@ class Transaction extends BaseModel
     }
 
     /**
-     * Fetches transactions that have been freshly edited for at least 5 minutes and haven't set a notification sent date.
+     * Fetches transactions that have been freshly edited for at least 1 MINUTEs and haven't set a notification sent date.
      *
      * @param Application $app            
      */
     public static function getScheduledEditedNotifications(Application $app)
     {
-        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 5 MINUTE) AND lastAction = \'EDIT\' AND notified = 0', []);
+        $data = $app['db']->fetchAll('SELECT * FROM transaction WHERE reportedDate < DATE_SUB(NOW(), INTERVAL 1 MINUTE) AND lastAction = \'EDIT\' AND notified = 0', []);
         
         $transactions = [];
         

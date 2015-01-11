@@ -44,6 +44,7 @@ class NotificationController extends BaseController
     {
         foreach ($changeList as $communityId => $list) {
             $users = CommunityHasUser::getByCommunityId($communityId, $app);
+            $transactions = $list;
             
             foreach ($users as $user) {
                 
@@ -59,10 +60,11 @@ class NotificationController extends BaseController
                     }
                 }
                 
-                $body = $app['twig']->render('email/community-update.html', [
-                    $list,
+                $list = array_merge($list, [
                     'config' => $app['config']
                 ]);
+
+                $body = $app['twig']->render('email/community-update.html', $list);
                 
                 $message = \Swift_Message::newInstance()->setSubject('2buy.io')
                     ->setFrom(array(
@@ -74,7 +76,7 @@ class NotificationController extends BaseController
                 $app['mailer']->send($message);
             }
             
-            foreach ($list as $category) {
+            foreach ($transactions as $category) {
                 foreach ($category as $item) {
                     $transaction = Transaction::getById($item['id'], $app);
                     $transaction->setNotified(true);
