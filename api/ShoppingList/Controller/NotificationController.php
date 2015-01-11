@@ -55,6 +55,9 @@ class NotificationController extends BaseController
                 }
                 
                 foreach ($list as $key => $category) {
+                    if(!is_array($category)){
+                        continue;
+                    }
                     foreach ($category as $item) {
                         if (isset($item['triggeredBy']) && $item['triggeredBy'] == $user->getId()) {
                             unset($list[$key]);
