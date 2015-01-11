@@ -72,7 +72,7 @@ class Authentication implements ServiceProviderInterface
             if ($token->save($this->_app)) {
                 
                 $response = new Response('Success', StatusCodes::HTTP_ACCEPTED);
-                $response->headers->setCookie(new Cookie(REMEMBER_ME, $tokenString, time() + (3600 * 24 * 365)));
+                $response->headers->setCookie(new Cookie(self::REMEMBER_ME, $tokenString, time() + (3600 * 24 * 365)));
                 
                 return $response;
             }
@@ -100,9 +100,8 @@ class Authentication implements ServiceProviderInterface
             }
             
             // check remember me token
-            $tokenString = $request->cookies->getAlnum(self::REMEMBER_ME);
+            $tokenString = $request->cookies->get(self::REMEMBER_ME);
             $token = RememberMeToken::getByToken($tokenString, $this->_app);
-            
             if ($token == null) {
                 return false;
             }
