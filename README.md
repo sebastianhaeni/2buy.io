@@ -61,25 +61,25 @@ Production deployment is done manually by the person in charge of releases.
 <ul>
   <li>[x] User authentication</li>
   <li>[x] Multiple communities</li>
-  <li>[ ] Shopping List
+  <li>[x] Shopping List
     <ul>
       <li>[x] Add new articles
         <ul>
           <li>[x] Autocomplete text box</li>
           <li>[x] Amount</li>
-          <li>[ ] Send notification to others</li>
+          <li>[x] Send notification to others</li>
           <li>[x] Add to history</li>
         </ul>
       </li>
       <li>[x] Mark article as bought (swipe left)
         <ul>
-          <li>[ ] Send notification to others</li>
+          <li>[x] Send notification to others</li>
           <li>[x] Add to history</li>
         </ul>
       </li>
       <li>[x] Delete article (swipe right)
         <ul>
-          <li>[ ] Send notification to others</li>
+          <li>[x] Send notification to others</li>
           <li>[x] Add to history</li>
         </ul>
       </li>
