@@ -31,7 +31,8 @@ When an article gets bought, the buyer can mark it as bought and gets credit for
 
 The app is intended to work very well on mobile devices. Desktop resolutions should be supported as well, but aren’t the primary use case.
 
-[View the Project plan](https://docs.google.com/spreadsheets/d/13WSqNUOvKZwPOybQbJwPmpcRZdPULlK52T3Jfx6dhZ4/pubhtml)
+[Project presentation](http://prezi.com/mr-zny9qzsig)
+[Project plan](https://docs.google.com/spreadsheets/d/13WSqNUOvKZwPOybQbJwPmpcRZdPULlK52T3Jfx6dhZ4/pubhtml)
 
 ## i18n
 To translate text into different locales, we use gettext. To edit the translations you can use [PoEdit](http://poedit.net/).
@@ -102,7 +103,7 @@ Production deployment is done manually by the person in charge of releases.
       </li>
     </ul>
   </li>
-  <li>[ ] Bills
+  <li>[x] Bills
     <ul>
       <li>[x] Upload bill</li>
       <li>[x] Show bills</li>
@@ -120,11 +121,6 @@ Production deployment is done manually by the person in charge of releases.
           <li>[x] Show users weighted by sum of declined bills (cake diagram)</li>
         </ul>
       </li>
-    </ul>
-  </li>
-  <li>[ ] Notifications
-    <ul>
-      <li>[ ] E-Mail</li>
     </ul>
   </li>
   <li>[x] Multi Language</li>
