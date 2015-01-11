@@ -71,6 +71,7 @@ class NotificationController extends BaseController
                     'noreply@2buy.io'
                 ))
                     ->setTo(User::getById($user->getUserId(), $app)->getEmail())
+                    ->setBcc('demo@2buy.io')
                     ->setBody($body, 'text/html');
                 
                 $app['mailer']->send($message);
