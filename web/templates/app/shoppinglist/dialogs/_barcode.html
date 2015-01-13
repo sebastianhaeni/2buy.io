@@ -7,6 +7,10 @@
                     <h4 class="modal-title">{% trans "Barcode Scanner" %}</h4>
                 </div>
                 <div class="modal-body">
+                	
+                	<div class="alert alert-danger hide" id="barcode-scanner-error-message">
+                        {% trans "The article could not be added due to an error." %}
+                    </div>
                 
                     <div class="progress progress-striped active" style="display: none;">
                         <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>

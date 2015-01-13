@@ -202,6 +202,37 @@
         return false;
     });
     
+    $('#barcode-scanner form').submit(function(){
+        
+        var name = $('#barcode-product-name').val();
+        var amount = $('#barcode-product-amount').val();
+        
+        $('#barcode-scanner-error-message').addClass('hide');
+
+        $(this).find(':input').prop('disabled', true);
+        
+        $.ajax({
+            url: '/api/v1/community/' + $.cookie('community') + '/transaction',
+            data: {name: name, amount: amount},
+            method: 'post',
+            success: function(){
+                $('#barcode-scanner form').find(':input').prop('disabled', false);
+                $('#barcode-product-name').val('');
+                
+                $('#barcode-product-amount').val(1);
+                $('#barcode-scanner-error-message').addClass('hide');
+                $('#barcode-scanner').modal('hide');
+                loadTransactions();
+            },
+            error: function(){
+                $('#barcode-scanner form').find(':input').prop('disabled', false);
+                $('#barcode-scanner-error-message').removeClass('hide');
+            }
+        });
+        
+        return false;
+    });
+    
     $('#edit-transaction form').submit(function(){
         var amount = $('#edit-transaction-amount').val();
         $(this).find(':input').prop('disabled', true);
