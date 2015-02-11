@@ -1,6 +1,10 @@
 {% extends "app/layout.html" %}
 
-{% block title%}Communities - {{ parent() }}{% endblock %}
+{% block title %}
+    {% set page = parent() %}
+    {% trans %}Communities - {{ page }}{% endtrans %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
     

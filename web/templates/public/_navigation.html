@@ -15,9 +15,12 @@
                 <li class="{% if page == 'public/getstarted' %}active{% endif %}"><a href="{{ config['site_url'] }}getstarted"><span class="glyphicon glyphicon-play"></span> {% trans "Get Started" %}</a></li>
                 <li class="{% if page == 'public/developers' %}active{% endif %}"><a href="{{ config['site_url'] }}developers"><span class="glyphicon glyphicon-cog"></span> {% trans "Developers" %}</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right not-logged-in">
                 <li class="{% if page == 'public/signup' %}active{% endif %}"><a href="{{ config['site_url'] }}signup"><span class="glyphicon glyphicon-ok-sign"></span> {% trans "Sign Up" %}</a></li>
                 <li class="{% if page == 'public/signin' %}active{% endif %}"><a href="{{ config['site_url'] }}signin"><span class="glyphicon glyphicon-log-in"></span> {% trans "Sign In" %}</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right hide logged-in">
+                <li><a href="{{ config['site_url'] }}app"><span class="glyphicon glyphicon-arrow-right"></span> {% trans "To your Communities" %}</a></li>
             </ul>
         </div>
     </div>
