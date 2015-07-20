@@ -15,8 +15,4 @@ $app['mailer'] = Swift_Mailer::newInstance($transport);
 $router = new Router();
 $router->constructRoutes($app);
 
-$app->after(function (Request $request, Response $response) {
-    $response->headers->set('Access-Control-Allow-Origin', '*');
-});
-
 $app->run();

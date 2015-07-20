@@ -1,11 +1,8 @@
 RewriteEngine On
 
-Header add Access-Control-Allow-Origin "*"
-Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
-Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+Header always set Access-Control-Allow-Origin "*"
 
 # Redirect any request that's not a directory, file or symlink
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(?!api\/) /api/api.php [L]
-
