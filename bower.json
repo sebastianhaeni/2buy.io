@@ -23,7 +23,6 @@
     "bootstrap-sass-official": "~3.2.0",
     "typeahead.js": "0.10.5",
     "font-awesome": "~4.2.0",
-    "jSync": "sebastianhaeni/jSync",
     "moment": "~2.8.3",
     "BarcodeReader": "EddieLa/BarcodeReader",
     "chartjs": "v1.0.1-beta.2",
