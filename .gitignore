@@ -1,10 +1,6 @@
-.settings/
-bower_components/
 node_modules/
-.sass-cache/
+www/generated/
 vendor/
-/config.php
-.project
-.buildpath
-*.bak
-/npm-debug.log
+
+npm-debug.log
+api/config.php

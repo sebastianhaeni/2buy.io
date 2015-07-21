@@ -27,12 +27,11 @@
     ],
     "require": {
         "php": ">=5.5",
-        "silex/silex": "~1.2",
+        "silex/silex": "~1.3",
         "doctrine/dbal": "2.2.*",
         "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev",
-        "twig/twig": "1.*",
-        "twig/extensions": "~1.1.0",
-        "Antnee/phpPasswordHashingLib": "master"
+        "Antnee/phpPasswordHashingLib": "master",
+        "google/apiclient": "^1.1@dev"
     },
     "autoload": {
         "psr-4": {"ShoppingList\\": "api/ShoppingList"}

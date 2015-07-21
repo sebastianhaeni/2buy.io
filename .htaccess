@@ -3,4 +3,4 @@ RewriteEngine On
 # Redirect any request that's not a directory, file or symlink
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule ^(?!api\/) web/web.php [L]
+RewriteRule ^(?!api\/)(?!www\/generated\/)/?([a-z0-9/?&\-=\.]*) www/generated/$1 [L]

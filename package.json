@@ -1,33 +1,44 @@
 {
-  "name": "2buy",
+  "name": "EA4Web",
   "version": "1.0.0",
   "private": true,
-  "description": "Shopping List web app",
-  "author": "Sebastian Häni <haeni.sebastian@gmail.com>",
-  "contributors": [
-    {
-      "name": "Sebastian Häni",
-      "email": "haeni.sebastian@gmail.com"
-    }
-  ],
+  "description": "EA4Web Frontend",
   "main": "",
   "scripts": {
-    "preinstall": "gem install sass && gem install compass && npm install -g bower && npm install -g grunt-cli",
-    "postinstall": "bower install && composer install"
+    "start": "node ./webpack/server.js",
+    "build": "node ./webpack/build.js",
+    "lint": "./node_modules/.bin/eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sebastianhaeni/2buy.io.git"
+  "author": "Sebastian Häni <sebastian.haeni@ruag.com>",
+  "dependencies": {
+    "file-loader": "^0.8.4",
+    "flux": "^2.0.3",
+    "jquery": "^2.1.4",
+    "jquery.cookie": "^1.4.1",
+    "keymirror": "^0.1.1",
+    "material-ui": "^0.10.1",
+    "moment": "^2.10.3",
+    "normalize.css": "^3.0.3",
+    "react": "^0.13.3",
+    "react-document-title": "^1.0.2",
+    "react-router": "^1.0.0-beta3",
+    "react-tap-event-plugin": "^0.1.7",
+    "whatwg-fetch": "^0.9.0"
   },
-  "bugs": {
-    "url": "https://github.com/sebastianhaeni/2buy.io/issues"
-  },
-  "homepage": "http://2buy.io",
   "devDependencies": {
-    "bower": "^1.3.12",
-    "grunt": "^0.4.5",
-    "grunt-contrib-compass": "^1.0.1",
-    "grunt-contrib-uglify": "^0.6.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "babel-eslint": "^3.1.23",
+    "babel-loader": "^5.3.1",
+    "css-loader": "^0.15.4",
+    "eslint": "^0.24.1",
+    "eslint-loader": "^0.14.1",
+    "eslint-plugin-react": "^2.7.0",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "react-hot-loader": "^1.2.8",
+    "sass-loader": "^1.0.2",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.10.1",
+    "webpack-dev-server": "^1.10.1"
   }
 }
