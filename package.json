@@ -5,10 +5,11 @@
   "description": "EA4Web Frontend",
   "main": "",
   "scripts": {
-    "start": "node ./webpack/server.js",
-    "api": "php -S localhost:3001 api/api.php",
-    "build": "node ./webpack/build.js",
-    "lint": "./node_modules/.bin/eslint ."
+    "start": "node ./build/scripts/start.js",
+    "app": "node ./build/scripts/frontend.js",
+    "api": "node ./build/scripts/api.js",
+    "build": "node ./build/scripts/build.js",
+    "lint": "node ./build/scripts/lint.js"
   },
   "author": "Sebastian Häni <sebastian.haeni@ruag.com>",
   "dependencies": {
@@ -27,6 +28,7 @@
     "whatwg-fetch": "^0.9.0"
   },
   "devDependencies": {
+    "babel-core": "^5.8.3",
     "babel-eslint": "^3.1.23",
     "babel-loader": "^5.3.1",
     "css-loader": "^0.15.4",
@@ -36,6 +38,8 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",
+    "open": "0.0.5",
+    "portscanner": "^1.0.0",
     "react-hot-loader": "^1.2.8",
     "sass-loader": "^1.0.2",
     "style-loader": "^0.12.3",

@@ -3,9 +3,9 @@ function merge(target, source){
     return source;
   }
   if(Array.isArray(source)){
-    return target.concat(source);
+    return source.concat(target);
   }
-  var res = {}
+  var res = {};
   for(var attr in target){
     res[attr] = target[attr];
   }

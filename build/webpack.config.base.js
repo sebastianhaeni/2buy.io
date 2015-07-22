@@ -6,9 +6,10 @@ module.exports = {
     app: [path.resolve(__dirname, '../app/scripts/main.js')]
   },
   output: {
-    path: path.resolve(__dirname, '../www/generated/'),
+    path: path.resolve(__dirname, '../www/static/'),
     filename: '[name].js',
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].chunk.js',
+    publicPath: '/static/'
   },
   resolve: {
     extensions: ['', '.js']
