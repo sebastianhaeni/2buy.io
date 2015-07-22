@@ -6,6 +6,7 @@
   "main": "",
   "scripts": {
     "start": "node ./webpack/server.js",
+    "api": "php -S localhost:3001 api/api.php",
     "build": "node ./webpack/build.js",
     "lint": "./node_modules/.bin/eslint ."
   },

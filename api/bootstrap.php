@@ -20,7 +20,6 @@ require_once __DIR__ . '/../vendor/Antnee/phpPasswordHashingLib/passwordLib.php'
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use ShoppingList\Router;
 
 date_default_timezone_set('Europe/Zurich');
 

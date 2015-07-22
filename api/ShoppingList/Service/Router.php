@@ -18,12 +18,12 @@ class Router
     /**
      * Set up routes of the API.
      *
-     * @param \Silex\Application $app            
+     * @param \Silex\Application $app
      */
     public function constructRoutes(Application $app)
     {
         $this->constructPublicRoutes($app);
-        
+
         if ($app['auth']->isLoggedIn()) {
             $this->constructAppRoutes($app);
         }
@@ -32,19 +32,16 @@ class Router
     /**
      * Builds the routes that can be accesses all the time without being logged in.
      *
-     * @param Application $app            
+     * @param Application $app
      */
     private function constructPublicRoutes(Application $app)
     {
-        // API documentation
-        $app->get('/', 'ShoppingList\\Service\\Router::redirectToDev');
-        
         // Home
         $app->get('/v1/', 'ShoppingList\\Controller\\HomeController::info');
 
         // Notification
         $app->get('/v1/notification/update', 'ShoppingList\\Controller\\NotificationController::update');
-        
+
         // User
         $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
         $app->post('/v1/user/login', 'ShoppingList\\Controller\\UserController::login');
@@ -54,7 +51,7 @@ class Router
     /**
      * Builds the routes that are only accessible inside the app (when logged in).
      *
-     * @param Application $app            
+     * @param Application $app
      */
     private function constructAppRoutes(Application $app)
     {
@@ -80,7 +77,7 @@ class Router
         $app->get   ('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::getProduct');
         $app->put   ('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::updateProduct');
         $app->delete('/v1/community/{id}/product/{idProduct}', 'ShoppingList\\Controller\\ProductController::deleteProduct');
-        
+
         // Statistics
         $app->get('/v1/community/{id}/stats/purchases', 'ShoppingList\\Controller\\StatisticsController::getPurchaseData');
         $app->get('/v1/community/{id}/stats/orders',    'ShoppingList\\Controller\\StatisticsController::getOrderData');
@@ -105,26 +102,15 @@ class Router
         $app->put   ('/v1/community/{id}/bill/accept/{idBill}',         'ShoppingList\\Controller\\BillController::accept');
         $app->put   ('/v1/community/{id}/bill/decline/{idBill}',        'ShoppingList\\Controller\\BillController::decline');
         $app->put   ('/v1/community/{id}/bill/undo/{idBill}',           'ShoppingList\\Controller\\BillController::undo');
-        
+
         // User
         $app->get('/v1/user/logout',   'ShoppingList\\Controller\\UserController::logout');
         $app->put('/v1/user/password', 'ShoppingList\\Controller\\UserController::changePassword');
         $app->put('/v1/user',          'ShoppingList\\Controller\\UserController::updateCurrentUser');
         $app->get('/v1/user',          'ShoppingList\\Controller\\UserController::getInfo');
-        
+
         // Barcode
         $app->get('/v1/barcode/{barcode}', 'ShoppingList\\Controller\\BarcodeController::get');
     }
 
-    /**
-     * Redirect requests to the api without any params to the API documentation page.
-     *
-     * @param Request $request            
-     * @param Application $app            
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function redirectToDev(Request $request, Application $app)
-    {
-        return $app->redirect($app['config']['site_url'] . 'developers');
-    }
 }
