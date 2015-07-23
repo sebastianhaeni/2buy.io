@@ -219,7 +219,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 }
             ],
             "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
@@ -282,12 +284,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex.git",
-                "reference": "34209f3b7aa60254d3ae916f2102493ee31e470a"
+                "reference": "14a33ebed9154a12e3145536935c87f084bcd852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex/zipball/34209f3b7aa60254d3ae916f2102493ee31e470a",
-                "reference": "34209f3b7aa60254d3ae916f2102493ee31e470a",
+                "url": "https://api.github.com/repos/silexphp/Silex/zipball/14a33ebed9154a12e3145536935c87f084bcd852",
+                "reference": "14a33ebed9154a12e3145536935c87f084bcd852",
                 "shasum": ""
             },
             "require": {
@@ -356,7 +358,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2015-07-17 21:36:47"
+            "time": "2015-07-23 05:07:30"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -533,12 +535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpFoundation.git",
-                "reference": "5339030f5af0d6fef7c897130291ac168278289f"
+                "reference": "a60d4dd1eddf5c4103442533119c0479dd93953b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/5339030f5af0d6fef7c897130291ac168278289f",
-                "reference": "5339030f5af0d6fef7c897130291ac168278289f",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/a60d4dd1eddf5c4103442533119c0479dd93953b",
+                "reference": "a60d4dd1eddf5c4103442533119c0479dd93953b",
                 "shasum": ""
             },
             "require": {
@@ -578,7 +580,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-16 12:22:14"
+            "time": "2015-07-22 11:24:41"
         },
         {
             "name": "symfony/http-kernel",
@@ -586,19 +588,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel.git",
-                "reference": "f24d2cb4778ecc5f6c8e8f7f31bc4691099a920d"
+                "reference": "f0c5047533aef467f18587aac41d140ea334df94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/f24d2cb4778ecc5f6c8e8f7f31bc4691099a920d",
-                "reference": "f24d2cb4778ecc5f6c8e8f7f31bc4691099a920d",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/f0c5047533aef467f18587aac41d140ea334df94",
+                "reference": "f0c5047533aef467f18587aac41d140ea334df94",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9",
                 "psr/log": "~1.0",
                 "symfony/debug": "~2.6,>=2.6.2",
-                "symfony/event-dispatcher": "~2.5.9|~2.6,>=2.6.2|~3.0.0",
+                "symfony/event-dispatcher": "~2.6,>=2.6.7|~3.0.0",
                 "symfony/http-foundation": "~2.5,>=2.5.4|~3.0.0"
             },
             "conflict": {
@@ -610,7 +612,7 @@
                 "symfony/config": "~2.7",
                 "symfony/console": "~2.3|~3.0.0",
                 "symfony/css-selector": "~2.0,>=2.0.5|~3.0.0",
-                "symfony/dependency-injection": "~2.2|~3.0.0",
+                "symfony/dependency-injection": "~2.8|~3.0.0",
                 "symfony/dom-crawler": "~2.0,>=2.0.5|~3.0.0",
                 "symfony/expression-language": "~2.4|~3.0.0",
                 "symfony/finder": "~2.0,>=2.0.5|~3.0.0",
@@ -658,7 +660,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2015-07-09 16:11:14"
+            "time": "2015-07-22 12:27:44"
         },
         {
             "name": "symfony/routing",

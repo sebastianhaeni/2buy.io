@@ -22,11 +22,11 @@ class Product extends BaseModel
 
     /**
      *
-     * @param int $id            
-     * @param int $communityId            
-     * @param string $name            
-     * @param int $addedBy            
-     * @param boolean $inSuggestions            
+     * @param int $id
+     * @param int $communityId
+     * @param string $name
+     * @param int $addedBy
+     * @param boolean $inSuggestions
      */
     public function __construct($id, $communityId, $name, $addedBy, $inSuggestions)
     {
@@ -39,8 +39,8 @@ class Product extends BaseModel
 
     /**
      *
-     * @param int $id            
-     * @param Application $app            
+     * @param int $id
+     * @param Application $app
      * @return NULL|\ShoppingList\Model\Product
      */
     public static function getById($id, Application $app)
@@ -48,14 +48,14 @@ class Product extends BaseModel
         $data = $app['db']->fetchAssoc('SELECT * FROM product WHERE idProduct = ?', array(
             $id
         ));
-        
+
         return self::getProduct($data);
     }
 
     /**
      *
-     * @param int $id            
-     * @param Application $app            
+     * @param int $id
+     * @param Application $app
      * @return NULL|\ShoppingList\Model\Product
      */
     public static function getByCommunityId($communityId, Application $app)
@@ -63,21 +63,21 @@ class Product extends BaseModel
         $data = $app['db']->fetchAll('SELECT * FROM product WHERE idCommunity = ? ORDER BY name', array(
             $communityId
         ));
-        
+
         $products = [];
-        
+
         foreach ($data as $product) {
             $products[] = self::getProduct($product);
         }
-        
+
         return $products;
     }
 
     /**
      *
-     * @param int $id            
-     * @param Application $app            
-     * @param string $query            
+     * @param int $id
+     * @param Application $app
+     * @param string $query
      * @return NULL|\ShoppingList\Model\Product
      */
     public static function getSuggestions($communityId, Application $app, $query)
@@ -101,23 +101,23 @@ class Product extends BaseModel
             '%' . $query . '%',
             $communityId
         ));
-        
+
         $products = [];
-        
+
         foreach ($data as $product) {
             $products[] = [
                 'value' => self::getProduct($product)->getName()
             ];
         }
-        
+
         return $products;
     }
 
     /**
      *
-     * @param string $name            
-     * @param int $comminityId            
-     * @param Application $app            
+     * @param string $name
+     * @param int $comminityId
+     * @param Application $app
      * @return boolean
      */
     public static function existsNameCommunity($name, $communityId, Application $app)
@@ -130,7 +130,7 @@ class Product extends BaseModel
 
     /**
      *
-     * @param NULL|array $data            
+     * @param NULL|array $data
      * @return NULL|\ShoppingList\Model\Product
      */
     private static function getProduct($data)
@@ -138,7 +138,7 @@ class Product extends BaseModel
         if ($data == null) {
             return null;
         }
-        
+
         $product = new Product($data['idProduct'], $data['idCommunity'], $data['name'], $data['addedBy'], $data['inSuggestions']);
         $product->setPersisted(true);
         return $product;
@@ -218,7 +218,7 @@ class Product extends BaseModel
         if (strlen($this->getName()) < 2) {
             return false;
         }
-        
+
         return true;
     }
 

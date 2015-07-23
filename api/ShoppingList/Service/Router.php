@@ -45,6 +45,7 @@ class Router
         // User
         $app->post('/v1/user/register', 'ShoppingList\\Controller\\UserController::register');
         $app->post('/v1/user/login', 'ShoppingList\\Controller\\UserController::login');
+        $app->post('/v1/user/google-login', 'ShoppingList\\Controller\\UserController::googleLogin');
         $app->get('/v1/user/isLoggedIn', 'ShoppingList\\Controller\\UserController::isLoggedIn');
     }
 

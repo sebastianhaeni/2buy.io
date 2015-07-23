@@ -1,4 +1,5 @@
 <?php
+
 namespace ShoppingList\Service;
 
 use ShoppingList\Model\User;
@@ -18,7 +19,6 @@ use ShoppingList\Util\StatusCodes;
  */
 class Authentication implements ServiceProviderInterface
 {
-
     const LOGGED_IN = 'logged-in';
 
     const USER = 'user';
@@ -32,7 +32,7 @@ class Authentication implements ServiceProviderInterface
     private $_user;
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see \Silex\ServiceProviderInterface::register()
      */
@@ -43,41 +43,41 @@ class Authentication implements ServiceProviderInterface
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see \Silex\ServiceProviderInterface::boot()
      */
     public function boot(Application $app)
-    {}
+    {
+        // no op
+    }
 
     /**
      * Logs the user in.
      * If a remember me token is desired, it will be created and set as a cookie.
      *
-     * @param User $user            
-     * @param boolean $rememberMe            
-     * @param Request $request            
+     * @param User    $user
+     * @param bool    $rememberMe
+     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function login(User $user, $rememberMe, Request $request)
+    public function login(User $user, Request $request)
     {
         $this->_app['session']->set(self::LOGGED_IN, true);
         $this->_app['session']->set(self::USER, array(
-            self::USER_ID => $user->getId()
+            self::USER_ID => $user->getId(),
         ));
-        
-        if ($rememberMe) {
-            $tokenString = self::getRandomToken();
-            $token = new RememberMeToken(null, $user->getId(), $tokenString, $request->getClientIp(), $request->headers->get('User-Agent'), null);
-            if ($token->save($this->_app)) {
-                
-                $response = new Response('Success', StatusCodes::HTTP_ACCEPTED);
-                $response->headers->setCookie(new Cookie(self::REMEMBER_ME, $tokenString, time() + (3600 * 24 * 365)));
-                
-                return $response;
-            }
+
+        $tokenString = self::getRandomToken();
+        $token = new RememberMeToken(null, $user->getId(), $tokenString, $request->getClientIp(), $request->headers->get('User-Agent'), null);
+        if ($token->save($this->_app)) {
+            $response = new Response('Success', StatusCodes::HTTP_ACCEPTED);
+            $response->headers->setCookie(new Cookie(self::REMEMBER_ME, $tokenString, time() + (3600 * 24 * 365)));
+
+            return $response;
         }
-        
+
         return new Response('Success', StatusCodes::HTTP_ACCEPTED);
     }
 
@@ -85,46 +85,47 @@ class Authentication implements ServiceProviderInterface
      * Checks if the user is logged in.
      * If the user has no running server session but a valid remember me cookie, the session will be created as well.
      *
-     * @param Request $request            
-     * @return boolean
+     * @param Request $request
+     *
+     * @return bool
      */
     public function isLoggedIn(Request $request = null)
     {
         if ($this->_user != null) {
             return true;
         }
-        
-        if (! $this->_app['session']->has('user')) {
+
+        if (!$this->_app['session']->has('user')) {
             if ($request == null) {
                 return false;
             }
-            
+
             // check remember me token
             $tokenString = $request->cookies->get(self::REMEMBER_ME);
             $token = RememberMeToken::getByToken($tokenString, $this->_app);
             if ($token == null) {
                 return false;
             }
-            
+
             $this->login(User::getById($token->getUserId(), $this->_app), true, $request);
-            
+
             return true;
         }
-        
+
         $user = $this->_app['session']->get(self::USER);
-        if (! array_key_exists(self::USER_ID, $user)) {
+        if (!array_key_exists(self::USER_ID, $user)) {
             return false;
         }
-        
+
         $userId = $user[self::USER_ID];
-        
+
         $user = User::getById($userId, $this->_app);
         if ($user == null) {
             return false;
         }
-        
+
         $this->_user = $user;
-        
+
         return true;
     }
 
@@ -132,19 +133,20 @@ class Authentication implements ServiceProviderInterface
      * Logs the user out.
      * Destroys the session and removes the remembe me cookie.
      *
-     * @param Request $request            
+     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function logout(Request $request)
     {
         $tokenString = $request->cookies->getAlnum(self::REMEMBER_ME);
         $token = RememberMeToken::getByToken($tokenString, $this->_app);
-        
+
         $response = new Response('Success', StatusCodes::HTTP_OK);
         $response->headers->clearCookie(self::REMEMBER_ME);
-        
+
         $this->_app['session']->clear();
-        
+
         return $response;
     }
 
@@ -152,15 +154,16 @@ class Authentication implements ServiceProviderInterface
      * Returns the current logged in user object.
      * If the user is not logged in, <code>null</code> will be returned.
      *
-     * @param Request $request            
+     * @param Request $request
+     *
      * @return NULL|\ShoppingList\Model\User
      */
     public function getUser(Request $request = null)
     {
-        if (! $this->isLoggedIn($request)) {
-            return null;
+        if (!$this->isLoggedIn($request)) {
+            return;
         }
-        
+
         return $this->_user;
     }
 

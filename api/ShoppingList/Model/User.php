@@ -1,28 +1,28 @@
 <?php
+
 namespace ShoppingList\Model;
 
 use Silex\Application;
 
 /**
- *
  * @author Sebastian Häni <haeni.sebastian@gmail.com>
  */
 class User extends BaseModel
 {
-
     private $_id;
 
     private $_name;
 
     private $_email;
 
+    private $_googleToken;
+
     private $_password;
 
     private $_phone;
 
     /**
-     *
-     * @param int $id
+     * @param int    $id
      * @param string $name
      * @param string $email
      * @param string $password
@@ -43,54 +43,77 @@ class User extends BaseModel
     }
 
     /**
-     *
-     * @param int $id
+     * @param int         $id
      * @param Application $app
+     *
      * @return NULL|\ShoppingList\Model\User
      */
     public static function getById($id, Application $app)
     {
         $data = $app['db']->fetchAssoc('SELECT * FROM user WHERE idUser = ?', array(
-            $id
+            $id,
         ));
 
         return self::getUser($data);
     }
 
     /**
-     *
      * @param array $data
+     *
      * @return NULL|\ShoppingList\Model\User
      */
     private static function getUser($data)
     {
         if ($data == null) {
-            return null;
+            return;
         }
 
-        $user = new User($data['idUser'], $data['name'], $data['email'], $data['password'], $data['phone']);
+        $user = new self($data['idUser'], $data['name'], $data['email'], $data['password'], $data['phone']);
         $user->setPersisted(true);
 
         return $user;
     }
 
     /**
-     *
-     * @param string $email
+     * @param string      $email
      * @param Application $app
+     *
      * @return NULL|\ShoppingList\Model\User
      */
     public static function getByEmail($email, Application $app)
     {
         $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE email = ?', array(
-            $email
+            $email,
         ));
 
         return self::getUser($user);
     }
 
     /**
-     * (non-PHPdoc)
+     * @param string         $idToken
+     * @param \Google_Client $googleClient
+     * @param Application    $app
+     *
+     * @return NULL|\ShoppingList\Model\User
+     */
+    public static function getOrCreateByGoogleToken($idToken, \Google_Client $googleClient, Application $app)
+    {
+        $user = $app['db']->fetchAssoc('SELECT * FROM user WHERE googleToken = ?', [$idToken]);
+
+        if ($user == null) {
+            // create a new user
+            $user = new self(null, $googleClient->getName(), $googleClient->getEmail(), null, null);
+            $this->setGoogleToken($idToken);
+            if (!$this->insert($app)) {
+                return;
+            }
+        }
+
+        return $user;
+    }
+
+    /**
+     * (non-PHPdoc).
      *
      * @see \ShoppingList\Model\BaseModel::delete()
      */
@@ -98,7 +121,7 @@ class User extends BaseModel
     {
         try {
             return 1 == $app['db']->executeUpdate('DELETE FROM user WHERE idUser = ?', array(
-                $this->getId()
+                $this->getId(),
             ));
         } catch (\PDOException $ex) {
             return false;
@@ -106,7 +129,7 @@ class User extends BaseModel
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see \ShoppingList\Model\BaseModel::validate()
      */
@@ -123,9 +146,9 @@ class User extends BaseModel
     }
 
     /**
-     *
      * @param string $password
-     * @return boolean
+     *
+     * @return bool
      */
     public function verifyPassword($password)
     {
@@ -133,8 +156,8 @@ class User extends BaseModel
     }
 
     /**
-     *
      * @param Application $app
+     *
      * @return number|multitype:unknown
      */
     public function getCommunities(Application $app)
@@ -158,8 +181,8 @@ class User extends BaseModel
     }
 
     /**
-     *
      * @param Application $app
+     *
      * @return number|multitype:unknown
      */
     public function getCurrentCommunitiyHasUser($communityId, Application $app)
@@ -170,10 +193,9 @@ class User extends BaseModel
                 	*
                 FROM
                 	community_has_user
-
                 WHERE community_has_user.idCommunity = ?
                 AND community_has_user.idUser = ?', [
-                $this->getId(), $communityId
+                $this->getId(), $communityId,
             ]);
         } catch (\PDOException $ex) {
             return false;
@@ -181,7 +203,7 @@ class User extends BaseModel
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see JsonSerializable::jsonSerialize()
      */
@@ -191,12 +213,12 @@ class User extends BaseModel
             'id' => $this->getId(),
             'name' => $this->getName(),
             'email' => $this->getEmail(),
-            'phone' => $this->getPhone()
+            'phone' => $this->getPhone(),
         ];
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see \ShoppingList\Model\BaseModel::update()
      */
@@ -207,14 +229,16 @@ class User extends BaseModel
             name = ?,
             email = ?,
             password = ?,
+            googleToken = ?,
             phone = ?
             WHERE idUser = ?
             ', array(
                 $this->getName(),
                 $this->getEmail(),
                 $this->_password,
+                $this->getGoogleToken(),
                 $this->getPhone(),
-                $this->getId()
+                $this->getId(),
             ));
         } catch (\PDOException $ex) {
             return false;
@@ -246,6 +270,16 @@ class User extends BaseModel
         return $this->_phone;
     }
 
+    public function setGoogleToken($token)
+    {
+        $this->_googleToken = $token;
+    }
+
+    public function getGoogleToken()
+    {
+        return $this->_googleToken;
+    }
+
     public function setPhone($phone)
     {
         $this->_phone = $phone;
@@ -262,7 +296,7 @@ class User extends BaseModel
     }
 
     /**
-     * (non-PHPdoc)
+     * (non-PHPdoc).
      *
      * @see \ShoppingList\Model\BaseModel::insert()
      */
@@ -273,7 +307,7 @@ class User extends BaseModel
                 $this->getName(),
                 $this->getEmail(),
                 $this->_password,
-                $this->getPhone()
+                $this->getPhone(),
             ));
         } catch (\PDOException $ex) {
             return false;
