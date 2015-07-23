@@ -22,7 +22,7 @@ class HomeController extends BaseController
     {
         return $this->json(array(
             'date' => date('c'),
-            'author' => 'ShoppingList',
+            'author' => '2buy.io',
             'version' => '1.0'
         ));
     }

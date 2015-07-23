@@ -7,16 +7,16 @@ export default class extends Component {
   getStyles() {
     return {
       footer: {
-        backgroundColor: Styles.Colors.grey900,
+        borderTop: '1px solid #ddd',
         textAlign: 'center',
-        position: 'absolute',
+        position: 'relative',
         width: '100%',
         bottom: 0
       },
       p: {
         margin: '0 auto',
         padding: '0',
-        color: Styles.Colors.lightWhite,
+        color: Styles.Colors.grey400,
         maxWidth: '335px'
       }
     };

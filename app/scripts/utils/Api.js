@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 
-const API_ROOT = 'http://shoppinglist/api/v1/';
+const API_ROOT = 'http://localhost:3001/v1/';
 
 function status(response) {
   if(response.status >= 200 && response.status < 300){

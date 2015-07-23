@@ -10,8 +10,9 @@ export default React.createClass({
         width: '100%'
       },
       leftCol: {
-        width: '49%',
+        width: '50%',
         float: 'left',
+        boxSizing: 'border-box',
         borderRight: '1px solid #eee'
       },
       rightCol: {
@@ -20,7 +21,8 @@ export default React.createClass({
       },
       label: {
         fontSize: 14,
-        marginBottom: 20
+        marginBottom: 20,
+        fontWeight: 300
       }
     };
   },
