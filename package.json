@@ -1,17 +1,17 @@
 {
-  "name": "EA4Web",
+  "name": "2buy.io",
   "version": "1.0.0",
   "private": true,
-  "description": "EA4Web Frontend",
-  "main": "",
+  "description": "2buy.io web API and web frontend",
+  "main": "app/scripts/main.js",
   "scripts": {
     "start": "node ./build/scripts/start.js",
-    "app": "node ./build/scripts/frontend.js",
-    "api": "node ./build/scripts/api.js",
+    "app"  : "node ./build/scripts/frontend.js",
+    "api"  : "node ./build/scripts/api.js",
     "build": "node ./build/scripts/build.js",
-    "lint": "node ./build/scripts/lint.js"
+    "lint" : "node ./build/scripts/lint.js"
   },
-  "author": "Sebastian Häni <sebastian.haeni@ruag.com>",
+  "author": "Sebastian Häni <haeni.sebastian@gmail.com>",
   "dependencies": {
     "file-loader": "^0.8.4",
     "flux": "^2.0.3",

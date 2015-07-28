@@ -1,4 +1,6 @@
 import React from 'react';
+import auth from '../../../utils/Auth';
+import AuthConstants from '../../../constants/AuthConstants';
 
 export default React.createClass({
 
@@ -30,6 +32,8 @@ export default React.createClass({
     // The ID token you need to pass to your backend:
     let idToken = googleUser.getAuthResponse().id_token;
     console.log('ID Token: ' + idToken);
+
+    auth.login3rdParty(AuthConstants.GOOGLE, idToken);
   },
 
   _handleFailure(error) {

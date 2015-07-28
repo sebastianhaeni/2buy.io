@@ -12,24 +12,17 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 
 let { Spacing, Typography } = Styles;
 
-const menuItemsAuthenticated = [
+const menuItems = [
   { route: '/', text: 'Dashboard' },
   { route: 'shopping', text: 'Shopping List' },
   { route: 'bills', text: 'Bills' }
-];
-
-const menuItems = [
-  { route: '/', text: 'Home'},
-  { route: 'login', text: 'Sign in'},
-  { route: 'get-started', text: 'Get started'}
 ];
 
 export default React.createClass({
   mixins: [ Navigation ],
 
   propTypes: {
-    title: React.PropTypes.string,
-    loggedIn: React.PropTypes.bool
+    title: React.PropTypes.string
   },
 
   contextTypes: {
@@ -97,7 +90,7 @@ export default React.createClass({
           ref="leftNav"
           header={header}
           docked={false}
-          menuItems={this.props.loggedIn ? menuItemsAuthenticated : menuItems}
+          menuItems={menuItems}
           onChange={this._onLeftNavChange} />
       </div>
     );

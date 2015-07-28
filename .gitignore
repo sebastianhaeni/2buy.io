@@ -1,6 +1,12 @@
+.settings/
+.project
+.buildpath
+
+generated-*/
 node_modules/
 www/static/
 vendor/
 
 npm-debug.log
 api/config.php
+data/2buy.sq3

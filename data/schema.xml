@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    The root tag of the XML schema is the <database> tag.
+
+    The `name` attribute defines the name of the connection that Propel uses for the tables in this schema. It is not
+    necessarily the name of the actual database. In fact, Propel uses some configuration properties to link a connection
+    name with real connection settings (like database name, user and password).
+
+    The `defaultIdMethod` attribute indicates that the tables in this schema use the database's "native"
+    auto-increment/sequence features to handle id columns that are set to auto-increment.
+
+   [TIP]: You can define several schemas for a single project. Just make sure that each of the schema
+          filenames end with schema.xml.
+-->
+<database
+  name="default"
+  defaultIdMethod="native"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd"
+  namespace="ShoppingList\Model"
+  defaultPhpNamingMethod="underscore">
+
+  <!-- Within the <database> tag, Propel expects one <table> tag for each table -->
+
+  <!--
+      Each table element should have a `name` attribute. It will be used for naming the sql table.
+
+      The `phpName` is the name that Propel will use for the generated PHP class. By default, Propel uses a
+      CamelCase version of the table name as its phpName - that means that you could omit the `phpName` attribute
+      on our `book` table.
+  -->
+  <table name="community" idMethod="native" phpName="Community">
+
+    <!--
+        Each column has a `name` (the one used by the database), and an optional `phpName` attribute. Once again,
+        the Propel default behavior is to use a CamelCase version of the name as `phpName` when not specified.
+
+        Each column also requires a `type`. The XML schema is database agnostic, so the column types and attributes
+        are probably not exactly the same as the one you use in your own database. But Propel knows how to map the
+        schema types with SQL types for many database vendors. Existing Propel column types are:
+        `boolean`, `tinyint`, `smallint`, `integer`, `bigint`, `double`, `float`, `real`, `decimal`, `char`,
+        `varchar`, `longvarchar`, `date`, `time`, `timestamp`, `blob`, `clob`, `object`, and `array`.
+
+        Some column types use a size (like `varchar` and `int`), some have unlimited size (`longvarchar`, `clob`,
+        `blob`).
+
+        Check the (schema reference)[http://propelorm.org/reference/schema.html] for more details
+        on each column type.
+
+        As for the other column attributes, `required`, `primaryKey`, and `autoIncrement`, they mean exactly
+        what their names imply.
+    -->
+
+    <column name="idCommunity" phpName="IdCommunity" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="200" required="true"/>
+  </table>
+  <table name="community_has_user" idMethod="native" phpName="CommunityHasUser">
+    <column name="idCommunity" phpName="IdCommunity" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="idUser" phpName="IdUser" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="admin" phpName="Admin" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="receiveNotifications" phpName="ReceiveNotifications" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <foreign-key foreignTable="community" name="community_has_user_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="idCommunity" foreign="idCommunity"/>
+    </foreign-key>
+    <foreign-key foreignTable="user" name="community_has_user_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="idUser" foreign="idUser"/>
+    </foreign-key>
+    <index name="idUser">
+      <index-column name="idUser"/>
+    </index>
+  </table>
+  <table name="invite" idMethod="native" phpName="Invite">
+    <column name="idInvite" phpName="IdInvite" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="idCommunity" phpName="IdCommunity" type="INTEGER" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="200" required="true"/>
+    <foreign-key foreignTable="community" name="invite_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="idCommunity" foreign="idCommunity"/>
+    </foreign-key>
+    <index name="idCommunity">
+      <index-column name="idCommunity"/>
+    </index>
+  </table>
+  <table name="product" idMethod="native" phpName="Product">
+    <column name="idProduct" phpName="IdProduct" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="idCommunity" phpName="IdCommunity" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="200" required="true"/>
+    <column name="addedBy" phpName="AddedBy" type="INTEGER"/>
+    <column name="inSuggestions" phpName="InSuggestions" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <foreign-key foreignTable="community" name="product_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="idCommunity" foreign="idCommunity"/>
+    </foreign-key>
+    <index name="addedBy">
+      <index-column name="addedBy"/>
+    </index>
+  </table>
+  <table name="remember_me_token" idMethod="native" phpName="RememberMeToken">
+    <column name="idToken" phpName="IdToken" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="idUser" phpName="IdUser" type="INTEGER" required="true"/>
+    <column name="token" phpName="Token" type="VARCHAR" size="255"/>
+    <column name="ip" phpName="IP" type="VARCHAR" size="45"/>
+    <column name="userAgent" phpName="UserAgent" type="VARCHAR" size="150"/>
+    <column name="timestampCreated" phpName="TimestampCreated" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <foreign-key foreignTable="user" name="remember_me_token_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="idUser" foreign="idUser"/>
+    </foreign-key>
+  </table>
+  <table name="transaction" idMethod="native" phpName="Transaction">
+    <column name="idTransaction" phpName="IdTransaction" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="idProduct" phpName="IdProduct" type="INTEGER" required="true"/>
+    <column name="reportedBy" phpName="ReportedBy" type="INTEGER" required="true"/>
+    <column name="reportedDate" phpName="ReportedDate" type="TIMESTAMP" required="true"/>
+    <column name="editedBy" phpName="EditedBy" type="INTEGER"/>
+    <column name="amount" phpName="Amount" type="INTEGER" required="true"/>
+    <column name="boughtBy" phpName="BoughtBy" type="INTEGER"/>
+    <column name="cancelled" phpName="Cancelled" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="cancelledBy" phpName="CancelledBy" type="INTEGER"/>
+    <column name="closeDate" phpName="CloseDate" type="TIMESTAMP"/>
+    <foreign-key foreignTable="product" name="transaction_ibfk_1" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="idProduct" foreign="idProduct"/>
+    </foreign-key>
+    <foreign-key foreignTable="user" name="transaction_ibfk_2" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="reportedBy" foreign="idUser"/>
+    </foreign-key>
+    <foreign-key foreignTable="user" name="transaction_ibfk_3" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="editedBy" foreign="idUser"/>
+    </foreign-key>
+    <foreign-key foreignTable="user" name="transaction_ibfk_4" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="boughtBy" foreign="idUser"/>
+    </foreign-key>
+    <foreign-key foreignTable="user" name="transaction_ibfk_5" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="cancelledBy" foreign="idUser"/>
+    </foreign-key>
+    <index name="idProduct">
+      <index-column name="idProduct"/>
+    </index>
+    <index name="reportedBy">
+      <index-column name="reportedBy"/>
+    </index>
+    <index name="editedBy">
+      <index-column name="editedBy"/>
+    </index>
+    <index name="boughtBy">
+      <index-column name="boughtBy"/>
+    </index>
+    <index name="cancelledBy">
+      <index-column name="cancelledBy"/>
+    </index>
+  </table>
+  <table name="user" idMethod="native" phpName="User">
+    <column name="idUser" phpName="IdUser" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="200" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="200" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="255"/>
+    <column name="phone" phpName="Phone" type="VARCHAR" size="16"/>
+    <unique name="email">
+      <unique-column name="email"/>
+    </unique>
+  </table>
+</database>

@@ -1,5 +1,4 @@
 <?php
-
 namespace ShoppingList\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -9,6 +8,7 @@ use ShoppingList\Model\User;
 use ShoppingList\Util\StatusCodes;
 use ShoppingList\Model\Invite;
 use ShoppingList\Model\CommunityHasUser;
+use ShoppingList\Model\UserQuery;
 
 /**
  * User controller.
@@ -17,9 +17,11 @@ use ShoppingList\Model\CommunityHasUser;
  */
 class UserController extends BaseController
 {
+
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -28,30 +30,31 @@ class UserController extends BaseController
         $name = $request->get('name');
         $email = $request->get('email');
         $password = $request->get('password');
-
+        
         $user = new User(null, $name, $email, $password, null);
         $user->setPassword($password);
-
+        
         if ($user->save($app)) {
             $invites = Invite::getByEmail($email, $app);
-
+            
             foreach ($invites as $invite) {
                 $communityHasUser = new CommunityHasUser($invite->getCommunityId(), $user->getId(), false, null, null, true);
-
-                if (!$communityHasUser->save($app) || !$invite->delete($app)) {
+                
+                if (! $communityHasUser->save($app) || ! $invite->delete($app)) {
                     return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
                 }
             }
-
+            
             return $app['auth']->login($user, true, $request);
         }
-
+        
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -59,23 +62,24 @@ class UserController extends BaseController
     {
         $email = $request->get('email');
         $password = $request->get('password');
-
+        
         $user = User::getByEmail($email, $app);
-
+        
         if ($user == null) {
             return new Response('Invalid credentials', StatusCodes::HTTP_UNAUTHORIZED);
         }
-
+        
         if ($user->verifyPassword($password)) {
             return $app['auth']->login($user, $request);
         }
-
+        
         return new Response('Invalid credentials', StatusCodes::HTTP_UNAUTHORIZED);
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -85,25 +89,34 @@ class UserController extends BaseController
         $client->setClientId($app['config']['google']['clientId']);
         $client->setClientSecret($app['config']['google']['clientSecret']);
         $client->setScopes($app['config']['google']['scopes']);
-
+        
         $idToken = $request->get('idToken');
-
-        if ($client->verifyIdToken($idToken)) {
-            $user = User::getOrCreateByGoogleToken($idToken, $client, $app);
-
+        $ticket = null;
+        if ($ticket = $client->verifyIdToken($idToken)) {
+            
+            $payload = $ticket->getAttributes()['payload'];
+            $name = $payload['name'];
+            $email = $payload['email'];
+            
+            $user = UserQuery::create()->findOneByEmail($email);
+            
             if ($user == null) {
-                return new Response('Could not create google user', StatusCodes::HTTP_INTERNAL_SERVER_ERROR);
+                $user = new User();
+                $user->setName($name);
+                $user->setEmail($email);
+                $user->save();
             }
-
+            
             return $app['auth']->login($user, $request);
         }
-
+        
         return new Response('Invalid token', StatusCodes::HTTP_UNAUTHORIZED);
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -113,21 +126,23 @@ class UserController extends BaseController
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function isLoggedIn(Request $request, Application $app)
     {
         return $this->json(array(
-            'loggedIn' => $app['auth']->isLoggedIn($request),
+            'loggedIn' => $app['auth']->isLoggedIn($request)
         ));
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -135,22 +150,23 @@ class UserController extends BaseController
     {
         $oldPassword = $request->get('oldPassword');
         $newPassword = $request->get('newPassword');
-
+        
         $user = $app['auth']->getUser($request);
-
+        
         if ($user != null && $user->verifyPassword($oldPassword)) {
             $user->setPassword($newPassword);
             if ($user->save($app)) {
                 return new Response('Success', StatusCodes::HTTP_OK);
             }
         }
-
+        
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -158,9 +174,9 @@ class UserController extends BaseController
     {
         $email = $request->get('email');
         $phone = $request->get('phone');
-
+        
         $user = $app['auth']->getUser($request);
-
+        
         if ($user != null) {
             $user->setEmail($email);
             $user->setPhone($phone);
@@ -168,29 +184,30 @@ class UserController extends BaseController
                 return new Response('Success', StatusCodes::HTTP_OK);
             }
         }
-
+        
         return new Response('Error', StatusCodes::HTTP_BAD_REQUEST);
     }
 
     /**
-     * @param Request     $request
-     * @param Application $app
+     *
+     * @param Request $request            
+     * @param Application $app            
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getInfo(Request $request, Application $app)
     {
         $user = $app['auth']->getUser($request)->jsonSerialize();
-
+        
         $communityId = $request->cookies->get('community');
-        if (!empty($communityId)) {
-            $communityHasUser = CommunityHasUser::getById($communityId.':'.$user['id'], $app);
-
+        if (! empty($communityId)) {
+            $communityHasUser = CommunityHasUser::getById($communityId . ':' . $user['id'], $app);
+            
             if ($communityHasUser != null) {
                 $user['communityHasUser'] = $communityHasUser;
             }
         }
-
+        
         return $this->json($user);
     }
 }

@@ -1,22 +1,37 @@
 import Api from './Api';
+import AuthConstants from '../constants/AuthConstants';
 
 class Auth {
 
+  constructor(router){
+    this.router = router;
+  }
+
   login(email, pass) {
-    if (localStorage.token) {
-      this.onChange(true);
-      return new Promise((resolve) => {
-        resolve();
-      });
+    //if (localStorage.token) {
+    //  this.onChange(true);
+    //  return new Promise((resolve) => {
+    //    resolve();
+    //  });
+    //}
+    return Api.login(email, pass).then(this.handleLoginSuccess);
+  }
+
+  login3rdParty(type, token) {
+    switch (type) {
+    case AuthConstants.GOOGLE :
+      return Api.googleLogin(token).then(this.handleLoginSuccess);
+    default :
+      throw new Error('3rd party service ' + type + ' not implmented');
     }
-    return Api.login(email, pass).then((response) => {
-      if (response.authenticated) {
-        localStorage.token = response.token;
-        this.onChange(true);
-      } else {
-        this.onChange(false);
-      }
-    });
+  }
+
+  handleLoginSuccess(response) {
+    //localStorage.token = response.token;
+    //this.onChange(true);
+
+    // TODO
+    //this.router.transitionTo('/app');
   }
 
   getToken() {
@@ -37,7 +52,6 @@ class Auth {
 
   onChange() {}
 }
-
 const auth = new Auth();
 
 export function requireAuth(nextState, transition) {
@@ -48,4 +62,5 @@ export function requireAuth(nextState, transition) {
   }
 }
 
-export default auth;
+export
+default auth;

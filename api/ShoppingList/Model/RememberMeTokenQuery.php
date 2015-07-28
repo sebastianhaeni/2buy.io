@@ -2,10 +2,10 @@
 
 namespace ShoppingList\Model;
 
-use ShoppingList\Model\Base\Community as BaseCommunity;
+use ShoppingList\Model\Base\RememberMeTokenQuery as BaseRememberMeTokenQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'community' table.
+ * Skeleton subclass for performing query and update operations on the 'remember_me_token' table.
  *
  * 
  *
@@ -14,7 +14,7 @@ use ShoppingList\Model\Base\Community as BaseCommunity;
  * long as it does not already exist in the output directory.
  *
  */
-class Community extends BaseCommunity
+class RememberMeTokenQuery extends BaseRememberMeTokenQuery
 {
 
 }

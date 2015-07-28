@@ -31,7 +31,9 @@
         "doctrine/dbal": "2.2.*",
         "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev",
         "Antnee/phpPasswordHashingLib": "master",
-        "google/apiclient": "^1.1@dev"
+        "google/apiclient": "^1.1@dev",
+        "propel/propel": "^2.0@dev",
+        "propel/propel-service-provider": "2.x"
     },
     "autoload": {
         "psr-4": {"ShoppingList\\": "api/ShoppingList"}
