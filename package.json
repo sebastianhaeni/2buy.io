@@ -5,11 +5,13 @@
   "description": "2buy.io web API and web frontend",
   "main": "app/scripts/main.js",
   "scripts": {
+    "postinstall": "node ./build/scripts/postinstall.js",
     "start": "node ./build/scripts/start.js",
     "app"  : "node ./build/scripts/frontend.js",
     "api"  : "node ./build/scripts/api.js",
     "build": "node ./build/scripts/build.js",
-    "lint" : "node ./build/scripts/lint.js"
+    "lint" : "node ./build/scripts/lint.js",
+    "test" : "node ./build/scripts/test.js"
   },
   "author": "Sebastian Häni <haeni.sebastian@gmail.com>",
   "dependencies": {

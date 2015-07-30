@@ -1,6 +1,3 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
 --
 -- Database: `2buy`
 --
@@ -79,4 +76,3 @@ INSERT INTO `product` (`idProduct`, `idCommunity`, `name`, `addedBy`, `inSuggest
 (67, 1, 'Nesquick (Cacao)', 2, 1),
 (69, 1, 'Maggi', 2, 1),
 (72, 1, 'Bouillon', 2, 1);
-

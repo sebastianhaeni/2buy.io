@@ -2,7 +2,6 @@
 
 Frontend:
   * General:
-    * React-hot-loader
     * Google Login
     * Facebook Login
     * react-intl (http://formatjs.io/react/)
@@ -29,5 +28,5 @@ Frontend:
     * Stats
 
 API:
-* use pimple
+* use propel
 * php linting

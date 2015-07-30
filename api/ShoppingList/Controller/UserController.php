@@ -92,8 +92,8 @@ class UserController extends BaseController
         
         $idToken = $request->get('idToken');
         $ticket = null;
+
         if ($ticket = $client->verifyIdToken($idToken)) {
-            
             $payload = $ticket->getAttributes()['payload'];
             $name = $payload['name'];
             $email = $payload['email'];

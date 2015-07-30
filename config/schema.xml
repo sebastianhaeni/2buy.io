@@ -54,6 +54,11 @@
 
     <column name="idCommunity" phpName="IdCommunity" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="name" phpName="Name" type="VARCHAR" size="200" required="true"/>
+
+    <behavior name="sluggable">
+      <parameter name="slug_column" value="name" />
+      <parameter name="separator" value="-" />
+    </behavior>
   </table>
   <table name="community_has_user" idMethod="native" phpName="CommunityHasUser">
     <column name="idCommunity" phpName="IdCommunity" type="INTEGER" primaryKey="true" required="true"/>

@@ -19,4 +19,6 @@ server.listen(3000, 'localhost', function(err) {
   console.log('Listening at localhost:3000');
 });
 
-require('open')('http://localhost:3000');
+if(process.env.npm_config_argv.indexOf('--open') >= 0){
+  require('open')('http://localhost:3000');
+}

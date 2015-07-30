@@ -576,6 +576,13 @@ abstract class Community implements ActiveRecordInterface
         return $con->transaction(function () use ($con) {
             $isInsert = $this->isNew();
             $ret = $this->preSave($con);
+            // sluggable behavior
+            
+            if ($this->isColumnModified(CommunityTableMap::COL_NAME) && $this->getName()) {
+                $this->setName($this->makeSlugUnique($this->getName()));
+            } else {
+                $this->setName($this->createSlug());
+            }
             if ($isInsert) {
                 $ret = $ret && $this->preInsert($con);
             } else {
@@ -1899,6 +1906,173 @@ abstract class Community implements ActiveRecordInterface
     public function __toString()
     {
         return (string) $this->exportTo(CommunityTableMap::DEFAULT_STRING_FORMAT);
+    }
+
+    // sluggable behavior
+    
+    /**
+     * Wrap the setter for slug value
+     *
+     * @param   string
+     * @return  $this|Community
+     */
+    public function setSlug($v)
+    {
+        return $this->setName($v);
+    }
+    
+    /**
+     * Wrap the getter for slug value
+     *
+     * @return  string
+     */
+    public function getSlug()
+    {
+        return $this->getName();
+    }
+    
+    /**
+     * Create a unique slug based on the object
+     *
+     * @return string The object slug
+     */
+    protected function createSlug()
+    {
+        $slug = $this->createRawSlug();
+        $slug = $this->limitSlugSize($slug);
+        $slug = $this->makeSlugUnique($slug);
+    
+        return $slug;
+    }
+    
+    /**
+     * Create the slug from the appropriate columns
+     *
+     * @return string
+     */
+    protected function createRawSlug()
+    {
+        return $this->cleanupSlugPart($this->__toString());
+    }
+    
+    /**
+     * Cleanup a string to make a slug of it
+     * Removes special characters, replaces blanks with a separator, and trim it
+     *
+     * @param     string $slug        the text to slugify
+     * @param     string $replacement the separator used by slug
+     * @return    string               the slugified text
+     */
+    protected static function cleanupSlugPart($slug, $replacement = '-')
+    {
+        // transliterate
+        if (function_exists('iconv')) {
+            $slug = iconv('utf-8', 'us-ascii//TRANSLIT', $slug);
+        }
+    
+        // lowercase
+        if (function_exists('mb_strtolower')) {
+            $slug = mb_strtolower($slug);
+        } else {
+            $slug = strtolower($slug);
+        }
+    
+        // remove accents resulting from OSX's iconv
+        $slug = str_replace(array('\'', '`', '^'), '', $slug);
+    
+        // replace non letter or digits with separator
+        $slug = preg_replace('/\W+/', $replacement, $slug);
+    
+        // trim
+        $slug = trim($slug, $replacement);
+    
+        if (empty($slug)) {
+            return 'n-a';
+        }
+    
+        return $slug;
+    }
+    
+    
+    /**
+     * Make sure the slug is short enough to accommodate the column size
+     *
+     * @param    string $slug            the slug to check
+     *
+     * @return string                        the truncated slug
+     */
+    protected static function limitSlugSize($slug, $incrementReservedSpace = 3)
+    {
+        // check length, as suffix could put it over maximum
+        if (strlen($slug) > (200 - $incrementReservedSpace)) {
+            $slug = substr($slug, 0, 200 - $incrementReservedSpace);
+        }
+    
+        return $slug;
+    }
+    
+    
+    /**
+     * Get the slug, ensuring its uniqueness
+     *
+     * @param    string $slug            the slug to check
+     * @param    string $separator       the separator used by slug
+     * @param    int    $alreadyExists   false for the first try, true for the second, and take the high count + 1
+     * @return   string                   the unique slug
+     */
+    protected function makeSlugUnique($slug, $separator = '-', $alreadyExists = false)
+    {
+        if (!$alreadyExists) {
+            $slug2 = $slug;
+        } else {
+            $slug2 = $slug . $separator;
+    
+            $count = \ShoppingList\Model\CommunityQuery::create()
+                ->filterBySlug($this->getName())
+                ->filterByPrimaryKey($this->getPrimaryKey())
+            ->count();
+    
+            if (1 == $count) {
+                return $this->getName();
+            }
+        }
+    
+        $adapter = \Propel\Runtime\Propel::getServiceContainer()->getAdapter('default');
+        $col = 'q.Name';
+        $compare = $alreadyExists ? $adapter->compareRegex($col, '?') : sprintf('%s = ?', $col);
+    
+        $query = \ShoppingList\Model\CommunityQuery::create('q')
+            ->where($compare, $alreadyExists ? '^' . $slug2 . '[0-9]+$' : $slug2)
+            ->prune($this)
+        ;
+    
+        if (!$alreadyExists) {
+            $count = $query->count();
+            if ($count > 0) {
+                return $this->makeSlugUnique($slug, $separator, true);
+            }
+    
+            return $slug2;
+        }
+    
+        $adapter = \Propel\Runtime\Propel::getServiceContainer()->getAdapter('default');
+        // Already exists
+        $object = $query
+            ->addDescendingOrderByColumn($adapter->strLength('name'))
+            ->addDescendingOrderByColumn('name')
+        ->findOne();
+    
+        // First duplicate slug
+        if (null == $object) {
+            return $slug2 . '1';
+        }
+    
+        $slugNum = substr($object->getName(), strlen($slug) + 1);
+        if (0 == $slugNum[0]) {
+            $slugNum[0] = 1;
+        }
+    
+        return $slug2 . ($slugNum + 1);
     }
 
     /**

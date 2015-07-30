@@ -1,0 +1,13 @@
+api:
+    debug: true
+    httpCache: false
+    email:
+        server: localhost
+        port: 465
+        security: ssl
+        username:
+        password:
+    google:
+        clientId: xxx
+        clientSecret: xxx
+        scopes: email

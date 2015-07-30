@@ -9,7 +9,7 @@
 propel:
     paths:
         # The directory where Propel expects to find your `schema.xml` file.
-        schemaDir: data
+        schemaDir: config
 
         # The directory where Propel should output generated object model classes.
         phpDir: api
@@ -18,7 +18,7 @@ propel:
 #       connections:
 #           default:
 #               adapter: sqlite
-#               dsn: sqlite:
+#               dsn: sqlite:api/2buy.db
 #               user: root
 #               password:
 #               settings:

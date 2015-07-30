@@ -607,4 +607,31 @@ abstract class CommunityQuery extends ModelCriteria
         });
     }
 
+    // sluggable behavior
+    
+    /**
+     * Filter the query on the slug column
+     *
+     * @param     string $slug The value to use as filter.
+     *
+     * @return    $this|ChildCommunityQuery The current query, for fluid interface
+     */
+    public function filterBySlug($slug)
+    {
+        return $this->addUsingAlias(CommunityTableMap::COL_NAME, $slug, Criteria::EQUAL);
+    }
+    
+    /**
+     * Find one object based on its slug
+     *
+     * @param     string $slug The value to use as filter.
+     * @param     ConnectionInterface $con The optional connection object
+     *
+     * @return    ChildCommunity the result, formatted by the current formatter
+     */
+    public function findOneBySlug($slug, $con = null)
+    {
+        return $this->filterBySlug($slug)->findOne($con);
+    }
+
 } // CommunityQuery

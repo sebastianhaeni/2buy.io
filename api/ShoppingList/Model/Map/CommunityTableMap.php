@@ -162,6 +162,19 @@ class CommunityTableMap extends TableMap
   ),
 ), 'CASCADE', 'CASCADE', 'Products', false);
     } // buildRelations()
+
+    /**
+     *
+     * Gets the list of behaviors registered for this table
+     *
+     * @return array Associative array (name => parameters) of behaviors
+     */
+    public function getBehaviors()
+    {
+        return array(
+            'sluggable' => array('slug_column' => 'name', 'slug_pattern' => '', 'replace_pattern' => '/\W+/', 'replacement' => '-', 'separator' => '-', 'permanent' => 'false', 'scope_column' => '', ),
+        );
+    } // getBehaviors()
     /**
      * Method to invalidate the instance pool of all tables related to community     * by a foreign key with ON DELETE CASCADE
      */

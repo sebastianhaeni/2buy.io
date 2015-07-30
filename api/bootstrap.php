@@ -1,10 +1,10 @@
 <?php
-$config = __DIR__ . '/config.php';
+$config = __DIR__ . '/../config/api.yml';
 $autoload = __DIR__ . '/../vendor/autoload.php';
 
 // Check if config file is present. If not throw an error.
 if (! stream_resolve_include_path($config)) {
-    throw new Exception('Config file ' . $config . ' not found! Create it from config.sample.php.');
+    throw new Exception('Config file ' . $config . ' not found! Create it from config/sample/api.yml.');
 }
 
 // Check if depenedencies are installed. If not throw an error.
@@ -13,7 +13,10 @@ if (! stream_resolve_include_path($autoload)) {
 }
 
 require_once $autoload;
-require_once $config;
+
+use Symfony\Component\Yaml\Parser;
+$yaml = new Parser();
+$config = $yaml->parse(file_get_contents($config))['api'];
 
 // Providing password_hash() and password_verify() in PHP <= 5.4
 require_once __DIR__ . '/../vendor/Antnee/phpPasswordHashingLib/passwordLib.php';
@@ -27,7 +30,7 @@ header('Access-Control-Allow-Origin: *');
 $app = new Silex\Application();
 
 $app['debug'] = $config['debug'];
-$app['http_cache'] = $config['http_cache'];
+$app['http_cache'] = $config['httpCache'];
 $app['config'] = $config;
 
 $app->register(new Propel\Silex\PropelServiceProvider(), [

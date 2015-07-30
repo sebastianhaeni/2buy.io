@@ -8,5 +8,6 @@ www/static/
 vendor/
 
 npm-debug.log
-api/config.php
-data/2buy.sq3
+config/api.yml
+config/propel.yml
+api/2buy.db
