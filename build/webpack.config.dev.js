@@ -19,7 +19,7 @@ module.exports = configMerge(baseConfig, {
   ],
   module: {
     loaders: [{
-        test: /\.jsx?$/,
+        test: /\.js$/,
         loaders: ['react-hot', 'babel?stage=0'],
         include: path.join(__dirname, '../app/scripts')
       }

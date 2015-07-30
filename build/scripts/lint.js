@@ -1,3 +1,6 @@
+/**
+ * Does linting on the whole code.
+ */
 
 // lint js
 var CLIEngine = require("eslint").CLIEngine;

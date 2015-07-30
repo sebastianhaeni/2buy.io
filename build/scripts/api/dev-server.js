@@ -1,3 +1,7 @@
+/**
+ * Starts a PHP built in server to host the API.
+ */
+
 var childProcess = require('child_process');
 var http = require('http');
 

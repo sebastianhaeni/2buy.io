@@ -27,4 +27,4 @@ React.render((
     routes={rootRoute}
     history={history}
   />
-), document.getElementById('root'));
+), document.body);

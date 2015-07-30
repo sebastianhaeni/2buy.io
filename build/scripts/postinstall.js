@@ -1,3 +1,8 @@
+/**
+ * Should be executed post `npm install`.
+ * Creates new config files and executes `composer install`.
+ */
+
 var fs = require('fs');
 var path = require('path');
 var childProcess = require('child_process');

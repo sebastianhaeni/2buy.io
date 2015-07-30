@@ -4,6 +4,9 @@
   "private": true,
   "description": "2buy.io web API and web frontend",
   "main": "app/scripts/main.js",
+  "engines": {
+    "node": ">=0.12.0"
+  },
   "scripts": {
     "postinstall": "node ./build/scripts/postinstall.js",
     "start": "node ./build/scripts/start.js",
@@ -13,12 +16,9 @@
     "lint": "node ./build/scripts/lint.js",
     "test": "node ./build/scripts/test.js"
   },
-  "author": "Sebastian Häni <haeni.sebastian@gmail.com>",
+  "author": "Sebastian Häni <haeni.sebastian@gmail.com> (http://sebastianhaeni.ch)",
   "dependencies": {
-    "file-loader": "^0.8.4",
-    "flux": "^2.0.3",
     "jquery": "^2.1.4",
-    "jquery.cookie": "^1.4.1",
     "keymirror": "^0.1.1",
     "material-design-lite": "^1.0.2",
     "moment": "^2.10.3",
@@ -37,6 +37,15 @@
     "eslint-loader": "^0.14.1",
     "eslint-plugin-react": "^2.7.0",
     "extract-text-webpack-plugin": "^0.8.2",
+    "jasmine": "^2.3.1",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-sourcemap-loader": "^0.3.5",
+    "karma-webpack": "^1.6.0",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",
     "open": "0.0.5",

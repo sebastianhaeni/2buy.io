@@ -5,8 +5,6 @@ Frontend:
     * Google Login
     * Facebook Login
     * react-intl (http://formatjs.io/react/)
-    * karma
-    * editorconfig
     * scss linting
     * service worker
     * app manifest
@@ -28,5 +26,6 @@ Frontend:
     * Stats
 
 API:
-* use propel
+* rewrite to use propel models
+* propel migrations
 * php linting

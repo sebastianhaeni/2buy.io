@@ -6,7 +6,8 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jasmine": true
   },
   "globals": {
     "gapi": true
@@ -14,7 +15,7 @@
   "parser": "babel-eslint",
   "rules": {
     "eol-last": 2,
-    "max-len": [2, 80, 4],
+    "max-len": [2, 120, 4],
     "no-underscore-dangle": [0],
     "no-var": 2,
     "react/display-name": 0,

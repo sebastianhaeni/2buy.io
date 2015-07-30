@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import Login from './Login';
 
 export default React.createClass({
 
@@ -17,7 +16,6 @@ export default React.createClass({
         {this._getHomePageHero()}
         {this._getHomePurpose()}
         {this._getHomeFeatures()}
-        {this._getSignInDialog()}
       </div>
     );
   },
@@ -73,12 +71,6 @@ export default React.createClass({
   _getHomeFeatures() {
     return (
       <p>TODO: Features</p>
-    );
-  },
-
-  _getSignInDialog() {
-    return (
-      <Login />
     );
   },
 

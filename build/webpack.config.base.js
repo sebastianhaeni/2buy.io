@@ -29,9 +29,6 @@ module.exports = {
     loaders: [{
       test: /\.scss$/,
       loader: 'style!css!sass?outputStyle=expanded'
-    }, {
-      test: /\.css$/,
-      loader: 'style!css'
     }]
   }
 };

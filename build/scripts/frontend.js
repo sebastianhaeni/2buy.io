@@ -1,3 +1,8 @@
+/**
+ * Starts a webpack dev server with hot reloading that hosts the frontend.
+ * Specifying the option --open will open the site in the browser.
+ */
+
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('../webpack.config.dev');

@@ -1,3 +1,7 @@
+/**
+ * Executes the propel cli with the give arguments.
+ */
+
 var childProcess = require('child_process');
 
 var extension = process.env.OS === 'Windows_NT'
