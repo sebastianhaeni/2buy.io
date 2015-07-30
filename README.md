@@ -25,7 +25,7 @@ The default admin user has the email `admin@2buy.io` and the password <code>1234
 
 The stable branch is 'prod'.
 Changes are first to be tested on stage before being merged into 'prod' branch.
-'master' and 'stage' are deployed automatically to the respective server ([dev.2buy.io](http://dev.2buy.io) resp. [stage.2buy.io](http://stage.2buy.io)). 
+'master' and 'stage' are deployed automatically to the respective server ([dev.2buy.io](http://dev.2buy.io) resp. [stage.2buy.io](http://stage.2buy.io)).
 
 Production deployment is done manually by the person in charge of releases.
 
