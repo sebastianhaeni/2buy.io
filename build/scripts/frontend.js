@@ -7,6 +7,7 @@ const server = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
+  noInfo: true,
   stats: {
     colors: true
   }
@@ -16,7 +17,7 @@ server.listen(3000, 'localhost', function(err) {
   if (err) {
     console.log(err);
   }
-  console.log('Listening at localhost:3000');
+  console.log('Running Frontend at http://localhost:3000');
 });
 
 if(process.env.npm_config_argv.indexOf('--open') >= 0){

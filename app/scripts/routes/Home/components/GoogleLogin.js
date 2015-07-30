@@ -1,8 +1,11 @@
 import React from 'react';
+import { Navigation } from 'react-router';
 import auth from '../../../utils/Auth';
 import AuthConstants from '../../../constants/AuthConstants';
 
 export default React.createClass({
+
+  mixins: [ Navigation ],
 
   componentDidMount() {
     gapi.signin2.render('my-signin2', {
@@ -21,19 +24,19 @@ export default React.createClass({
 
   _handleSuccess(googleUser) {
     // Useful data for your client-side scripts:
-    let profile = googleUser.getBasicProfile();
+    // let profile = googleUser.getBasicProfile();
 
-     // Don't send this directly to your server!
-    console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
+    // Don't send this directly to your server!
+    //console.log('ID: ' + profile.getId());
+    //console.log('Name: ' + profile.getName());
+    //console.log('Image URL: ' + profile.getImageUrl());
+    //console.log('Email: ' + profile.getEmail());
 
     // The ID token you need to pass to your backend:
     let idToken = googleUser.getAuthResponse().id_token;
-    console.log('ID Token: ' + idToken);
-
-    auth.login3rdParty(AuthConstants.GOOGLE, idToken);
+    auth.login3rdParty(AuthConstants.GOOGLE, idToken).then(() => {
+      this.context.router.transitionTo('/app');
+    });
   },
 
   _handleFailure(error) {

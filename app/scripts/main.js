@@ -4,8 +4,8 @@ import { Router } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Master from './components/Master';
 
-import 'normalize.css';
 import '../styles/main.scss';
+import 'material-design-lite/material';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 releases

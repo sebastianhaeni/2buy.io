@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import { TextField, RaisedButton } from 'material-ui';
 import auth from '../../../utils/Auth';
 
 export default React.createClass({
@@ -36,22 +35,30 @@ export default React.createClass({
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <TextField
-            hintText="Email"
-            ref="email"
-            type="email"
-            required={true} />
+          <div className="mdl-textfield mdl-js-textfield">
+            <input className="mdl-textfield__input" type="email" ref="email" />
+            <label className="mdl-textfield__label" htmlFor="email">
+              E-Mail
+            </label>
+          </div>
+          <div className="mdl-textfield mdl-js-textfield">
+            <input
+              className="mdl-textfield__input"
+              type="password"
+              ref="password" />
+            <label className="mdl-textfield__label" htmlFor="password">
+              Password
+            </label>
+          </div>
         </div>
-        <div>
-          <TextField
-            hintText="Password"
-            ref="password"
-            type="password"
-            required={true} />
-        </div>
-        <RaisedButton label="Sign In" primary={true} type="submit" />
-        &nbsp;
-        <RaisedButton label="Register" onClick={this._handleRegister} />
+        <button className="mdl-button mdl-js-button mdl-button--raised
+          mdl-button--colored mdl-js-ripple-effect" type="submit">
+          Sign In
+        </button>
+        <button className="mdl-button mdl-js-button mdl-button--raised
+          mdl-js-ripple-effect" onClick={this._handleRegister}>
+          Register
+        </button>
 
         {this.state.error && (
           <p>Bad login information.</p>

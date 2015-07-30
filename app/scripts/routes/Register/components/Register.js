@@ -1,20 +1,7 @@
 import React from 'react';
-import { TextField, RaisedButton, Styles } from 'material-ui';
 import PageContainer from '../../../components/PageContainer';
 
-const ThemeManager = new Styles.ThemeManager();
-
 export default React.createClass({
-
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  },
 
   render() {
     return (
@@ -23,20 +10,25 @@ export default React.createClass({
         <h2>Registration</h2>
         <form onSubmit={this._handleSubmit}>
           <div>
-            <TextField
-              hintText="Email"
-              ref="email"
-              type="email"
-              required={true} />
+            <div className="mdl-textfield mdl-js-textfield">
+              <input className="mdl-textfield__input"
+                type="email" refs="email" required={true} />
+              <label className="mdl-textfield__label"
+                htmlFor="email">E-Mail</label>
+            </div>
           </div>
           <div>
-            <TextField
-              hintText="Password"
-              ref="password"
-              type="password"
-              required={true} />
+            <div className="mdl-textfield mdl-js-textfield">
+              <input className="mdl-textfield__input"
+                type="password" refs="password" required={true} />
+              <label className="mdl-textfield__label"
+                htmlFor="password">Password</label>
+            </div>
           </div>
-          <RaisedButton primary={true} label="Submit" type="submit" />
+          <button className="mdl-button mdl-js-button mdl-button--raised
+            mdl-button--colored" type="submit">
+            Submit
+          </button>
         </form>
       </PageContainer>
     );

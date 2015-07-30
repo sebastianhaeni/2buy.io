@@ -3,7 +3,7 @@ propel:
         connections:
             default:
                 adapter: sqlite
-                dsn: sqlite:api/2buy.sq3
+                dsn: sqlite:api/2buy.db
                 user: root
                 password:
                 settings:

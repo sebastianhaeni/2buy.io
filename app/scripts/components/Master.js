@@ -1,9 +1,6 @@
 import React from 'react';
-import { AppCanvas, Styles } from 'material-ui';
 import Home from '../routes/Home/components/Home';
 import Footer from './Footer';
-
-const ThemeManager = new Styles.ThemeManager();
 
 export default React.createClass({
 
@@ -11,28 +8,15 @@ export default React.createClass({
     children: React.PropTypes.object
   },
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext() {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  },
-
-  componentWillMount() {
-    ThemeManager.getCurrentTheme().setPalette({
-      primary1Color: Styles.Colors.lightBlue600
-    });
-  },
-
   render() {
     return (
-      <AppCanvas>
-        {this.props.children || <Home />}
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+        mdl-layout--fixed-header">
+        <main className="mdl-layout__content">
+          {this.props.children || <Home />}
+        </main>
         <Footer />
-      </AppCanvas>
+      </div>
     );
   }
 });

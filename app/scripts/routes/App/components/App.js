@@ -1,24 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PageContainer from './../../../components/PageContainer';
 import auth from '../../../utils/Auth';
 import Navigation from './Navigation';
 
-export default class extends Component {
+export default React.createClass({
 
-  static propTypes = {
+  propTypes: {
     children: React.PropTypes.object
-  }
+  },
 
-  static contextTypes = {
+  contextTypes: {
     router: React.PropTypes.object
-  }
+  },
 
-  constructor() {
-    super();
-    this.state = {
+  getInitialState() {
+    return {
       loggedIn: auth.loggedIn()
     };
-  }
+  },
 
   /**
    * Sets the loggedIn state of auth.
@@ -27,12 +26,12 @@ export default class extends Component {
     this.setState({
       loggedIn: loggedIn
     });
-  }
+  },
 
   componentWillMount() {
     auth.onChange = this.setStateOnAuth;
     auth.login();
-  }
+  },
 
   render() {
     let title =
@@ -44,7 +43,7 @@ export default class extends Component {
 
     return (
       <div>
-        <Navigation title={title} loggedIn={this.state.loggedIn} />
+        <Navigation title={title} />
         <PageContainer>
           {this.props.children}
         </PageContainer>
@@ -52,4 +51,4 @@ export default class extends Component {
     );
 
   }
-}
+});

@@ -8,50 +8,49 @@ class Auth {
   }
 
   login(email, pass) {
-    //if (localStorage.token) {
-    //  this.onChange(true);
-    //  return new Promise((resolve) => {
-    //    resolve();
-    //  });
-    //}
-    return Api.login(email, pass).then(this.handleLoginSuccess);
+    if(localStorage.loggedIn) {
+      return new Promise((resolve) => {
+        resolve();
+      });
+    }
+
+    return Api.login(email, pass)
+      .then(this.handleResponse)
+      .then(this.handleLoginSuccess, this.handleLoginFailure);
   }
 
   login3rdParty(type, token) {
     switch (type) {
     case AuthConstants.GOOGLE :
-      return Api.googleLogin(token).then(this.handleLoginSuccess);
+      return Api.googleLogin(token)
+        .then((response) => {
+          if(!response.Success){
+            throw new Error('invalid login');
+          }
+        })
+        .then(() => {
+          localStorage.loggedIn = true;
+          this.onChange(true);
+        }, () => {
+          this.onChange(false);
+        });
     default :
       throw new Error('3rd party service ' + type + ' not implmented');
     }
   }
 
-  handleLoginSuccess(response) {
-    //localStorage.token = response.token;
-    //this.onChange(true);
-
-    // TODO
-    //this.router.transitionTo('/app');
-  }
-
-  getToken() {
-    return localStorage.token;
-  }
-
-  logout(cb) {
-    delete localStorage.token;
-    if (cb) {
-      cb();
-    }
-    this.onChange(false);
+  logout() {
+    localStorage.loggedIn = false;
+    return Api.logout();
   }
 
   loggedIn() {
-    return !!localStorage.token;
+    return localStorage.loggedIn;
   }
 
   onChange() {}
 }
+
 const auth = new Auth();
 
 export function requireAuth(nextState, transition) {
@@ -62,5 +61,4 @@ export function requireAuth(nextState, transition) {
   }
 }
 
-export
-default auth;
+export default auth;

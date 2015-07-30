@@ -1,36 +1,18 @@
 import React, { Component } from 'react';
-import { Styles } from 'material-ui';
-import FullWidthSection from './FullWidthSection';
 
 export default class extends Component {
 
-  getStyles() {
-    return {
-      footer: {
-        borderTop: '1px solid #ddd',
-        textAlign: 'center',
-        position: 'relative',
-        width: '100%',
-        bottom: 0
-      },
-      p: {
-        margin: '0 auto',
-        padding: '0',
-        color: Styles.Colors.grey400,
-        maxWidth: '335px'
-      }
-    };
-  }
-
   render() {
-    let styles = this.getStyles();
-
     return (
-      <FullWidthSection style={styles.footer}>
-        <p style={styles.p}>
-          &copy; 2015 Sebastian Häni
-        </p>
-      </FullWidthSection>
+      <footer className="mdl-mega-footer">
+        <div className="mdl-mega-footer__bottom-section">
+          <div className="mdl-logo">&copy; 2015 Sebastian Häni</div>
+          <ul className="mdl-mega-footer__link-list">
+            <li><a href="/help">Help</a></li>
+            <li><a href="/privacy">Privacy & Terms</a></li>
+          </ul>
+        </div>
+      </footer>
     );
   }
 }

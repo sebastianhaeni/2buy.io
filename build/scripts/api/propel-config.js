@@ -1,4 +1,4 @@
 var execPropel = require('./exec-propel');
 
-console.log('Regenerating propel config...');
+console.log('Generating propel config...');
 execPropel(['config:convert']);

@@ -4,15 +4,13 @@ var http = require('http');
 var PORT = 3001;
 
 function startApi() {
-  console.log('Starting API...');
-
   var child = childProcess.spawn('php', [
     '-S',
     '127.0.0.1:' + PORT,
     'api/api.php'
   ]);
 
-  console.log('Running API on http://localhost:' + PORT + '/v1/');
+  console.log('Running API at http://localhost:' + PORT + '/v1/');
 }
 
 http.get({

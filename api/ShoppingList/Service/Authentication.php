@@ -82,7 +82,7 @@ class Authentication implements ServiceProviderInterface
         
         $response = new SuccessResponse();
         $response->headers->setCookie(new Cookie(self::REMEMBER_ME, $tokenString, time() + (3600 * 24 * 365)));
-        
+
         return $response;
     }
 

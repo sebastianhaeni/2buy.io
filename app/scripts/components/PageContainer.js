@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { Styles } from 'material-ui';
-
-let DesktopGutter = Styles.Spacing.desktopGutter;
 
 export default class extends Component {
 
@@ -12,17 +9,9 @@ export default class extends Component {
     ])
   }
 
-  getStyles() {
-    return {
-      margin: DesktopGutter
-    };
-  }
-
   render() {
-    let styles = this.getStyles();
-
     return (
-      <div style={styles}>
+      <div>
         {this.props.children}
       </div>
     );

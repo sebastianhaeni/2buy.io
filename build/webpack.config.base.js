@@ -12,7 +12,7 @@ module.exports = {
     publicPath: '/static/'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.css', '.scss']
   },
   eslint: {
     configFile: '.eslintrc'

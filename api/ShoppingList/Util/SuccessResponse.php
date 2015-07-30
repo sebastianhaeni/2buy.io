@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SuccessResponse extends JsonResponse
 {
 
-    function SuccessResponse()
+    function __construct()
     {
-        super([
+        parent::__construct(array(
             'Success' => true
-        ], StatusCodes::HTTP_ACCEPTED);
+        ), self::HTTP_ACCEPTED);
     }
 }
