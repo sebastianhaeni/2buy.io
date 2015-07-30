@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import auth from '../../../utils/Auth';
-import AuthConstants from '../../../constants/AuthConstants';
+import auth from '../../../utils/auth';
+import AuthConstants from '../../../constants/auth-constants';
 
 export default React.createClass({
 

@@ -1,5 +1,5 @@
-import Api from './Api';
-import AuthConstants from '../constants/AuthConstants';
+import Api from './api';
+import AuthConstants from '../constants/auth-constants';
 
 class Auth {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../routes/Home/components/Home';
+import Home from '../routes/home/components/home';
 
 export default React.createClass({
 

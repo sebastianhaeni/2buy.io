@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleLogin from './GoogleLogin';
+import GoogleLogin from './google-login';
 
 export default React.createClass({
 

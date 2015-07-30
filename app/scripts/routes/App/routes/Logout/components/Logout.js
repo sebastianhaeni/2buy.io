@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../../../../../utils/Auth';
+import auth from '../../../../../utils/auth';
 
 export default React.createClass({
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import EmailPasswordLogin from './EmailPasswordLogin';
-import ThirdPartyLogin from './ThirdPartyLogin';
+import EmailPasswordLogin from './email-password-login';
+import ThirdPartyLogin from './third-party-login';
 
 export default React.createClass({
 

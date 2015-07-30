@@ -2,7 +2,7 @@ import React from 'react';
 import { history } from 'react-router/lib/BrowserHistory';
 import { Router } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import Master from './components/Master';
+import Master from './components/master';
 
 import '../styles/main.scss';
 import 'material-design-lite/material';
@@ -16,9 +16,9 @@ const rootRoute = {
   path: '/',
   component: Master,
   childRoutes: [
-    require('./routes/Register'),
-    require('./routes/App'),
-    require('./routes/Home')
+    require('./routes/register'),
+    require('./routes/app'),
+    require('./routes/home')
   ]
 };
 

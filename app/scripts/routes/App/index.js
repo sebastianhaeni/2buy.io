@@ -1,4 +1,4 @@
-import { requireAuth } from '../../utils/Auth';
+import { requireAuth } from '../../utils/auth';
 
 module.exports = {
   path: 'app',
@@ -6,15 +6,15 @@ module.exports = {
 
   getComponents (cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/App'));
+      cb(null, require('./components/app'));
     });
   },
 
   childRoutes: [
-    require('./routes/Bills'),
-    require('./routes/Dashboard'),
-    require('./routes/Logout'),
-    require('./routes/Settings'),
-    require('./routes/Shopping')
+    require('./routes/bills'),
+    require('./routes/dashboard'),
+    require('./routes/logout'),
+    require('./routes/settings'),
+    require('./routes/shopping')
   ]
 };

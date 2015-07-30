@@ -1,11 +1,10 @@
 import React from 'react';
-import PageContainer from '../../../components/PageContainer';
 
 export default React.createClass({
 
   render() {
     return (
-      <PageContainer>
+      <div>
         <h1>2buy.io</h1>
         <h2>Registration</h2>
         <form onSubmit={this._handleSubmit}>
@@ -30,7 +29,7 @@ export default React.createClass({
             Submit
           </button>
         </form>
-      </PageContainer>
+      </div>
     );
   },
 

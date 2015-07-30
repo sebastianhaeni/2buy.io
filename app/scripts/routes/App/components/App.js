@@ -1,7 +1,6 @@
 import React from 'react';
-import PageContainer from './../../../components/PageContainer';
-import auth from '../../../utils/Auth';
-import Navigation from './Navigation';
+import auth from '../../../utils/auth';
+import Navigation from './navigation';
 
 export default React.createClass({
 
@@ -44,9 +43,9 @@ export default React.createClass({
     return (
       <div>
         <Navigation title={title} />
-        <PageContainer>
+        <div>
           {this.props.children}
-        </PageContainer>
+        </div>
       </div>
     );
 

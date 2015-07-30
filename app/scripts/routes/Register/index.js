@@ -3,7 +3,7 @@ module.exports = {
 
   getComponents (cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/Register'));
+      cb(null, require('./components/register'));
     });
   }
 };
