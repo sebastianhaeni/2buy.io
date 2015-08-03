@@ -1,12 +1,13 @@
 import React from 'react';
-import GoogleLogin from './google-login';
 
 export default React.createClass({
 
   render() {
     return (
       <div>
-        <GoogleLogin />
+        <h1>2buy.io</h1>
+        <h2>Privacy and Terms</h2>
+        <p>TODO</p>
       </div>
     );
   }

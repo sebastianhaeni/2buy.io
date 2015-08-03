@@ -14,7 +14,8 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      loggedIn: auth.loggedIn()
+      loggedIn: auth.loggedIn(),
+      isDrawerVisible: false
     };
   },
 
@@ -33,21 +34,22 @@ export default React.createClass({
   },
 
   render() {
-    let title =
-      !this.state.loggedIn ? '2buy.io' :
-      this.context.router.isActive('shopping') ? 'Shopping List' :
-      this.context.router.isActive('get-started') ? 'Get Started' :
-      this.context.router.isActive('settings') ? 'Settings' :
-      this.context.router.isActive('bills') ? 'Bills' : '2buy.io';
-
     return (
-      <div>
-        <Navigation title={title} />
-        <div>
-          {this.props.children}
-        </div>
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <Navigation toggleDrawer={this._toggleDrawer} isDrawerVisible={this.state.isDrawerVisible} />
+        <main className="mdl-layout__content" ref="navigation" onClick={this._hideNavigationDrawer}>
+          <div className="page-content">{this.props.children}</div>
+        </main>
       </div>
     );
+  },
 
+  _toggleDrawer() {
+    this.setState({isDrawerVisible: !this.state.isDrawerVisible});
+  },
+
+  _hideNavigationDrawer() {
+    this.setState({isDrawerVisible: false});
   }
+
 });

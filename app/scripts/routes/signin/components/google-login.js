@@ -1,18 +1,19 @@
 import React from 'react';
-import { Navigation } from 'react-router';
-import auth from '../../../utils/auth';
 import AuthConstants from '../../../constants/auth-constants';
 
 export default React.createClass({
 
-  mixins: [ Navigation ],
+  propTypes: {
+    handleSuccess: React.PropTypes.func.isRequired,
+    handleFailure: React.PropTypes.func.isRequired
+  },
 
   componentDidMount() {
     gapi.signin2.render('my-signin2', {
       'width': 200,
       'longtitle': true,
       'onsuccess': this._handleSuccess,
-      'onfailure': this._handleFailure
+      'onfailure': this.props.handleFailure
     });
   },
 
@@ -34,13 +35,7 @@ export default React.createClass({
 
     // The ID token you need to pass to your backend:
     let idToken = googleUser.getAuthResponse().id_token;
-    auth.login3rdParty(AuthConstants.GOOGLE, idToken).then(() => {
-      this.context.router.transitionTo('/app');
-    });
-  },
-
-  _handleFailure(error) {
-    console.err(error);
+    this.props.handleSuccess(AuthConstants.GOOGLE, idToken);
   }
 
 });

@@ -5,7 +5,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Master from './components/master';
 
 import '../styles/main.scss';
-import 'material-design-lite/material';
+// extension on material.js is required because there's also a material.css file
+import 'script!material-design-lite/material.js';
 
 // Needed for onTouchTap
 // Can go away when react 1.0 releases
@@ -18,6 +19,9 @@ const rootRoute = {
   childRoutes: [
     require('./routes/register'),
     require('./routes/app'),
+    require('./routes/help'),
+    require('./routes/privacy'),
+    require('./routes/signin'),
     require('./routes/home')
   ]
 };
