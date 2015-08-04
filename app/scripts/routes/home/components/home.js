@@ -11,22 +11,53 @@ export default React.createClass({
   },
 
   render() {
+    const footerStyle = {
+      zIndex: 2,
+      bottom: 0,
+      position: 'fixed',
+      width: '100%'
+    };
+
     return (
       <div className="mdl-layout__content">
         {this._getHomePageHero()}
         {this._getHomePurpose()}
         {this._getHomeFeatures()}
-        <Footer />
+        <Footer style={footerStyle} />
       </div>
     );
   },
 
   _getHomePageHero() {
+    const heroStyle = {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      minWidth: '100%',
+      minHeight: '100%',
+      color: '#fff',
+      textShadow: '0 0 10px #000',
+      backgroundImage: 'url(' + require('../images/home-header.jpg') + ')',
+      backgroundPosition: 'center center',
+      backgroundSize: 'cover'
+    };
+    const sloganStyle = {
+      fontSize: 60,
+      paddingTop: 160
+    };
+    const subSloganStyle = {
+      fontSize: 21,
+      paddingTop: 24
+    };
+    const signInButtonStyle = {
+      margin: 20
+    };
+
     return (
-      <div className="buy-home-header mdl-typography--text-center">
-        <div className="buy-slogan">2buy.io</div>
-        <div className="buy-sub-slogan">welcome at 2buy.io... make your life just a tad easier</div>
-        <div className="buy-sign-in-button">
+      <div className="mdl-typography--text-center" style={heroStyle}>
+        <div style={sloganStyle}>2buy.io</div>
+        <div style={subSloganStyle}>welcome at 2buy.io... make your life just a tad easier</div>
+        <div style={signInButtonStyle}>
           <button
             className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
             onClick={this._onSignInClick}>
