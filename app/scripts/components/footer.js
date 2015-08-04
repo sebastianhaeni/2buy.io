@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default React.createClass({
 
   propTypes: {
-    style: React.PropTypes.object.optional
+    style: React.PropTypes.object
   },
 
   render() {
