@@ -11,19 +11,12 @@ export default React.createClass({
   },
 
   render() {
-    const footerStyle = {
-      zIndex: 2,
-      bottom: 0,
-      position: 'fixed',
-      width: '100%'
-    };
-
     return (
-      <div className="mdl-layout__content">
+      <div>
         {this._getHomePageHero()}
         {this._getHomePurpose()}
         {this._getHomeFeatures()}
-        <Footer style={footerStyle} />
+        <Footer />
       </div>
     );
   },

@@ -7,8 +7,12 @@ body {
 }
 
 /* Disable ugly boxes around images in IE10 */
-a img{
+a img {
   border: 0;
+}
+
+.mdl-menu__item a {
+  text-decoration: none;
 }
 
 ::-moz-selection {

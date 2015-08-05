@@ -1,6 +1,8 @@
 import React from 'react';
 import auth from '../../../utils/auth';
+import Footer from '../../../components/footer';
 import Navigation from './navigation';
+import Dashboard from './dashboard';
 
 export default React.createClass({
 
@@ -37,9 +39,10 @@ export default React.createClass({
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <Navigation toggleDrawer={this._toggleDrawer} isDrawerVisible={this.state.isDrawerVisible} />
-        <main className="mdl-layout__content" ref="navigation" onClick={this._hideNavigationDrawer}>
-          <div className="page-content">{this.props.children}</div>
+        <main onClick={this._hideNavigationDrawer}>
+          {this.props.children || <Dashboard />}
         </main>
+        <Footer />
       </div>
     );
   },

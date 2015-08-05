@@ -5,8 +5,8 @@ export default React.createClass({
 
   render() {
     return (
-      <DocumentTitle title="Shopping List">
-        <h1>Shopping List</h1>
+      <DocumentTitle title="Dashboard">
+        <h1>Dashboard</h1>
       </DocumentTitle>
     );
   }

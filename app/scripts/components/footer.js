@@ -3,13 +3,16 @@ import { Link } from 'react-router';
 
 export default React.createClass({
 
-  propTypes: {
-    style: React.PropTypes.object
-  },
-
   render() {
+    const style = {
+      zIndex: 2,
+      bottom: 0,
+      position: 'fixed',
+      width: '100%'
+    };
+
     return (
-      <footer className="mdl-mega-footer" style={this.props.style}>
+      <footer className="mdl-mega-footer" style={style}>
         <div className="mdl-mega-footer__bottom-section">
           <div className="mdl-logo">
             2buy.io

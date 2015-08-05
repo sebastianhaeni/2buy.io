@@ -9,7 +9,7 @@ export default React.createClass({
 
   render() {
     return (
-      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div>
         {this.props.children || <Home />}
       </div>
     );

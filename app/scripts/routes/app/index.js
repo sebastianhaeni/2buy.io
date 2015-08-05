@@ -12,7 +12,6 @@ module.exports = {
 
   childRoutes: [
     require('./routes/bills'),
-    require('./routes/dashboard'),
     require('./routes/logout'),
     require('./routes/settings'),
     require('./routes/shopping')

@@ -4,6 +4,7 @@ import { Router } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Master from './components/master';
 
+// import our main style, component style is defined inside components
 import '../styles/main.scss';
 // extension on material.js is required because there's also a material.css file
 import 'script!material-design-lite/material.js';
