@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import DocumentTitle from 'react-document-title';
+import DocumentTitle from '../../../components/document-title';
 import ThirdPartyLogin from './third-party-login';
 import auth from '../../../utils/auth';
 

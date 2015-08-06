@@ -4,6 +4,8 @@ import { Router } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Master from './components/master';
 
+// import ES6 polyfills
+import 'babel/polyfill';
 // import our main style, component style is defined inside components
 import '../styles/main.scss';
 // extension on material.js is required because there's also a material.css file
