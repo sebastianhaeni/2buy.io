@@ -2,7 +2,7 @@
 .project
 .buildpath
 
-generated-*/
+build/generated/
 node_modules/
 www/static/
 vendor/
