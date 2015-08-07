@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: [path.resolve(__dirname, '../app/scripts/main.js')]
+    app: [path.resolve(__dirname, '../app/main.js')]
   },
   output: {
     path: path.resolve(__dirname, '../www/static/'),
