@@ -5,10 +5,10 @@ Frontend:
     * Google Login
     * Facebook Login
     * react-intl (http://formatjs.io/react/)
-    * scss linting
     * service worker
     * app manifest
     * web push notifications
+    * optimize webpack config (https://github.com/webpack/docs/wiki/optimization)
   * Communities:
     * View communities
     * Create community
