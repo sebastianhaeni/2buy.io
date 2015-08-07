@@ -4,15 +4,11 @@ import { Navigation } from 'react-router';
 export default React.createClass({
   mixins: [ Navigation ],
 
-  propTypes: {
-    title: React.PropTypes.string
-  },
-
   render() {
     return (
       <header className="mdl-layout__header is-casting-shadow">
         <div className="mdl-layout__header-row">
-          <span className="mdl-layout-title document-title">{this.props.title}</span>
+          <span className="mdl-layout-title document-title">2buy.io</span>
           <div className="mdl-layout-spacer" />
 
           Community

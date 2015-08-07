@@ -23,22 +23,20 @@ export default React.createClass({
 
   _getHomePageHero() {
     const heroStyle = {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      minWidth: '100%',
-      minHeight: '100%',
-      color: '#fff',
-      textShadow: '0 0 10px #000',
       backgroundImage: 'url(' + require('../images/home-header.jpg') + ')',
       backgroundPosition: 'center center',
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      height: '100vh'
     };
     const sloganStyle = {
+      textShadow: '0 0 10px #000',
+      color: '#fff',
       fontSize: 60,
       paddingTop: 160
     };
     const subSloganStyle = {
+      textShadow: '0 0 10px #000',
+      color: '#fff',
       fontSize: 21,
       paddingTop: 24
     };

@@ -1,10 +1,15 @@
 import React from 'react';
+import { Navigation } from 'react-router';
 import auth from '../../../../../utils/auth';
 
 export default React.createClass({
 
+  mixins: [ Navigation ],
+
   componentDidMount() {
-    auth.logout();
+    auth.logout().then(() => {
+      this.transitionTo('/');
+    });
   },
 
   render() {

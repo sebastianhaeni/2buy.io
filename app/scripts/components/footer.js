@@ -4,15 +4,8 @@ import { Link } from 'react-router';
 export default React.createClass({
 
   render() {
-    const style = {
-      zIndex: 2,
-      bottom: 0,
-      position: 'fixed',
-      width: '100%'
-    };
-
     return (
-      <footer className="mdl-mega-footer" style={style}>
+      <footer className="mdl-mega-footer">
         <div className="mdl-mega-footer__bottom-section">
           <div className="mdl-logo">
             2buy.io

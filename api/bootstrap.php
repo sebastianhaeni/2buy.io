@@ -34,5 +34,5 @@ $app['http_cache'] = $config['httpCache'];
 $app['config'] = $config;
 
 $app->register(new Propel\Silex\PropelServiceProvider(), [
-    'propel.config-file' => __DIR__ . '/../generated-conf/config.php'
+    'propel.config_file' => __DIR__ . '/../build/generated/config.php'
 ]);

@@ -1,5 +1,4 @@
 import React from 'react';
-import auth from '../../../utils/auth';
 import Footer from '../../../components/footer';
 import Navigation from './navigation';
 import Drawer from './drawer';
@@ -15,28 +14,13 @@ export default React.createClass({
     router: React.PropTypes.object
   },
 
-  getInitialState() {
-    return {
-      title: '2buy.io',
-      loggedIn: auth.loggedIn()
-    };
-  },
-
-  /**
-   * Sets the loggedIn state of auth.
-   */
-  setStateOnAuth(loggedIn) {
-    this.setState({
-      loggedIn: loggedIn
-    });
-  },
-
-  componentWillMount() {
-    auth.onChange = this.setStateOnAuth;
-    auth.login();
+  componentDidMount() {
+    // enable mdl behavior
+    componentHandler.upgradeDom();
   },
 
   componentWillReceiveProps() {
+    // clear the 'is-visible' class from the drawer when the page changed
     let layout = document.getElementsByClassName('mdl-layout__drawer')[0];
     layout.className = 'mdl-layout__drawer';
   },
@@ -44,7 +28,7 @@ export default React.createClass({
   render() {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header" ref="container">
-        <Navigation title={this.state.title} />
+        <Navigation />
         <Drawer />
         <main>
           {this.props.children || <Dashboard />}

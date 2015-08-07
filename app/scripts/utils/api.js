@@ -25,16 +25,6 @@ function call(url, params = {}) {
 }
 
 export default {
-  login(email, password) {
-    let data = new FormData();
-    data.append('email', email);
-    data.append('password', password);
-    return call('user/login', {
-      method: 'post',
-      body: data
-    });
-  },
-
   googleLogin(token) {
     let data = new FormData();
     data.append('idToken', token);

@@ -11,7 +11,8 @@
     "jquery": true
   },
   "globals": {
-    "gapi": true
+    "gapi": true,
+    "componentHandler": true
   },
   "parser": "babel-eslint",
   "rules": {
