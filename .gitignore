@@ -3,9 +3,11 @@
 .buildpath
 
 build/generated/
-node_modules/
 www/static/
 vendor/
+
+node_modules/*
+!node_modules/lib
 
 npm-debug.log
 config/api.yml
