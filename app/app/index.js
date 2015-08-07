@@ -1,4 +1,4 @@
-import { auth } from 'lib/utils';
+import { auth } from '_lib/utils';
 
 module.exports = {
   path: 'app',

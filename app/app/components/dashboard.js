@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocumentTitle } from 'lib/components';
+import { DocumentTitle } from '_lib/components';
 import DashboardWidget from './widgets/dashboard-widget';
 import ShoppingWidget from './widgets/shopping-widget';
 import BillsWidget from './widgets/bills-widget';

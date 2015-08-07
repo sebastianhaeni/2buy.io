@@ -1,5 +1,5 @@
 import React from 'react';
-import { Footer } from 'lib/components';
+import { Footer } from '_lib/components';
 import Navigation from './navigation';
 import Drawer from './drawer';
 import Dashboard from './dashboard';

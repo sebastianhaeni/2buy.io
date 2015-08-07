@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import { Footer } from 'lib/components';
+import { Footer } from '_lib/components';
 
 export default React.createClass({
 

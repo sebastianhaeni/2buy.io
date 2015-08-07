@@ -7,7 +7,7 @@ www/static/
 vendor/
 
 node_modules/*
-!node_modules/lib
+!node_modules/_lib
 
 npm-debug.log
 config/api.yml

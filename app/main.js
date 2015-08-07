@@ -2,7 +2,7 @@ import React from 'react';
 import { history } from 'react-router/lib/BrowserHistory';
 import { Router } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import { Master } from 'lib/components';
+import { Master } from '_lib/components';
 
 // import ES6 polyfills
 import 'babel/polyfill';
@@ -16,15 +16,17 @@ import 'script!material-design-lite/material.js';
 // Check this repo: https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
+
+
 const rootRoute = {
   path: '/',
   component: Master,
+  indexRoute: require('./home'),
   childRoutes: [
     require('./app'),
     require('./help'),
     require('./privacy'),
-    require('./signin'),
-    require('./home')
+    require('./signin')
   ]
 };
 

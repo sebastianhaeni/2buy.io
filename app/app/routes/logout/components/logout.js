@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import auth from 'lib/utils';
+import { auth } from '_lib/utils';
 
 export default React.createClass({
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { DocumentTitle } from 'lib/components';
+import { DocumentTitle } from '_lib/components';
 
 export default React.createClass({
 

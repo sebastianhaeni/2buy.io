@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigation } from 'react-router';
-import { DocumentTitle, Footer } from 'lib/components';
-import { auth } from 'lib/utils';
+import { DocumentTitle, Footer } from '_lib/components';
+import { auth } from '_lib/utils';
 import ThirdPartyLogin from './third-party-login';
 
 export default React.createClass({

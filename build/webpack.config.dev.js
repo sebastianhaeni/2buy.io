@@ -21,7 +21,7 @@ module.exports = configMerge(baseConfig, {
     loaders: [{
       test: /\.js$/,
       loaders: ['react-hot', 'babel?stage=0'],
-      include: [path.join(__dirname, '../app'), path.join(__dirname, '../node_modules/lib')]
+      include: [path.join(__dirname, '../app'), path.join(__dirname, '../node_modules/_lib')]
     }]
   }
 });

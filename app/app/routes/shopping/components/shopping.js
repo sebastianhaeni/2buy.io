@@ -1,5 +1,12 @@
 import React from 'react';
-import { DocumentTitle } from 'lib/components';
+import { DocumentTitle } from '_lib/components';
+
+const style = {};
+
+style.addArticle = {
+  position: 'absolute',
+  right: 20
+};
 
 export default React.createClass({
 
@@ -14,9 +21,9 @@ export default React.createClass({
         <div className="mdl-grid">
           <button
             id="add-shopping-article"
-            ref="addArticleButton"
             className="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--fab mdl-button--colored"
-            onClick={this._handleAddArticle}>
+            onClick={this._handleAddArticle}
+            style={style.addArticle}>
             <i className="material-icons">add</i>
           </button>
           <div className="mdl-tooltip" htmlFor="add-shopping-article">Add shopping list article</div>

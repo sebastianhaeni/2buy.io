@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthConstants } from 'lib/constants';
+import { AuthConstants } from '_lib/constants';
 
 export default React.createClass({
 
